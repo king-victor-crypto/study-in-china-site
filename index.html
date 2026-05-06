@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>来华留学全球项目搜索引擎</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 额外补充语言下拉样式，和你截图完全一致 */
+        .lang-select-wrap {
+            position: relative;
+        }
+        #langSelect {
+            border: none;
+            background: transparent;
+            font-size: 15px;
+            color: #333;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            padding-right: 15px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-size: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Study in China</div>
+            <nav class="top-nav">
+                <a href="index.html" class="active">发现项目</a>
+                <a href="schools.html">探索院校</a>
+                <a href="guide.html">申请指南</a>
+                <a href="life.html">留学中国生活</a>
+                <a href="职业发展.html">职业发展</a>
+                <a href="resource.html">资源中心</a>
+            </nav>
+
+            <!-- 和你截图完全一样的“中文·”样式，原生下拉，100%能点开 -->
+            <div class="lang-select-wrap">
+                <select id="langSelect">
+                    <option>中文</option>
+                    <option>English</option>
+                    <option>Español</option>
+                    <option>Français</option>
+                    <option>Deutsch</option>
+                    <option>Русский</option>
+                    <option>العربية</option>
+                    <option>日本語</option>
+                    <option>한국어</option>
+                    <option>Português</option>
+                    <option>Italiano</option>
+                    <option>Nederlands</option>
+                    <option>Polski</option>
+                    <option>Українська</option>
+                    <option>Türkçe</option>
+                    <option>ไทย</option>
+                    <option>Việt Nam</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>来华留学全球项目搜索引擎</h1>
+            <p>检索语言班、预科、本科、硕士、博士及各类学术项目</p>
+        </div>
+    </section>
+
+    <section class="search-bar">
+        <div class="container">
+            <input type="text" class="main-search" placeholder="搜索项目、专业、关键词...">
+            <button class="search-btn">搜索</button>
+        </div>
+    </section>
+
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <h3>基础条件</h3>
+                    <div class="filter-options">
+                        <select class="filter-select">
+                            <option>学历层次</option>
+                            <option>语言班/预科</option>
+                            <option>本科</option>
+                            <option>硕士</option>
+                            <option>博士</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>语言要求</option>
+                            <option>HSK 3级及以上</option>
+                            <option>HSK 4级及以上</option>
+                            <option>HSK 5级及以上</option>
+                            <option>英文授课免HSK</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>学费预算</option>
+                            <option>1万以下/年</option>
+                            <option>1-2万/年</option>
+                            <option>2-3万/年</option>
+                            <option>3万以上/年</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>个人偏好</h3>
+                    <div class="filter-options">
+                        <select class="filter-select">
+                            <option>就读地区</option>
+                            <option>一线城市（北上广深）</option>
+                            <option>东部沿海高校</option>
+                            <option>中西部高校</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>学科方向</option>
+                            <option>计算机/工科</option>
+                            <option>经济/管理</option>
+                            <option>汉语言/文化</option>
+                            <option>医学/药学</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>特色标签</h3>
+                <div class="filter-options" style="justify-content:center;">
+                    <select class="filter-select">
+                        <option>奖学金覆盖</option>
+                        <option>无语言要求</option>
+                        <option>短期项目</option>
+                        <option>校企合作</option>
+                        <option>双语授课</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 语言记忆JS，选什么就记住什么 -->
+    <script>
+        const langSel = document.getElementById('langSelect');
+        const savedLang = localStorage.getItem('siteLang') || '中文';
+        langSel.value = savedLang;
+
+        langSel.addEventListener('change', function() {
+            localStorage.setItem('siteLang', this.value);
+        });
+    </script>
+</body>
+</html>
