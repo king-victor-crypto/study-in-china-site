@@ -3,8 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>来华留学全球项目搜索引擎</title>
-    <link rel="stylesheet" href="style.css">
+    <title data-key="siteTitle">来华留学全球项目搜索引擎</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f7;
+            color: #333;
+            line-height: 1.7;
+        }
+        /* 头部导航 */
+        .site-header {
+            background: #ffffff;
+            border-bottom: 1px solid #eee;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2563eb;
+        }
+        .top-nav {
+            display: flex;
+            gap: 24px;
+        }
+        .top-nav a {
+            text-decoration: none;
+            color: #666;
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+        .top-nav a.active {
+            color: #2563eb;
+            font-weight: 500;
+        }
+        .top-nav a:hover {
+            color: #2563eb;
+            transform: translateY(-1px);
+        }
+        #langSelect {
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* 英雄区横幅 */
+        .hero-banner {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero-banner h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+        .hero-banner p {
+            font-size: 18px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 32px;
+        }
+        .search-box {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .search-box input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+        .search-box button {
+            padding: 14px 28px;
+            background: #fff;
+            color: #2563eb;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .search-box button:hover {
+            background: #f0f0f0;
+        }
+
+        /* 筛选条件区 */
+        .filter-section {
+            width: 90%;
+            max-width: 1200px;
+            margin: -40px auto 60px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .filter-group {
+            margin-bottom: 24px;
+        }
+        .filter-group h3 {
+            font-size: 18px;
+            color: #111;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .filter-tag {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-tag:hover, .filter-tag.active {
+            background: #2563eb;
+            color: #fff;
+            border-color: #2563eb;
+        }
+
+        /* 项目卡片区 */
+        .project-section {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+        .project-section h2 {
+            font-size: 24px;
+            color: #111;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .project-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: #2563eb;
+        }
+        .project-card h3 {
+            font-size: 18px;
+            color: #2563eb;
+            margin-bottom: 8px;
+        }
+        .project-meta {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #666;
+        }
+        .project-meta span {
+            background: #f0f4ff;
+            color: #2563eb;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .project-card p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 16px;
+        }
+        .project-card a {
+            display: inline-block;
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .project-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* 统计数据区 */
+        .stats-section {
+            background: #fff;
+            padding: 60px 20px;
+            margin-bottom: 60px;
+        }
+        .stats-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 36px;
+            color: #2563eb;
+            margin-bottom: 8px;
+        }
+        .stat-item p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* 页脚 */
+        .site-footer {
+            background: #111;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .top-nav {
+                gap: 12px;
+            }
+            .hero-banner h1 {
+                font-size: 26px;
+            }
+            .hero-banner p {
+                font-size: 16px;
+            }
+            .project-wrap {
+                grid-template-columns: 1fr;
+            }
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -18,7 +286,6 @@
                 <a href="career.html" data-key="nav5"></a>
                 <a href="resource.html" data-key="nav6"></a>
             </nav>
-
             <select id="langSelect">
                 <option value="zh">中文</option>
                 <option value="en">English</option>
@@ -41,193 +308,582 @@
         </div>
     </header>
 
-    <section class="page-header">
-        <div class="container">
-            <h1 data-key="title"></h1>
-            <p data-key="desc"></p>
+    <!-- 英雄区 -->
+    <section class="hero-banner">
+        <h1 data-key="heroTitle"></h1>
+        <p data-key="heroDesc"></p>
+        <div class="search-box">
+            <input type="text" placeholder="" data-placeholder="searchPlaceholder">
+            <button data-key="searchBtn"></button>
         </div>
     </section>
 
-    <section class="search-bar">
-        <div class="container">
-            <input type="text" class="main-search" data-placeholder="searchTip">
-            <button class="search-btn" data-key="searchBtn"></button>
-        </div>
-    </section>
-
+    <!-- 筛选条件区 -->
     <section class="filter-section">
-        <div class="container">
-            <div class="filter-row">
-                <div class="filter-group">
-                    <h3 data-key="baseCond"></h3>
-                    <div class="filter-options">
-                        <select class="filter-select" data-opt="eduLevel"></select>
-                        <select class="filter-select" data-opt="langReq"></select>
-                        <select class="filter-select" data-opt="feeRange"></select>
-                    </div>
-                </div>
-                <div class="filter-group">
-                    <h3 data-key="prefer"></h3>
-                    <div class="filter-options">
-                        <select class="filter-select" data-opt="cityArea"></select>
-                        <select class="filter-select" data-opt="subject"></select>
-                    </div>
-                </div>
+        <div class="filter-group">
+            <h3 data-key="filter1Title"></h3>
+            <div class="filter-tags">
+                <span class="filter-tag active">语言班</span>
+                <span class="filter-tag">预科</span>
+                <span class="filter-tag">本科</span>
+                <span class="filter-tag">硕士</span>
+                <span class="filter-tag">博士</span>
             </div>
-            <div class="filter-group">
-                <h3 data-key="tag"></h3>
-                <div class="filter-options" style="justify-content:center;">
-                    <select class="filter-select" data-opt="specialTag"></select>
-                </div>
+        </div>
+        <div class="filter-group">
+            <h3 data-key="filter2Title"></h3>
+            <div class="filter-tags">
+                <span class="filter-tag active">工程技术</span>
+                <span class="filter-tag">医学卫生</span>
+                <span class="filter-tag">人文社科</span>
+                <span class="filter-tag">经济管理</span>
+                <span class="filter-tag">艺术设计</span>
+            </div>
+        </div>
+        <div class="filter-group">
+            <h3 data-key="filter3Title"></h3>
+            <div class="filter-tags">
+                <span class="filter-tag active">全额奖学金</span>
+                <span class="filter-tag">部分奖学金</span>
+                <span class="filter-tag">自费项目</span>
+                <span class="filter-tag">短期交流</span>
             </div>
         </div>
     </section>
+
+    <!-- 推荐项目区 -->
+    <section class="project-section">
+        <h2 data-key="projectTitle"></h2>
+        <div class="project-wrap">
+            <div class="project-card">
+                <h3 data-key="proj1Title"></h3>
+                <div class="project-meta">
+                    <span>本科</span>
+                    <span>奖学金</span>
+                    <span>北京</span>
+                </div>
+                <p data-key="proj1Desc"></p>
+                <a href="#" data-key="proj1Link"></a>
+            </div>
+            <div class="project-card">
+                <h3 data-key="proj2Title"></h3>
+                <div class="project-meta">
+                    <span>硕士</span>
+                    <span>工科</span>
+                    <span>上海</span>
+                </div>
+                <p data-key="proj2Desc"></p>
+                <a href="#" data-key="proj2Link"></a>
+            </div>
+            <div class="project-card">
+                <h3 data-key="proj3Title"></h3>
+                <div class="project-meta">
+                    <span>语言班</span>
+                    <span>零基础</span>
+                    <span>广州</span>
+                </div>
+                <p data-key="proj3Desc"></p>
+                <a href="#" data-key="proj3Link"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 统计数据区 -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>1200+</h3>
+                <p data-key="stat1"></p>
+            </div>
+            <div class="stat-item">
+                <h3>400+</h3>
+                <p data-key="stat2"></p>
+            </div>
+            <div class="stat-item">
+                <h3>50万+</h3>
+                <p data-key="stat3"></p>
+            </div>
+            <div class="stat-item">
+                <h3>17</h3>
+                <p data-key="stat4"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <p data-key="footerText"></p>
+    </footer>
 
 <script>
-// 17国语言完整词库
 const langPack = {
     zh:{
         nav1:"发现项目",nav2:"探索院校",nav3:"申请指南",nav4:"留学中国生活",nav5:"职业发展",nav6:"资源中心",
-        title:"来华留学全球项目搜索引擎",desc:"检索语言班、预科、本科、硕士、博士及各类学术项目",
-        searchTip:"搜索项目、专业、关键词...",searchBtn:"搜索",
-        baseCond:"基础条件",prefer:"个人偏好",tag:"特色标签",
-        eduLevel:"学历层次","eduLevel1":"语言班/预科","eduLevel2":"本科","eduLevel3":"硕士","eduLevel4":"博士",
-        langReq:"语言要求","langReq1":"无语言要求","langReq2":"HSK3及以上","langReq3":"HSK4及以上","langReq4":"HSK5及以上","langReq5":"英文授课免HSK",
-        feeRange:"学费预算","feeRange1":"1万以下/年","feeRange2":"1-2万/年","feeRange3":"2-3万/年","feeRange4":"3万以上/年",
-        cityArea:"就读地区","cityArea1":"一线城市","cityArea2":"东部沿海高校","cityArea3":"中西部高校",
-        subject:"学科方向","subject1":"计算机/工科","subject2":"经济/管理","subject3":"汉语言/文化","subject4":"医学/药学",
-        specialTag:"奖学金覆盖","specialTag1":"无语言要求","specialTag2":"短期项目","specialTag3":"校企合作","specialTag4":"双语授课"
+        siteTitle:"来华留学全球项目搜索引擎",
+        heroTitle:"来华留学全球项目搜索引擎",
+        heroDesc:"检索语言班、预科、本科、硕士、博士及各类学术项目，一站式匹配你的留学目标",
+        searchPlaceholder:"搜索项目、专业、关键词...",
+        searchBtn:"搜索",
+        filter1Title:"学历层次",
+        filter2Title:"专业方向",
+        filter3Title:"项目类型",
+        projectTitle:"热门推荐项目",
+        proj1Title:"北京知名大学本科项目",
+        proj1Desc:"全额奖学金覆盖学费、住宿与生活费，支持国际学生申请，语言要求HSK4+，学制4年，专业涵盖工科、商科、文科。",
+        proj1Link:"查看详情 →",
+        proj2Title:"上海顶尖高校硕士项目",
+        proj2Desc:"工科强势学科，校企联合培养，提供实习与就业机会，语言要求HSK5+，学制2-3年，支持跨专业申请。",
+        proj2Link:"查看详情 →",
+        proj3Title:"广州零基础语言班项目",
+        proj3Desc:"针对零基础学生的中文强化课程，6个月系统学习，结业可衔接本科预科，小班教学，住宿配套齐全。",
+        proj3Link:"查看详情 →",
+        stat1:"合作院校",
+        stat2:"热门项目",
+        stat3:"留学生选择",
+        stat4:"支持语言",
+        footerText:"© 2026 Study in China | 来华留学官方信息平台"
     },
     en:{
         nav1:"Programs",nav2:"Universities",nav3:"Application Guide",nav4:"Life in China",nav5:"Career",nav6:"Resources",
-        title:"Study in China Global Search",desc:"Language courses, foundation, bachelor, master, PhD programs",
-        searchTip:"Search programs,majors,keywords...",searchBtn:"Search",
-        baseCond:"Basic Filter",prefer:"Preferences",tag:"Tags",
-        eduLevel:"Education Level","eduLevel1":"Language Course","eduLevel2":"Bachelor","eduLevel3":"Master","eduLevel4":"PhD",
-        langReq:"Language Requirement","langReq1":"No Requirement","langReq2":"HSK3+","langReq3":"HSK4+","langReq4":"HSK5+","langReq5":"English Taught",
-        feeRange:"Tuition Fee","feeRange1":"Under 10k/year","feeRange2":"10k-20k/year","feeRange3":"20k-30k/year","feeRange4":"Over 30k/year",
-        cityArea:"City Area","cityArea1":"Tier 1 City","cityArea2":"East Coast","cityArea3":"Midwest China",
-        subject:"Subject","subject1":"Engineering","subject2":"Economics","subject3":"Chinese Culture","subject4":"Medical",
-        specialTag:"Scholarship","specialTag1":"No Language Limit","specialTag2":"Short Term","specialTag3":"Co-op","specialTag4":"Bilingual"
+        siteTitle:"Study in China Program Search",
+        heroTitle:"Study in China Global Program Search",
+        heroDesc:"Find language courses, foundation, bachelor, master, PhD and academic programs to match your study goals",
+        searchPlaceholder:"Search programs, majors, keywords...",
+        searchBtn:"Search",
+        filter1Title:"Degree Level",
+        filter2Title:"Major Field",
+        filter3Title:"Program Type",
+        projectTitle:"Recommended Programs",
+        proj1Title:"Beijing University Undergraduate Program",
+        proj1Desc:"Full scholarship covering tuition, accommodation and living expenses. HSK4+ required, 4-year duration, majors in engineering, business, arts.",
+        proj1Link:"View Details →",
+        proj2Title:"Shanghai Top University Master Program",
+        proj2Desc:"Strong engineering programs with industry cooperation, internships and career support. HSK5+ required, 2-3 years, cross-major applications accepted.",
+        proj2Link:"View Details →",
+        proj3Title:"Guangzhou Beginner Language Program",
+        proj3Desc:"6-month intensive Chinese course for beginners. Transition to foundation program after completion, small class teaching with full accommodation.",
+        proj3Link:"View Details →",
+        stat1:"Partner Universities",
+        stat2:"Popular Programs",
+        stat3:"Students Enrolled",
+        stat4:"Supported Languages",
+        footerText:"© 2026 Study in China | Official Platform for International Students"
     },
     es:{
         nav1:"Programas",nav2:"Universidades",nav3:"Guía de solicitud",nav4:"Vivir en China",nav5:"Carrera",nav6:"Recursos",
-        title:"Buscador de estudios en China",desc:"Cursos de idiomas, pregrado, máster, doctorado",
-        searchTip:"Buscar programas,materias...",searchBtn:"Buscar",
-        baseCond:"Filtros básicos",prefer:"Preferencias",tag:"Etiquetas"
+        siteTitle:"Buscador de Programas de Estudio en China",
+        heroTitle:"Buscador Global de Programas de Estudio en China",
+        heroDesc:"Encuentra cursos de idiomas, pregrado, licenciatura, maestría, doctorado y programas académicos para tu meta",
+        searchPlaceholder:"Buscar programas, carreras, palabras clave...",
+        searchBtn:"Buscar",
+        filter1Title:"Nivel Académico",
+        filter2Title:"Área de Estudio",
+        filter3Title:"Tipo de Programa",
+        projectTitle:"Programas Recomendados",
+        proj1Title:"Programa de Grado en Universidad de Pekín",
+        proj1Desc:"Beca completa cubriendo matrícula, alojamiento y gastos. Requiere HSK4+, duración 4 años, carreras en ingeniería, negocios, artes.",
+        proj1Link:"Ver Detalles →",
+        proj2Title:"Programa de Maestría en Universidad de Shanghái",
+        proj2Desc:"Programas de ingeniería con cooperación empresarial, prácticas y apoyo laboral. Requiere HSK5+, 2-3 años, admisiones interdisciplinarias.",
+        proj2Link:"Ver Detalles →",
+        proj3Title:"Programa de Idiomas para Principiantes en Guangzhou",
+        proj3Desc:"Curso intensivo de chino de 6 meses para principiantes. Transición a programa preuniversitario después, clases reducidas con alojamiento completo.",
+        proj3Link:"Ver Detalles →",
+        stat1:"Universidades Asociadas",
+        stat2:"Programas Populares",
+        stat3:"Estudiantes Matriculados",
+        stat4:"Idiomas Soportados",
+        footerText:"© 2026 Study in China | Plataforma Oficial para Estudiantes Internacionales"
     },
     fr:{
         nav1:"Programmes",nav2:"Universités",nav3:"Guide de candidature",nav4:"Vivre en Chine",nav5:"Carrière",nav6:"Ressources",
-        title:"Recherche études Chine",desc:"Cours de langue, licence, master, doctorat",
-        searchTip:"Rechercher programmes...",searchBtn:"Rechercher",
-        baseCond:"Filtres",prefer:"Préférences",tag:"Tags"
+        siteTitle:"Recherche de programmes d'études en Chine",
+        heroTitle:"Recherche globale de programmes d'études en Chine",
+        heroDesc:"Trouvez des cours de langue, prépa, licence, master, doctorat et programmes académiques pour votre projet",
+        searchPlaceholder:"Rechercher programmes, filières, mots-clés...",
+        searchBtn:"Rechercher",
+        filter1Title:"Niveau d'études",
+        filter2Title:"Domaine d'études",
+        filter3Title:"Type de programme",
+        projectTitle:"Programmes recommandés",
+        proj1Title:"Programme de licence à l'université de Pékin",
+        proj1Desc:"Bourse complète couvrant les frais, le logement et la vie. HSK4+ requis, durée 4 ans, filières ingénierie, commerce, arts.",
+        proj1Link:"Voir les détails →",
+        proj2Title:"Programme de master à l'université de Shanghai",
+        proj2Desc:"Programmes d'ingénierie avec partenariats, stages et accompagnement professionnel. HSK5+ requis, 2-3 ans, admissions interdisciplinaires.",
+        proj2Link:"Voir les détails →",
+        proj3Title:"Programme de langue pour débutants à Guangzhou",
+        proj3Desc:"Cours intensif de chinois de 6 mois pour débutants. Transition vers le programme pré-universitaire, petits groupes avec hébergement complet.",
+        proj3Link:"Voir les détails →",
+        stat1:"Universités partenaires",
+        stat2:"Programmes populaires",
+        stat3:"Étudiants inscrits",
+        stat4:"Langues prises en charge",
+        footerText:"© 2026 Study in China | Plateforme officielle pour étudiants internationaux"
     },
     de:{
         nav1:"Programme",nav2:"Universitäten",nav3:"Bewerbungsleitfaden",nav4:"Leben in China",nav5:"Karriere",nav6:"Ressourcen",
-        title:"Studium in China Suche",desc:"Sprachkurse, Bachelor, Master, Doktor",
-        searchTip:"Suchen...",searchBtn:"Suchen",
-        baseCond:"Filter",prefer:"Vorlieben",tag:"Markierungen"
+        siteTitle:"Studienprogrammsuche China",
+        heroTitle:"Globale Studienprogrammsuche China",
+        heroDesc:"Finde Sprachkurse, Vorbereitung, Bachelor, Master, Promotion und akademische Programme für dein Ziel",
+        searchPlaceholder:"Suche Programme, Fachrichtungen, Stichwörter...",
+        searchBtn:"Suchen",
+        filter1Title:"Studienniveau",
+        filter2Title:"Fachbereich",
+        filter3Title:"Programmtyp",
+        projectTitle:"Empfohlene Programme",
+        proj1Title:"Bachelorprogramm an der Universität Peking",
+        proj1Desc:"Vollstipendium deckt Studiengebühren, Unterkunft und Lebenshaltung. HSK4+ erforderlich, 4 Jahre, Fachrichtungen Ingenieur, Wirtschaft, Kunst.",
+        proj1Link:"Details anzeigen →",
+        proj2Title:"Masterprogramm an der Universität Shanghai",
+        proj2Desc:"Starke Ingenieurprogramme mit Unternehmenskooperation, Praktika und Karriereunterstützung. HSK5+ erforderlich, 2-3 Jahre, fachübergreifende Bewerbungen.",
+        proj2Link:"Details anzeigen →",
+        proj3Title:"Anfängersprachprogramm in Guangzhou",
+        proj3Desc:"6-monatiger Intensivkurs Chinesisch für Anfänger. Übergang zum Vorbereitungsprogramm, Kleingruppenunterricht mit vollständiger Unterkunft.",
+        proj3Link:"Details anzeigen →",
+        stat1:"Partneruniversitäten",
+        stat2:"Beliebte Programme",
+        stat3:"Eingeschriebene Studierende",
+        stat4:"Unterstützte Sprachen",
+        footerText:"© 2026 Study in China | Offizielle Plattform für internationale Studierende"
     },
     ru:{
-        nav1:"Программы",nav2:"Университеты",nav3:"Инструкция",nav4:"Жизнь в Китае",nav5:"Карьера",nav6:"Ресурсы",
-        title:"Поиск обучения в Китае",desc:"Языковые курсы, бакалавр, магистр, докторантура",
-        searchTip:"Поиск программ...",searchBtn:"Поиск",
-        baseCond:"Фильтры",prefer:"Предпочтения",tag:"Метки"
+        nav1:"Программы",nav2:"Университеты",nav3:"Руководство по поступлению",nav4:"Жизнь в Китае",nav5:"Карьера",nav6:"Ресурсы",
+        siteTitle:"Поиск программ обучения в Китае",
+        heroTitle:"Глобальный поиск программ обучения в Китае",
+        heroDesc:"Найдите языковые курсы, подготовку, бакалавриат, магистратуру, аспирантуру и академические программы для вашей цели",
+        searchPlaceholder:"Поиск программ, специальностей, ключевых слов...",
+        searchBtn:"Искать",
+        filter1Title:"Уровень образования",
+        filter2Title:"Направление подготовки",
+        filter3Title:"Тип программы",
+        projectTitle:"Рекомендуемые программы",
+        proj1Title:"Программа бакалавриата в университете Пекина",
+        proj1Desc:"Полная стипендия покрывает обучение, проживание и расходы. Требуется HSK4+, 4 года, направления: инженерия, бизнес, искусство.",
+        proj1Link:"Подробнее →",
+        proj2Title:"Программа магистратуры в университете Шанхая",
+        proj2Desc:"Сильные инженерные программы с партнерством с компаниями, стажировками и поддержкой карьеры. Требуется HSK5+, 2-3 года, междисциплинарные заявки.",
+        proj2Link:"Подробнее →",
+        proj3Title:"Языковая программа для начинающих в Гуанчжоу",
+        proj3Desc:"6-месячный интенсивный курс китайского для начинающих. Переход на подготовительную программу после завершения, малые группы с полным проживанием.",
+        proj3Link:"Подробнее →",
+        stat1:"Партнерские университеты",
+        stat2:"Популярные программы",
+        stat3:"Зарегистрированные студенты",
+        stat4:"Поддерживаемые языки",
+        footerText:"© 2026 Study in China | Официальная платформа для иностранных студентов"
     },
     ar:{
-        nav1:"البرامج",nav2:"الجامعات",nav3:"دليل التقديم",nav4:"الحياة في الصين",nav5:"الوظيفة",nav6:"المصادر",
-        title:"البحث عن الدراسة بالصين",desc:"دورات لغة، بكالوريوس، ماجستير، دكتوراه",
-        searchTip:"البحث...",searchBtn:"بحث",
-        baseCond:"الفلترات",prefer:"التفضيلات",tag:"العلامات"
+        nav1:"البرامج",nav2:"الجامعات",nav3:"دليل التقديم",nav4:"الحياة في الصين",nav5:"المسار المهني",nav6:"المصادر",
+        siteTitle:"محرك بحث برامج الدراسة في الصين",
+        heroTitle:"محرك بحث عالمي لبرامج الدراسة في الصين",
+        heroDesc:"ابحث عن دورات اللغة، برامج التأسيس، البكالوريوس، الماجستير، الدكتوراه والبرامج الأكاديمية لتحقيق أهدافك",
+        searchPlaceholder:"ابحث عن البرامج، التخصصات، الكلمات المفتاحية...",
+        searchBtn:"بحث",
+        filter1Title:"المستوى التعليمي",
+        filter2Title:"المجال الدراسي",
+        filter3Title:"نوع البرنامج",
+        projectTitle:"البرامج الموصى بها",
+        proj1Title:"برنامج البكالوريوس في جامعة بكين",
+        proj1Desc:"منحة كاملة تغطي الرسوم الدراسية، السكن والمصاريف. يتطلب HSK4+، مدة 4 سنوات، تخصصات الهندسة، الأعمال، الفنون.",
+        proj1Link:"عرض التفاصيل →",
+        proj2Title:"برنامج الماجستير في جامعة شانغهاي",
+        proj2Desc:"برامج هندسية قوية مع شراكات شركات، تدريب ودعم وظيفي. يتطلب HSK5+، مدة 2-3 سنوات، قبول متعدد التخصصات.",
+        proj2Link:"عرض التفاصيل →",
+        proj3Title:"برنامج اللغة للمبتدئين في قوانغتشو",
+        proj3Desc:"دورة مكثفة في اللغة الصينية لمدة 6 أشهر للمبتدئين. الانتقال إلى برنامج التأسيس بعد الانتهاء، فصول صغيرة مع سكن كامل.",
+        proj3Link:"عرض التفاصيل →",
+        stat1:"الجامعات الشريكة",
+        stat2:"البرامج الشائعة",
+        stat3:"الطلاب المسجلون",
+        stat4:"اللغات المدعومة",
+        footerText:"© 2026 Study in China | المنصة الرسمية للطلاب الدوليين"
     },
     ja:{
-        nav1:"プログラム",nav2:"大学",nav3:"出願ガイド",nav4:"中国生活",nav5:"キャリア",nav6:"資料",
-        title:"中国留学検索サイト",desc:"語学コース、学士、修士、博士",
-        searchTip:"検索...",searchBtn:"検索",
-        baseCond:"基本条件",prefer:"好み",tag:"タグ"
+        nav1:"プログラム",nav2:"大学",nav3:"出願案内",nav4:"中国での生活",nav5:"キャリア",nav6:"資料",
+        siteTitle:"中国留学プログラム検索エンジン",
+        heroTitle:"中国留学グローバルプログラム検索エンジン",
+        heroDesc:"語学コース、予備校、学部、大学院、博士課程、各種学術プログラムから、あなたの目標に合ったプログラムを検索できます",
+        searchPlaceholder:"プログラム、専攻、キーワードで検索...",
+        searchBtn:"検索",
+        filter1Title:"学歴レベル",
+        filter2Title:"専攻分野",
+        filter3Title:"プログラム種別",
+        projectTitle:"おすすめプログラム",
+        proj1Title:"北京の有名大学学部プログラム",
+        proj1Desc:"授業料・寮費・生活費全額カバーの奨学金あり。HSK4+必須、4年間、工学・商学・文学などの専攻あり。",
+        proj1Link:"詳細を見る →",
+        proj2Title:"上海のトップ大学大学院プログラム",
+        proj2Desc:"企業と連携した工学プログラムで、インターンシップと就職支援が充実。HSK5+必須、2-3年間、異専攻からの出願可。",
+        proj2Link:"詳細を見る →",
+        proj3Title:"広州の初心者向け語学プログラム",
+        proj3Desc:"初心者向け6ヶ月集中中国語コース。修了後は予備校に進学可能、少人数クラスで寮完備。",
+        proj3Link:"詳細を見る →",
+        stat1:"提携大学数",
+        stat2:"人気プログラム数",
+        stat3:"留学生数",
+        stat4:"対応言語数",
+        footerText:"© 2026 Study in China | 外国人留学生向け公式プラットフォーム"
     },
     ko:{
-        nav1:"프로그램",nav2:"대학",nav3:"신청가이드",nav4:"중국생활",nav5:"캐리어",nav6:"자료",
-        title:"중국유학 검색",desc:"어학과정, 학사, 석사, 박사",
-        searchTip:"검색...",searchBtn:"검색",
-        baseCond:"기본조건",prefer:"선호도",tag:"태그"
+        nav1:"프로그램",nav2:"대학",nav3:"입학안내",nav4:"중국생활",nav5:"커리어",nav6:"자료",
+        siteTitle:"중국 유학 프로그램 검색 엔진",
+        heroTitle:"중국 유학 글로벌 프로그램 검색 엔진",
+        heroDesc:"어학연수, 예비과정, 학부, 대학원, 박사과정 및 각종 학술 프로그램에서 당신의 목표에 맞는 프로그램을 검색하세요",
+        searchPlaceholder:"프로그램, 전공, 키워드로 검색...",
+        searchBtn:"검색",
+        filter1Title:"학력 수준",
+        filter2Title:"전공 분야",
+        filter3Title:"프로그램 유형",
+        projectTitle:"추천 프로그램",
+        proj1Title:"베이징 유명 대학 학부 프로그램",
+        proj1Desc:"등록금·기숙사비·생활비 전액 지원 장학금. HSK4+ 필수, 4년 과정, 공학·경영·문학 등 전공 가능.",
+        proj1Link:"자세히 보기 →",
+        proj2Title:"상하이 명문 대학 대학원 프로그램",
+        proj2Desc:"기업 연계 공학 프로그램으로 인턴십과 취업 지원이 강력. HSK5+ 필수, 2-3년 과정, 타전공 지원 가능.",
+        proj2Link:"자세히 보기 →",
+        proj3Title:"광주 초보자용 어학 프로그램",
+        proj3Desc:"초보자 대상 6개월 집중 중국어 과정. 수료 후 예비과정 진학 가능, 소규모 수업에 기숙사 완비.",
+        proj3Link:"자세히 보기 →",
+        stat1:"제휴 대학 수",
+        stat2:"인기 프로그램 수",
+        stat3:"유학생 수",
+        stat4:"지원 언어 수",
+        footerText:"© 2026 Study in China | 외국인 유학생 공식 플랫폼"
     },
     pt:{
         nav1:"Programas",nav2:"Universidades",nav3:"Guia de inscrição",nav4:"Viver na China",nav5:"Carreira",nav6:"Recursos",
-        title:"Busca estudos na China",desc:"Cursos de idioma, graduação, mestrado, doutorado",
-        searchTip:"Pesquisar...",searchBtn:"Pesquisar",
-        baseCond:"Filtros",prefer:"Preferências",tag:"Tags"
+        siteTitle:"Motor de busca de programas de estudo na China",
+        heroTitle:"Motor de busca global de programas de estudo na China",
+        heroDesc:"Encontre cursos de línguas, preparatórios, graduação, mestrado, doutorado e programas acadêmicos para o seu objetivo",
+        searchPlaceholder:"Pesquise programas, áreas, palavras-chave...",
+        searchBtn:"Pesquisar",
+        filter1Title:"Nível Acadêmico",
+        filter2Title:"Área de Estudo",
+        filter3Title:"Tipo de Programa",
+        projectTitle:"Programas Recomendados",
+        proj1Title:"Programa de Graduação na Universidade de Pequim",
+        proj1Desc:"Bolsa integral cobrindo matrícula, alojamento e despesas. HSK4+ obrigatório, duração de 4 anos, áreas em engenharia, negócios, artes.",
+        proj1Link:"Ver Detalhes →",
+        proj2Title:"Programa de Mestrado na Universidade de Xangai",
+        proj2Desc:"Programas de engenharia fortes com parcerias empresariais, estágios e apoio profissional. HSK5+ obrigatório, 2-3 anos, inscrições interdisciplinares aceitas.",
+        proj2Link:"Ver Detalhes →",
+        proj3Title:"Programa de Língua para Iniciantes em Guangzhou",
+        proj3Desc:"Curso intensivo de chinês de 6 meses para iniciantes. Transição para o programa preparatório após conclusão, aulas pequenas com alojamento completo.",
+        proj3Link:"Ver Detalhes →",
+        stat1:"Universidades Parceiras",
+        stat2:"Programas Populares",
+        stat3:"Alunos Matriculados",
+        stat4:"Idiomas Suportados",
+        footerText:"© 2026 Study in China | Plataforma Oficial para Estudantes Internacionais"
     },
     it:{
-        nav1:"Programmi",nav2:"Università",nav3:"Guida candidatura",nav4:"Vivere in Cina",nav5:"Carriera",nav6:"Risorse",
-        title:"Ricerca studi Cina",desc:"Corsi lingua, laurea, master, dottorato",
-        searchTip:"Cerca...",searchBtn:"Cerca",
-        baseCond:"Filtri",prefer:"Preferenze",tag:"Tag"
+        nav1:"Programmi",nav2:"Università",nav3:"Guida alle iscrizioni",nav4:"Vivere in Cina",nav5:"Carriera",nav6:"Risorse",
+        siteTitle:"Motore di ricerca programmi di studio in Cina",
+        heroTitle:"Motore di ricerca globale programmi di studio in Cina",
+        heroDesc:"Trova corsi di lingua, preparatori, lauree triennali, magistrali, dottorati e programmi accademici per il tuo obiettivo",
+        searchPlaceholder:"Cerca programmi, aree, parole chiave...",
+        searchBtn:"Cerca",
+        filter1Title:"Livello Accademico",
+        filter2Title:"Area di Studio",
+        filter3Title:"Tipo di Programma",
+        projectTitle:"Programmi Consigliati",
+        proj1Title:"Programma di Laurea all'Università di Pechino",
+        proj1Desc:"Borsa di studio completa che copre tasse, alloggio e spese. Richiesto HSK4+, durata 4 anni, aree in ingegneria, economia, arte.",
+        proj1Link:"Visualizza Dettagli →",
+        proj2Title:"Programma di Laurea Magistrale all'Università di Shanghai",
+        proj2Desc:"Programmi di ingegneria forti con partnership aziendali, stage e supporto professionale. Richiesto HSK5+, 2-3 anni, iscrizioni interdisciplinari accettate.",
+        proj2Link:"Visualizza Dettagli →",
+        proj3Title:"Programma di Lingua per Principianti a Guangzhou",
+        proj3Desc:"Corso intensivo di cinese di 6 mesi per principianti. Transizione al programma preparatorio dopo il completamento, piccole classi con alloggio completo.",
+        proj3Link:"Visualizza Dettagli →",
+        stat1:"Università Partner",
+        stat2:"Programmi Popolari",
+        stat3:"Studenti Iscritti",
+        stat4:"Lingue Supportate",
+        footerText:"© 2026 Study in China | Piattaforma Ufficiale per Studenti Internazionali"
     },
     nl:{
-        nav1:"Programma's",nav2:"Universiteiten",nav3:"Sollicitatiegids",nav4:"Leven in China",nav5:"Carrière",nav6:"Bronnen",
-        title:"Studie in China zoeken",desc:"Taalcursus, bachelor, master, PhD",
-        searchTip:"Zoeken...",searchBtn:"Zoeken",
-        baseCond:"Filters",prefer:"Voorkeuren",tag:"Tags"
+        nav1:"Programma's",nav2:"Universiteiten",nav3:"Aanmeldgids",nav4:"Leven in China",nav5:"Carrière",nav6:"Bronnen",
+        siteTitle:"Zoekmachine voor studieprogramma's in China",
+        heroTitle:"Wereldwijde zoekmachine voor studieprogramma's in China",
+        heroDesc:"Vind taalcursussen, voorbereiding, bachelor, master, PhD en academische programma's die passen bij jouw doelstellingen",
+        searchPlaceholder:"Zoek programma's, majors, trefwoorden...",
+        searchBtn:"Zoeken",
+        filter1Title:"Opleidingsniveau",
+        filter2Title:"Studierichting",
+        filter3Title:"Programmatype",
+        projectTitle:"Aanbevolen programma's",
+        proj1Title:"Bachelorprogramma aan de universiteit van Peking",
+        proj1Desc:"Volledige beurs dekt collegegeld, huisvesting en levenskosten. HSK4+ vereist, duur 4 jaar, richtingen in techniek, bedrijfskunde, kunst.",
+        proj1Link:"Bekijk Details →",
+        proj2Title:"Masterprogramma aan de universiteit van Shanghai",
+        proj2Desc:"Sterke techniekprogramma's met bedrijfs samenwerking, stages en loopbaanondersteuning. HSK5+ vereist, 2-3 jaar, interdisciplinaire aanvragen geaccepteerd.",
+        proj2Link:"Bekijk Details →",
+        proj3Title:"Taalprogramma voor beginners in Guangzhou",
+        proj3Desc:"6 maanden intensieve Chinese cursus voor beginners. Overgang naar voorbereidingsprogramma na voltooiing, kleine klassen met volledige huisvesting.",
+        proj3Link:"Bekijk Details →",
+        stat1:"Partneruniversiteiten",
+        stat2:"Populaire programma's",
+        stat3:"Ingeschreven studenten",
+        stat4:"Ondersteunde talen",
+        footerText:"© 2026 Study in China | Officiële platform voor internationale studenten"
     },
     pl:{
-        nav1:"Programy",nav2:"Uniwersytety",nav3:"Przewodnik",nav4:"Życie w Chinach",nav5:"Kariera",nav6:"Zasoby",
-        title:"Wyszukiwanie studiów Chiny",desc:"Kursy językowe, licencjat, magister, doktor",
-        searchTip:"Szukaj...",searchBtn:"Szukaj",
-        baseCond:"Filtry",prefer:"Preferencje",tag:"Tagi"
+        nav1:"Programy",nav2:"Uniwersytety",nav3:"Przewodnik rekrutacyjny",nav4:"Życie w Chinach",nav5:"Kariera",nav6:"Zasoby",
+        siteTitle:"Wyszukiwarka programów studiów w Chinach",
+        heroTitle:"Globalna wyszukiwarka programów studiów w Chinach",
+        heroDesc:"Znajdź kursy językowe, przygotowawcze, licencjackie, magisterskie, doktoranckie i akademickie, które pasują do Twoich celów",
+        searchPlaceholder:"Szukaj programów, kierunków, słów kluczowych...",
+        searchBtn:"Szukaj",
+        filter1Title:"Poziom studiów",
+        filter2Title:"Kierunek studiów",
+        filter3Title:"Typ programu",
+        projectTitle:"Polecane programy",
+        proj1Title:"Program licencjacki na Uniwersytecie w Pekinie",
+        proj1Desc:"Pełne stypendium obejmujące czesne, zakwaterowanie i koszty utrzymania. Wymagany HSK4+, czas trwania 4 lata, kierunki inżynierskie, biznesowe, artystyczne.",
+        proj1Link:"Zobacz szczegóły →",
+        proj2Title:"Program magisterski na Uniwersytecie w Szanghaju",
+        proj2Desc:"Silne programy inżynierskie z partnerstwami biznesowymi, stażami i wsparciem kariery. Wymagany HSK5+, 2-3 lata, przyjmowane są wnioski interdyscyplinarne.",
+        proj2Link:"Zobacz szczegóły →",
+        proj3Title:"Program językowy dla początkujących w Guangzhou",
+        proj3Desc:"6-miesięczny intensywny kurs chińskiego dla początkujących. Przejście do programu przygotowawczego po ukończeniu, małe klasy z pełnym zakwaterowaniem.",
+        proj3Link:"Zobacz szczegóły →",
+        stat1:"Uniwersytety partnerskie",
+        stat2:"Popularne programy",
+        stat3:"Zapisani studenci",
+        stat4:"Obsługiwane języki",
+        footerText:"© 2026 Study in China | Oficjalna platforma dla studentów zagranicznych"
     },
     uk:{
-        nav1:"Програми",nav2:"Університети",nav3:"Посібник",nav4:"Життя в Китаї",nav5:"Кар'єра",nav6:"Ресурси",
-        title:"Пошук навчання Китай",desc:"Мовні курси, бакалавр, магістр, доктор",
-        searchTip:"Пошук...",searchBtn:"Пошук",
-        baseCond:"Фільтри",prefer:"Вподобання",tag:"Мітки"
+        nav1:"Програми",nav2:"Університети",nav3:"Посібник вступника",nav4:"Життя у Китаї",nav5:"Кар'єра",nav6:"Ресурси",
+        siteTitle:"Пошук програм навчання в Китаї",
+        heroTitle:"Глобальний пошук програм навчання в Китаї",
+        heroDesc:"Знайдіть мовні курси, підготовчі, бакалаврські, магістерські, докторські та академічні програми, що відповідають вашим цілям",
+        searchPlaceholder:"Пошук програм, спеціальностей, ключових слів...",
+        searchBtn:"Пошук",
+        filter1Title:"Рівень освіти",
+        filter2Title:"Напрямок навчання",
+        filter3Title:"Тип програми",
+        projectTitle:"Рекомендовані програми",
+        proj1Title:"Програма бакалавра в університеті Пекіна",
+        proj1Desc:"Повна стипендія, що покриває навчання, проживання та витрати. Потрібен HSK4+, тривалість 4 роки, напрямки інженерії, бізнесу, мистецтва.",
+        proj1Link:"Детальніше →",
+        proj2Title:"Програма магістра в університеті Шанхаю",
+        proj2Desc:"Сильні інженерні програми з партнерством з компаніями, стажуваннями та підтримкою кар'єри. Потрібен HSK5+, 2-3 роки, приймаються міждисциплінарні заявки.",
+        proj2Link:"Детальніше →",
+        proj3Title:"Мовна програма для початківців у Гуанчжоу",
+        proj3Desc:"6-місячний інтенсивний курс китайської мови для початківців. Перехід до підготовчої програми після завершення, малі групи з повним проживанням.",
+        proj3Link:"Детальніше →",
+        stat1:"Партнерські університети",
+        stat2:"Популярні програми",
+        stat3:"Зареєстровані студенти",
+        stat4:"Підтримувані мови",
+        footerText:"© 2026 Study in China | Офіційна платформа для іноземних студентів"
     },
     tr:{
         nav1:"Programlar",nav2:"Üniversiteler",nav3:"Başvuru Kılavuzu",nav4:"Çin'de Yaşam",nav5:"Kariyer",nav6:"Kaynaklar",
-        title:"Çin eğitim arama",desc:"Dil kursu, lisans, yüksek lisans, doktora",
-        searchTip:"Ara...",searchBtn:"Ara",
-        baseCond:"Filtreler",prefer:"Tercihler",tag:"Etiketler"
+        siteTitle:"Çin'de Eğitim Programları Arama Motoru",
+        heroTitle:"Çin'de Eğitim Programları Küresel Arama Motoru",
+        heroDesc:"Hedeflerinize uygun dil kursları, hazırlık, lisans, yüksek lisans, doktora ve akademik programları bulun",
+        searchPlaceholder:"Program, bölüm, anahtar kelimelerle ara...",
+        searchBtn:"Ara",
+        filter1Title:"Eğitim Seviyesi",
+        filter2Title:"Çalışma Alanı",
+        filter3Title:"Program Türü",
+        projectTitle:"Önerilen Programlar",
+        proj1Title:"Pekin Üniversitesi Lisans Programı",
+        proj1Desc:"Tam burs eğitim, konaklama ve yaşam giderlerini kapsar. HSK4+ gereklidir, 4 yıl, mühendislik, işletme, sanat bölümleri.",
+        proj1Link:"Detayları Gör →",
+        proj2Title:"Şanghay Üniversitesi Yüksek Lisans Programı",
+        proj2Desc:"Şirket işbirlikleri, staj ve kariyer desteği ile güçlü mühendislik programları. HSK5+ gereklidir, 2-3 yıl, disiplinlerarası başvurular kabul edilir.",
+        proj2Link:"Detayları Gör →",
+        proj3Title:"Guangzhou Başlangıç Seviyesi Dil Programı",
+        proj3Desc:"Yeni başlayanlar için 6 aylık yoğun Çince kursu. Tamamlandıktan sonra hazırlık programına geçiş, küçük sınıflar ve tam konaklama.",
+        proj3Link:"Detayları Gör →",
+        stat1:"Ortak Üniversiteler",
+        stat2:"Popüler Programlar",
+        stat3:"Kaydedilen Öğrenciler",
+        stat4:"Desteklenen Diller",
+        footerText:"© 2026 Study in China | Uluslararası Öğrenciler için Resmi Platform"
     },
     th:{
-        nav1:"โปรแกรม",nav2:"มหาวิทยาลัย",nav3:"คู่มือสมัคร",nav4:"ชีวิตจีน",nav5:"อาชีพ",nav6:"ทรัพยากร",
-        title:"ค้นหาเรียนจีน",desc:"คอร์สภาษา ปริญญาตรี โท เอก",
-        searchTip:"ค้นหา...",searchBtn:"ค้นหา",
-        baseCond:"เงื่อนไข",prefer:"ความชอบ",tag:"แท็ก"
+        nav1:"โปรแกรม",nav2:"มหาวิทยาลัย",nav3:"คู่มือสมัครเรียน",nav4:"ชีวิตในจีน",nav5:"อาชีพ",nav6:"ทรัพยากร",
+        siteTitle:"เครื่องมือค้นหาโปรแกรมเรียนจีน",
+        heroTitle:"เครื่องมือค้นหาโปรแกรมเรียนจีนระดับโลก",
+        heroDesc:"ค้นหาหลักสูตรภาษา หลักสูตรเตรียม ปริญญาตรี ปริญญาโท ปริญญาเอก และโปรแกรมวิชาการที่ตรงกับเป้าหมายของคุณ",
+        searchPlaceholder:"ค้นหาโปรแกรม สาขาวิชา คำสำคัญ...",
+        searchBtn:"ค้นหา",
+        filter1Title:"ระดับการศึกษา",
+        filter2Title:"สาขาวิชา",
+        filter3Title:"ประเภทโปรแกรม",
+        projectTitle:"โปรแกรมที่แนะนำ",
+        proj1Title:"โปรแกรมปริญญาตรีของมหาวิทยาลัยปักกิ่ง",
+        proj1Desc:"ทุนการศึกษาเต็มจำนวนครอบคลุมค่าเรียน ค่าที่พัก และค่าใช้จ่าย ต้องมี HSK4+ ระยะเวลา 4 ปี สาขาวิชาวิศวกรรม ธุรกิจ ศิลปะ",
+        proj1Link:"ดูรายละเอียด →",
+        proj2Title:"โปรแกรมปริญญาโทของมหาวิทยาลัยเซี่ยงไฮ้",
+        proj2Desc:"โปรแกรมวิศวกรรมที่แข็งแรงร่วมมือกับบริษัท มีการฝึกงานและการสนับสนุนอาชีพ ต้องมี HSK5+ ระยะเวลา 2-3 ปี รับสมัครจากหลายสาขา",
+        proj2Link:"ดูรายละเอียด →",
+        proj3Title:"โปรแกรมภาษาสำหรับมือใหม่ในกวางโจว",
+        proj3Desc:"หลักสูตรภาษาจีนเข้มข้น 6 เดือนสำหรับมือใหม่ หลังจบสามารถเข้าสู่หลักสูตรเตรียมได้ สอนเป็นกลุ่มเล็กพร้อมที่พักครบ",
+        proj3Link:"ดูรายละเอียด →",
+        stat1:"มหาวิทยาลัยพันธมิตร",
+        stat2:"โปรแกรมยอดนิยม",
+        stat3:"นักศึกษาที่ลงทะเบียน",
+        stat4:"ภาษาที่รองรับ",
+        footerText:"© 2026 Study in China | แพลตฟอร์มทางการสำหรับนักศึกษาต่างชาติ"
     },
     vi:{
-        nav1:"Chương trình",nav2:"Trường đại học",nav3:"Hướng dẫn hồ sơ",nav4:"Sống ở Trung Quốc",nav5:"Sự nghiệp",nav6:"Tài nguyên",
-        title:"Tìm kiếm du học Trung Quốc",desc:"Khóa ngôn ngữ, đại học, thạc sĩ, tiến sĩ",
-        searchTip:"Tìm kiếm...",searchBtn:"Tìm",
-        baseCond:"Lọc cơ bản",prefer:"Sở thích",tag:"Thẻ"
+        nav1:"Chương trình",nav2:"Trường đại học",nav3:"Hướng dẫn đăng ký",nav4:"Sống tại Trung Quốc",nav5:"Phát triển nghề nghiệp",nav6:"Nguồn tài nguyên",
+        siteTitle:"Công cụ tìm kiếm chương trình du học Trung Quốc",
+        heroTitle:"Công cụ tìm kiếm chương trình du học Trung Quốc toàn cầu",
+        heroDesc:"Tìm kiếm khóa học ngôn ngữ, chương trình dự bị, cử nhân, thạc sĩ, tiến sĩ và các chương trình học thuật phù hợp với mục tiêu của bạn",
+        searchPlaceholder:"Tìm kiếm chương trình, chuyên ngành, từ khóa...",
+        searchBtn:"Tìm kiếm",
+        filter1Title:"Trình độ học vấn",
+        filter2Title:"Ngành học",
+        filter3Title:"Loại chương trình",
+        projectTitle:"Các chương trình đề xuất",
+        proj1Title:"Chương trình cử nhân tại Đại học Bắc Kinh",
+        proj1Desc:"Học bổng toàn phần bao gồm học phí, chỗ ở và chi phí sinh hoạt. Yêu cầu HSK4+, thời gian 4 năm, các ngành kỹ thuật, kinh doanh, nghệ thuật.",
+        proj1Link:"Xem chi tiết →",
+        proj2Title:"Chương trình thạc sĩ tại Đại học Thượng Hải",
+        proj2Desc:"Chương trình kỹ thuật mạnh với hợp tác doanh nghiệp, thực tập và hỗ trợ nghề nghiệp. Yêu cầu HSK5+, 2-3 năm, chấp nhận đăng ký đa ngành.",
+        proj2Link:"Xem chi tiết →",
+        proj3Title:"Chương trình ngôn ngữ cho người mới bắt đầu tại Quảng Châu",
+        proj3Desc:"Khóa học tiếng Trung tăng cường 6 tháng cho người mới bắt đầu. Sau khi hoàn thành có thể chuyển sang chương trình dự bị, lớp nhỏ với chỗ ở đầy đủ.",
+        proj3Link:"Xem chi tiết →",
+        stat1:"Đại học đối tác",
+        stat2:"Chương trình phổ biến",
+        stat3:"Sinh viên đăng ký",
+        stat4:"Ngôn ngữ được hỗ trợ",
+        footerText:"© 2026 Study in China | Nền tảng chính thức cho sinh viên quốc tế"
     }
 };
 
-// 切换逻辑
-let langSel = document.getElementById("langSelect");
-let defaultLang = localStorage.getItem("siteLang") || "zh";
+const langSel = document.getElementById('langSelect');
+const defaultLang = localStorage.getItem('siteLang') || 'zh';
 langSel.value = defaultLang;
 
-function changeLang(lang){
-    localStorage.setItem("siteLang",lang);
-    let data = langPack[lang];
-    // 普通文字
-    document.querySelectorAll("[data-key]").forEach(el=>{
-        let k = el.getAttribute("data-key");
-        el.innerText = data[k] || k;
+function renderLang(lang) {
+    const data = langPack[lang];
+    if(!data) return;
+    document.querySelectorAll('[data-key]').forEach(el=>{
+        let key = el.getAttribute('data-key');
+        if(data[key]) el.innerText = data[key];
     });
-    // 占位符
-    document.querySelectorAll("[data-placeholder]").forEach(el=>{
-        let k = el.getAttribute("data-placeholder");
-        el.placeholder = data[k] || "";
+    document.querySelectorAll('[data-placeholder]').forEach(el=>{
+        let key = el.getAttribute('data-placeholder');
+        if(data[key]) el.placeholder = data[key];
     });
+    localStorage.setItem('siteLang', lang);
 }
 
-langSel.onchange = function(){
-    changeLang(this.value);
-};
+langSel.addEventListener('change', ()=>{
+    renderLang(langSel.value);
+});
 
-// 初始加载
-changeLang(defaultLang);
+renderLang(defaultLang);
 </script>
 </body>
 </html>
