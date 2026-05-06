@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目库 - 来华留学网</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 导航栏 和主页完全一样 -->
+    <nav class="navbar">
+        <div class="logo">来华留学网</div>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="schools.html">院校库</a></li>
+            <li><a href="programs.html" class="active">项目库</a></li>
+            <li><a href="scholarships.html">奖学金</a></li>
+            <li><a href="guide.html">申请指南</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+        </ul>
+    </nav>
+
+    <!-- 顶部Banner 统一风格 -->
+    <section class="page-banner">
+        <div class="banner-content">
+            <h1>留学项目库</h1>
+            <p>本科、硕士、博士、汉语进修项目全覆盖，一键挑选适合你的留学方案</p>
+        </div>
+    </section>
+
+    <!-- 筛选栏 -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-bar">
+                <select class="filter-select">
+                    <option value="">全部学历层次</option>
+                    <option>本科项目</option>
+                    <option>硕士项目</option>
+                    <option>博士项目</option>
+                    <option>汉语进修</option>
+                </select>
+                <select class="filter-select">
+                    <option value="">授课语言</option>
+                    <option>中文授课</option>
+                    <option>英文授课</option>
+                </select>
+                <select class="filter-select">
+                    <option value="">学科专业</option>
+                    <option>计算机工科</option>
+                    <option>经济管理</option>
+                    <option>汉语言文化</option>
+                    <option>医学医药</option>
+                </select>
+                <button class="btn-primary">筛选项目</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目卡片列表 跟主页、院校库卡片样式完全一致 -->
+    <section class="school-list">
+        <div class="container">
+            <div class="card-grid">
+
+                <!-- 项目1 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>计算机科学与技术（本科）</h3>
+                        <span class="tag">中文授课</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>开设院校：</strong>多所双一流高校</p>
+                        <p><strong>学制：</strong>4年</p>
+                        <p><strong>语言要求：</strong>HSK4级以上</p>
+                        <p><strong>学年学费：</strong>18000-28000元/年</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-secondary">查看详情</a>
+                    </div>
+                </div>
+
+                <!-- 项目2 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>国际经济与贸易（硕士）</h3>
+                        <span class="tag">英文授课</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>开设院校：</strong>财经类重点高校</p>
+                        <p><strong>学制：</strong>2-3年</p>
+                        <p><strong>语言要求：</strong>雅思/托福 可免汉语</p>
+                        <p><strong>学年学费：</strong>22000-35000元/年</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-secondary">查看详情</a>
+                    </div>
+                </div>
+
+                <!-- 项目3 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>汉语言进修项目</h3>
+                        <span class="tag">短期语言</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>开设院校：</strong>综合类大学</p>
+                        <p><strong>学制：</strong>半年 / 1年</p>
+                        <p><strong>语言要求：</strong>零基础可申请</p>
+                        <p><strong>学年学费：</strong>12000-16000元/年</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-secondary">查看详情</a>
+                    </div>
+                </div>
+
+                <!-- 项目4 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>临床医学（本科）</h3>
+                        <span class="tag">中文授课</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>开设院校：</strong>医科重点大学</p>
+                        <p><strong>学制：</strong>5-6年</p>
+                        <p><strong>语言要求：</strong>HSK5级以上</p>
+                        <p><strong>学年学费：</strong>25000-40000元/年</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-secondary">查看详情</a>
+                    </div>
+                </div>
+
+                <!-- 项目5 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>人工智能（硕士英文项目）</h3>
+                        <span class="tag">英文授课</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>开设院校：</strong>理工强校</p>
+                        <p><strong>学制：</strong>2年</p>
+                        <p><strong>语言要求：</strong>英语达标，免HSK</p>
+                        <p><strong>学年学费：</strong>28000-38000元/年</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn-secondary">查看详情</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚统一 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 来华留学网 版权所有 | 为国际学生提供中国留学一站式服务</p>
+        </div>
+    </footer>
+
+</body>
+</html>
