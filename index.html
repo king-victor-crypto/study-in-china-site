@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study in China | Global University Search</title>
+    <style>
+        :root {
+            --main-color: #005bac;
+            --text-dark: #202124;
+            --text-gray: #666;
+            --border-color: #eee;
+            --card-bg: #fdfdfd;
+            --space-sm: 12px;
+            --space-md: 20px;
+            --space-lg: 30px;
+            --radius: 12px;
+            --touch-target: 44px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background: #fff;
+        }
+
+        /* 头部 */
+        .header-container {
+            padding: var(--space-md) var(--space-lg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-inner {
+            max-width: 1450px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .logo-brand {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--main-color);
+            white-space: nowrap;
+        }
+
+        .main-menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            list-style: none;
+        }
+
+        .main-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 15px;
+            padding: 8px 12px;
+            transition: color 0.25s, border-color 0.25s;
+            min-height: var(--touch-target);
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+        }
+
+        .main-menu a:hover,
+        .main-menu a:focus-visible {
+            color: var(--main-color);
+            border-bottom-color: var(--main-color);
+            outline: none;
+        }
+
+        .language-picker {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            cursor: pointer;
+            min-height: var(--touch-target);
+            background: white;
+        }
+
+        /* 搜索区 */
+        .hero-search-area {
+            max-width: 1180px;
+            margin: 60px auto;
+            padding: 0 var(--space-lg);
+            text-align: center;
+        }
+
+        .hero-search-area h1 {
+            font-size: 34px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .hero-search-area p {
+            color: var(--text-gray);
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .main-search-input {
+            flex: 1;
+            min-width: 280px;
+            max-width: 800px;
+            padding: 18px 24px;
+            border: 1px solid #ddd;
+            border-radius: 14px;
+            font-size: 17px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .main-search-input:focus {
+            border-color: var(--main-color);
+        }
+
+        .search-btn {
+            padding: 18px 28px;
+            background: var(--main-color);
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            cursor: pointer;
+            min-height: var(--touch-target);
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .search-btn:hover {
+            background: #004489;
+        }
+
+        /* 筛选区域 */
+        .filter-row {
+            max-width: 1180px;
+            margin: 0 auto 60px;
+            padding: 0 var(--space-lg);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+
+        .filter-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+        }
+
+        .filter-card summary {
+            padding: 16px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--main-color);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: var(--touch-target);
+        }
+
+        .filter-card summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .filter-content {
+            padding: 0 20px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-content select,
+        .filter-content button {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            background: #fff;
+            font-size: 14px;
+        }
+
+        .filter-content button {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-content button.active {
+            background: var(--main-color);
+            color: #fff;
+            border-color: var(--main-color);
+        }
+
+        /* 门户卡片 */
+        .portal-card-section {
+            max-width: 1180px;
+            margin: 0 auto 80px;
+            padding: 0 var(--space-lg);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .portal-card {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 28px 18px;
+            text-align: center;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .portal-card:hover,
+        .portal-card:focus-visible {
+            box-shadow: 0 6px 18px rgba(0,91,172,0.1);
+            transform: translateY(-3px);
+            outline: none;
+        }
+
+        .portal-card h3 {
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .portal-card p {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .filter-row {
+                grid-template-columns: 1fr;
+            }
+            .hero-search-area h1 {
+                font-size: 26px;
+            }
+            .main-menu {
+                display: none; /* 移动端隐藏导航，后续可扩展汉堡菜单 */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header-container">
+    <div class="header-inner">
+        <div class="logo-brand">Study in China</div>
+
+        <nav class="main-menu">
+            <a href="find-programs.html" data-lang="menu1">发现项目</a>
+            <a href="explore-universities.html" data-lang="menu2">探索院校</a>
+            <a href="guide-application.html" data-lang="menu3">申请指南</a>
+            <a href="life-china.html" data-lang="menu4">留学中国·生活</a>
+            <a href="career-development.html" data-lang="menu5">职业发展</a>
+            <a href="resource-center.html" data-lang="menu6">资源中心</a>
+        </nav>
+
+        <select class="language-picker" id="langSelect">
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="ar">العربية</option>
+            <option value="ru">Русский</option>
+            <option value="pt">Português</option>
+            <option value="id">Bahasa Indonesia</option>
+            <option value="th">ภาษาไทย</option>
+            <option value="vi">Tiếng Việt</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="de">Deutsch</option>
+            <option value="it">Italiano</option>
+            <option value="fa">فارسی</option>
+            <option value="tr">Türkçe</option>
+            <option value="hi">हिन्दी</option>
+        </select>
+    </div>
+</header>
+
+<section class="hero-search-area">
+    <h1 data-lang="heroTitle">来华留学全球项目搜索引擎</h1>
+    <p data-lang="heroDesc">检索语言班、预科、本科、硕士、博士及各类学术项目</p>
+    
+    <form class="search-form" onsubmit="return false">
+        <input class="main-search-input" data-lang-placeholder="searchTip" placeholder="搜索项目、专业、关键词...">
+        <button class="search-btn" type="submit" data-lang="searchBtn">搜索</button>
+    </form>
+</section>
+
+<div class="filter-row">
+    <details class="filter-card" open>
+        <summary data-lang="filter1">硬性门槛</summary>
+        <div class="filter-content">
+            <select data-lang-opt="optDegree">
+                <option data-lang="optDegree">学位层级</option>
+                <option>本科</option>
+                <option>硕士</option>
+                <option>博士</option>
+                <option>预科</option>
+            </select>
+            <select data-lang-opt="optSubject">
+                <option data-lang="optSubject">学科门类</option>
+                <option>工程类</option>
+                <option>商科类</option>
+                <option>医学类</option>
+                <option>艺术类</option>
+            </select>
+            <select data-lang-opt="optLang">
+                <option data-lang="optLang">授课语言</option>
+                <option>英语</option>
+                <option>中文</option>
+            </select>
+            <select data-lang-opt="optScholarship">
+                <option data-lang="optScholarship">奖学金类型</option>
+                <option>全额奖学金</option>
+                <option>部分奖学金</option>
+            </select>
+        </div>
+    </details>
+
+    <details class="filter-card">
+        <summary data-lang="filter2">柔性偏好</summary>
+        <div class="filter-content">
+            <select data-lang-opt="optSchoolLevel">
+                <option data-lang="optSchoolLevel">院校层次</option>
+                <option>顶尖大学</option>
+                <option>普通大学</option>
+            </select>
+            <select data-lang-opt="optDuration">
+                <option data-lang="optDuration">学制时长</option>
+                <option>1年</option>
+                <option>2-4年</option>
+                <option>4年以上</option>
+            </select>
+            <select data-lang-opt="optFee">
+                <option data-lang="optFee">学费区间</option>
+                <option>2万以下</option>
+                <option>2-5万</option>
+                <option>5万以上</option>
+            </select>
+            <select data-lang-opt="optCity">
+                <option data-lang="optCity">城市地区</option>
+                <option>北京</option>
+                <option>上海</option>
+                <option>广州</option>
+            </select>
+        </div>
+    </details>
+
+    <details class="filter-card">
+        <summary data-lang="filter3">特色标签</summary>
+        <div class="filter-content">
+            <button onclick="this.classList.toggle('active')">Halal Canteen</button>
+            <button onclick="this.classList.toggle('active')">Prayer Room</button>
+            <button onclick="this.classList.toggle('active')">Single Dorm</button>
+            <button onclick="this.classList.toggle('active')">Online Application</button>
+            <button onclick="this.classList.toggle('active')">No App Fee</button>
+        </div>
+    </details>
+</div>
+
+<section class="portal-card-section">
+    <a class="portal-card" href="find-programs.html">
+        <h3 data-lang="card1">发现项目</h3>
+        <p data-lang="card1Desc">全球课程智能检索</p>
+    </a>
+    <a class="portal-card" href="explore-universities.html">
+        <h3 data-lang="card2">探索院校</h3>
+        <p data-lang="card2Desc">高校档案信息库</p>
+    </a>
+    <a class="portal-card" href="guide-application.html">
+        <h3 data-lang="card3">申请指南</h3>
+        <p data-lang="card3Desc">材料流程全攻略</p>
+    </a>
+    <a class="portal-card" href="life-china.html">
+        <h3 data-lang="card4">留学中国·生活</h3>
+        <p data-lang="card4Desc">入境在地生存指南</p>
+    </a>
+    <a class="portal-card" href="career-development.html">
+        <h3 data-lang="card5">职业发展</h3>
+        <p data-lang="card5Desc">实习就业长期规划</p>
+    </a>
+    <a class="portal-card" href="resource-center.html">
+        <h3 data-lang="card6">资源中心</h3>
+        <p data-lang="card6Desc">工具模板下载专区</p>
+    </a>
+</section>
+
+<script>
+// 完整17国语言包
+const langData = {
+    en: {
+        menu1:"Find Programs",menu2:"Explore Universities",menu3:"Application Guide",menu4:"Life in China",menu5:"Career Development",menu6:"Resource Center",
+        heroTitle:"China Global Study Program Search Engine",
+        heroDesc:"Find language courses, foundation, bachelor, master, PhD & academic programs across China",
+        searchTip:"Search programs, majors, or keywords...",searchBtn:"Search",
+        filter1:"Hard Filters",filter2:"Soft Filters",filter3:"Featured Tags",
+        optDegree:"Degree Level",optSubject:"Subject",optLang:"Teaching Language",optScholarship:"Scholarship",
+        optSchoolLevel:"University Rank",optDuration:"Duration",optFee:"Tuition Fee",optCity:"City & Region",
+        card1:"Find Programs",card1Desc:"Global program search",
+        card2:"Explore Universities",card2Desc:"University database",
+        card3:"Application Guide",card3Desc:"Application tips & docs",
+        card4:"Life in China",card4Desc:"Living guide",
+        card5:"Career Development",card5Desc:"Internship & career",
+        card6:"Resource Center",card6Desc:"Tools & downloads"
+    },
+    zh: {
+        menu1:"发现项目",menu2:"探索院校",menu3:"申请指南",menu4:"留学中国·生活",menu5:"职业发展",menu6:"资源中心",
+        heroTitle:"来华留学全球项目搜索引擎",
+        heroDesc:"检索语言班、预科、本科、硕士、博士及各类学术项目",
+        searchTip:"搜索项目、专业、关键词...",searchBtn:"搜索",
+        filter1:"硬性门槛",filter2:"柔性偏好",filter3:"特色标签",
+        optDegree:"学位层级",optSubject:"学科门类",optLang:"授课语言",optScholarship:"奖学金类型",
+        optSchoolLevel:"院校层次",optDuration:"学制时长",optFee:"学费区间",optCity:"城市地区",
+        card1:"发现项目",card1Desc:"全球课程智能检索",
+        card2:"探索院校",card2Desc:"高校档案信息库",
+        card3:"申请指南",card3Desc:"材料流程全攻略",
+        card4:"留学中国·生活",card4Desc:"入境在地生存指南",
+        card5:"职业发展",card5Desc:"实习就业长期规划",
+        card6:"资源中心",card6Desc:"工具模板下载专区"
+    },
+    es: {
+        menu1:"Encontrar Programas",menu2:"Universidades",menu3:"Guía de Solicitud",menu4:"Vivir en China",menu5:"Desarrollo Profesional",menu6:"Centro de Recursos",
+        heroTitle:"Buscador Global de Programas de Estudio en China",
+        heroDesc:"Cursos de idioma, preuniversitario, licenciatura, maestría, doctorado",
+        searchTip:"Buscar programas, carreras o palabras clave...",searchBtn:"Buscar",
+        filter1:"Filtros duros",filter2:"Filtros suaves",filter3:"Etiquetas destacadas",
+        optDegree:"Nivel académico",optSubject:"Materia",optLang:"Idioma de clase",optScholarship:"Beca",
+        optSchoolLevel:"Rango universitario",optDuration:"Duración",optFee:"Matrícula",optCity:"Ciudad y región",
+        card1:"Programas",card1Desc:"Búsqueda global",
+        card2:"Universidades",card2Desc:"Base de datos",
+        card3:"Guía",card3Desc:"Consejos y documentos",
+        card4:"Vivir en China",card4Desc:"Guía de vida",
+        card5:"Carrera",card5Desc:"Prácticas y empleo",
+        card6:"Recursos",card6Desc:"Herramientas y descargas"
+    },
+    fr: {
+        menu1:"Programmes",menu2:"Universités",menu3:"Guide de candidature",menu4:"Vivre en Chine",menu5:"Carrière",menu6:"Ressources",
+        heroTitle:"Moteur de recherche mondial des programmes d'études en Chine",
+        heroDesc:"Cours de langue, foundation, licence, master, doctorat",
+        searchTip:"Rechercher programme, spécialité ou mot-clé...",searchBtn:"Rechercher",
+        filter1:"Filtres stricts",filter2:"Filtres souples",filter3:"Tags populaires",
+        optDegree:"Niveau d'études",optSubject:"Discipline",optLang:"Langue d'enseignement",optScholarship:"Bourse",
+        optSchoolLevel:"Classement université",optDuration:"Durée",optFee:"Frais de scolarité",optCity:"Ville & région",
+        card1:"Programmes",card1Desc:"Recherche globale",
+        card2:"Universités",card2Desc:"Base de données",
+        card3:"Guide",card3Desc:"Conseils et documents",
+        card4:"Vivre en Chine",card4Desc:"Guide de vie",
+        card5:"Carrière",card5Desc:"Stage et emploi",
+        card6:"Ressources",card6Desc:"Outils et téléchargements"
+    },
+    ar: {
+        menu1:"ابحث عن البرامج",menu2:"استكشف الجامعات",menu3:"دليل التقديم",menu4:"العيش في الصين",menu5:"التطور المهني",menu6:"مركز الموارد",
+        heroTitle:"محرك بحث برامج الدراسة في الصين",
+        heroDesc:"دورات لغة، برامج تمهيدية، بكالوريوس، ماجستير، دكتوراه",
+        searchTip:"ابحث عن البرامج أو التخصصات أو الكلمات المفتاحية...",searchBtn:"بحث",
+        filter1:"المعايير الإلزامية",filter2:"التفضيلات المرنة",filter3:"العلامات المميزة",
+        optDegree:"المستوى الدراسي",optSubject:"التخصص",optLang:"لغة الدراسة",optScholarship:"المنح الدراسية",
+        optSchoolLevel:"تصنيف الجامعة",optDuration:"المدة الدراسية",optFee:"الرسوم الدراسية",optCity:"المدينة والمنطقة",
+        card1:"البرامج",card1Desc:"بحث شامل",
+        card2:"الجامعات",card2Desc:"قاعدة بيانات",
+        card3:"دليل التقديم",card3Desc:"نصائح ومستندات",
+        card4:"العيش في الصين",card4Desc:"دليل معيشة",
+        card5:"التطور المهني",card5Desc:"تدريب ووظائف",
+        card6:"الموارد",card6Desc:"أدوات وملفات"
+    },
+    ru: {
+        menu1:"Программы",menu2:"Университеты",menu3:"Руководство по поступлению",menu4:"Жизнь в Китае",menu5:"Карьера",menu6:"Ресурсы",
+        heroTitle:"Поиск образовательных программ Китая",
+        heroDesc:"Языковые курсы, подготовка, бакалавриат, магистратура, докторантура",
+        searchTip:"Поиск программ, специальностей, ключевых слов...",searchBtn:"Поиск",
+        filter1:"Основные фильтры",filter2:"Дополнительные фильтры",filter3:"Особые метки",
+        optDegree:"Уровень обучения",optSubject:"Направление",optLang:"Язык обучения",optScholarship:"Стипендия",
+        optSchoolLevel:"Рейтинг вуза",optDuration:"Срок обучения",optFee:"Стоимость обучения",optCity:"Город и регион",
+        card1:"Программы",card1Desc:"Глобальный поиск",
+        card2:"Университеты",card2Desc:"База данных вузов",
+        card3:"Руководство",card3Desc:"Советы и документы",
+        card4:"Жизнь в Китае",card4Desc:"Гид по жизни",
+        card5:"Карьера",card5Desc:"Стажировки и работа",
+        card6:"Ресурсы",card6Desc:"Инструменты и файлы"
+    },
+    pt: {
+        menu1:"Programas",menu2:"Universidades",menu3:"Guia de Inscrição",menu4:"Viver na China",menu5:"Carreira",menu6:"Centro de Recursos",
+        heroTitle:"Motor de Busca de Programas de Estudo na China",
+        heroDesc:"Cursos de idioma, preparatório, graduação, mestrado, doutorado",
+        searchTip:"Pesquisar programas, cursos ou palavras-chave...",searchBtn:"Buscar",
+        filter1:"Filtros Rígidos",filter2:"Filtros Flexíveis",filter3:"Marcas Especiais",
+        optDegree:"Nível Acadêmico",optSubject:"Área",optLang:"Idioma das Aulas",optScholarship:"Bolsa de Estudos",
+        optSchoolLevel:"Nível da Universidade",optDuration:"Duração",optFee:"Mensalidade",optCity:"Cidade e Região",
+        card1:"Programas",card1Desc:"Busca global",
+        card2:"Universidades",card2Desc:"Banco de dados",
+        card3:"Guia",card3Desc:"Dicas e documentos",
+        card4:"Viver na China",card4Desc:"Guia de vida",
+        card5:"Carreira",card5Desc:"Estágios e empregos",
+        card6:"Recursos",card6Desc:"Ferramentas e downloads"
+    },
+    id: {
+        menu1:"Cari Program",menu2:"Universitas",menu3:"Panduan Pendaftaran",menu4:"Hidup di Tiongkok",menu5:"Pengembangan Karier",menu6:"Pusat Sumber Daya",
+        heroTitle:"Mesin Pencari Program Studi Tiongkok",
+        heroDesc:"Kursus bahasa, persiapan, sarjana, magister, doktor",
+        searchTip:"Cari program, jurusan, atau kata kunci...",searchBtn:"Cari",
+        filter1:"Filter Utama",filter2:"Filter Tambahan",filter3:"Tag Unggulan",
+        optDegree:"Tingkat Pendidikan",optSubject:"Bidang Ilmu",optLang:"Bahasa Pengantar",optScholarship:"Beasiswa",
+        optSchoolLevel:"Peringkat Universitas",optDuration:"Masa Studi",optFee:"Biaya Kuliah",optCity:"Kota & Wilayah",
+        card1:"Program",card1Desc:"Pencarian global",
+        card2:"Universitas",card2Desc:"Basis data kampus",
+        card3:"Panduan",card3Desc:"Tips & dokumen",
+        card4:"Hidup di Tiongkok",card4Desc:"Panduan hidup",
+        card5:"Karier",card5Desc:"Magang & pekerjaan",
+        card6:"Sumber Daya",card6Desc:"Alat & unduhan"
+    },
+    th: {
+        menu1:"ค้นหาหลักสูตร",menu2:"มหาวิทยาลัย",menu3:"คู่มือสมัครเรียน",menu4:"ชีวิตในจีน",menu5:"พัฒนาอาชีพ",menu6:"ศูนย์ทรัพยากร",
+        heroTitle:"เครื่องมือค้นหาหลักสูตรเรียนจีน",
+        heroDesc:"คอร์สภาษา หลักสูตรเตรียมปริญญา ตรี โท เอก",
+        searchTip:"ค้นหาหลักสูตร สาขาวิชา หรือคำค้น...",searchBtn:"ค้นหา",
+        filter1:"เงื่อนไขหลัก",filter2:"ความชอบเพิ่มเติม",filter3:"ป้ายเด่น",
+        optDegree:"ระดับการศึกษา",optSubject:"สาขาวิชา",optLang:"ภาษาที่ใช้สอน",optScholarship:"ทุนการศึกษา",
+        optSchoolLevel:"ระดับมหาวิทยาลัย",optDuration:"ระยะเวลาเรียน",optFee:"ค่าเล่าเรียน",optCity:"เมืองและภูมิภาค",
+        card1:"หลักสูตร",card1Desc:"ค้นหาทั่วโลก",
+        card2:"มหาวิทยาลัย",card2Desc:"ฐานข้อมูลมหาลัย",
+        card3:"คู่มือ",card3Desc:"เคล็ดลับและเอกสาร",
+        card4:"ชีวิตในจีน",card4Desc:"คู่มือใช้ชีวิต",
+        card5:"อาชีพ",card5Desc:"ฝึกงานและงาน",
+        card6:"ทรัพยากร",card6Desc:"เครื่องมือและดาวน์โหลด"
+    },
+    vi: {
+        menu1:"Tìm Chương Trình",menu2:"Khám Phá Trường",menu3:"Hướng Dẫn Đăng Ký",menu4:"Sống Ở Trung Quốc",menu5:"Phát Triển Sự Nghiệp",menu6:"Trung Tâm Tài Nguyên",
+        heroTitle:"Công cụ tìm kiếm chương trình du học Trung Quốc",
+        heroDesc:"Khóa ngôn ngữ, dự bị, đại học, thạc sĩ, tiến sĩ",
+        searchTip:"Tìm chương trình, chuyên ngành hoặc từ khóa...",searchBtn:"Tìm kiếm",
+        filter1:"Bộ lọc cơ bản",filter2:"Sở thích tùy chọn",filter3:"Thẻ nổi bật",
+        optDegree:"Cấp độ học vấn",optSubject:"Ngành học",optLang:"Ngôn ngữ giảng dạy",optScholarship:"Học bổng",
+        optSchoolLevel:"Xếp hạng trường",optDuration:"Thời gian học",optFee:"Học phí",optCity:"Thành phố & Khu vực",
+        card1:"Chương trình",card1Desc:"Tìm kiếm toàn cầu",
+        card2:"Trường đại học",card2Desc:"Cơ sở dữ liệu trường",
+        card3:"Hướng dẫn",card3Desc:"Mẹo & tài liệu",
+        card4:"Sống ở Trung Quốc",card4Desc:"Hướng dẫn sinh hoạt",
+        card5:"Sự nghiệp",card5Desc:"Thực tập & việc làm",
+        card6:"Tài nguyên",card6Desc:"Công cụ & tải tài liệu"
+    },
+    ja: {
+        menu1:"プログラム検索",menu2:"大学を探す",menu3:"出願ガイド",menu4:"中国での生活",menu5:"キャリア",menu6:"リソースセンター",
+        heroTitle:"中国留学プログラム検索エンジン",
+        heroDesc:"語学コース、予備課、学部、大学院、博士課程",
+        searchTip:"プログラム、専攻、キーワードで検索...",searchBtn:"検索",
+        filter1:"必須フィルター",filter2:"任意フィルター",filter3:"特徴タグ",
+        optDegree:"学歴レベル",optSubject:"専攻分野",optLang:"授業言語",optScholarship:"奨学金",
+        optSchoolLevel:"大学ランク",optDuration:"修業年限",optFee:"学費",optCity:"都市・地域",
+        card1:"プログラム",card1Desc:"グローバル検索",
+        card2:"大学",card2Desc:"大学データベース",
+        card3:"出願ガイド",card3Desc:"ヒント・書類",
+        card4:"中国生活",card4Desc:"生活ガイド",
+        card5:"キャリア",card5Desc:"インターン・就職",
+        card6:"リソース",card6Desc:"ツール・資料"
+    },
+    ko: {
+        menu1:"프로그램 찾기",menu2:"대학 탐색",menu3:"지원 가이드",menu4:"중국 생활",menu5:"커리어 개발",menu6:"자료 센터",
+        heroTitle:"중국 유학 프로그램 검색 엔진",
+        heroDesc:"어학과정, 예비과정, 학사, 석사, 박사",
+        searchTip:"프로그램, 전공, 키워드 검색...",searchBtn:"검색",
+        filter1:"필수 필터",filter2:"선택 필터",filter3:"특성 태그",
+        optDegree:"학력 단계",optSubject:"전공 분야",optLang:"수업 언어",optScholarship:"장학금",
+        optSchoolLevel:"대학 등급",optDuration:"수업 기간",optFee:"학비",optCity:"도시 및 지역",
+        card1:"프로그램",card1Desc:"전세계 검색",
+        card2:"대학",card2Desc:"대학 데이터베이스",
+        card3:"지원 가이드",card3Desc:"팁 및 서류",
+        card4:"중국 생활",card4Desc:"생활 가이드",
+        card5:"커리어",card5Desc:"인턴 및 취업",
+        card6:"자료센터",card6Desc:"도구 및 자료"
+    },
+    de: {
+        menu1:"Programme",menu2:"Universitäten",menu3:"Bewerbungsleitfaden",menu4:"Leben in China",menu5:"Karriere",menu6:"Ressourcen",
+        heroTitle:"Suchmaschine für Studienprogramme in China",
+        heroDesc:"Sprachkurse, Vorbereitung, Bachelor, Master, Doktor",
+        searchTip:"Programm, Fach oder Stichwort suchen...",searchBtn:"Suchen",
+        filter1:"Harte Filter",filter2:"Weiche Filter",filter3:"Tags",
+        optDegree:"Studienlevel",optSubject:"Fachbereich",optLang:"Unterrichtssprache",optScholarship:"Stipendium",
+        optSchoolLevel:"Universitätsrang",optDuration:"Studiendauer",optFee:"Studiengebühren",optCity:"Stadt & Region",
+        card1:"Programme",card1Desc:"Globale Suche",
+        card2:"Universitäten",card2Desc:"Datenbank",
+        card3:"Leitfaden",card3Desc:"Tipps & Dokumente",
+        card4:"Leben in China",card4Desc:"Lebensführer",
+        card5:"Karriere",card5Desc:"Praktikum & Job",
+        card6:"Ressourcen",card6Desc:"Tools & Downloads"
+    },
+    it: {
+        menu1:"Programmi",menu2:"Università",menu3:"Guida alle candidature",menu4:"Vivere in Cina",menu5:"Carriera",menu6:"Risorse",
+        heroTitle:"Motore di ricerca programmi di studio Cina",
+        heroDesc:"Corsi di lingua, preparatorio, laurea, master, dottorato",
+        searchTip:"Cerca programma, corso o parole chiave...",searchBtn:"Cerca",
+        filter1:"Filtri rigidi",filter2:"Filtri flessibili",filter3:"Tag speciali",
+        optDegree:"Livello di studio",optSubject:"Disciplina",optLang:"Lingua di lezione",optScholarship:"Borsa di studio",
+        optSchoolLevel:"Livello università",optDuration:"Durata corso",optFee:"Tasse universitarie",optCity:"Città & Regione",
+        card1:"Programmi",card1Desc:"Ricerca globale",
+        card2:"Università",card2Desc:"Database atenei",
+        card3:"Guida",card3Desc:"Consigli e documenti",
+        card4:"Vivere in Cina",card4Desc:"Guida vita",
+        card5:"Carriera",card5Desc:"Stage e lavoro",
+        card6:"Risorse",card6Desc:"Strumenti e download"
+    },
+    fa: {
+        menu1:"پیدا کردن برنامه",menu2:"دانشگاه‌ها",menu3:"راهنمای درخواست",menu4:"زندگی در چین",menu5:"توسعه شغلی",menu6:"مرکز منابع",
+        heroTitle:"موتور جستجوی برنامه‌های تحصیلی چین",
+        heroDesc:"دوره زبان، پیش‌دانشگاهی، لیسانس، ارشد، دکتری",
+        searchTip:"جستجوی برنامه، رشته یا کلمه کلیدی...",searchBtn:"جستجو",
+        filter1:"فیلترهای اصلی",filter2:"فیلترهای اختیاری",filter3:"برچسب‌های ویژه",
+        optDegree:"مقطع تحصیلی",optSubject:"رشته تحصیلی",optLang:"زبان تدریس",optScholarship:"بورسیه",
+        optSchoolLevel:"سطح دانشگاه",optDuration:"مدت تحصیل",optFee:"شهریه",optCity:"شهر و منطقه",
+        card1:"برنامه‌ها",card1Desc:"جستجوی جهانی",
+        card2:"دانشگاه‌ها",card2Desc:"پایگاه داده",
+        card3:"راهنما",card3Desc:"نکات و مدارک",
+        card4:"زندگی در چین",card4Desc:"راهنمای زندگی",
+        card5:"شغل",card5Desc:"کارآموزی و استخدام",
+        card6:"منابع",card6Desc:"ابزارها و دانلود"
+    },
+    tr: {
+        menu1:"Program Bul",menu2:"Üniversiteler",menu3:"Başvuru Rehberi",menu4:"Çin'de Yaşam",menu5:"Kariyer",menu6:"Kaynak Merkezi",
+        heroTitle:"Çin Eğitim Programları Arama Motoru",
+        heroDesc:"Dil kursu, hazırlık, lisans, yüksek lisans, doktora",
+        searchTip:"Program, bölüm veya anahtar kelime ara...",searchBtn:"Ara",
+        filter1:"Katı Filtreler",filter2:"Esnek Filtreler",filter3:"Özel Etiketler",
+        optDegree:"Eğitim Seviyesi",optSubject:"Bölüm",optLang:"Eğitim Dili",optScholarship:"Burs",
+        optSchoolLevel:"Üniversite Sınıfı",optDuration:"Eğitim Süresi",optFee:"Öğrenim Ücreti",optCity:"Şehir & Bölge",
+        card1:"Programlar",card1Desc:"Küresel arama",
+        card2:"Üniversiteler",card2Desc:"Veri tabanı",
+        card3:"Rehber",card3Desc:"İpuçları & Belgeler",
+        card4:"Çin'de Yaşam",card4Desc:"Yaşam rehberi",
+        card5:"Kariyer",card5Desc:"Staj & İş",
+        card6:"Kaynaklar",card6Desc:"Araçlar & İndirme"
+    },
+    hi: {
+        menu1:"कार्यक्रम खोजें",menu2:"विश्वविद्यालय देखें",menu3:"आवेदन गाइड",menu4:"चीन में जीवन",menu5:"करियर विकास",menu6:"संसाधन केंद्र",
+        heroTitle:"चीन अध्ययन कार्यक्रम खोज इंजन",
+        heroDesc:"भाषा पाठ्यक्रम, फाउंडेशन, स्नातक, मास्टर, पीएचडी",
+        searchTip:"कार्यक्रम, विषय या कीवर्ड खोजें...",searchBtn:"खोजें",
+        filter1:"मुख्य फ़िल्टर",filter2:"अतिरिक्त फ़िल्टर",filter3:"विशेष टैग",
+        optDegree:"शैक्षिक स्तर",optSubject:"विषय क्षेत्र",optLang:"पढ़ाने की भाषा",optScholarship:"छात्रवृत्ति",
+        optSchoolLevel:"विश्वविद्यालय रैंक",optDuration:"पढ़ाई अवधि",optFee:"ट्यूशन फीस",optCity:"शहर एवं क्षेत्र",
+        card1:"कार्यक्रम",card1Desc:"वैश्विक खोज",
+        card2:"विश्वविद्यालय",card2Desc:"डेटाबेस",
+        card3:"गाइड",card3Desc:"टिप्स और दस्तावेज",
+        card4:"चीन में जीवन",card4Desc:"जीवन गाइड",
+        card5:"करियर",card5Desc:"इंटर्नशिप और नौकरी",
+        card6:"संसाधन",card6Desc:"टूल और डाउनलोड"
+    }
+};
+
+// 支持语言列表
+const supportLang = ['en','zh','es','fr','ar','ru','pt','id','th','vi','ja','ko','de','it','fa','tr','hi'];
+
+// 读取本地缓存语言
+function getCacheLang(){
+    return localStorage.getItem('siteLang') || '';
+}
+
+// 自动获取浏览器系统语言
+function getBrowserLang(){
+    let bl = navigator.language.toLowerCase();
+    for(let lang of supportLang){
+        if(bl.startsWith(lang)) return lang;
+    }
+    return 'en';
+}
+
+// 全局切换语言
+function setLanguage(lang){
+    if(!langData[lang]) return;
+    localStorage.setItem('siteLang', lang);
+    document.getElementById('langSelect').value = lang;
+
+    // 普通文本
+    document.querySelectorAll('[data-lang]').forEach(el=>{
+        let k = el.getAttribute('data-lang');
+        el.innerText = langData[lang][k] || el.innerText;
+    });
+    // 输入框占位符
+    document.querySelectorAll('[data-lang-placeholder]').forEach(el=>{
+        let k = el.getAttribute('data-lang-placeholder');
+        el.placeholder = langData[lang][k] || el.placeholder;
+    });
+    // 下拉选项
+    document.querySelectorAll('[data-lang-opt]').forEach(el=>{
+        let k = el.getAttribute('data-lang-opt');
+        el.innerText = langData[lang][k] || el.innerText;
+    });
+}
+
+// 语言选择器绑定
+document.getElementById('langSelect').addEventListener('change', e=>{
+    setLanguage(e.target.value);
+});
+
+// 页面初始化逻辑：缓存优先 → 系统语言兜底
+window.onload = function(){
+    let cache = getCacheLang();
+    if(cache && supportLang.includes(cache)){
+        setLanguage(cache);
+    }else{
+        setLanguage(getBrowserLang());
+    }
+};
+</script>
+
+</body>
+</html>
