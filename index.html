@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>来华留学全球项目搜索引擎</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Study in China</div>
+            <nav class="top-nav">
+                <a href="index.html" class="active" data-key="nav1"></a>
+                <a href="schools.html" data-key="nav2"></a>
+                <a href="guide.html" data-key="nav3"></a>
+                <a href="life.html" data-key="nav4"></a>
+                <a href="career.html" data-key="nav5"></a>
+                <a href="resource.html" data-key="nav6"></a>
+            </nav>
+
+            <select id="langSelect">
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="ru">Русский</option>
+                <option value="ar">العربية</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+                <option value="pt">Português</option>
+                <option value="it">Italiano</option>
+                <option value="nl">Nederlands</option>
+                <option value="pl">Polski</option>
+                <option value="uk">Українська</option>
+                <option value="tr">Türkçe</option>
+                <option value="th">ไทย</option>
+                <option value="vi">Việt Nam</option>
+            </select>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 data-key="title"></h1>
+            <p data-key="desc"></p>
+        </div>
+    </section>
+
+    <section class="search-bar">
+        <div class="container">
+            <input type="text" class="main-search" data-placeholder="searchTip">
+            <button class="search-btn" data-key="searchBtn"></button>
+        </div>
+    </section>
+
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <h3 data-key="baseCond"></h3>
+                    <div class="filter-options">
+                        <select class="filter-select" data-opt="eduLevel"></select>
+                        <select class="filter-select" data-opt="langReq"></select>
+                        <select class="filter-select" data-opt="feeRange"></select>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <h3 data-key="prefer"></h3>
+                    <div class="filter-options">
+                        <select class="filter-select" data-opt="cityArea"></select>
+                        <select class="filter-select" data-opt="subject"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-group">
+                <h3 data-key="tag"></h3>
+                <div class="filter-options" style="justify-content:center;">
+                    <select class="filter-select" data-opt="specialTag"></select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script>
+// 17国语言完整词库
+const langPack = {
+    zh:{
+        nav1:"发现项目",nav2:"探索院校",nav3:"申请指南",nav4:"留学中国生活",nav5:"职业发展",nav6:"资源中心",
+        title:"来华留学全球项目搜索引擎",desc:"检索语言班、预科、本科、硕士、博士及各类学术项目",
+        searchTip:"搜索项目、专业、关键词...",searchBtn:"搜索",
+        baseCond:"基础条件",prefer:"个人偏好",tag:"特色标签",
+        eduLevel:"学历层次","eduLevel1":"语言班/预科","eduLevel2":"本科","eduLevel3":"硕士","eduLevel4":"博士",
+        langReq:"语言要求","langReq1":"无语言要求","langReq2":"HSK3及以上","langReq3":"HSK4及以上","langReq4":"HSK5及以上","langReq5":"英文授课免HSK",
+        feeRange:"学费预算","feeRange1":"1万以下/年","feeRange2":"1-2万/年","feeRange3":"2-3万/年","feeRange4":"3万以上/年",
+        cityArea:"就读地区","cityArea1":"一线城市","cityArea2":"东部沿海高校","cityArea3":"中西部高校",
+        subject:"学科方向","subject1":"计算机/工科","subject2":"经济/管理","subject3":"汉语言/文化","subject4":"医学/药学",
+        specialTag:"奖学金覆盖","specialTag1":"无语言要求","specialTag2":"短期项目","specialTag3":"校企合作","specialTag4":"双语授课"
+    },
+    en:{
+        nav1:"Programs",nav2:"Universities",nav3:"Application Guide",nav4:"Life in China",nav5:"Career",nav6:"Resources",
+        title:"Study in China Global Search",desc:"Language courses, foundation, bachelor, master, PhD programs",
+        searchTip:"Search programs,majors,keywords...",searchBtn:"Search",
+        baseCond:"Basic Filter",prefer:"Preferences",tag:"Tags",
+        eduLevel:"Education Level","eduLevel1":"Language Course","eduLevel2":"Bachelor","eduLevel3":"Master","eduLevel4":"PhD",
+        langReq:"Language Requirement","langReq1":"No Requirement","langReq2":"HSK3+","langReq3":"HSK4+","langReq4":"HSK5+","langReq5":"English Taught",
+        feeRange:"Tuition Fee","feeRange1":"Under 10k/year","feeRange2":"10k-20k/year","feeRange3":"20k-30k/year","feeRange4":"Over 30k/year",
+        cityArea:"City Area","cityArea1":"Tier 1 City","cityArea2":"East Coast","cityArea3":"Midwest China",
+        subject:"Subject","subject1":"Engineering","subject2":"Economics","subject3":"Chinese Culture","subject4":"Medical",
+        specialTag:"Scholarship","specialTag1":"No Language Limit","specialTag2":"Short Term","specialTag3":"Co-op","specialTag4":"Bilingual"
+    },
+    es:{
+        nav1:"Programas",nav2:"Universidades",nav3:"Guía de solicitud",nav4:"Vivir en China",nav5:"Carrera",nav6:"Recursos",
+        title:"Buscador de estudios en China",desc:"Cursos de idiomas, pregrado, máster, doctorado",
+        searchTip:"Buscar programas,materias...",searchBtn:"Buscar",
+        baseCond:"Filtros básicos",prefer:"Preferencias",tag:"Etiquetas"
+    },
+    fr:{
+        nav1:"Programmes",nav2:"Universités",nav3:"Guide de candidature",nav4:"Vivre en Chine",nav5:"Carrière",nav6:"Ressources",
+        title:"Recherche études Chine",desc:"Cours de langue, licence, master, doctorat",
+        searchTip:"Rechercher programmes...",searchBtn:"Rechercher",
+        baseCond:"Filtres",prefer:"Préférences",tag:"Tags"
+    },
+    de:{
+        nav1:"Programme",nav2:"Universitäten",nav3:"Bewerbungsleitfaden",nav4:"Leben in China",nav5:"Karriere",nav6:"Ressourcen",
+        title:"Studium in China Suche",desc:"Sprachkurse, Bachelor, Master, Doktor",
+        searchTip:"Suchen...",searchBtn:"Suchen",
+        baseCond:"Filter",prefer:"Vorlieben",tag:"Markierungen"
+    },
+    ru:{
+        nav1:"Программы",nav2:"Университеты",nav3:"Инструкция",nav4:"Жизнь в Китае",nav5:"Карьера",nav6:"Ресурсы",
+        title:"Поиск обучения в Китае",desc:"Языковые курсы, бакалавр, магистр, докторантура",
+        searchTip:"Поиск программ...",searchBtn:"Поиск",
+        baseCond:"Фильтры",prefer:"Предпочтения",tag:"Метки"
+    },
+    ar:{
+        nav1:"البرامج",nav2:"الجامعات",nav3:"دليل التقديم",nav4:"الحياة في الصين",nav5:"الوظيفة",nav6:"المصادر",
+        title:"البحث عن الدراسة بالصين",desc:"دورات لغة، بكالوريوس، ماجستير، دكتوراه",
+        searchTip:"البحث...",searchBtn:"بحث",
+        baseCond:"الفلترات",prefer:"التفضيلات",tag:"العلامات"
+    },
+    ja:{
+        nav1:"プログラム",nav2:"大学",nav3:"出願ガイド",nav4:"中国生活",nav5:"キャリア",nav6:"資料",
+        title:"中国留学検索サイト",desc:"語学コース、学士、修士、博士",
+        searchTip:"検索...",searchBtn:"検索",
+        baseCond:"基本条件",prefer:"好み",tag:"タグ"
+    },
+    ko:{
+        nav1:"프로그램",nav2:"대학",nav3:"신청가이드",nav4:"중국생활",nav5:"캐리어",nav6:"자료",
+        title:"중국유학 검색",desc:"어학과정, 학사, 석사, 박사",
+        searchTip:"검색...",searchBtn:"검색",
+        baseCond:"기본조건",prefer:"선호도",tag:"태그"
+    },
+    pt:{
+        nav1:"Programas",nav2:"Universidades",nav3:"Guia de inscrição",nav4:"Viver na China",nav5:"Carreira",nav6:"Recursos",
+        title:"Busca estudos na China",desc:"Cursos de idioma, graduação, mestrado, doutorado",
+        searchTip:"Pesquisar...",searchBtn:"Pesquisar",
+        baseCond:"Filtros",prefer:"Preferências",tag:"Tags"
+    },
+    it:{
+        nav1:"Programmi",nav2:"Università",nav3:"Guida candidatura",nav4:"Vivere in Cina",nav5:"Carriera",nav6:"Risorse",
+        title:"Ricerca studi Cina",desc:"Corsi lingua, laurea, master, dottorato",
+        searchTip:"Cerca...",searchBtn:"Cerca",
+        baseCond:"Filtri",prefer:"Preferenze",tag:"Tag"
+    },
+    nl:{
+        nav1:"Programma's",nav2:"Universiteiten",nav3:"Sollicitatiegids",nav4:"Leven in China",nav5:"Carrière",nav6:"Bronnen",
+        title:"Studie in China zoeken",desc:"Taalcursus, bachelor, master, PhD",
+        searchTip:"Zoeken...",searchBtn:"Zoeken",
+        baseCond:"Filters",prefer:"Voorkeuren",tag:"Tags"
+    },
+    pl:{
+        nav1:"Programy",nav2:"Uniwersytety",nav3:"Przewodnik",nav4:"Życie w Chinach",nav5:"Kariera",nav6:"Zasoby",
+        title:"Wyszukiwanie studiów Chiny",desc:"Kursy językowe, licencjat, magister, doktor",
+        searchTip:"Szukaj...",searchBtn:"Szukaj",
+        baseCond:"Filtry",prefer:"Preferencje",tag:"Tagi"
+    },
+    uk:{
+        nav1:"Програми",nav2:"Університети",nav3:"Посібник",nav4:"Життя в Китаї",nav5:"Кар'єра",nav6:"Ресурси",
+        title:"Пошук навчання Китай",desc:"Мовні курси, бакалавр, магістр, доктор",
+        searchTip:"Пошук...",searchBtn:"Пошук",
+        baseCond:"Фільтри",prefer:"Вподобання",tag:"Мітки"
+    },
+    tr:{
+        nav1:"Programlar",nav2:"Üniversiteler",nav3:"Başvuru Kılavuzu",nav4:"Çin'de Yaşam",nav5:"Kariyer",nav6:"Kaynaklar",
+        title:"Çin eğitim arama",desc:"Dil kursu, lisans, yüksek lisans, doktora",
+        searchTip:"Ara...",searchBtn:"Ara",
+        baseCond:"Filtreler",prefer:"Tercihler",tag:"Etiketler"
+    },
+    th:{
+        nav1:"โปรแกรม",nav2:"มหาวิทยาลัย",nav3:"คู่มือสมัคร",nav4:"ชีวิตจีน",nav5:"อาชีพ",nav6:"ทรัพยากร",
+        title:"ค้นหาเรียนจีน",desc:"คอร์สภาษา ปริญญาตรี โท เอก",
+        searchTip:"ค้นหา...",searchBtn:"ค้นหา",
+        baseCond:"เงื่อนไข",prefer:"ความชอบ",tag:"แท็ก"
+    },
+    vi:{
+        nav1:"Chương trình",nav2:"Trường đại học",nav3:"Hướng dẫn hồ sơ",nav4:"Sống ở Trung Quốc",nav5:"Sự nghiệp",nav6:"Tài nguyên",
+        title:"Tìm kiếm du học Trung Quốc",desc:"Khóa ngôn ngữ, đại học, thạc sĩ, tiến sĩ",
+        searchTip:"Tìm kiếm...",searchBtn:"Tìm",
+        baseCond:"Lọc cơ bản",prefer:"Sở thích",tag:"Thẻ"
+    }
+};
+
+// 切换逻辑
+let langSel = document.getElementById("langSelect");
+let defaultLang = localStorage.getItem("siteLang") || "zh";
+langSel.value = defaultLang;
+
+function changeLang(lang){
+    localStorage.setItem("siteLang",lang);
+    let data = langPack[lang];
+    // 普通文字
+    document.querySelectorAll("[data-key]").forEach(el=>{
+        let k = el.getAttribute("data-key");
+        el.innerText = data[k] || k;
+    });
+    // 占位符
+    document.querySelectorAll("[data-placeholder]").forEach(el=>{
+        let k = el.getAttribute("data-placeholder");
+        el.placeholder = data[k] || "";
+    });
+}
+
+langSel.onchange = function(){
+    changeLang(this.value);
+};
+
+// 初始加载
+changeLang(defaultLang);
+</script>
+</body>
+</html>

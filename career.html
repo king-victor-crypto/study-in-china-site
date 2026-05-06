@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="careerTitle">职业发展</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f7;
+            color: #333;
+        }
+        .site-header {
+            background: #ffffff;
+            border-bottom: 1px solid #eee;
+            padding: 16px 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        .top-nav {
+            display: flex;
+            gap: 24px;
+        }
+        .top-nav a {
+            text-decoration: none;
+            color: #666;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+        .top-nav a.active {
+            color: #2563eb;
+            font-weight: 500;
+        }
+        .top-nav a:hover {
+            color: #2563eb;
+        }
+        #langSelect {
+            padding: 4px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #fff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .page-banner {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .page-banner h1 {
+            font-size: 28px;
+            color: #111;
+            margin-bottom: 12px;
+        }
+        .page-banner p {
+            font-size: 16px;
+            color: #666;
+        }
+        .career-wrap {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        .career-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .career-card h3 {
+            font-size: 18px;
+            color: #2563eb;
+            margin-bottom: 12px;
+        }
+        .career-card p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+        .alumni-box {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .alumni-box h2 {
+            font-size: 20px;
+            color: #222;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Study in China</div>
+            <nav class="top-nav">
+                <a href="index.html" data-key="nav1">发现项目</a>
+                <a href="schools.html" data-key="nav2">探索院校</a>
+                <a href="guide.html" data-key="nav3">申请指南</a>
+                <a href="life.html" data-key="nav4">留学中国生活</a>
+                <a href="career.html" class="active" data-key="nav5">职业发展</a>
+                <a href="resource.html" data-key="nav6">资源中心</a>
+            </nav>
+            <select id="langSelect">
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="ru">Русский</option>
+                <option value="ar">العربية</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+                <option value="pt">Português</option>
+                <option value="it">Italiano</option>
+                <option value="nl">Nederlands</option>
+                <option value="pl">Polski</option>
+                <option value="uk">Українська</option>
+                <option value="tr">Türkçe</option>
+                <option value="th">ไทย</option>
+                <option value="vi">Việt Nam</option>
+            </select>
+        </div>
+    </header>
+
+    <div class="page-banner">
+        <h1 data-key="careerTitle">留学生职业发展规划</h1>
+        <p data-key="careerDesc">校内兼职、合法实习、留华就业、工作签证、创业扶持、校友人脉全维度规划</p>
+    </div>
+
+    <div class="career-wrap">
+        <div class="career-card">
+            <h3 data-key="job1Title">校内合法兼职岗位</h3>
+            <p data-key="job1Text">校园助教、留学生办公室助理、中文语伴、活动志愿者等合规岗位，时间灵活，积累经验同时提升中文沟通能力。</p>
+        </div>
+        <div class="career-card">
+            <h3 data-key="job2Title">专业实习与校企实践</h3>
+            <p data-key="job2Text">依托学校合作企业，参加寒暑假专业实习、项目实训，提前熟悉中国职场规则，积累简历核心实战经历。</p>
+        </div>
+        <div class="career-card">
+            <h3 data-key="job3Title">毕业留华就业政策</h3>
+            <p data-key="job3Text">了解外籍毕业生留华就业优惠政策、落户加分、人才补贴，匹配外贸、教育、跨境电商、技术类热门岗位。</p>
+        </div>
+        <div class="career-card">
+            <h3 data-key="job4Title">工作签证与居留转换</h3>
+            <p data-key="job4Text">掌握实习签、毕业求职签、正式工作签转换流程，材料清单、办理周期、合规注意事项，避免签证风险。</p>
+        </div>
+        <div class="career-card">
+            <h3 data-key="job5Title">在华留学生创业扶持</h3>
+            <p data-key="job5Text">高校创业孵化园、留学生创业补贴、跨境项目绿色通道，支持外语教育、外贸进出口、文化交流类创业方向。</p>
+        </div>
+        <div class="career-card">
+            <h3 data-key="job6Title">简历优化与面试指导</h3>
+            <p data-key="job6Text">中英文双语简历打磨、外企面试礼仪、跨文化沟通技巧，针对性提升外籍学生求职竞争力。</p>
+        </div>
+    </div>
+
+    <div class="alumni-box">
+        <h2 data-key="alumniTitle">全球留华校友人脉圈</h2>
+        <p data-key="alumniText">汇聚往届来华留学生、在职外企高管、跨境从业者、创业者，共享岗位内推、行业资讯、合作机会，搭建长期国际人脉网络。</p>
+    </div>
+
+<script>
+const langPack = {
+    zh:{
+        nav1:"发现项目",nav2:"探索院校",nav3:"申请指南",nav4:"留学中国生活",nav5:"职业发展",nav6:"资源中心",
+        careerTitle:"留学生职业发展规划",
+        careerDesc:"校内兼职、合法实习、留华就业、工作签证、创业扶持、校友人脉全维度规划",
+        job1Title:"校内合法兼职岗位",
+        job1Text:"校园助教、留学生办公室助理、中文语伴、活动志愿者等合规岗位，时间灵活，积累经验同时提升中文沟通能力。",
+        job2Title:"专业实习与校企实践",
+        job2Text:"依托学校合作企业，参加寒暑假专业实习、项目实训，提前熟悉中国职场规则，积累简历核心实战经历。",
+        job3Title:"毕业留华就业政策",
+        job3Text:"了解外籍毕业生留华就业优惠政策、落户加分、人才补贴，匹配外贸、教育、跨境电商、技术类热门岗位。",
+        job4Title:"工作签证与居留转换",
+        job4Text:"掌握实习签、毕业求职签、正式工作签转换流程，材料清单、办理周期、合规注意事项，避免签证风险。",
+        job5Title:"在华留学生创业扶持",
+        job5Text:"高校创业孵化园、留学生创业补贴、跨境项目绿色通道，支持外语教育、外贸进出口、文化交流类创业方向。",
+        job6Title:"简历优化与面试指导",
+        job6Text:"中英文双语简历打磨、外企面试礼仪、跨文化沟通技巧，针对性提升外籍学生求职竞争力。",
+        alumniTitle:"全球留华校友人脉圈",
+        alumniText:"汇聚往届来华留学生、在职外企高管、跨境从业者、创业者，共享岗位内推、行业资讯、合作机会，搭建长期国际人脉网络。"
+    },
+    en:{
+        nav1:"Programs",nav2:"Universities",nav3:"Application Guide",nav4:"Life in China",nav5:"Career",nav6:"Resources",
+        careerTitle:"International Student Career Development",
+        careerDesc:"Campus part-time, legal internship, graduate employment, work visa, startup support & alumni network",
+        job1Title:"Legal Campus Part-time Jobs",
+        job1Text:"Teaching assistant, international student office helper, language partner and volunteer jobs. Flexible time to gain experience and Chinese skills.",
+        job2Title:"Professional Internship & Training",
+        job2Text:"Join holiday internships and enterprise projects through university cooperation. Get real workplace experience for your resume.",
+        job3Title:"Post-Graduate Employment Policy",
+        job3Text:"Learn favorable policies for foreign graduates, talent subsidies and popular jobs in foreign trade, education, cross-border e-commerce and tech.",
+        job4Title:"Work Visa & Residence Conversion",
+        job4Text:"Understand internship visa, job-hunting visa and formal work visa process. Prepare documents properly to avoid legal risks.",
+        job5Title:"Startup Support for Foreign Students",
+        job5Text:"University incubators, startup subsidies and green channels for cross-border business, language education and cultural exchange projects.",
+        job6Title:"Resume Polishing & Interview Guide",
+        job6Text:"Bilingual resume optimization, interview etiquette and cross-cultural communication skills to improve job-hunting competitiveness.",
+        alumniTitle:"Global Alumni Network",
+        alumniText:"Connect with former international students, company managers, cross-border professionals and entrepreneurs. Share referrals, industry news and cooperation chances."
+    },
+    es:{
+        nav1:"Programas",nav2:"Universidades",nav3:"Guía de solicitud",nav4:"Vivir en China",nav5:"Carrera",nav6:"Recursos",
+        careerTitle:"Desarrollo profesional estudiantes internacionales",
+        careerDesc:"Trabajos parciales, prácticas legales, empleo postgrado, visado laboral, emprendimiento y red de antiguos alumnos",
+        job1Title:"Trabajos parciales en campus",
+        job1Text:"Auxiliar docente, asistente de oficina, pareja lingüística y voluntariado. Horarios flexibles para ganar experiencia y chino.",
+        job2Title:"Prácticas profesionales y formación",
+        job2Text:"Participa en prácticas vacacionales y proyectos empresariales. Adquiere experiencia laboral real para tu currículum.",
+        job3Title:"Políticas de empleo postgrado",
+        job3Text:"Conoce beneficios para graduados extranjeros, subsidios y empleos en comercio exterior, educación, e-commerce y tecnología.",
+        job4Title:"Visado laboral y cambio de residencia",
+        job4Text:"Aprende el proceso de visado de prácticas, búsqueda de empleo y visado laboral oficial. Evita riesgos legales.",
+        job5Title:"Apoyo al emprendimiento estudiantil",
+        job5Text:"Incubadoras universitarias, subsidios y vías rápidas para proyectos transfronterizos, educación idiomática e intercambio cultural.",
+        job6Title:"Currículum y guía de entrevistas",
+        job6Text:"Optimización de currículum bilingüe, etiqueta en entrevistas y habilidades interculturales para mejorar tus oportunidades.",
+        alumniTitle:"Red global de antiguos alumnos",
+        alumniText:"Conecta con ex estudiantes, directivos, profesionales transfronterizos y emprendedores. Comparte ofertas, noticias y colaboraciones."
+    },
+    fr:{
+        nav1:"Programmes",nav2:"Universités",nav3:"Guide de candidature",nav4:"Vivre en Chine",nav5:"Carrière",nav6:"Ressources",
+        careerTitle:"Développement carrière étudiants internationaux",
+        careerDesc:"Jobs campus, stages légaux, emploi diplômé, visa travail, soutien startup & réseau alumni",
+        job1Title:"Jobs à temps partiel campus",
+        job1Text:"Assistant enseignant, bureau étudiant, partenaire linguistique et bénévolat. Horaires flexibles pour expérience et chinois.",
+        job2Title:"Stages professionnels & formations",
+        job2Text:"Intégrez des stages vacances et projets d'entreprise via l'université. Acquérir une expérience pro pour votre CV.",
+        job3Title:"Politique emploi après diplôme",
+        job3Text:"Découvrez les avantages pour diplômés étrangers, subventions et postes dans commerce international, éducation, e-commerce et tech.",
+        job4Title:"Visa travail & changement statut",
+        job4Text:"Maîtrisez visa stage, visa recherche emploi et visa travail officiel. Bien préparer vos documents pour éviter les risques.",
+        job5Title:"Soutien création d'entreprise",
+        job5Text:"Incubateurs universitaires, subventions et voies rapides pour projets transfrontaliers, éducation linguistique et échanges culturels.",
+        job6Title:"CV & préparation entretien",
+        job6Text:"Optimisation CV bilingue, savoir-être entretien et communication interculturelle pour renforcer votre employabilité.",
+        alumniTitle:"Réseau alumni mondial",
+        alumniText:"Reliez-vous aux anciens étudiants, cadres, professionnels transfrontaliers et entrepreneurs. Partagez offres, actualités et collaborations."
+    },
+    de:{
+        nav1:"Programme",nav2:"Universitäten",nav3:"Bewerbungsleitfaden",nav4:"Leben in China",nav5:"Karriere",nav6:"Ressourcen",
+        careerTitle:"Karriereentwicklung internationale Studierende",
+        careerDesc:"Campus-Jobs, legale Praktika, Absolventenjobs, Arbeitsvisum, Startup-Förderung & Alumni-Netzwerk",
+        job1Title:"Campus Nebenjobs",
+        job1Text:"Tutor, Internationalbüro Helfer, Sprachpartner und Ehrenamt. Flexible Zeiten für Berufserfahrung und Chinesischkenntnisse.",
+        job2Title:"Berufspraktika & Trainings",
+        job2Text:"Nehme an Ferienpraktika und Unternehmensprojekten teil. Sammle echte Berufserfahrung für deinen Lebenslauf.",
+        job3Title:"Berufspolitik für Absolventen",
+        job3Text:"Erfahre Vergünstigungen für ausländische Absolventen, Fördergelder und beliebte Jobs in Außenhandel, Bildung, E-Commerce und Technik.",
+        job4Title:"Arbeitsvisum & Statuswechsel",
+        job4Text:"Verstehe Praktikumsvisum, Jobsuche-Visum und offizielles Arbeitsvisum. Vermeide rechtliche Risiken durch korrekte Dokumente.",
+        job5Title:"Startup Förderung für Studierende",
+        job5Text:"Universitätsinkubatoren, Fördergelder und grüne Kanäle für Grenzprojekte, Sprachbildung und Kulturaustausch.",
+        job6Title:"Lebenslauf & Interview Coaching",
+        job6Text:"Zweisprachiger Lebenslauf, Interviewetikette und interkulturelle Fähigkeiten zur Steigerung der Jobchancen.",
+        alumniTitle:"Globales Alumni-Netzwerk",
+        alumniText:"Verbinde dich mit ehemaligen Studierenden, Managern, Grenzprofis und Gründern. Teile Jobs, Branchennews und Kooperationen."
+    },
+    ru:{
+        nav1:"Программы",nav2:"Университеты",nav3:"Руководство по поступлению",nav4:"Жизнь в Китае",nav5:"Карьера",nav6:"Ресурсы",
+        careerTitle:"Карьерное развитие иностранных студентов",
+        careerDesc:"Частичная занятость, стажировки, работа после учебы, рабочая виза, поддержка стартапов и сеть выпускников",
+        job1Title:"Частичная занятость на кампусе",
+        job1Text:"Ассистент преподавателя, помощник международного отдела, языковой партнер, волонтерство. Гибкий график и опыт общения на китайском.",
+        job2Title:"Профессиональные стажировки",
+        job2Text:"Прохождение летних стажировок и корпоративных проектов от университета. Получение реального опыта для резюме.",
+        job3Title:"Политика трудоустройства выпускников",
+        job3Text:"Льготы для иностранных выпускников, субсидии, популярные вакансии во внешней торговле, образовании, кроссбордере и технике.",
+        job4Title:"Рабочая виза и смена статуса",
+        job4Text:"Правила оформления стажировочной, поисковой и рабочей визы. Подготовка документов и избежание юридических рисков.",
+        job5Title:"Поддержка стартапов для студентов",
+        job5Text:"Университетские инкубаторы, гранты, зеленые коридоры для проектов торговли, языкового образования и культурного обмена.",
+        job6Title:"Резюме и подготовка к собеседованиям",
+        job6Text:"Двухъязычное резюме, этикет собеседований, межкультурная коммуникация для повышения конкурентоспособности.",
+        alumniTitle:"Глобальная сеть выпускников",
+        alumniText:"Общение с бывшими студентами, менеджерами, предпринимателями. Обмен вакансиями, новостями и партнерскими возможностями."
+    },
+    ar:{
+        nav1:"البرامج",nav2:"الجامعات",nav3:"دليل التقديم",nav4:"الحياة في الصين",nav5:"المسار المهني",nav6:"المصادر",
+        careerTitle:"التطوير المهني للطلاب الدوليين",
+        careerDesc:"وظائف جزئية، تدريب رسمي، توظيف بعد التخرج، تأشيرة عمل، دعم المشاريع وشبكة الخريجين",
+        job1Title:"وظائف جزئية داخل الحرم الجامعي",
+        job1Text:"مساعد مدرس، مساعد مكتب الطلاب الدوليين، شريك لغوي، متطوع. أوقات مرنة لاكتساب خبرة وتطوير اللغة الصينية.",
+        job2Title:"تدريب مهني ومشاريع عملية",
+        job2Text:"الالتحاق بالتدريبات الصيفية ومشاريع الشركات عبر الجامعة، اكتساب خبرة عملية حقيقية للسيرة الذاتية.",
+        job3Title:"سياسات التوظيف بعد التخرج",
+        job3Text:"معرفة المزايا للخريجين الأجانب، الإعانات الوظيفية، الوظائف الشائعة في التجارة الخارجية، التعليم، التجارة الإلكترونية والتقنية.",
+        job4Title:"تأشيرة العمل وتحويل الإقامة",
+        job4Text:"فهم إجراءات تأشيرة التدريب، تأشيرة البحث عن عمل وتأشيرة العمل الرسمية، تجنب المخاطر القانونية.",
+        job5Title:"دعم المشاريع الناشئة للطلاب",
+        job5Text:"حاضنات جامعية، إعانات مالية، مسارات سريعة للمشاريع عبر الحدود، التعليم اللغوي والتبادل الثقافي.",
+        job6Title:"تحسين السيرة الذاتية وإجراء المقابلات",
+        job6Text:"سيره ذاتية ثنائية اللغة، آداب المقابلات، مهارات التواصل الثقافي لزيادة فرص التوظيف.",
+        alumniTitle:"شبكة الخريجين العالمية",
+        alumniText:"تواصل مع الطلاب السابقين، المدراء، أصحاب المشاريع، تبادل الوظائف، الأخبار والفرص التعاونية."
+    },
+    ja:{
+        nav1:"プログラム",nav2:"大学",nav3:"出願案内",nav4:"中国での生活",nav5:"キャリア",nav6:"資料",
+        careerTitle:"留学生キャリア開発",
+        careerDesc:"キャンパスアルバイト、合法インターン、卒業後就職、就労ビザ、起業支援、同窓人脈",
+        job1Title:"校内合法アルバイト",
+        job1Text:"ティーチングアシスタント、留学生課補助、言語パートナー、イベントボランティア。時間自由で中国語と実務経験を積めます。",
+        job2Title:"専門インターンシップ",
+        job2Text:"大学提携企業で長期休暇インターンに参加し、中国の職場ルールを学び、履歴書に実績を追加できます。",
+        job3Title:"卒業後中国就職政策",
+        job3Text:"外国人卒業生向け優遇政策、人材補助、貿易・教育・越境EC・技術分野の人気求人を紹介。",
+        job4Title:"就労ビザ在留資格変更",
+        job4Text:"インターンビザ・就活ビザ・正式就労ビザの切り替え手順を理解し、書類準備とリスク回避を徹底。",
+        job5Title:"留学生起業支援制度",
+        job5Text:"大学起業孵化園、補助金、越境事業特別ルートあり。語学教育・貿易・文化交流分野の起業をサポート。",
+        job6Title:"履歴書添削・面接対策",
+        job6Text:"日中バイリンガル履歴書作成、面接マナー、異文化コミュニケーションを強化し就活力アップ。",
+        alumniTitle:"世界留学生同窓ネットワーク",
+        alumniText:"元留学生・外資企業社員・起業家と繋がり、求人紹介・業界情報・提携機会を共有できる人脈コミュニティ。"
+    },
+    ko:{
+        nav1:"프로그램",nav2:"대학",nav3:"입학안내",nav4:"중국생활",nav5:"커리어",nav6:"자료",
+        careerTitle:"유학생 커리어 개발",
+        careerDesc:"캠퍼스 아르바이트, 합법 인턴, 졸업 후 취업, 취업비자, 창업지원, 동문 인맥",
+        job1Title:"캠퍼스 합법 아르바이트",
+        job1Text:"조교, 유학생 사무실 보조, 언어 파트너, 행사 자원봉사 등 시간 자유롭고 중국어 능력과 실무 경험 쌓기 가능.",
+        job2Title:"전문 인턴십 실습",
+        job2Text:"대학 협력 기업에서 방학 인턴 참여, 중국 직장 문화 익히고 이력서 핵심 경력 쌓기.",
+        job3Title:"졸업 후 중국 취업 정책",
+        job3Text:"외국인 졸업생 우대 정책, 인재 보조금, 무역·교육·크로스보더 전자상거래·기술 분야 인기 직종 안내.",
+        job4Title:"취업비자 및 체류자격 전환",
+        job4Text:"인턴비자·취업준비비자·정식 취업비자 전환 절차 숙지, 서류 준비 및 법적 리스크 사전 차단.",
+        job5Title:"유학생 창업 지원 제도",
+        job5Text:"대학 창업 인큐베이터, 보조금, 국경 간 사업 특별 통로 운영. 어학교육, 무역, 문화교류 분야 창업 지원.",
+        job6Title:"이력서 첨삭 및 면접 대비",
+        job6Text:"한중 양문 이력서 다듬기, 면접 예절, 다문화 의사소통 능력 강화로 취업 경쟁력 높이기.",
+        alumniTitle:"글로벌 유학생 동문 네트워크",
+        alumniText:"선배 유학생, 외국계 기업 임직원, 창업가 연결, 채용 추천·산업 정보·협력 기회 공유하는 인맥 커뮤니티."
+    },
+    pt:{
+        nav1:"Programas",nav2:"Universidades",nav3:"Guia de inscrição",nav4:"Viver na China",nav5:"Carreira",nav6:"Recursos",
+        careerTitle:"Desenvolvimento de carreira estudantes internacionais",
+        careerDesc:"Empregos parciais, estágios legais, emprego pós-formatura, visto de trabalho, apoio a startups e rede de ex-alunos",
+        job1Title:"Empregos parciais no campus",
+        job1Text:"Auxiliar de aula, assistente de escritório, parceiro de idioma e voluntariado. Horários flexíveis para experiência e chinês.",
+        job2Title:"Estágios profissionais e práticas",
+        job2Text:"Participe de estágios de férias e projetos empresariais. Construa experiência real para o seu currículo.",
+        job3Title:"Políticas de emprego pós-formatura",
+        job3Text:"Conheça benefícios para graduados estrangeiros, subsídios e vagas em comércio exterior, educação, e-commerce transfronteiriço e tecnologia.",
+        job4Title:"Visto de trabalho e conversão de residência",
+        job4Text:"Entenda visto de estágio, visto de procura de emprego e visto oficial. Prepare documentos e evite riscos legais.",
+        job5Title:"Apoio a startups para estudantes",
+        job5Text:"Incubadoras universitárias, subsídios e canais verdes para projetos transfronteiriços, educação de idiomas e intercâmbio cultural.",
+        job6Title:"Currículo e preparação para entrevistas",
+        job6Text:"Otimização de currículo bilíngue, etiqueta de entrevista e comunicação intercultural para aumentar competitividade.",
+        alumniTitle:"Rede global de ex-alunos",
+        alumniText:"Conecte-se com ex-estudantes, gestores, profissionais transfronteiriços e empreendedores. Compartilhe vagas, notícias e parcerias."
+    },
+    it:{
+        nav1:"Programmi",nav2:"Università",nav3:"Guida alle iscrizioni",nav4:"Vivere in Cina",nav5:"Carriera",nav6:"Risorse",
+        careerTitle:"Sviluppo carriera studenti internazionali",
+        careerDesc:"Lavori part-time, stage legali, occupazione post-laurea, visto lavoro, supporto startup e rete alumni",
+        job1Title:"Lavori part-time nel campus",
+        job1Text:"Assistente docente, ufficio internazionale, partner linguistico e volontariato. Orari flessibili per esperienza e lingua cinese.",
+        job2Title:"Stage professionali e formazione",
+        job2Text:"Partecipa a stage estivi e progetti aziendali. Costruisci esperienza reale per il tuo curriculum.",
+        job3Title:"Politiche occupazione post-laurea",
+        job3Text:"Scopri agevolazioni per laureati stranieri, incentivi e lavori nel commercio estero, educazione, e-commerce transfrontaliero e tecnologia.",
+        job4Title:"Visto lavoro e cambio residenza",
+        job4Text:"Comprendi visto stage, visto ricerca lavoro e visto ufficiale. Prepara documenti ed evita rischi legali.",
+        job5Title:"Supporto startup per studenti",
+        job5Text:"Incubatori universitari, incentivi e canali prioritari per progetti transfrontalieri, educazione linguistica e scambi culturali.",
+        job6Title:"Curriculum e preparazione colloqui",
+        job6Text:"Ottimizzazione curriculum bilingue, galateo colloquio e comunicazione interculturale per aumentare la competitività.",
+        alumniTitle:"Rete globale alumni",
+        alumniText:"Connetti ex studenti, manager, professionisti transfrontalieri e imprenditori. Condividi offerte, notizie e collaborazioni."
+    },
+    nl:{
+        nav1:"Programma's",nav2:"Universiteiten",nav3:"Aanmeldgids",nav4:"Leven in China",nav5:"Carrière",nav6:"Bronnen",
+        careerTitle:"Carrièreontwikkeling internationale studenten",
+        careerDesc:"Campusbijbanen, legale stages, afstudeerbanen, werkvisum, startupondersteuning & alumni netwerk",
+        job1Title:"Campus bijbanen",
+        job1Text:"Docentassistent, internationaal bureau hulp, taalpartner en vrijwilligerswerk. Flexibele uren voor ervaring en Chinees.",
+        job2Title:"Professionele stages & training",
+        job2Text:"Doe mee aan vakantiestages en bedrijfsprojecten. Bouw echte werkervaring op voor je cv.",
+        job3Title:"Werkbeleid na afstuderen",
+        job3Text:"Leer voordelen voor buitenlandse afgestudeerden, subsidies en populaire banen in buitenlandse handel, onderwijs, grensoverschrijdende e-commerce en tech.",
+        job4Title:"Werkvisum & statuswijziging",
+        job4Text:"Begrijp stagevisum, zoekvisum en officieel werkvisum. Bereid documenten goed voor en voorkom juridische risico's.",
+        job5Title:"Startup ondersteuning studenten",
+        job5Text:"Universiteitsincubatoren, subsidies en groene kanalen voor grensprojecten, taalonderwijs en culturele uitwisseling.",
+        job6Title:"CV & interview begeleiding",
+        job6Text:"Tweetalig cv optimalisatie, interview etiquette en interculturele vaardigheden om je kansen te vergroten.",
+        alumniTitle:"Wereldwijd alumni netwerk",
+        alumniText:"Verbind met voormalige studenten, managers, grensprofessionals en ondernemers. Deel vacatures, nieuws en samenwerkingen."
+    },
+    pl:{
+        nav1:"Programy",nav2:"Uniwersytety",nav3:"Przewodnik rekrutacyjny",nav4:"Życie w Chinach",nav5:"Kariera",nav6:"Zasoby",
+        careerTitle:"Rozwój kariery studentów zagranicznych",
+        careerDesc:"Praca dorywcza, legalne staże, praca po studiach, wiza pracownicza, wsparcie startupów i sieć absolwentów",
+        job1Title:"Praca dorywcza na kampusie",
+        job1Text:"Asystent nauczyciela, pomocnik biura cudzoziemców, partner językowy, wolontariat. Elastyczne godziny i doświadczenie z językiem chińskim.",
+        job2Title:"Staże zawodowe i praktyki",
+        job2Text:"Weź udział w stażach wakacyjnych i projektach firmowych. Zdobądź realne doświadczenie do CV.",
+        job3Title:"Polityka zatrudnienia po ukończeniu studiów",
+        job3Text:"Poznaj ulgi dla absolwentów zagranicznych, dotacje i popularne stanowiska w handlu zagranicznym, edukacji, e-commerce transgranicznym i technologii.",
+        job4Title:"Wiza pracownicza i zmiana statusu",
+        job4Text:"Zrozum wizę stażową, wizę poszukiwania pracy i oficjalną wizę pracowniczą. Unikaj ryzyk prawnych odpowiednimi dokumentami.",
+        job5Title:"Wsparcie startupów dla studentów",
+        job5Text:"Inkubatory uniwersyteckie, dotacje i zielone ścieżki dla projektów transgranicznych, edukacji językowej i wymiany kulturowej.",
+        job6Title:"CV i przygotowanie do rozmów kwalifikacyjnych",
+        job6Text:"Optymalizacja dwujęzycznego CV, etykieta rozmów i umiejętności międzykulturowe dla lepszych szans zawodowych.",
+        alumniTitle:"Globalna sieć absolwentów",
+        alumniText:"Nawiąż kontakt z dawnymi studentami, menedżerami, przedsiębiorcami. Wymieniaj oferty pracy, wiadomości branżowe i współprace."
+    },
+    uk:{
+        nav1:"Програми",nav2:"Університети",nav3:"Посібник вступника",nav4:"Життя у Китаї",nav5:"Кар'єра",nav6:"Ресурси",
+        careerTitle:"Кар'єрний розвиток іноземних студентів",
+        careerDesc:"Часткова зайнятість, легальні стажування, робота після навчання, робоча віза, підтримка стартапів та мережа випускників",
+        job1Title:"Часткова робота на кампусі",
+        job1Text:"Асистент викладача, помічник міжнародного відділу, мовний партнер, волонтерство. Гнучкий графік та досвід спілкування китайською.",
+        job2Title:"Професійне стажування",
+        job2Text:"Беріть участь у літніх стажуваннях та корпоративних проектах. Отримуйте реальний досвід для резюме.",
+        job3Title:"Політика працевлаштування випускників",
+        job3Text:"Дізнайтеся пільги для іноземних випускників, субсидії та популярні вакансії у зовнішній торгівлі, освіті, транскордонному бізнесі та техніці.",
+        job4Title:"Робоча віза та зміна статусу",
+        job4Text:"Розумійте стажувальну, пошукову та робочу візу. Готуйте документи правильно, щоб уникнути юридичних ризиків.",
+        job5Title:"Підтримка стартапів для студентів",
+        job5Text:"Університетські інкубатори, гранти та зелені маршрути для транскордонних проектів, мовної освіти та культурного обміну.",
+        job6Title:"Резюме та підготовка до співбесід",
+        job6Text:"Оптимізація двомовного резюме, етикет співбесід та міжкультурні навички для підвищення конкурентоспроможності.",
+        alumniTitle:"Глобальна мережа випускників",
+        alumniText:"Спілкуйтеся з колишніми студентами, менеджерами та підприємцями. Обмінюйте вакансії, новини галузі та партнерські можливості."
+    },
+    tr:{
+        nav1:"Programlar",nav2:"Üniversiteler",nav3:"Başvuru Kılavuzu",nav4:"Çin'de Yaşam",nav5:"Kariyer",nav6:"Kaynaklar",
+        careerTitle:"Uluslararası Öğrenci Kariyer Gelişimi",
+        careerDesc:"Kampüs yarı zamanlı işler, yasal stajlar, mezun istihdamı, çalışma vizesi, girişim desteği & mezun ağı",
+        job1Title:"Kampüs Yarı Zamanlı İşler",
+        job1Text:"Öğretmen asistanı, uluslararası ofis yardımcısı, dil partneri ve gönüllülük. Esnek saatler ile deneyim ve Çince geliştirme.",
+        job2Title:"Profesyonel Stajlar & Eğitim",
+        job2Text:"Tatil stajları ve şirket projelerine katıl. Özgeçmiş için gerçek iş deneyimi kazan.",
+        job3Title:"Mezun Sonrası İstihdam Politikası",
+        job3Text:"Yabancı mezunlara özel avantajlar, teşvikler ve dış ticaret, eğitim, sınır ötesi e-ticaret ve teknoloji popüler işleri öğren.",
+        job4Title:"Çalışma Vizesi & Statü Değişimi",
+        job4Text:"Staj vizesi, iş arama vizesi ve resmi çalışma vizesi süreçlerini anla. Yasal riskleri önlemek için evrakları tam hazırla.",
+        job5Title:"Öğrenci Girişim Desteği",
+        job5Text:"Üniversite inkübasyon merkezleri, hibeler ve sınır ötesi proje, dil eğitimi ve kültür alışverişi için yeşil hatlar.",
+        job6Title:"Özgeçmiş & Mülakat Rehberi",
+        job6Text:"İki dilli özgeçmiş düzenleme, mülakat görgüsü ve kültürler arası iletişim ile iş fırsatlarını artır.",
+        alumniTitle:"Küresel Mezun Ağı",
+        alumniText:"Eski öğrenciler, yöneticiler, sınır ötesi profesyoneller ve girişimcilerle bağlantı kur. İş ilanı, sektör haberi ve işbirliği paylaş."
+    },
+    th:{
+        nav1:"โปรแกรม",nav2:"มหาวิทยาลัย",nav3:"คู่มือสมัครเรียน",nav4:"ชีวิตในจีน",nav5:"อาชีพ",nav6:"ทรัพยากร",
+        careerTitle:"การพัฒนาอาชีพสำหรับนักศึกษาต่างชาติ",
+        careerDesc:"งานพาร์ทไทม์ในมหาวิทยาลัย ฝึกงานถูกกฎหมาย การทำงานหลังจบ วีซ่าทำงาน สนับสนุนธุรกิจใหม่ และเครือข่ายศิษย์เก่า",
+        job1Title:"งานพาร์ทไทม์ในแคมปัส",
+        job1Text:"ผู้ช่วยสอน ผู้ช่วยสำนักนักศึกษาต่างชาติ คู่ภาษา อาสา สามารถทำเวลายืดหยุ่น สร้างประสบการณ์และฝึกภาษาจีน",
+        job2Title:"ฝึกงานวิชาชีพและโปรเจกต์",
+        job2Text:"เข้าร่วมฝึกงานช่วงปิดเทอมและโปรเจกต์บริษัท สร้างประสบการณ์จริงสำหรับเรซูเม่",
+        job3Title:"นโยบายการจ้างงานหลังจบการศึกษา",
+        job3Text:"เรียนรู้สิทธิพิเศษสำหรับบัณฑิตต่างชาติ เงินอุดหนุน และอาชีพยอดนิยมด้านการค้าระหว่างประเทศ การศึกษา อีคอมเมิร์ซข้ามแดนและเทคโนโลยี",
+        job4Title:"วีซ่าทำงานและการเปลี่ยนสถานะ",
+        job4Text:"เข้าใจขั้นตอนวีซ่าฝึกงาน วีซ่าหางาน และวีซ่าทำงานทางการ เตรียมเอกสารให้ครบเพื่อหลีกเลี่ยงความเสี่ยงทางกฎหมาย",
+        job5Title:"สนับสนุนการสร้างธุรกิจสำหรับนักศึกษา",
+        job5Text:"ศูนย์บ่มเพาะธุรกิจในมหาวิทยาลัย เงินอุดหนุน และช่องทางพิเศษสำหรับโปรเจกต์ข้ามแดน การศึกษาภาษา และแลกเปลี่ยนวัฒนธรรม",
+        job6Title:"ปรับเรซูเม่และเตรียมสัมภาษณ์",
+        job6Text:"ปรับเรซูเม่สองภาษา มารยาทสัมภาษณ์ และทักษะการสื่อสารข้ามวัฒนธรรม เพิ่มโอกาสในการได้งาน",
+        alumniTitle:"เครือข่ายศิษย์เก่าระดับโลก",
+        alumniText:"เชื่อมต่อระหว่างนักศึกษาเก่า ผู้บริหาร ผู้ประกอบการ แชร์ตำแหน่งงาน ข่าวสารอุตสาหกรรม และโอกาสร่วมมือ"
+    },
+    vi:{
+        nav1:"Chương trình",nav2:"Trường đại học",nav3:"Hướng dẫn đăng ký",nav4:"Sống tại Trung Quốc",nav5:"Phát triển nghề nghiệp",nav6:"Nguồn tài nguyên",
+        careerTitle:"Định hướng nghề nghiệp du học sinh",
+        careerDesc:"Việc bán thời gian, thực tập hợp pháp, việc làm sau tốt nghiệp, visa lao động, hỗ trợ khởi nghiệp & mạng lưới cựu sinh viên",
+        job1Title:"Việc bán thời gian trong khuôn viên",
+        job1Text:"Trợ giảng, trợ lý văn phòng sinh viên quốc tế, bạn đối ngữ, tình nguyện viên. Thời gian linh hoạt tích lũy kinh nghiệm và nâng cao tiếng Trung.",
+        job2Title:"Thực tập chuyên nghiệp & dự án",
+        job2Text:"Tham gia thực tập hè và dự án doanh nghiệp liên kết trường, tích lũy kinh nghiệm thực tế làm đẹp hồ sơ xin việc.",
+        job3Title:"Chính sách việc làm sau tốt nghiệp",
+        job3Text:"Tìm hiểu chính sách ưu đãi cho sinh viên tốt nghiệp nước ngoài, trợ cấp nhân tài, các ngành hot: thương mại, giáo dục, thương mại điện tử xuyên biên giới, công nghệ.",
+        job4Title:"Visa lao động & chuyển đổi cư trú",
+        job4Text:"Nắm rõ quy trình visa thực tập, visa tìm việc, visa lao động chính thức. Chuẩn bị hồ sơ đầy đủ tránh rủi ro pháp lý.",
+        job5Title:"Hỗ trợ khởi nghiệp cho du học sinh",
+        job5Text:"Vườn ươm doanh nghiệp trường đại học, trợ cấp vốn, kênh ưu tiên dự án xuyên biên giới, giáo dục ngôn ngữ, giao lưu văn hóa.",
+        job6Title:"Tối ưu CV & luyện phỏng vấn",
+        job6Text:"Hoàn thiện CV song ngữ, nghi thức phỏng vấn, kỹ năng giao tiếp đa văn hóa nâng cao sức cạnh tranh xin việc.",
+        alumniTitle:"Mạng lưới cựu sinh viên toàn cầu",
+        alumniText:"Kết nối cựu du học sinh, quản lý doanh nghiệp, người làm kinh doanh xuyên biên giới, chia sẻ cơ hội việc làm, tin ngành và hợp tác."
+    }
+};
+
+const langSel = document.getElementById('langSelect');
+const defaultLang = localStorage.getItem('siteLang') || 'zh';
+langSel.value = defaultLang;
+
+function renderLang(lang) {
+    const data = langPack[lang];
+    if(!data) return;
+    // 替换所有 data-key 元素的文本
+    document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if(data[key]) el.textContent = data[key];
+    });
+    // 同步更新页面标题
+    if(data['careerTitle']) {
+        document.title = data['careerTitle'];
+    }
+    // 同步 HTML lang 属性
+    document.documentElement.lang = lang;
+    // 存储语言偏好
+    localStorage.setItem('siteLang', lang);
+}
+
+langSel.addEventListener('change', () => {
+    renderLang(langSel.value);
+});
+
+// 初始化渲染
+renderLang(defaultLang);
+</script>
+</body>
+</html>
