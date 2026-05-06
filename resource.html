@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="careerTitle">职业发展</title>
+    <title data-key="resTitle">资源中心</title>
     <style>
         * {
             margin: 0;
@@ -71,7 +71,7 @@
             font-size: 16px;
             color: #666;
         }
-        .career-wrap {
+        .res-wrap {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto 60px;
@@ -79,23 +79,55 @@
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 20px;
         }
-        .career-card {
+        .res-card {
             background: #fff;
             border-radius: 10px;
             padding: 24px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        .career-card h3 {
+        .res-card h3 {
             font-size: 18px;
             color: #2563eb;
             margin-bottom: 12px;
         }
-        .career-card p {
+        .res-card ul {
+            padding-left: 20px;
+            margin-top: 8px;
+            list-style: none;
+        }
+        .res-card li {
             font-size: 15px;
             color: #555;
-            line-height: 1.7;
+            line-height: 1.8;
         }
-        .alumni-box {
+        .res-card a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .res-card a:hover {
+            text-decoration: underline;
+        }
+        .emergency-box {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            border-left: 6px solid #dc2626;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .emergency-box h2 {
+            font-size: 20px;
+            color: #dc2626;
+            margin-bottom: 15px;
+        }
+        .emergency-box p {
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #333;
+        }
+        .faq-box {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto 60px;
@@ -104,12 +136,24 @@
             padding: 30px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        .alumni-box h2 {
+        .faq-box h2 {
             font-size: 20px;
             color: #222;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 1px solid #eee;
+        }
+        .faq-item {
+            margin-bottom: 18px;
+        }
+        .faq-q {
+            font-weight: 500;
+            color: #111;
+            margin-bottom: 4px;
+        }
+        .faq-a {
+            color: #555;
+            padding-left: 16px;
         }
     </style>
 </head>
@@ -122,8 +166,8 @@
                 <a href="schools.html" data-key="nav2">探索院校</a>
                 <a href="guide.html" data-key="nav3">申请指南</a>
                 <a href="life.html" data-key="nav4">留学中国生活</a>
-                <a href="career.html" class="active" data-key="nav5">职业发展</a>
-                <a href="resource.html" data-key="nav6">资源中心</a>
+                <a href="career.html" data-key="nav5">职业发展</a>
+                <a href="resource.html" class="active" data-key="nav6">资源中心</a>
             </nav>
             <select id="langSelect">
                 <option value="zh">中文</option>
@@ -148,397 +192,453 @@
     </header>
 
     <div class="page-banner">
-        <h1 data-key="careerTitle">留学生职业发展规划</h1>
-        <p data-key="careerDesc">校内兼职、合法实习、留华就业、工作签证、创业扶持、校友人脉全维度规划</p>
+        <h1 data-key="resTitle">留学生资源中心</h1>
+        <p data-key="resDesc">集中提供官方链接、文档模板、实用工具、紧急联系和常见疑问解答</p>
     </div>
 
-    <div class="career-wrap">
-        <div class="career-card">
-            <h3 data-key="job1Title">校内合法兼职岗位</h3>
-            <p data-key="job1Text">校园助教、留学生办公室助理、中文语伴、活动志愿者等合规岗位，时间灵活，积累经验同时提升中文沟通能力。</p>
+    <!-- 资源卡片区 -->
+    <div class="res-wrap">
+        <div class="res-card">
+            <h3 data-key="res1Title">官方网站直达</h3>
+            <ul>
+                <li><a href="https://www.studyinchina.edu.cn" target="_blank">留学中国网（教育部）</a></li>
+                <li><a href="https://www.campuschina.org" target="_blank">中国政府奖学金系统</a></li>
+                <li><a href="https://www.nia.gov.cn" target="_blank">国家移民管理局</a></li>
+                <li><a href="https://www.fmprc.gov.cn/web/" target="_blank">中国外交部</a></li>
+            </ul>
         </div>
-        <div class="career-card">
-            <h3 data-key="job2Title">专业实习与校企实践</h3>
-            <p data-key="job2Text">依托学校合作企业，参加寒暑假专业实习、项目实训，提前熟悉中国职场规则，积累简历核心实战经历。</p>
+        <div class="res-card">
+            <h3 data-key="res2Title">常用表格与模板</h3>
+            <ul>
+                <li><a href="#">JW201/JW202签证申请表</a></li>
+                <li><a href="#">外国人体格检查表</a></li>
+                <li><a href="#">住宿登记证明模板</a></li>
+                <li><a href="#">在学证明/在读证明</a></li>
+            </ul>
         </div>
-        <div class="career-card">
-            <h3 data-key="job3Title">毕业留华就业政策</h3>
-            <p data-key="job3Text">了解外籍毕业生留华就业优惠政策、落户加分、人才补贴，匹配外贸、教育、跨境电商、技术类热门岗位。</p>
+        <div class="res-card">
+            <h3 data-key="res3Title">学习与生活工具</h3>
+            <ul>
+                <li>翻译：Google 翻译、DeepL</li>
+                <li>地图：高德地图、百度地图</li>
+                <li>支付：支付宝、微信支付</li>
+                <li>学习：Pleco 词典、HSK Online</li>
+            </ul>
         </div>
-        <div class="career-card">
-            <h3 data-key="job4Title">工作签证与居留转换</h3>
-            <p data-key="job4Text">掌握实习签、毕业求职签、正式工作签转换流程，材料清单、办理周期、合规注意事项，避免签证风险。</p>
-        </div>
-        <div class="career-card">
-            <h3 data-key="job5Title">在华留学生创业扶持</h3>
-            <p data-key="job5Text">高校创业孵化园、留学生创业补贴、跨境项目绿色通道，支持外语教育、外贸进出口、文化交流类创业方向。</p>
-        </div>
-        <div class="career-card">
-            <h3 data-key="job6Title">简历优化与面试指导</h3>
-            <p data-key="job6Text">中英文双语简历打磨、外企面试礼仪、跨文化沟通技巧，针对性提升外籍学生求职竞争力。</p>
+        <div class="res-card">
+            <h3 data-key="res4Title">政策与数据查询</h3>
+            <ul>
+                <li><a href="#">外国留学生来华须知</a></li>
+                <li><a href="#">各城市留学人才政策</a></li>
+                <li><a href="#">中国高等教育专业目录</a></li>
+                <li><a href="#">历年留学生数据报告</a></li>
+            </ul>
         </div>
     </div>
 
-    <div class="alumni-box">
-        <h2 data-key="alumniTitle">全球留华校友人脉圈</h2>
-        <p data-key="alumniText">汇聚往届来华留学生、在职外企高管、跨境从业者、创业者，共享岗位内推、行业资讯、合作机会，搭建长期国际人脉网络。</p>
+    <!-- 紧急联系方式 -->
+    <div class="emergency-box">
+        <h2 data-key="emgTitle">紧急联系方式（24小时可用）</h2>
+        <p><strong data-key="emg1">中国报警：</strong>110</p>
+        <p><strong data-key="emg2">急救中心：</strong>120</p>
+        <p><strong data-key="emg3">移民管理服务热线：</strong>12367（中英双语）</p>
+        <p><strong data-key="emg4">外交部全球领事保护：</strong>+86-10-12308</p>
+        <p><strong data-key="emg5">本校国际学生处紧急联络：</strong>+86-XXX-XXXXXXX</p>
+    </div>
+
+    <!-- FAQ常见问题 -->
+    <div class="faq-box">
+        <h2 data-key="faqTitle">常见问题 FAQ</h2>
+        <div class="faq-item">
+            <div class="faq-q" data-key="faq1q">Q：如何申请中国政府奖学金？</div>
+            <div class="faq-a" data-key="faq1a">A：通过留学中国网或本国中国使馆教育处查询受理时间，在线填写申请表并提交材料。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" data-key="faq2q">Q：JW201/JW202表格有什么不同？</div>
+            <div class="faq-a" data-key="faq2a">A：JW201适用于中国政府奖学金生，JW202适用于自费来华留学生，均由录取院校协助办理。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" data-key="faq3q">Q：居留许可办理需要哪些材料？</div>
+            <div class="faq-a" data-key="faq3a">A：护照、录取通知书、体检表、住宿登记证明、一张2寸照片及申请费，入境30天内办理。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" data-key="faq4q">Q：可以在哪里查到我的学习专业是否认证？</div>
+            <div class="faq-a" data-key="faq4a">A：登录中国教育部教育涉外监管信息网，查询认可院校及专业名单。</div>
+        </div>
     </div>
 
 <script>
 const langPack = {
     zh:{
         nav1:"发现项目",nav2:"探索院校",nav3:"申请指南",nav4:"留学中国生活",nav5:"职业发展",nav6:"资源中心",
-        careerTitle:"留学生职业发展规划",
-        careerDesc:"校内兼职、合法实习、留华就业、工作签证、创业扶持、校友人脉全维度规划",
-        job1Title:"校内合法兼职岗位",
-        job1Text:"校园助教、留学生办公室助理、中文语伴、活动志愿者等合规岗位，时间灵活，积累经验同时提升中文沟通能力。",
-        job2Title:"专业实习与校企实践",
-        job2Text:"依托学校合作企业，参加寒暑假专业实习、项目实训，提前熟悉中国职场规则，积累简历核心实战经历。",
-        job3Title:"毕业留华就业政策",
-        job3Text:"了解外籍毕业生留华就业优惠政策、落户加分、人才补贴，匹配外贸、教育、跨境电商、技术类热门岗位。",
-        job4Title:"工作签证与居留转换",
-        job4Text:"掌握实习签、毕业求职签、正式工作签转换流程，材料清单、办理周期、合规注意事项，避免签证风险。",
-        job5Title:"在华留学生创业扶持",
-        job5Text:"高校创业孵化园、留学生创业补贴、跨境项目绿色通道，支持外语教育、外贸进出口、文化交流类创业方向。",
-        job6Title:"简历优化与面试指导",
-        job6Text:"中英文双语简历打磨、外企面试礼仪、跨文化沟通技巧，针对性提升外籍学生求职竞争力。",
-        alumniTitle:"全球留华校友人脉圈",
-        alumniText:"汇聚往届来华留学生、在职外企高管、跨境从业者、创业者，共享岗位内推、行业资讯、合作机会，搭建长期国际人脉网络。"
+        resTitle:"留学生资源中心",
+        resDesc:"集中提供官方链接、文档模板、实用工具、紧急联系和常见疑问解答",
+        res1Title:"官方网站直达",
+        res2Title:"常用表格与模板",
+        res3Title:"学习与生活工具",
+        res4Title:"政策与数据查询",
+        emgTitle:"紧急联系方式（24小时可用）",
+        emg1:"中国报警：",emg2:"急救中心：",emg3:"移民管理服务热线：",emg4:"外交部全球领事保护：",emg5:"本校国际学生处紧急联络：",
+        faqTitle:"常见问题 FAQ",
+        faq1q:"Q：如何申请中国政府奖学金？",
+        faq1a:"A：通过留学中国网或本国中国使馆教育处查询受理时间，在线填写申请表并提交材料。",
+        faq2q:"Q：JW201/JW202表格有什么不同？",
+        faq2a:"A：JW201适用于中国政府奖学金生，JW202适用于自费来华留学生，均由录取院校协助办理。",
+        faq3q:"Q：居留许可办理需要哪些材料？",
+        faq3a:"A：护照、录取通知书、体检表、住宿登记证明、一张2寸照片及申请费，入境30天内办理。",
+        faq4q:"Q：可以在哪里查到我的学习专业是否认证？",
+        faq4a:"A：登录中国教育部教育涉外监管信息网，查询认可院校及专业名单。"
     },
     en:{
         nav1:"Programs",nav2:"Universities",nav3:"Application Guide",nav4:"Life in China",nav5:"Career",nav6:"Resources",
-        careerTitle:"International Student Career Development",
-        careerDesc:"Campus part-time, legal internship, graduate employment, work visa, startup support & alumni network",
-        job1Title:"Legal Campus Part-time Jobs",
-        job1Text:"Teaching assistant, international student office helper, language partner and volunteer jobs. Flexible time to gain experience and Chinese skills.",
-        job2Title:"Professional Internship & Training",
-        job2Text:"Join holiday internships and enterprise projects through university cooperation. Get real workplace experience for your resume.",
-        job3Title:"Post-Graduate Employment Policy",
-        job3Text:"Learn favorable policies for foreign graduates, talent subsidies and popular jobs in foreign trade, education, cross-border e-commerce and tech.",
-        job4Title:"Work Visa & Residence Conversion",
-        job4Text:"Understand internship visa, job-hunting visa and formal work visa process. Prepare documents properly to avoid legal risks.",
-        job5Title:"Startup Support for Foreign Students",
-        job5Text:"University incubators, startup subsidies and green channels for cross-border business, language education and cultural exchange projects.",
-        job6Title:"Resume Polishing & Interview Guide",
-        job6Text:"Bilingual resume optimization, interview etiquette and cross-cultural communication skills to improve job-hunting competitiveness.",
-        alumniTitle:"Global Alumni Network",
-        alumniText:"Connect with former international students, company managers, cross-border professionals and entrepreneurs. Share referrals, industry news and cooperation chances."
+        resTitle:"International Student Resource Center",
+        resDesc:"Access official links, document templates, tools, emergency contacts and frequently asked questions",
+        res1Title:"Official Websites",
+        res2Title:"Forms & Templates",
+        res3Title:"Study & Life Tools",
+        res4Title:"Policy & Data Inquiry",
+        emgTitle:"Emergency Contacts (24/7)",
+        emg1:"Police (China):",emg2:"Ambulance:",emg3:"Immigration Hotline:",emg4:"Global Consular Protection:",emg5:"University International Office:",
+        faqTitle:"Frequently Asked Questions",
+        faq1q:"Q: How to apply for Chinese Government Scholarship?",
+        faq1a:"A: Check application periods via Study in China website or Chinese embassy, submit online form and documents.",
+        faq2q:"Q: What is the difference between JW201 and JW202 forms?",
+        faq2a:"A: JW201 is for scholarship students, JW202 is for self-funded students. Both are handled by admitting universities.",
+        faq3q:"Q: What documents are needed for a residence permit?",
+        faq3a:"A: Passport, admission letter, health check form, accommodation proof, one passport photo and fee, apply within 30 days of entry.",
+        faq4q:"Q: Where can I check if my degree program is recognized?",
+        faq4a:"A: Visit the China Education Ministry’s official foreign student information portal for accredited institutions and majors."
     },
     es:{
         nav1:"Programas",nav2:"Universidades",nav3:"Guía de solicitud",nav4:"Vivir en China",nav5:"Carrera",nav6:"Recursos",
-        careerTitle:"Desarrollo profesional estudiantes internacionales",
-        careerDesc:"Trabajos parciales, prácticas legales, empleo postgrado, visado laboral, emprendimiento y red de antiguos alumnos",
-        job1Title:"Trabajos parciales en campus",
-        job1Text:"Auxiliar docente, asistente de oficina, pareja lingüística y voluntariado. Horarios flexibles para ganar experiencia y chino.",
-        job2Title:"Prácticas profesionales y formación",
-        job2Text:"Participa en prácticas vacacionales y proyectos empresariales. Adquiere experiencia laboral real para tu currículum.",
-        job3Title:"Políticas de empleo postgrado",
-        job3Text:"Conoce beneficios para graduados extranjeros, subsidios y empleos en comercio exterior, educación, e-commerce y tecnología.",
-        job4Title:"Visado laboral y cambio de residencia",
-        job4Text:"Aprende el proceso de visado de prácticas, búsqueda de empleo y visado laboral oficial. Evita riesgos legales.",
-        job5Title:"Apoyo al emprendimiento estudiantil",
-        job5Text:"Incubadoras universitarias, subsidios y vías rápidas para proyectos transfronterizos, educación idiomática e intercambio cultural.",
-        job6Title:"Currículum y guía de entrevistas",
-        job6Text:"Optimización de currículum bilingüe, etiqueta en entrevistas y habilidades interculturales para mejorar tus oportunidades.",
-        alumniTitle:"Red global de antiguos alumnos",
-        alumniText:"Conecta con ex estudiantes, directivos, profesionales transfronterizos y emprendedores. Comparte ofertas, noticias y colaboraciones."
+        resTitle:"Centro de Recursos para Estudiantes Internacionales",
+        resDesc:"Accede a enlaces oficiales, plantillas, herramientas, contactos de emergencia y preguntas frecuentes",
+        res1Title:"Sitios Oficiales",
+        res2Title:"Formularios y Plantillas",
+        res3Title:"Herramientas de Estudio y Vida",
+        res4Title:"Consulta de Políticas",
+        emgTitle:"Contactos de Emergencia (24h)",
+        emg1:"Policía (China):",emg2:"Ambulancia:",emg3:"Línea de Inmigración:",emg4:"Protección Consular Global:",emg5:"Oficina Internacional Universidad:",
+        faqTitle:"Preguntas Frecuentes",
+        faq1q:"Q: ¿Cómo solicitar la Beca del Gobierno Chino?",
+        faq1a:"A: Infórmate en Study in China o en la embajada china, presenta formulario y documentos en las fechas indicadas.",
+        faq2q:"Q: ¿Diferencia entre JW201 y JW202?",
+        faq2a:"A: JW201 para becarios, JW202 para estudiantes autofinanciados; gestionados por la universidad.",
+        faq3q:"Q: ¿Documentos para permiso de residencia?",
+        faq3a:"A: Pasaporte, carta de admisión, certificado médico, prueba de alojamiento, foto y tarifa dentro de 30 días.",
+        faq4q:"Q: ¿Dónde verifico si mi carrera está acreditada?",
+        faq4a:"A: Portal oficial del Ministerio de Educación para estudiantes extranjeros."
     },
     fr:{
         nav1:"Programmes",nav2:"Universités",nav3:"Guide de candidature",nav4:"Vivre en Chine",nav5:"Carrière",nav6:"Ressources",
-        careerTitle:"Développement carrière étudiants internationaux",
-        careerDesc:"Jobs campus, stages légaux, emploi diplômé, visa travail, soutien startup & réseau alumni",
-        job1Title:"Jobs à temps partiel campus",
-        job1Text:"Assistant enseignant, bureau étudiant, partenaire linguistique et bénévolat. Horaires flexibles pour expérience et chinois.",
-        job2Title:"Stages professionnels & formations",
-        job2Text:"Intégrez des stages vacances et projets d'entreprise via l'université. Acquérir une expérience pro pour votre CV.",
-        job3Title:"Politique emploi après diplôme",
-        job3Text:"Découvrez les avantages pour diplômés étrangers, subventions et postes dans commerce international, éducation, e-commerce et tech.",
-        job4Title:"Visa travail & changement statut",
-        job4Text:"Maîtrisez visa stage, visa recherche emploi et visa travail officiel. Bien préparer vos documents pour éviter les risques.",
-        job5Title:"Soutien création d'entreprise",
-        job5Text:"Incubateurs universitaires, subventions et voies rapides pour projets transfrontaliers, éducation linguistique et échanges culturels.",
-        job6Title:"CV & préparation entretien",
-        job6Text:"Optimisation CV bilingue, savoir-être entretien et communication interculturelle pour renforcer votre employabilité.",
-        alumniTitle:"Réseau alumni mondial",
-        alumniText:"Reliez-vous aux anciens étudiants, cadres, professionnels transfrontaliers et entrepreneurs. Partagez offres, actualités et collaborations."
+        resTitle:"Centre de Ressources Étudiants Internationaux",
+        resDesc:"Liens officiels, modèles, outils, contacts d'urgence et questions fréquentes",
+        res1Title:"Sites Officiels",
+        res2Title:"Formulaires et Modèles",
+        res3Title:"Outils Étude et Vie",
+        res4Title:"Consultation Politiques",
+        emgTitle:"Contacts d'Urgence (24h/24)",
+        emg1:"Police :",emg2:"Ambulance :",emg3:"Ligne Immigration :",emg4:"Protection Consulaire :",emg5:"Bureau International :",
+        faqTitle:"FAQ",
+        faq1q:"Q : Comment candidater à une bourse du gouvernement chinois ?",
+        faq1a:"R : Via Study in China ou l'ambassade, soumettez le formulaire et les documents dans les délais.",
+        faq2q:"Q : Différence entre JW201 et JW202 ?",
+        faq2a:"R : JW201 pour boursiers, JW202 pour autofinancés, gérés par l'université.",
+        faq3q:"Q : Documents pour le titre de séjour ?",
+        faq3a:"R : Passeport, lettre d'admission, certificat médical, justificatif de logement, photo et frais sous 30 jours.",
+        faq4q:"Q : Où vérifier l'accréditation de ma formation ?",
+        faq4a:"R : Portail officiel du Ministère de l'Éducation pour étudiants étrangers."
     },
     de:{
-        nav1:"Programme",nav2:"Universitäten",nav3:"Bewerbungsleitfaden",nav4:"Leben in China",nav5:"Karriere",nav6:"Ressourcen",
-        careerTitle:"Karriereentwicklung internationale Studierende",
-        careerDesc:"Campus-Jobs, legale Praktika, Absolventenjobs, Arbeitsvisum, Startup-Förderung & Alumni-Netzwerk",
-        job1Title:"Campus Nebenjobs",
-        job1Text:"Tutor, Internationalbüro Helfer, Sprachpartner und Ehrenamt. Flexible Zeiten für Berufserfahrung und Chinesischkenntnisse.",
-        job2Title:"Berufspraktika & Trainings",
-        job2Text:"Nehme an Ferienpraktika und Unternehmensprojekten teil. Sammle echte Berufserfahrung für deinen Lebenslauf.",
-        job3Title:"Berufspolitik für Absolventen",
-        job3Text:"Erfahre Vergünstigungen für ausländische Absolventen, Fördergelder und beliebte Jobs in Außenhandel, Bildung, E-Commerce und Technik.",
-        job4Title:"Arbeitsvisum & Statuswechsel",
-        job4Text:"Verstehe Praktikumsvisum, Jobsuche-Visum und offizielles Arbeitsvisum. Vermeide rechtliche Risiken durch korrekte Dokumente.",
-        job5Title:"Startup Förderung für Studierende",
-        job5Text:"Universitätsinkubatoren, Fördergelder und grüne Kanäle für Grenzprojekte, Sprachbildung und Kulturaustausch.",
-        job6Title:"Lebenslauf & Interview Coaching",
-        job6Text:"Zweisprachiger Lebenslauf, Interviewetikette und interkulturelle Fähigkeiten zur Steigerung der Jobchancen.",
-        alumniTitle:"Globales Alumni-Netzwerk",
-        alumniText:"Verbinde dich mit ehemaligen Studierenden, Managern, Grenzprofis und Gründern. Teile Jobs, Branchennews und Kooperationen."
+        nav1:"Programm",nav2:"Universitäten",nav3:"Bewerbungsleitfaden",nav4:"Leben in China",nav5:"Karriere",nav6:"Ressourcen",
+        resTitle:"Ressourcenzentrum Internationale Studierende",
+        resDesc:"Offizielle Links, Vorlagen, Tools, Notfallkontakte und FAQs",
+        res1Title:"Offizielle Websites",
+        res2Title:"Formulare & Vorlagen",
+        res3Title:"Lern- & Alltagstools",
+        res4Title:"Politikabfragen",
+        emgTitle:"Notfallkontakte (24/7)",
+        emg1:"Polizei:",emg2:"Krankenwagen:",emg3:"Einwanderungshotline:",emg4:"Konsularschutz:",emg5:"Internationales Büro:",
+        faqTitle:"FAQ",
+        faq1q:"F: Wie beantrage ich ein chinesisches Regierungsstipendium?",
+        faq1a:"A: Über Study in China oder Botschaft, fristgerecht Formular und Unterlagen einreichen.",
+        faq2q:"F: Unterschied JW201/JW202?",
+        faq2a:"A: JW201 für Stipendiaten, JW202 für Selbstzahler, beides von der Universität bearbeitet.",
+        faq3q:"F: Unterlagen für Arbeitserlaubnis?",
+        faq3a:"A: Reisepass, Zulassung, Gesundheitszeugnis, Wohnungsnachweis, Foto und Gebühr innerhalb 30 Tagen.",
+        faq4q:"F: Wo prüfe ich Anerkennung meines Studiengangs?",
+        faq4a:"A: Offizielles Portal des Bildungsministeriums für ausländische Studierende."
     },
     ru:{
-        nav1:"Программы",nav2:"Университеты",nav3:"Руководство по поступлению",nav4:"Жизнь в Китае",nav5:"Карьера",nav6:"Ресурсы",
-        careerTitle:"Карьерное развитие иностранных студентов",
-        careerDesc:"Частичная занятость, стажировки, работа после учебы, рабочая виза, поддержка стартапов и сеть выпускников",
-        job1Title:"Частичная занятость на кампусе",
-        job1Text:"Ассистент преподавателя, помощник международного отдела, языковой партнер, волонтерство. Гибкий график и опыт общения на китайском.",
-        job2Title:"Профессиональные стажировки",
-        job2Text:"Прохождение летних стажировок и корпоративных проектов от университета. Получение реального опыта для резюме.",
-        job3Title:"Политика трудоустройства выпускников",
-        job3Text:"Льготы для иностранных выпускников, субсидии, популярные вакансии во внешней торговле, образовании, кроссбордере и технике.",
-        job4Title:"Рабочая виза и смена статуса",
-        job4Text:"Правила оформления стажировочной, поисковой и рабочей визы. Подготовка документов и избежание юридических рисков.",
-        job5Title:"Поддержка стартапов для студентов",
-        job5Text:"Университетские инкубаторы, гранты, зеленые коридоры для проектов торговли, языкового образования и культурного обмена.",
-        job6Title:"Резюме и подготовка к собеседованиям",
-        job6Text:"Двухъязычное резюме, этикет собеседований, межкультурная коммуникация для повышения конкурентоспособности.",
-        alumniTitle:"Глобальная сеть выпускников",
-        alumniText:"Общение с бывшими студентами, менеджерами, предпринимателями. Обмен вакансиями, новостями и партнерскими возможностями."
+        nav1:"Программы",nav2:"Университеты",nav3:"Руководство",nav4:"Жизнь в Китае",nav5:"Карьера",nav6:"Ресурсы",
+        resTitle:"Ресурсный центр",
+        resDesc:"Официальные ссылки, шаблоны, инструменты, контакты и частые вопросы",
+        res1Title:"Официальные сайты",
+        res2Title:"Формы и шаблоны",
+        res3Title:"Инструменты",
+        res4Title:"Политика и справки",
+        emgTitle:"Экстренные контакты (24/7)",
+        emg1:"Полиция:",emg2:"Скорая:",emg3:"Иммиграционная:",emg4:"Консульская защита:",emg5:"Международный отдел:",
+        faqTitle:"Часто задаваемые вопросы",
+        faq1q:"В: Как подать на стипендию правительства Китая?",
+        faq1a:"О: Через Study in China или посольство, подайте анкету и документы в срок.",
+        faq2q:"В: Разница JW201 и JW202?",
+        faq2a:"О: JW201 для стипендиатов, JW202 для самостоятельных студентов.",
+        faq3q:"В: Документы на вид на жительство?",
+        faq3a:"О: Паспорт, приглашение, медсправка, подтверждение жилья, фото и сбор в течение 30 дней.",
+        faq4q:"В: Где проверить аккредитацию программы?",
+        faq4a:"О: На официальном портале Минобразования для иностранных студентов."
     },
     ar:{
-        nav1:"البرامج",nav2:"الجامعات",nav3:"دليل التقديم",nav4:"الحياة في الصين",nav5:"المسار المهني",nav6:"المصادر",
-        careerTitle:"التطوير المهني للطلاب الدوليين",
-        careerDesc:"وظائف جزئية، تدريب رسمي، توظيف بعد التخرج، تأشيرة عمل، دعم المشاريع وشبكة الخريجين",
-        job1Title:"وظائف جزئية داخل الحرم الجامعي",
-        job1Text:"مساعد مدرس، مساعد مكتب الطلاب الدوليين، شريك لغوي، متطوع. أوقات مرنة لاكتساب خبرة وتطوير اللغة الصينية.",
-        job2Title:"تدريب مهني ومشاريع عملية",
-        job2Text:"الالتحاق بالتدريبات الصيفية ومشاريع الشركات عبر الجامعة، اكتساب خبرة عملية حقيقية للسيرة الذاتية.",
-        job3Title:"سياسات التوظيف بعد التخرج",
-        job3Text:"معرفة المزايا للخريجين الأجانب، الإعانات الوظيفية، الوظائف الشائعة في التجارة الخارجية، التعليم، التجارة الإلكترونية والتقنية.",
-        job4Title:"تأشيرة العمل وتحويل الإقامة",
-        job4Text:"فهم إجراءات تأشيرة التدريب، تأشيرة البحث عن عمل وتأشيرة العمل الرسمية، تجنب المخاطر القانونية.",
-        job5Title:"دعم المشاريع الناشئة للطلاب",
-        job5Text:"حاضنات جامعية، إعانات مالية، مسارات سريعة للمشاريع عبر الحدود، التعليم اللغوي والتبادل الثقافي.",
-        job6Title:"تحسين السيرة الذاتية وإجراء المقابلات",
-        job6Text:"سيره ذاتية ثنائية اللغة، آداب المقابلات، مهارات التواصل الثقافي لزيادة فرص التوظيف.",
-        alumniTitle:"شبكة الخريجين العالمية",
-        alumniText:"تواصل مع الطلاب السابقين، المدراء، أصحاب المشاريع، تبادل الوظائف، الأخبار والفرص التعاونية."
+        nav1:"البرامج",nav2:"الجامعات",nav3:"دليل التقديم",nav4:"الحياة في الصين",nav5:"المهنة",nav6:"المصادر",
+        resTitle:"مركز المصادر",
+        resDesc:"روابط رسمية، نماذج، أدوات، اتصالات الطوارئ والأسئلة الشائعة",
+        res1Title:"مواقع رسمية",
+        res2Title:"نماذج ووثائق",
+        res3Title:"أدوات الدراسة والحياة",
+        res4Title:"استعلام السياسات",
+        emgTitle:"اتصالات الطوارئ (24 ساعة)",
+        emg1:"الشرطة:",emg2:"الإسعاف:",emg3:"خط الهجرة:",emg4:"الحماية القنصلية:",emg5:"المكتب الدولي:",
+        faqTitle:"أسئلة شائعة",
+        faq1q:"س: كيف أتقدم لمنحة الحكومة الصينية؟",
+        faq1a:"ج: عبر Study in China أو السفارة، قدم النموذج والوثائق في المواعيد.",
+        faq2q:"س: الفرق بين JW201 وJW202؟",
+        faq2a:"ج: JW201 للمنح، JW202 للطلاب الذاتيين، الجامعة تتابع الإجراء.",
+        faq3q:"س: مستندات الإقامة؟",
+        faq3a:"ج: جواز السفر، خطاب القبول، الفحص الطبي، إثبات السكن، صورة ورسوم خلال 30 يومًا.",
+        faq4q:"س: أين أتحقق من اعتماد تخصصي؟",
+        faq4a:"ج: بوابة وزارة التعليم الرسمية للطلاب الأجانب."
     },
     ja:{
         nav1:"プログラム",nav2:"大学",nav3:"出願案内",nav4:"中国での生活",nav5:"キャリア",nav6:"資料",
-        careerTitle:"留学生キャリア開発",
-        careerDesc:"キャンパスアルバイト、合法インターン、卒業後就職、就労ビザ、起業支援、同窓人脈",
-        job1Title:"校内合法アルバイト",
-        job1Text:"ティーチングアシスタント、留学生課補助、言語パートナー、イベントボランティア。時間自由で中国語と実務経験を積めます。",
-        job2Title:"専門インターンシップ",
-        job2Text:"大学提携企業で長期休暇インターンに参加し、中国の職場ルールを学び、履歴書に実績を追加できます。",
-        job3Title:"卒業後中国就職政策",
-        job3Text:"外国人卒業生向け優遇政策、人材補助、貿易・教育・越境EC・技術分野の人気求人を紹介。",
-        job4Title:"就労ビザ在留資格変更",
-        job4Text:"インターンビザ・就活ビザ・正式就労ビザの切り替え手順を理解し、書類準備とリスク回避を徹底。",
-        job5Title:"留学生起業支援制度",
-        job5Text:"大学起業孵化園、補助金、越境事業特別ルートあり。語学教育・貿易・文化交流分野の起業をサポート。",
-        job6Title:"履歴書添削・面接対策",
-        job6Text:"日中バイリンガル履歴書作成、面接マナー、異文化コミュニケーションを強化し就活力アップ。",
-        alumniTitle:"世界留学生同窓ネットワーク",
-        alumniText:"元留学生・外資企業社員・起業家と繋がり、求人紹介・業界情報・提携機会を共有できる人脈コミュニティ。"
+        resTitle:"留学生リソースセンター",
+        resDesc:"公式リンク、書類テンプレート、便利ツール、緊急連絡先とよくある質問",
+        res1Title:"公式サイト",
+        res2Title:"申請書類テンプレート",
+        res3Title:"学習・生活ツール",
+        res4Title:"政策・データ照会",
+        emgTitle:"緊急連絡先（24時間）",
+        emg1:"警察:",emg2:"救急車:",emg3:"入国管理局:",emg4:"領事保護:",emg5:"大学国際課:",
+        faqTitle:"よくある質問",
+        faq1q:"Q：中国政府奨学金の申請方法は？",
+        faq1a:"A：Study in Chinaまたは中国大使館を通じて申請期間、オンライン提出。",
+        faq2q:"Q：JW201とJW202の違いは？",
+        faq2a:"A：JW201は奨学金受給者用、JW202は私費用、大学が手続きをサポート。",
+        faq3q:"Q：居留許可に必要な書類は？",
+        faq3a:"A：パスポート、合格通知書、健康診断書、宿泊証明、写真と手数料を30日以内に提出。",
+        faq4q:"Q：専攻の認定状況はどこで確認？",
+        faq4a:"A：教育部認定外国学生向け公式ポータルで確認。"
     },
     ko:{
-        nav1:"프로그램",nav2:"대학",nav3:"입학안내",nav4:"중국생활",nav5:"커리어",nav6:"자료",
-        careerTitle:"유학생 커리어 개발",
-        careerDesc:"캠퍼스 아르바이트, 합법 인턴, 졸업 후 취업, 취업비자, 창업지원, 동문 인맥",
-        job1Title:"캠퍼스 합법 아르바이트",
-        job1Text:"조교, 유학생 사무실 보조, 언어 파트너, 행사 자원봉사 등 시간 자유롭고 중국어 능력과 실무 경험 쌓기 가능.",
-        job2Title:"전문 인턴십 실습",
-        job2Text:"대학 협력 기업에서 방학 인턴 참여, 중국 직장 문화 익히고 이력서 핵심 경력 쌓기.",
-        job3Title:"졸업 후 중국 취업 정책",
-        job3Text:"외국인 졸업생 우대 정책, 인재 보조금, 무역·교육·크로스보더 전자상거래·기술 분야 인기 직종 안내.",
-        job4Title:"취업비자 및 체류자격 전환",
-        job4Text:"인턴비자·취업준비비자·정식 취업비자 전환 절차 숙지, 서류 준비 및 법적 리스크 사전 차단.",
-        job5Title:"유학생 창업 지원 제도",
-        job5Text:"대학 창업 인큐베이터, 보조금, 국경 간 사업 특별 통로 운영. 어학교육, 무역, 문화교류 분야 창업 지원.",
-        job6Title:"이력서 첨삭 및 면접 대비",
-        job6Text:"한중 양문 이력서 다듬기, 면접 예절, 다문화 의사소통 능력 강화로 취업 경쟁력 높이기.",
-        alumniTitle:"글로벌 유학생 동문 네트워크",
-        alumniText:"선배 유학생, 외국계 기업 임직원, 창업가 연결, 채용 추천·산업 정보·협력 기회 공유하는 인맥 커뮤니티."
+        nav1:"프로그램",nav2:"대학",nav3:"지원 안내",nav4:"중국 생활",nav5:"커리어",nav6:"자료",
+        resTitle:"유학생 자료센터",
+        resDesc:"공식 링크, 서식, 도구, 긴급 연락처 및 FAQ",
+        res1Title:"공식 사이트",
+        res2Title:"서식 및 템플릿",
+        res3Title:"학습 및 생활 도구",
+        res4Title:"정책 자료 조회",
+        emgTitle:"긴급 연락망",
+        emg1:"경찰:",emg2:"구급차:",emg3:"출입국 관리사무소:",emg4:"영사 보호:",emg5:"국제처:",
+        faqTitle:"자주 묻는 질문",
+        faq1q:"Q: 중국 정부 장학금 신청 방법은?",
+        faq1a:"A: Study in China 또는 중국 대사관을 통해 신청 기간 확인, 온라인 서류 제출.",
+        faq2q:"Q: JW201과 JW202 차이?",
+        faq2a:"A: JW201은 장학생용, JW202은 일반 유학생용입니다.",
+        faq3q:"Q: 거류허가 필요 서류는?",
+        faq3a:"A: 여권, 합격통지서, 건강진단서, 숙소증명, 사진과 수수료를 30일 이내 제출.",
+        faq4q:"Q: 전공 인증 여부는 어디에서 확인?",
+        faq4a:"A: 중국 교육부 공식 유학생 정보 사이트에서 확인 가능."
     },
     pt:{
-        nav1:"Programas",nav2:"Universidades",nav3:"Guia de inscrição",nav4:"Viver na China",nav5:"Carreira",nav6:"Recursos",
-        careerTitle:"Desenvolvimento de carreira estudantes internacionais",
-        careerDesc:"Empregos parciais, estágios legais, emprego pós-formatura, visto de trabalho, apoio a startups e rede de ex-alunos",
-        job1Title:"Empregos parciais no campus",
-        job1Text:"Auxiliar de aula, assistente de escritório, parceiro de idioma e voluntariado. Horários flexíveis para experiência e chinês.",
-        job2Title:"Estágios profissionais e práticas",
-        job2Text:"Participe de estágios de férias e projetos empresariais. Construa experiência real para o seu currículo.",
-        job3Title:"Políticas de emprego pós-formatura",
-        job3Text:"Conheça benefícios para graduados estrangeiros, subsídios e vagas em comércio exterior, educação, e-commerce transfronteiriço e tecnologia.",
-        job4Title:"Visto de trabalho e conversão de residência",
-        job4Text:"Entenda visto de estágio, visto de procura de emprego e visto oficial. Prepare documentos e evite riscos legais.",
-        job5Title:"Apoio a startups para estudantes",
-        job5Text:"Incubadoras universitárias, subsídios e canais verdes para projetos transfronteiriços, educação de idiomas e intercâmbio cultural.",
-        job6Title:"Currículo e preparação para entrevistas",
-        job6Text:"Otimização de currículo bilíngue, etiqueta de entrevista e comunicação intercultural para aumentar competitividade.",
-        alumniTitle:"Rede global de ex-alunos",
-        alumniText:"Conecte-se com ex-estudantes, gestores, profissionais transfronteiriços e empreendedores. Compartilhe vagas, notícias e parcerias."
+        nav1:"Programas",nav2:"Universidades",nav3:"Guia de Inscrição",nav4:"Viver na China",nav5:"Carreira",nav6:"Recursos",
+        resTitle:"Central de Recursos",
+        resDesc:"Links oficiais, formulários, ferramentas, contatos de emergência e perguntas frequentes",
+        res1Title:"Sites Oficiais",
+        res2Title:"Formulários e Modelos",
+        res3Title:"Ferramentas de Estudo e Vida",
+        res4Title:"Consulta de Políticas",
+        emgTitle:"Contatos de Emergência (24h)",
+        emg1:"Polícia:",emg2:"Ambulância:",emg3:"Linha de Imigração:",emg4:"Proteção Consular:",emg5:"Escritório Internacional:",
+        faqTitle:"Perguntas Frequentes",
+        faq1q:"Q: Como se candidatar à Bolsa do Governo Chinês?",
+        faq1a:"A: Através do Study in China ou embaixada, dentro do prazo com formulário e documentos.",
+        faq2q:"Q: Diferença entre JW201 e JW202?",
+        faq2a:"A: JW201 para bolsistas, JW202 para autofinanciados, cuidados pela universidade.",
+        faq3q:"Q: Documentos para autorização de residência?",
+        faq3a:"A: Passaporte, carta de admissão, atestado médico, comprovante de moradia, foto e taxa em 30 dias.",
+        faq4q:"Q: Onde verifico se meu curso é reconhecido?",
+        faq4a:"A: No portal oficial do Ministério da Educação para estudantes estrangeiros."
     },
     it:{
-        nav1:"Programmi",nav2:"Università",nav3:"Guida alle iscrizioni",nav4:"Vivere in Cina",nav5:"Carriera",nav6:"Risorse",
-        careerTitle:"Sviluppo carriera studenti internazionali",
-        careerDesc:"Lavori part-time, stage legali, occupazione post-laurea, visto lavoro, supporto startup e rete alumni",
-        job1Title:"Lavori part-time nel campus",
-        job1Text:"Assistente docente, ufficio internazionale, partner linguistico e volontariato. Orari flessibili per esperienza e lingua cinese.",
-        job2Title:"Stage professionali e formazione",
-        job2Text:"Partecipa a stage estivi e progetti aziendali. Costruisci esperienza reale per il tuo curriculum.",
-        job3Title:"Politiche occupazione post-laurea",
-        job3Text:"Scopri agevolazioni per laureati stranieri, incentivi e lavori nel commercio estero, educazione, e-commerce transfrontaliero e tecnologia.",
-        job4Title:"Visto lavoro e cambio residenza",
-        job4Text:"Comprendi visto stage, visto ricerca lavoro e visto ufficiale. Prepara documenti ed evita rischi legali.",
-        job5Title:"Supporto startup per studenti",
-        job5Text:"Incubatori universitari, incentivi e canali prioritari per progetti transfrontalieri, educazione linguistica e scambi culturali.",
-        job6Title:"Curriculum e preparazione colloqui",
-        job6Text:"Ottimizzazione curriculum bilingue, galateo colloquio e comunicazione interculturale per aumentare la competitività.",
-        alumniTitle:"Rete globale alumni",
-        alumniText:"Connetti ex studenti, manager, professionisti transfrontalieri e imprenditori. Condividi offerte, notizie e collaborazioni."
+        nav1:"Programmi",nav2:"Università",nav3:"Guida alla Domanda",nav4:"Vivere in Cina",nav5:"Carriera",nav6:"Risorse",
+        resTitle:"Centro Risorse",
+        resDesc:"Link ufficiali, modelli, strumenti, contatti di emergenza e domande frequenti",
+        res1Title:"Siti Ufficiali",
+        res2Title:"Modelli e Formulari",
+        res3Title:"Strumenti Studio e Vita",
+        res4Title:"Consultazione Normative",
+        emgTitle:"Contatti di Emergenza",
+        emg1:"Polizia:",emg2:"Ambulanza:",emg3:"Linea Immigrazione:",emg4:"Protezione Consolare:",emg5:"Ufficio Internazionale:",
+        faqTitle:"FAQ",
+        faq1q:"D: Come richiedere una borsa di studio del governo cinese?",
+        faq1a:"R: Tramite Study in China o ambasciata, presenta modulo e documenti nelle scadenze indicate.",
+        faq2q:"D: Differenza tra JW201 e JW202?",
+        faq2a:"R: JW201 per borsisti, JW202 per studenti autofinanziati, gestiti dall'università.",
+        faq3q:"D: Documenti per permesso di soggiorno?",
+        faq3a:"R: Passaporto, lettera di ammissione, certificato medico, prova alloggio, foto e tassa entro 30 giorni.",
+        faq4q:"D: Dove verifico se il mio corso è accreditato?",
+        faq4a:"R: Portale ufficiale del Ministero dell'Istruzione per studenti stranieri."
     },
     nl:{
         nav1:"Programma's",nav2:"Universiteiten",nav3:"Aanmeldgids",nav4:"Leven in China",nav5:"Carrière",nav6:"Bronnen",
-        careerTitle:"Carrièreontwikkeling internationale studenten",
-        careerDesc:"Campusbijbanen, legale stages, afstudeerbanen, werkvisum, startupondersteuning & alumni netwerk",
-        job1Title:"Campus bijbanen",
-        job1Text:"Docentassistent, internationaal bureau hulp, taalpartner en vrijwilligerswerk. Flexibele uren voor ervaring en Chinees.",
-        job2Title:"Professionele stages & training",
-        job2Text:"Doe mee aan vakantiestages en bedrijfsprojecten. Bouw echte werkervaring op voor je cv.",
-        job3Title:"Werkbeleid na afstuderen",
-        job3Text:"Leer voordelen voor buitenlandse afgestudeerden, subsidies en populaire banen in buitenlandse handel, onderwijs, grensoverschrijdende e-commerce en tech.",
-        job4Title:"Werkvisum & statuswijziging",
-        job4Text:"Begrijp stagevisum, zoekvisum en officieel werkvisum. Bereid documenten goed voor en voorkom juridische risico's.",
-        job5Title:"Startup ondersteuning studenten",
-        job5Text:"Universiteitsincubatoren, subsidies en groene kanalen voor grensprojecten, taalonderwijs en culturele uitwisseling.",
-        job6Title:"CV & interview begeleiding",
-        job6Text:"Tweetalig cv optimalisatie, interview etiquette en interculturele vaardigheden om je kansen te vergroten.",
-        alumniTitle:"Wereldwijd alumni netwerk",
-        alumniText:"Verbind met voormalige studenten, managers, grensprofessionals en ondernemers. Deel vacatures, nieuws en samenwerkingen."
+        resTitle:"Bronnencentrum",
+        resDesc:"Officiële links, sjablonen, tools, noodcontacten en veelgestelde vragen",
+        res1Title:"Officiële Websites",
+        res2Title:"Formulieren en Sjablonen",
+        res3Title:"Studie- en Levenstools",
+        res4Title:"Beleidsinformatie",
+        emgTitle:"Noodcontacten (24/7)",
+        emg1:"Politie:",emg2:"Ambulance:",emg3:"Immigratielijn:",emg4:"Consulaire Bescherming:",emg5:"Internationaal Kantoor:",
+        faqTitle:"FAQ",
+        faq1q:"V: Hoe vraag ik een Chinese overheidsbeurs aan?",
+        faq1a:"A: Via Study in China of ambassade, dien formulier en documenten op tijd in.",
+        faq2q:"V: Verschil JW201 en JW202?",
+        faq2a:"A: JW201 voor beurshouders, JW202 voor zelfbetalers, universiteit regelt het.",
+        faq3q:"V: Documenten verblijfsvergunning?",
+        faq3a:"A: Paspoort, toelatingsbrief, medische verklaring, adresbewijs, foto en betaling binnen 30 dagen.",
+        faq4q:"V: Waar controleer ik accreditatie van mijn opleiding?",
+        faq4a:"A: Officiële overheidsportal voor buitenlandse studenten."
     },
     pl:{
-        nav1:"Programy",nav2:"Uniwersytety",nav3:"Przewodnik rekrutacyjny",nav4:"Życie w Chinach",nav5:"Kariera",nav6:"Zasoby",
-        careerTitle:"Rozwój kariery studentów zagranicznych",
-        careerDesc:"Praca dorywcza, legalne staże, praca po studiach, wiza pracownicza, wsparcie startupów i sieć absolwentów",
-        job1Title:"Praca dorywcza na kampusie",
-        job1Text:"Asystent nauczyciela, pomocnik biura cudzoziemców, partner językowy, wolontariat. Elastyczne godziny i doświadczenie z językiem chińskim.",
-        job2Title:"Staże zawodowe i praktyki",
-        job2Text:"Weź udział w stażach wakacyjnych i projektach firmowych. Zdobądź realne doświadczenie do CV.",
-        job3Title:"Polityka zatrudnienia po ukończeniu studiów",
-        job3Text:"Poznaj ulgi dla absolwentów zagranicznych, dotacje i popularne stanowiska w handlu zagranicznym, edukacji, e-commerce transgranicznym i technologii.",
-        job4Title:"Wiza pracownicza i zmiana statusu",
-        job4Text:"Zrozum wizę stażową, wizę poszukiwania pracy i oficjalną wizę pracowniczą. Unikaj ryzyk prawnych odpowiednimi dokumentami.",
-        job5Title:"Wsparcie startupów dla studentów",
-        job5Text:"Inkubatory uniwersyteckie, dotacje i zielone ścieżki dla projektów transgranicznych, edukacji językowej i wymiany kulturowej.",
-        job6Title:"CV i przygotowanie do rozmów kwalifikacyjnych",
-        job6Text:"Optymalizacja dwujęzycznego CV, etykieta rozmów i umiejętności międzykulturowe dla lepszych szans zawodowych.",
-        alumniTitle:"Globalna sieć absolwentów",
-        alumniText:"Nawiąż kontakt z dawnymi studentami, menedżerami, przedsiębiorcami. Wymieniaj oferty pracy, wiadomości branżowe i współprace."
+        nav1:"Programy",nav2:"Uniwersytety",nav3:"Przewodnik",nav4:"Życie w Chinach",nav5:"Kariera",nav6:"Zasoby",
+        resTitle:"Centrum Zasobów",
+        resDesc:"Oficjalne linki, szablony, narzędzia, kontakty awaryjne i najczęstsze pytania",
+        res1Title:"Oficjalne Strony",
+        res2Title:"Formularze i Szablony",
+        res3Title:"Narzędzia do Nauki i Życia",
+        res4Title:"Polityka i Dane",
+        emgTitle:"Kontakty Awaryjne (24/7)",
+        emg1:"Policja:",emg2:"Ambulans:",emg3:"Infolinia Imigracyjna:",emg4:"Ochrona Konsularna:",emg5:"Biuro Międzynarodowe:",
+        faqTitle:"FAQ",
+        faq1q:"P: Jak ubiegać się o stypendium rządu chińskiego?",
+        faq1a:"O: Przez Study in China lub ambasadę, złóż wniosek i dokumenty w terminie.",
+        faq2q:"P: Różnica JW201 a JW202?",
+        faq2a:"O: JW201 dla stypendystów, JW202 dla płacących, załatwiane przez uczelnię.",
+        faq3q:"P: Dokumenty na pobyt?",
+        faq3a:"O: Paszport, list przyjęciowy, zaświadczenie lekarskie, dowód zakwaterowania, zdjęcie i opłata w ciągu 30 dni.",
+        faq4q:"P: Gdzie sprawdzić akredytację kierunku?",
+        faq4a:"O: Na oficjalnym portalu ministerstwa edukacji dla studentów zagranicznych."
     },
     uk:{
-        nav1:"Програми",nav2:"Університети",nav3:"Посібник вступника",nav4:"Життя у Китаї",nav5:"Кар'єра",nav6:"Ресурси",
-        careerTitle:"Кар'єрний розвиток іноземних студентів",
-        careerDesc:"Часткова зайнятість, легальні стажування, робота після навчання, робоча віза, підтримка стартапів та мережа випускників",
-        job1Title:"Часткова робота на кампусі",
-        job1Text:"Асистент викладача, помічник міжнародного відділу, мовний партнер, волонтерство. Гнучкий графік та досвід спілкування китайською.",
-        job2Title:"Професійне стажування",
-        job2Text:"Беріть участь у літніх стажуваннях та корпоративних проектах. Отримуйте реальний досвід для резюме.",
-        job3Title:"Політика працевлаштування випускників",
-        job3Text:"Дізнайтеся пільги для іноземних випускників, субсидії та популярні вакансії у зовнішній торгівлі, освіті, транскордонному бізнесі та техніці.",
-        job4Title:"Робоча віза та зміна статусу",
-        job4Text:"Розумійте стажувальну, пошукову та робочу візу. Готуйте документи правильно, щоб уникнути юридичних ризиків.",
-        job5Title:"Підтримка стартапів для студентів",
-        job5Text:"Університетські інкубатори, гранти та зелені маршрути для транскордонних проектів, мовної освіти та культурного обміну.",
-        job6Title:"Резюме та підготовка до співбесід",
-        job6Text:"Оптимізація двомовного резюме, етикет співбесід та міжкультурні навички для підвищення конкурентоспроможності.",
-        alumniTitle:"Глобальна мережа випускників",
-        alumniText:"Спілкуйтеся з колишніми студентами, менеджерами та підприємцями. Обмінюйте вакансії, новини галузі та партнерські можливості."
+        nav1:"Програми",nav2:"Університети",nav3:"Посібник",nav4:"Життя в Китаї",nav5:"Кар'єра",nav6:"Ресурси",
+        resTitle:"Ресурсний центр",
+        resDesc:"Офіційні посилання, шаблони, інструменти, екстрені контакти та часті питання",
+        res1Title:"Офіційні сайти",
+        res2Title:"Форми та шаблони",
+        res3Title:"Інструменти",
+        res4Title:"Політика та дані",
+        emgTitle:"Надзвичайні контакти",
+        emg1:"Поліція:",emg2:"Швидка:",emg3:"Міграційна служба:",emg4:"Консульський захист:",emg5:"Міжнародний відділ:",
+        faqTitle:"Часті запитання",
+        faq1q:"Як отримати стипендію уряду Китаю?",
+        faq1a:"Через Study in China або посольство, подайте форму та документи у зазначені строки.",
+        faq2q:"Різниця JW201 та JW202?",
+        faq2a:"JW201 для стипендіатів, JW202 для самофінансування, університет оформлює.",
+        faq3q:"Документи на посвідку на проживання?",
+        faq3a:"Паспорт, запрошення, меддовідка, підтвердження житла, фото та збір протягом 30 днів.",
+        faq4q:"Де перевірити акредитацію програми?",
+        faq4a:"Офіційний портал Міністерства освіти для іноземних студентів."
     },
     tr:{
         nav1:"Programlar",nav2:"Üniversiteler",nav3:"Başvuru Kılavuzu",nav4:"Çin'de Yaşam",nav5:"Kariyer",nav6:"Kaynaklar",
-        careerTitle:"Uluslararası Öğrenci Kariyer Gelişimi",
-        careerDesc:"Kampüs yarı zamanlı işler, yasal stajlar, mezun istihdamı, çalışma vizesi, girişim desteği & mezun ağı",
-        job1Title:"Kampüs Yarı Zamanlı İşler",
-        job1Text:"Öğretmen asistanı, uluslararası ofis yardımcısı, dil partneri ve gönüllülük. Esnek saatler ile deneyim ve Çince geliştirme.",
-        job2Title:"Profesyonel Stajlar & Eğitim",
-        job2Text:"Tatil stajları ve şirket projelerine katıl. Özgeçmiş için gerçek iş deneyimi kazan.",
-        job3Title:"Mezun Sonrası İstihdam Politikası",
-        job3Text:"Yabancı mezunlara özel avantajlar, teşvikler ve dış ticaret, eğitim, sınır ötesi e-ticaret ve teknoloji popüler işleri öğren.",
-        job4Title:"Çalışma Vizesi & Statü Değişimi",
-        job4Text:"Staj vizesi, iş arama vizesi ve resmi çalışma vizesi süreçlerini anla. Yasal riskleri önlemek için evrakları tam hazırla.",
-        job5Title:"Öğrenci Girişim Desteği",
-        job5Text:"Üniversite inkübasyon merkezleri, hibeler ve sınır ötesi proje, dil eğitimi ve kültür alışverişi için yeşil hatlar.",
-        job6Title:"Özgeçmiş & Mülakat Rehberi",
-        job6Text:"İki dilli özgeçmiş düzenleme, mülakat görgüsü ve kültürler arası iletişim ile iş fırsatlarını artır.",
-        alumniTitle:"Küresel Mezun Ağı",
-        alumniText:"Eski öğrenciler, yöneticiler, sınır ötesi profesyoneller ve girişimcilerle bağlantı kur. İş ilanı, sektör haberi ve işbirliği paylaş."
+        resTitle:"Kaynak Merkezi",
+        resDesc:"Resmi bağlantılar, şablonlar, araçlar, acil durum iletişimi ve sıkça sorulan sorular",
+        res1Title:"Resmi Siteler",
+        res2Title:"Form ve Şablonlar",
+        res3Title:"Çalışma ve Yaşam Araçları",
+        res4Title:"Politika Sorgulama",
+        emgTitle:"Acil Durum İletişim",
+        emg1:"Polis:",emg2:"Ambulans:",emg3:"Göçmenlik Hattı:",emg4:"Konsolosluk Koruması:",emg5:"Uluslararası Ofis:",
+        faqTitle:"SSS",
+        faq1q:"S: Çin Hükümet Bursu'na nasıl başvurulur?",
+        faq1a:"C: Study in China veya büyükelçilik üzerinden süresi içinde form ve belgeleri iletin.",
+        faq2q:"S: JW201 ile JW202 arasındaki fark?",
+        faq2a:"C: JW201 burslular için, JW202 kendi imkanıyla okuyanlar için, üniversite yürütür.",
+        faq3q:"S: Oturma izni için hangi belgeler gerekli?",
+        faq3a:"C: Pasaport, kabul mektubu, sağlık raporu, konaklama belgesi, bir fotoğraf ve 30 gün içinde başvuru.",
+        faq4q:"S: Programımın tanınırlığını nereden kontrol edebilirim?",
+        faq4a:"C: Milli Eğitim Bakanlığı yabancı öğrenci portalı."
     },
     th:{
-        nav1:"โปรแกรม",nav2:"มหาวิทยาลัย",nav3:"คู่มือสมัครเรียน",nav4:"ชีวิตในจีน",nav5:"อาชีพ",nav6:"ทรัพยากร",
-        careerTitle:"การพัฒนาอาชีพสำหรับนักศึกษาต่างชาติ",
-        careerDesc:"งานพาร์ทไทม์ในมหาวิทยาลัย ฝึกงานถูกกฎหมาย การทำงานหลังจบ วีซ่าทำงาน สนับสนุนธุรกิจใหม่ และเครือข่ายศิษย์เก่า",
-        job1Title:"งานพาร์ทไทม์ในแคมปัส",
-        job1Text:"ผู้ช่วยสอน ผู้ช่วยสำนักนักศึกษาต่างชาติ คู่ภาษา อาสา สามารถทำเวลายืดหยุ่น สร้างประสบการณ์และฝึกภาษาจีน",
-        job2Title:"ฝึกงานวิชาชีพและโปรเจกต์",
-        job2Text:"เข้าร่วมฝึกงานช่วงปิดเทอมและโปรเจกต์บริษัท สร้างประสบการณ์จริงสำหรับเรซูเม่",
-        job3Title:"นโยบายการจ้างงานหลังจบการศึกษา",
-        job3Text:"เรียนรู้สิทธิพิเศษสำหรับบัณฑิตต่างชาติ เงินอุดหนุน และอาชีพยอดนิยมด้านการค้าระหว่างประเทศ การศึกษา อีคอมเมิร์ซข้ามแดนและเทคโนโลยี",
-        job4Title:"วีซ่าทำงานและการเปลี่ยนสถานะ",
-        job4Text:"เข้าใจขั้นตอนวีซ่าฝึกงาน วีซ่าหางาน และวีซ่าทำงานทางการ เตรียมเอกสารให้ครบเพื่อหลีกเลี่ยงความเสี่ยงทางกฎหมาย",
-        job5Title:"สนับสนุนการสร้างธุรกิจสำหรับนักศึกษา",
-        job5Text:"ศูนย์บ่มเพาะธุรกิจในมหาวิทยาลัย เงินอุดหนุน และช่องทางพิเศษสำหรับโปรเจกต์ข้ามแดน การศึกษาภาษา และแลกเปลี่ยนวัฒนธรรม",
-        job6Title:"ปรับเรซูเม่และเตรียมสัมภาษณ์",
-        job6Text:"ปรับเรซูเม่สองภาษา มารยาทสัมภาษณ์ และทักษะการสื่อสารข้ามวัฒนธรรม เพิ่มโอกาสในการได้งาน",
-        alumniTitle:"เครือข่ายศิษย์เก่าระดับโลก",
-        alumniText:"เชื่อมต่อระหว่างนักศึกษาเก่า ผู้บริหาร ผู้ประกอบการ แชร์ตำแหน่งงาน ข่าวสารอุตสาหกรรม และโอกาสร่วมมือ"
+        nav1:"โปรแกรม",nav2:"มหาวิทยาลัย",nav3:"คู่มือสมัคร",nav4:"ชีวิตในจีน",nav5:"อาชีพ",nav6:"ทรัพยากร",
+        resTitle:"ศูนย์ทรัพยากร",
+        resDesc:"ลิงก์ทางการ แม่แบบ เครื่องมือ ติดต่อฉุกเฉิน และคำถามที่พบบ่อย",
+        res1Title:"เว็บไซต์ทางการ",
+        res2Title:"แบบฟอร์มและแม่แบบ",
+        res3Title:"เครื่องมือการเรียนและชีวิต",
+        res4Title:"ข้อมูลนโยบาย",
+        emgTitle:"ติดต่อฉุกเฉิน (24 ชม.)",
+        emg1:"ตำรวจ:",emg2:"รถพยาบาล:",emg3:"สายด่วนตรวจคนเข้าเมือง:",emg4:"การคุ้มครองกงสุล:",emg5:"สำนักงานนานาชาติมหาวิทยาลัย:",
+        faqTitle:"คำถามพบบ่อย",
+        faq1q:"ถาม: จะขอทุนรัฐบาลจีนได้อย่างไร?",
+        faq1a:"ตอบ: ผ่าน Study in China หรือสถานทูตจีน ยื่นแบบฟอร์มและเอกสารภายในกำหนดเวลา",
+        faq2q:"ถาม: JW201 กับ JW202 ต่างกันอย่างไร?",
+        faq2a:"ตอบ: JW201 สำหรับนักเรียนทุน, JW202 สำหรับนักเรียนค่าใช้จ่ายตัวเอง",
+        faq3q:"ถาม: เอกสารขอใบอนุญาตพำนัก?",
+        faq3a:"ตอบ: หนังสือเดินทาง, จดหมายตอบรับ, ใบรับรองแพทย์, หลักฐานที่พัก, รูปถ่าย และค่าธรรมเนียมภายใน 30 วัน",
+        faq4q:"ถาม: ตรวจสอบการรับรองหลักสูตรได้ที่ไหน?",
+        faq4a:"ตอบ: เว็บไซต์ทางการของกระทรวงศึกษาธิการสำหรับนักเรียนต่างชาติ"
     },
     vi:{
-        nav1:"Chương trình",nav2:"Trường đại học",nav3:"Hướng dẫn đăng ký",nav4:"Sống tại Trung Quốc",nav5:"Phát triển nghề nghiệp",nav6:"Nguồn tài nguyên",
-        careerTitle:"Định hướng nghề nghiệp du học sinh",
-        careerDesc:"Việc bán thời gian, thực tập hợp pháp, việc làm sau tốt nghiệp, visa lao động, hỗ trợ khởi nghiệp & mạng lưới cựu sinh viên",
-        job1Title:"Việc bán thời gian trong khuôn viên",
-        job1Text:"Trợ giảng, trợ lý văn phòng sinh viên quốc tế, bạn đối ngữ, tình nguyện viên. Thời gian linh hoạt tích lũy kinh nghiệm và nâng cao tiếng Trung.",
-        job2Title:"Thực tập chuyên nghiệp & dự án",
-        job2Text:"Tham gia thực tập hè và dự án doanh nghiệp liên kết trường, tích lũy kinh nghiệm thực tế làm đẹp hồ sơ xin việc.",
-        job3Title:"Chính sách việc làm sau tốt nghiệp",
-        job3Text:"Tìm hiểu chính sách ưu đãi cho sinh viên tốt nghiệp nước ngoài, trợ cấp nhân tài, các ngành hot: thương mại, giáo dục, thương mại điện tử xuyên biên giới, công nghệ.",
-        job4Title:"Visa lao động & chuyển đổi cư trú",
-        job4Text:"Nắm rõ quy trình visa thực tập, visa tìm việc, visa lao động chính thức. Chuẩn bị hồ sơ đầy đủ tránh rủi ro pháp lý.",
-        job5Title:"Hỗ trợ khởi nghiệp cho du học sinh",
-        job5Text:"Vườn ươm doanh nghiệp trường đại học, trợ cấp vốn, kênh ưu tiên dự án xuyên biên giới, giáo dục ngôn ngữ, giao lưu văn hóa.",
-        job6Title:"Tối ưu CV & luyện phỏng vấn",
-        job6Text:"Hoàn thiện CV song ngữ, nghi thức phỏng vấn, kỹ năng giao tiếp đa văn hóa nâng cao sức cạnh tranh xin việc.",
-        alumniTitle:"Mạng lưới cựu sinh viên toàn cầu",
-        alumniText:"Kết nối cựu du học sinh, quản lý doanh nghiệp, người làm kinh doanh xuyên biên giới, chia sẻ cơ hội việc làm, tin ngành và hợp tác."
+        nav1:"Chương trình",nav2:"Đại học",nav3:"Hướng dẫn",nav4:"Sống tại Trung Quốc",nav5:"Nghề nghiệp",nav6:"Tài nguyên",
+        resTitle:"Trung tâm Tài nguyên",
+        resDesc:"Liên kết chính thức, biểu mẫu, công cụ, liên hệ khẩn cấp và câu hỏi thường gặp",
+        res1Title:"Website chính thức",
+        res2Title:"Biểu mẫu và Mẫu đơn",
+        res3Title:"Công cụ học tập & đời sống",
+        res4Title:"Tra cứu chính sách",
+        emgTitle:"Liên hệ khẩn cấp (24/7)",
+        emg1:"Cảnh sát:",emg2:"Cứu thương:",emg3:"Đường dây xuất nhập cảnh:",emg4:"Bảo hộ lãnh sự:",emg5:"Phòng Quốc tế:",
+        faqTitle:"Câu hỏi thường gặp",
+        faq1q:"Q: Làm sao xin học bổng Chính phủ Trung Quốc?",
+        faq1a:"A: Qua Study in China hoặc Đại sứ quán, nộp đơn và hồ sơ đúng hạn.",
+        faq2q:"Q: Khác biệt giữa JW201 và JW202?",
+        faq2a:"A: JW201 cho sinh viên học bổng, JW202 cho tự túc, trường sẽ hỗ trợ.",
+        faq3q:"Q: Giấy tờ cần cho giấy phép cư trú?",
+        faq3a:"A: Hộ chiếu, thư trúng tuyển, giấy khám sức khỏe, xác nhận nơi ở, ảnh và phí trong vòng 30 ngày.",
+        faq4q:"Q: Kiểm tra chương trình học được công nhận ở đâu?",
+        faq4a:"A: Cổng thông tin chính thức của Bộ Giáo dục dành cho du học sinh."
     }
 };
 
-const langSel = document.getElementById('langSelect');
+const langSelect = document.getElementById('langSelect');
 const defaultLang = localStorage.getItem('siteLang') || 'zh';
-langSel.value = defaultLang;
+langSelect.value = defaultLang;
 
-function renderLang(lang) {
-    const data = langPack[lang];
-    if(!data) return;
-    // 替换所有 data-key 元素的文本
+function applyLanguage(lang) {
+    const data = langPack[lang] || langPack['zh'];
+    // 替换所有带 data-key 的元素文本
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
-        if(data[key]) el.textContent = data[key];
+        if (data[key] !== undefined) {
+            el.textContent = data[key];
+        }
     });
-    // 同步更新页面标题
-    if(data['careerTitle']) {
-        document.title = data['careerTitle'];
+    // 更新页面标题
+    if (data['resTitle']) {
+        document.title = data['resTitle'];
     }
-    // 同步 HTML lang 属性
+    // 更新 HTML lang 属性
     document.documentElement.lang = lang;
-    // 存储语言偏好
+    // 记住选择
     localStorage.setItem('siteLang', lang);
 }
 
-langSel.addEventListener('change', () => {
-    renderLang(langSel.value);
+langSelect.addEventListener('change', function(e) {
+    applyLanguage(e.target.value);
 });
 
-// 初始化渲染
-renderLang(defaultLang);
+applyLanguage(defaultLang);
 </script>
 </body>
 </html>
