@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>来华留学全球项目搜索引擎</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 去掉之前多余的样式，保持和你现在的界面一致 */
+        body {
+            background-color: #fff;
+        }
+        .page-header {
+            background: #fff;
+            color: #333;
+            padding: 60px 0 40px;
+        }
+        .search-bar {
+            padding: 0 0 40px;
+        }
+        .filter-section {
+            background: #fff;
+            border: none;
+            padding: 0 0 40px;
+        }
+        .filter-row {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .filter-group {
+            text-align: center;
+        }
+        .filter-group h3 {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        .filter-options {
+            display: flex;
+            gap: 10px;
+        }
+        .filter-select {
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航，和你现在的完全一致 -->
+    <header class="site-header" style="background: #fff; border-bottom: 1px solid #eee;">
+        <div class="container">
+            <div class="logo" style="color: #333;">Study in China</div>
+            <nav class="top-nav">
+                <a href="index.html" class="active">发现项目</a>
+                <a href="schools.html">探索院校</a>
+                <a href="guide.html">申请指南</a>
+                <a href="#">留学中国生活</a>
+                <a href="#">职业发展</a>
+                <a href="#">资源中心</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主标题区，和你现在的布局对齐 -->
+    <section class="page-header">
+        <div class="container" style="text-align: center;">
+            <h1 style="font-size: 28px; margin-bottom: 10px;">来华留学全球项目搜索引擎</h1>
+            <p style="color: #666; font-size: 15px;">检索语言班、预科、本科、硕士、博士及各类学术项目</p>
+        </div>
+    </section>
+
+    <!-- 主搜索框，和你现在的样式完全一致 -->
+    <section class="search-bar">
+        <div class="container" style="display: flex; justify-content: center; gap: 0;">
+            <input type="text" placeholder="搜索项目、专业、关键词..." 
+                   class="main-search" style="width: 500px; border: 1px solid #eee;">
+            <button class="search-btn" style="border-radius: 0 6px 6px 0;">搜索</button>
+        </div>
+    </section>
+
+    <!-- 筛选区，改成你说的“强制性+偏好”的通顺说法 -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-row">
+                <!-- 强制性条件（原“硬性门槛”，改成更易懂的词） -->
+                <div class="filter-group">
+                    <h3>基础条件</h3>
+                    <div class="filter-options">
+                        <select class="filter-select">
+                            <option>学历层次</option>
+                            <option>语言班/预科</option>
+                            <option>本科</option>
+                            <option>硕士</option>
+                            <option>博士</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>语言要求</option>
+                            <option>HSK 3级及以上</option>
+                            <option>HSK 4级及以上</option>
+                            <option>HSK 5级及以上</option>
+                            <option>英文授课免HSK</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>学费预算</option>
+                            <option>1万以下/年</option>
+                            <option>1-2万/年</option>
+                            <option>2-3万/年</option>
+                            <option>3万以上/年</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 偏好条件（原“柔性偏好”，改成更易懂的词） -->
+                <div class="filter-group">
+                    <h3>个人偏好</h3>
+                    <div class="filter-options">
+                        <select class="filter-select">
+                            <option>就读地区</option>
+                            <option>一线城市（北上广深）</option>
+                            <option>东部沿海高校</option>
+                            <option>中西部高校</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>学科方向</option>
+                            <option>计算机/工科</option>
+                            <option>经济/管理</option>
+                            <option>汉语言/文化</option>
+                            <option>医学/药学</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 特色标签（保留，和你现在的界面一致） -->
+                <div class="filter-group">
+                    <h3>特色标签</h3>
+                    <div class="filter-options">
+                        <select class="filter-select">
+                            <option>奖学金覆盖</option>
+                            <option>无语言要求</option>
+                            <option>短期项目</option>
+                            <option>校企合作</option>
+                            <option>双语授课</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
