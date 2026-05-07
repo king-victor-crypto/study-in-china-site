@@ -25,24 +25,34 @@
         .emergency-links li { margin-bottom: 0.4rem; }
         .emergency-links a { color: #e74c3c; font-weight: bold; }
         .faq-card .faq-item { margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
-        .faq-card .faq-q { font-weight: 600; color: #333; cursor: pointer; }
+        .faq-card .faq-q { font-weight: 600; color: #333; }
         .faq-card .faq-a { color: #666; margin-top: 0.3rem; }
         .page-banner { background: #005bac; color: #fff; padding: 2rem; text-align: center; }
-        .site-header { background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem; }
-        .header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .site-header { background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem 0; }
+        .header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1rem; }
         .logo { font-size: 1.2rem; font-weight: bold; color: #005bac; }
-        .site-nav a { margin: 0 0.5rem; text-decoration: none; color: #333; }
+        .site-nav a { margin: 0 0.5rem; text-decoration: none; color: #333; white-space: nowrap; }
         .site-nav a.nav-active { color: #005bac; font-weight: bold; }
         .site-footer { text-align: center; padding: 1rem; color: #999; }
+
+        /* 🔧 新增优化样式 */
+        .tool-link-item { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem; }
+        .tool-link-item .tool-category { flex-shrink: 0; }
+        .tool-link-item .tool-link { white-space: nowrap; }
+        .tool-link-item .tool-sep { color: #ccc; margin: 0 0.1rem; }
+        .info-banner { 
+            background: #fef9e7; border-left: 3px solid #f1c40f; 
+            padding: 0.6rem 1rem; border-radius: 4px; 
+            font-size: 13px; color: #7d6608; margin-bottom: 0.8rem;
+        }
         @media (max-width: 600px) {
             .resource-card { flex-direction: column; }
-            .site-nav a { display: inline-block; margin: 0.2rem; font-size: 0.9rem; }
+            .site-nav a { margin: 0.15rem; font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- 导航栏 -->
 <header class="site-header">
     <div class="header-container">
         <div class="logo">
@@ -61,13 +71,11 @@
     </div>
 </header>
 
-<!-- Banner -->
 <section class="page-banner">
     <h1><i class="fas fa-toolbox"></i> 留学生资源中心</h1>
     <p>集中提供官方链接、文档模板、实用工具、紧急联系和常见疑问解答</p>
 </section>
 
-<!-- 主体 -->
 <section class="resources-section">
 
     <!-- 模块1：官方网站直达 -->
@@ -76,21 +84,11 @@
         <div class="card-content">
             <h3>官方网站直达</h3>
             <ul class="resource-links">
-                <li><a href="https://www.campuschina.org" target="_blank" rel="noopener">
-                    <i class="fas fa-external-link-alt"></i> 留学中国网（教育部留学服务中心）
-                </a></li>
-                <li><a href="https://www.csc.edu.cn" target="_blank" rel="noopener">
-                    <i class="fas fa-external-link-alt"></i> 中国政府奖学金系统（CSC）
-                </a></li>
-                <li><a href="https://www.nia.gov.cn" target="_blank" rel="noopener">
-                    <i class="fas fa-external-link-alt"></i> 国家移民管理局
-                </a></li>
-                <li><a href="https://www.fmprc.gov.cn" target="_blank" rel="noopener">
-                    <i class="fas fa-external-link-alt"></i> 中国外交部
-                </a></li>
-                <li><a href="https://www.moe.gov.cn" target="_blank" rel="noopener">
-                    <i class="fas fa-external-link-alt"></i> 中国教育部
-                </a></li>
+                <li><a href="https://www.campuschina.org" target="_blank" rel="noopener">🏛️ 留学中国网（教育部留学服务中心）</a></li>
+                <li><a href="https://www.csc.edu.cn" target="_blank" rel="noopener">🎓 中国政府奖学金系统（CSC）</a></li>
+                <li><a href="https://www.nia.gov.cn" target="_blank" rel="noopener">🛂 国家移民管理局</a></li>
+                <li><a href="https://www.fmprc.gov.cn" target="_blank" rel="noopener">🌐 中国外交部</a></li>
+                <li><a href="https://www.moe.gov.cn" target="_blank" rel="noopener">📚 中国教育部</a></li>
             </ul>
         </div>
     </div>
@@ -100,23 +98,15 @@
         <div class="card-icon"><i class="fas fa-file-alt"></i></div>
         <div class="card-content">
             <h3>常用表格与模板</h3>
+            <div class="info-banner">
+                📦 表格文件正在整理中，稍后提供下载。如需紧急使用，请搜索对应表格名称从教育部官网获取。
+            </div>
             <ul class="resource-links">
-                <li><a href="#" onclick="alert('文件整理中，即将上线')">
-                    <i class="fas fa-download"></i> JW201/JW202签证申请表（含填写说明）
-                </a></li>
-                <li><a href="#" onclick="alert('文件整理中，即将上线')">
-                    <i class="fas fa-download"></i> 外国人体格检查表
-                </a></li>
-                <li><a href="#" onclick="alert('文件整理中，即将上线')">
-                    <i class="fas fa-download"></i> 住宿登记证明模板
-                </a></li>
-                <li><a href="#" onclick="alert('文件整理中，即将上线')">
-                    <i class="fas fa-download"></i> 在学证明 / 在读证明模板
-                </a></li>
+                <li><i class="fas fa-download" style="color:#999;"></i> JW201/JW202签证申请表（含填写说明）</li>
+                <li><i class="fas fa-download" style="color:#999;"></i> 外国人体格检查表</li>
+                <li><i class="fas fa-download" style="color:#999;"></i> 住宿登记证明模板</li>
+                <li><i class="fas fa-download" style="color:#999;"></i> 在学证明 / 在读证明模板</li>
             </ul>
-            <p style="font-size:12px; color:#999; margin-top:8px;">
-                ⚠️ 表格文件整理中，稍后提供下载。如需紧急使用，请搜索对应表格名称从教育部官网获取。
-            </p>
         </div>
     </div>
 
@@ -126,51 +116,40 @@
         <div class="card-content">
             <h3>学习与生活工具</h3>
             <ul class="resource-links">
-                <li>
+                <li class="tool-link-item">
                     <span class="tool-category">翻译：</span>
-                    <a href="https://translate.google.com" target="_blank" rel="noopener">Google 翻译</a>
-                    &nbsp;|&nbsp;
-                    <a href="https://www.deepl.com/translator" target="_blank" rel="noopener">DeepL</a>
-                    &nbsp;|&nbsp;
-                    <a href="https://fanyi.baidu.com" target="_blank" rel="noopener">百度翻译</a>
+                    <a href="https://translate.google.com" target="_blank" rel="noopener" class="tool-link">Google翻译</a><span class="tool-sep">|</span>
+                    <a href="https://www.deepl.com/translator" target="_blank" rel="noopener" class="tool-link">DeepL</a><span class="tool-sep">|</span>
+                    <a href="https://fanyi.baidu.com" target="_blank" rel="noopener" class="tool-link">百度翻译</a>
                 </li>
-                <li>
+                <li class="tool-link-item">
                     <span class="tool-category">地图导航：</span>
-                    <a href="https://www.amap.com" target="_blank" rel="noopener">高德地图</a>
-                    &nbsp;|&nbsp;
-                    <a href="https://map.baidu.com" target="_blank" rel="noopener">百度地图</a>
-                    &nbsp;|&nbsp;
-                    <a href="https://www.didi.com" target="_blank" rel="noopener">滴滴出行</a>
+                    <a href="https://www.amap.com" target="_blank" rel="noopener" class="tool-link">高德地图</a><span class="tool-sep">|</span>
+                    <a href="https://map.baidu.com" target="_blank" rel="noopener" class="tool-link">百度地图</a><span class="tool-sep">|</span>
+                    <a href="https://www.didi.com" target="_blank" rel="noopener" class="tool-link">滴滴出行</a>
                 </li>
-                <li>
+                <li class="tool-link-item">
                     <span class="tool-category">支付：</span>
-                    <a href="https://www.alipay.com" target="_blank" rel="noopener">支付宝</a>
-                    &nbsp;|&nbsp;
-                    <a href="https://www.weixin.qq.com" target="_blank" rel="noopener">微信支付</a>
+                    <a href="https://www.alipay.com" target="_blank" rel="noopener" class="tool-link">支付宝</a><span class="tool-sep">|</span>
+                    <a href="https://www.weixin.qq.com" target="_blank" rel="noopener" class="tool-link">微信支付</a>
                 </li>
-                <li>
+                <li class="tool-link-item">
                     <span class="tool-category">中文学习：</span>
-                    <a href="https://www.pleco.com" target="_blank" rel="noopener">Pleco 词典</a>
-                    &nbsp;|&nbsp;
-                    <a href="https://www.hskonline.com" target="_blank" rel="noopener">HSK Online</a>
-                    &nbsp;|&nbsp;
-                    <a href="https://www.duolingo.com" target="_blank" rel="noopener">Duolingo</a>
+                    <a href="https://www.pleco.com" target="_blank" rel="noopener" class="tool-link">Pleco词典</a><span class="tool-sep">|</span>
+                    <a href="https://www.hskonline.com" target="_blank" rel="noopener" class="tool-link">HSK Online</a><span class="tool-sep">|</span>
+                    <a href="https://www.duolingo.com" target="_blank" rel="noopener" class="tool-link">Duolingo</a>
                 </li>
-                <li>
+                <li class="tool-link-item">
                     <span class="tool-category">外卖/生活：</span>
-                    <a href="https://www.meituan.com" target="_blank" rel="noopener">美团</a>
-                    &nbsp;|&nbsp;
-                    <a href="https://www.ele.me" target="_blank" rel="noopener">饿了么</a>
-                    &nbsp;|&nbsp;
-                    <a href="https://www.taobao.com" target="_blank" rel="noopener">淘宝</a>
-                    &nbsp;|&nbsp;
-                    <a href="https://www.jd.com" target="_blank" rel="noopener">京东</a>
+                    <a href="https://www.meituan.com" target="_blank" rel="noopener" class="tool-link">美团</a><span class="tool-sep">|</span>
+                    <a href="https://www.ele.me" target="_blank" rel="noopener" class="tool-link">饿了么</a><span class="tool-sep">|</span>
+                    <a href="https://www.taobao.com" target="_blank" rel="noopener" class="tool-link">淘宝</a><span class="tool-sep">|</span>
+                    <a href="https://www.jd.com" target="_blank" rel="noopener" class="tool-link">京东</a>
                 </li>
-                <li>
+                <li class="tool-link-item">
                     <span class="tool-category">出行购票：</span>
-                    <a href="https://www.12306.cn" target="_blank" rel="noopener">12306（火车票）</a>
-                    &nbsp;|&nbsp;
-                    <a href="https://www.ctrip.com" target="_blank" rel="noopener">携程</a>
+                    <a href="https://www.12306.cn" target="_blank" rel="noopener" class="tool-link">12306（火车票）</a><span class="tool-sep">|</span>
+                    <a href="https://www.ctrip.com" target="_blank" rel="noopener" class="tool-link">携程</a>
                 </li>
             </ul>
         </div>
@@ -182,26 +161,16 @@
         <div class="card-content">
             <h3>政策与数据查询</h3>
             <ul class="resource-links">
-                <li><a href="https://www.campuschina.org" target="_blank" rel="noopener">
-                    <i class="fas fa-external-link-alt"></i> 留学中国网 — 外国留学生来华须知
-                </a></li>
-                <li><a href="http://www.moe.gov.cn/jyb_xxgk/" target="_blank" rel="noopener">
-                    <i class="fas fa-external-link-alt"></i> 教育部 — 留学政策文件
-                </a></li>
-                <li><a href="http://www.moe.gov.cn/s78/A08/" target="_blank" rel="noopener">
-                    <i class="fas fa-external-link-alt"></i> 中国高等教育专业目录
-                </a></li>
-                <li><a href="http://www.moe.gov.cn/jyb_sjzl/" target="_blank" rel="noopener">
-                    <i class="fas fa-external-link-alt"></i> 历年留学生数据报告
-                </a></li>
-                <li><a href="https://www.nia.gov.cn" target="_blank" rel="noopener">
-                    <i class="fas fa-external-link-alt"></i> 国家移民管理局 — 签证与居留政策
-                </a></li>
+                <li><a href="https://www.campuschina.org" target="_blank" rel="noopener">📋 留学中国网 — 外国留学生来华须知</a></li>
+                <li><a href="http://www.moe.gov.cn/jyb_xxgk/" target="_blank" rel="noopener">📜 教育部 — 留学政策文件</a></li>
+                <li><a href="http://www.moe.gov.cn/s78/A08/" target="_blank" rel="noopener">🗂️ 中国高等教育专业目录</a></li>
+                <li><a href="http://www.moe.gov.cn/jyb_sjzl/" target="_blank" rel="noopener">📊 历年留学生数据报告</a></li>
+                <li><a href="https://www.nia.gov.cn" target="_blank" rel="noopener">🛂 国家移民管理局 — 签证与居留政策</a></li>
             </ul>
         </div>
     </div>
 
-    <!-- 模块5：紧急联系方式（永久不变） -->
+    <!-- 模块5：紧急联系方式 -->
     <div class="resource-card emergency-card">
         <div class="card-icon"><i class="fas fa-phone-alt"></i></div>
         <div class="card-content">
@@ -211,8 +180,8 @@
                 <li><strong>急救：</strong><a href="tel:120">120</a></li>
                 <li><strong>火警：</strong><a href="tel:119">119</a></li>
                 <li><strong>交通事故：</strong><a href="tel:122">122</a></li>
-                <li><strong>国家移民管理局服务热线：</strong><a href="tel:12367">12367</a>（中英双语）</li>
-                <li><strong>外交部全球领事保护：</strong><a href="tel:+861012308">+86-10-12308</a></li>
+                <li><strong>国家移民管理局：</strong><a href="tel:12367">12367</a>（中英双语）</li>
+                <li><strong>外交部领事保护：</strong><a href="tel:+861012308">+86-10-12308</a></li>
             </ul>
             <p style="margin-top:12px; font-size:13px; color:#888;">
                 以上号码在中国境内免费拨打，24小时可用。拨打时无需加区号。
@@ -220,7 +189,7 @@
         </div>
     </div>
 
-    <!-- 模块6：常见问题 FAQ（保留你线上已有的内容） -->
+    <!-- 模块6：常见问题 FAQ -->
     <div class="resource-card faq-card">
         <div class="card-icon"><i class="fas fa-question-circle"></i></div>
         <div class="card-content">
@@ -246,7 +215,6 @@
 
 </section>
 
-<!-- 页脚 -->
 <footer class="site-footer">
     <p>&copy; 2025 Study in China Platform — 资源中心</p>
 </footer>
