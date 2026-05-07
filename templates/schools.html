@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探索院校 - Study in China</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo"><i class="fas fa-graduation-cap"></i> Study In China</div>
+    <div class="nav-main">
+        <a href="/">首页</a>
+        <a href="/programs">发现项目</a>
+        <a href="/schools" class="active">探索院校</a>
+        <a href="/guide">申请指南</a>
+        <a href="/life">留学中国</a>
+        <a href="/resources">资源中心</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1><i class="fas fa-university"></i> 探索院校</h1>
+    <p>了解大学排名、校园设施、清真食堂、宿舍情况，选对理想学府</p>
+</section>
+
+<div class="container">
+    <form class="filter-form" method="get" action="/schools">
+        <div class="filter-row">
+            <input type="text" name="city" placeholder="城市" value="{{ request.args.get('city','') }}">
+            <input type="text" name="province" placeholder="省份" value="{{ request.args.get('province','') }}">
+            <select name="tier">
+                <option value="">全部层次</option>
+                <option value="双一流">双一流</option>
+                <option value="211">211</option>
+                <option value="省属重点">省属重点</option>
+            </select>
+            <button type="submit" class="btn-primary">筛选</button>
+        </div>
+    </form>
+
+    <div class="card-grid">
+        {% for u in universities %}
+        <div class="program-card">
+            <h3>{{ u.uni_name_cn }}</h3>
+            <p class="uni-name">{{ u.uni_name_en }}</p>
+            <p><i class="fas fa-map-marker-alt"></i> {{ u.uni_province }} · {{ u.uni_city }}</p>
+            <div class="tags">
+                <span class="tag">{{ u.uni_tier }}</span>
+                {% if u.uni_qs_rank %}<span class="tag">QS {{ u.uni_qs_rank }}</span>{% endif %}
+                {% if u.halal_canteen_available %}<span class="tag tag-green">清真食堂</span>{% endif %}
+                {% if u.dormitory_available %}<span class="tag tag-green">校内宿舍</span>{% endif %}
+            </div>
+            <p style="font-size:0.85rem; color:var(--muted);">开设 {{ u.program_count }} 个国际项目</p>
+            <a href="/programs?city={{ u.uni_city }}" class="btn-small">查看该校项目</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<footer>© 2026 Study in China Platform</footer>
+</body>
+</html>
