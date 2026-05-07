@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发现项目 - Study in China</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo"><i class="fas fa-graduation-cap"></i> Study In China</div>
+    <div class="nav-main">
+        <a href="/">首页</a>
+        <a href="/programs" class="active">发现项目</a>
+        <a href="/schools">探索院校</a>
+        <a href="/guide">申请指南</a>
+        <a href="/life">留学中国</a>
+        <a href="/resources">资源中心</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1><i class="fas fa-search"></i> 发现项目</h1>
+    <p>按学位、专业、语言、学费筛选，找到最适合你的来华留学项目</p>
+</section>
+
+<div class="container">
+    <!-- 筛选器 -->
+    <form class="filter-form" method="get" action="/programs">
+        <div class="filter-row">
+            <select name="degree">
+                <option value="">全部学位</option>
+                <option value="语言生" {% if degree=='语言生' %}selected{% endif %}>语言生</option>
+                <option value="预科" {% if degree=='预科' %}selected{% endif %}>预科</option>
+                <option value="本科" {% if degree=='本科' %}selected{% endif %}>本科</option>
+                <option value="硕士" {% if degree=='硕士' %}selected{% endif %}>硕士</option>
+                <option value="博士" {% if degree=='博士' %}selected{% endif %}>博士</option>
+            </select>
+            <input type="text" name="major" placeholder="专业名称（中英文均可）" value="{{ major }}">
+            <select name="language">
+                <option value="">授课语言</option>
+                <option value="中文" {% if language=='中文' %}selected{% endif %}>中文</option>
+                <option value="英文" {% if language=='英文' %}selected{% endif %}>英文</option>
+                <option value="双语" {% if language=='双语' %}selected{% endif %}>双语</option>
+            </select>
+            <input type="number" name="tuition_max" placeholder="学费上限（元/年）" value="{{ tuition_max }}">
+            <input type="text" name="city" placeholder="城市" value="{{ city }}">
+            <button type="submit" class="btn-primary">搜索</button>
+        </div>
+    </form>
+
+    <!-- 结果 -->
+    <p style="margin-bottom:1rem; color:var(--muted);">找到 {{ total }} 个项目</p>
+    <div class="card-grid">
+        {% for p in programs %}
+        <div class="program-card">
+            <h3>{{ p.program_name_cn }}</h3>
+            <p class="uni-name">{{ p.uni_name_cn }} · {{ p.uni_city }}</p>
+            <div class="tags">
+                <span class="tag">{{ p.degree_level }}</span>
+                <span class="tag">{{ p.teaching_language }}</span>
+                <span class="tag">{{ p.tuition_amount }} {{ p.tuition_currency }}/年</span>
+                {% if p.halal_canteen_available %}<span class="tag tag-green">清真食堂</span>{% endif %}
+            </div>
+            <a href="/consult?program={{ p.id }}" class="btn-small">咨询这个项目</a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- 分页 -->
+    {% if total_pages > 1 %}
+    <div class="pagination">
+        {% if page > 1 %}<a href="?page={{ page-1 }}&degree={{ degree }}&major={{ major }}&language={{ language }}">← 上一页</a>{% endif %}
+        <span>第 {{ page }} / {{ total_pages }} 页</span>
+        {% if page < total_pages %}<a href="?page={{ page+1 }}&degree={{ degree }}&major={{ major }}&language={{ language }}">下一页 →</a>{% endif %}
+    </div>
+    {% endif %}
+
+    <div class="consult-banner">
+        <h3>看了几个项目，还是不确定哪个适合你？</h3>
+        <a href="/consult" class="btn-primary">免费选校咨询</a>
+    </div>
+</div>
+
+<footer>© 2026 Study in China Platform</footer>
+</body>
+</html>
