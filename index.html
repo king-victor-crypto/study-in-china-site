@@ -3,273 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study in China</title>
+    <title>发现项目 - Study In China</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg: #ffffff;
-            --text: #202124;
-            --muted: #5f6368;
-            --border: #dadce0;
-            --accent: #1a73e8;
-            --hover: #f8f9fa;
+            --primary: #0a2540;
+            --accent: #2563eb;
+            --accent-light: #eff6ff;
+            --bg: #f7f8fa;
+            --card: #fff;
+            --text: #1e293b;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background: var(--bg);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
-            color: var(--text);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+        body { 
+            background: var(--bg); 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft Yahei", sans-serif; 
+            color: var(--text); 
+            line-height: 1.5;
         }
 
-        /* 语言切换器 */
-        .lang-bar {
-            position: absolute;
-            top: 16px;
-            right: 24px;
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 30px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-main {
+            display: flex;
+            gap: 22px;
+        }
+        .nav-main a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .nav-main a.active,
+        .nav-main a:hover {
+            color: var(--accent);
+        }
+        .nav-lang {
             display: flex;
             align-items: center;
             gap: 6px;
         }
-        .lang-bar select {
-            border: none;
-            background: transparent;
-            font-size: 13px;
-            color: var(--muted);
-            cursor: pointer;
-            outline: none;
-            padding: 4px 8px;
+
+        .hero {
+            text-align: center; 
+            padding: 2rem 1.5rem;
+            background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%);
+            color: white;
+        }
+        .hero h1 { 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            margin-bottom: 0.4rem;
+        }
+        .hero p { 
+            color: rgba(255,255,255,0.8); 
+            font-size: 1rem;
         }
 
-        /* 主容器 */
-        .main {
-            text-align: center;
-            width: 100%;
-            max-width: 680px;
-            padding: 0 24px;
-            margin-top: -60px;
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem;
         }
 
-        /* Logo */
-        .logo {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 0.3rem;
-            letter-spacing: -0.5px;
+        .grid-box {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
         }
-        .logo i { color: var(--accent); margin-right: 6px; }
-
-        /* 搜索框 */
-        .search-box {
-            width: 100%;
-            height: 52px;
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 0 20px 0 48px;
-            font-size: 16px;
-            outline: none;
-            background: var(--bg);
-            box-shadow: 0 1px 6px rgba(32,33,36,0.08);
-            transition: box-shadow 0.2s, border-color 0.2s;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%239aa0a6' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: 16px center;
-        }
-        .search-box:focus {
-            box-shadow: 0 1px 8px rgba(32,33,36,0.18);
-            border-color: #c6c8cc;
-        }
-
-        /* 筛选器行 */
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 18px;
-            flex-wrap: wrap;
-        }
-        .filters select {
-            padding: 8px 14px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            font-size: 13px;
-            color: var(--text);
-            background: var(--bg);
-            cursor: pointer;
-            outline: none;
-            transition: background 0.2s;
-            min-width: 100px;
-        }
-        .filters select:hover { background: var(--hover); }
-
-        .btn-search {
-            padding: 8px 22px;
-            background: var(--accent);
-            color: #fff;
-            border: none;
-            border-radius: 20px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background 0.2s;
-            font-weight: 500;
-        }
-        .btn-search:hover { background: #1557b0; }
-
-        /* 结果数量 */
-        .result-count {
-            font-size: 13px;
-            color: var(--muted);
-            margin-top: 16px;
-            display: none;
-            text-align: left;
-        }
-        .result-count.show { display: block; }
-
-        /* 底部链接 */
-        .bottom-links {
-            position: absolute;
-            bottom: 20px;
-            display: flex;
-            gap: 24px;
-            font-size: 13px;
-        }
-        .bottom-links a {
-            color: var(--muted);
+        .item-card {
+            display: block;
             text-decoration: none;
-            transition: color 0.2s;
+            background: var(--card);
+            border-radius: 10px;
+            padding: 1.2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            text-align: center;
         }
-        .bottom-links a:hover { color: var(--accent); }
+        .item-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+        }
+        .item-card i {
+            font-size: 1.6rem;
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+        }
+        .item-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+        }
+        .item-card p {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
 
-        /* 响应式 */
-        @media (max-width: 600px) {
-            .logo { font-size: 1.8rem; }
-            .search-box { height: 46px; font-size: 14px; }
-            .filters { flex-direction: column; align-items: center; }
-            .filters select { width: 70%; min-width: 0; }
+        footer { 
+            text-align: center; 
+            padding: 1rem; 
+            color: var(--muted); 
+            font-size: 0.8rem; 
+            border-top: 1px solid var(--border); 
+            margin-top: 1rem;
+        }
+
+        @media (min-width:1024px) {
+            body { overflow-y: hidden; }
         }
     </style>
 </head>
 <body>
 
-<!-- 语言切换 -->
-<div class="lang-bar">
-    <span style="font-size:13px; color:var(--muted);">🌐</span>
-    <select id="langSelect">
-        <option value="zh">中文</option>
-        <option value="en">English</option>
-        <option value="ar">العربية</option>
-        <option value="fr">Français</option>
-        <option value="es">Español</option>
-        <option value="ru">Русский</option>
-        <option value="pt">Português</option>
-        <option value="id">Bahasa Indonesia</option>
-        <option value="th">ไทย</option>
-        <option value="vi">Tiếng Việt</option>
-        <option value="ja">日本語</option>
-        <option value="ko">한국어</option>
-        <option value="de">Deutsch</option>
-        <option value="it">Italiano</option>
-        <option value="fa">فارسی</option>
-        <option value="tr">Türkçe</option>
-        <option value="hi">हिन्दी</option>
-    </select>
-</div>
-
-<!-- 主体 -->
-<div class="main">
-    <div class="logo"><i class="fas fa-graduation-cap"></i>Study In China</div>
-
-    <input type="text" class="search-box" id="searchInput" placeholder="搜索专业、院校、关键词...">
-
-    <div class="filters">
-        <select id="filterDegree">
-            <option value="">学历层次</option>
-            <option value="语言生">语言生</option>
-            <option value="预科">预科</option>
-            <option value="本科">本科</option>
-            <option value="硕士">硕士</option>
-            <option value="博士">博士</option>
-        </select>
-        <select id="filterMajor">
-            <option value="">专业方向</option>
-            <option value="工学">工学</option>
-            <option value="医学">医学</option>
-            <option value="管理学">管理学</option>
-            <option value="文学">文学</option>
-            <option value="经济学">经济学</option>
-        </select>
-        <select id="filterScholarship">
-            <option value="">项目类型</option>
-            <option value="CSC">中国政府奖学金</option>
-            <option value="省级">地方政府奖学金</option>
-            <option value="校级">高校奖学金</option>
-            <option value="自费">自费项目</option>
-        </select>
-        <button class="btn-search" onclick="doSearch()"><i class="fas fa-search"></i> 搜索</button>
+<nav class="navbar">
+    <div class="logo"><i class="fas fa-graduation-cap"></i> Study In China</div>
+    <div class="nav-main">
+        <a href="./programs.html" class="active">发现项目</a>
+        <a href="./schools.html">探索院校</a>
+        <a href="./guide.html">申请指南</a>
+        <a href="./life.html">留学中国</a>
+        <a href="./resource.html">资源中心</a>
     </div>
+    <div class="nav-lang">
+        <span>🌐</span>
+        <select id="langSelect">
+            <option value="zh">中文</option>
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="ko">한국어</option>
+            <option value="ja">日本語</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="it">Italiano</option>
+            <option value="pt">Português</option>
+            <option value="ar">العربية</option>
+            <option value="tr">Türkçe</option>
+            <option value="th">ไทย</option>
+            <option value="vi">Tiếng Việt</option>
+            <option value="id">Bahasa Indonesia</option>
+            <option value="ms">Bahasa Melayu</option>
+            <option value="fa">فارسی</option>
+        </select>
+    </div>
+</nav>
 
-    <div class="result-count" id="resultCount"></div>
+<section class="hero">
+    <h1>发现留学项目</h1>
+    <p>本科｜硕士｜博士｜交换生｜语言进修｜短期研学</p>
+</section>
+
+<div class="container">
+    <div class="grid-box">
+        <a href="pro-bachelor.html" class="item-card">
+            <i class="fas fa-school"></i>
+            <h3>本科项目</h3>
+            <p>点击进入查看详情</p>
+        </a>
+        <a href="pro-master.html" class="item-card">
+            <i class="fas fa-user-graduate"></i>
+            <h3>硕士项目</h3>
+            <p>点击进入查看详情</p>
+        </a>
+        <a href="pro-doctor.html" class="item-card">
+            <i class="fas fa-award"></i>
+            <h3>博士项目</h3>
+            <p>点击进入查看详情</p>
+        </a>
+        <a href="pro-exchange.html" class="item-card">
+            <i class="fas fa-exchange-alt"></i>
+            <h3>交换生项目</h3>
+            <p>点击进入查看详情</p>
+        </a>
+        <a href="pro-language.html" class="item-card">
+            <i class="fas fa-comments"></i>
+            <h3>语言进修</h3>
+            <p>点击进入查看详情</p>
+        </a>
+        <a href="pro-short.html" class="item-card">
+            <i class="fas fa-calendar-alt"></i>
+            <h3>短期研学</h3>
+            <p>点击进入查看详情</p>
+        </a>
+        <a href="pro-scholarship.html" class="item-card">
+            <i class="fas fa-money-check-alt"></i>
+            <h3>奖学金项目</h3>
+            <p>点击进入查看详情</p>
+        </a>
+        <a href="pro-major.html" class="item-card">
+            <i class="fas fa-book"></i>
+            <h3>热门专业</h3>
+            <p>点击进入查看详情</p>
+        </a>
+    </div>
 </div>
 
-<!-- 底部链接 -->
-<div class="bottom-links">
-    <a href="guide.html">申请指南</a>
-    <a href="life.html">留学生活</a>
-    <a href="resource.html">资源中心</a>
-    <a href="consult.html">免费咨询</a>
-</div>
+<footer>&copy; 2026 Study in China 来华留学一站式平台</footer>
 
-<script>
-    // 模拟数据（后续替换为 data.json）
-    const sampleData = [
-        { program:"计算机科学与技术硕士", uni:"郑州大学", city:"郑州", degree:"硕士", major:"工学", scholarship:"CSC", language:"英文", tuition:35000 },
-        { program:"临床医学本科(MBBS)", uni:"郑州大学", city:"郑州", degree:"本科", major:"医学", scholarship:"省级", language:"英文", tuition:35000 },
-        { program:"软件工程本科", uni:"郑州大学", city:"郑州", degree:"本科", major:"工学", scholarship:"省级", language:"英文", tuition:25000 },
-        { program:"国际经济与贸易", uni:"浙江外国语学院", city:"杭州", degree:"本科", major:"经济学", scholarship:"省级", language:"英文", tuition:18000 },
-        { program:"汉语言文学", uni:"浙江外国语学院", city:"杭州", degree:"本科", major:"文学", scholarship:"校级", language:"中文", tuition:4800 },
-    ];
-
-    function doSearch() {
-        const keyword = document.getElementById('searchInput').value.toLowerCase();
-        const degree = document.getElementById('filterDegree').value;
-        const major = document.getElementById('filterMajor').value;
-        const scholarship = document.getElementById('filterScholarship').value;
-
-        const results = sampleData.filter(item => {
-            const matchKeyword = !keyword || item.program.includes(keyword) || item.uni.includes(keyword);
-            const matchDegree = !degree || item.degree === degree;
-            const matchMajor = !major || item.major === major;
-            const matchScholarship = !scholarship || item.scholarship.includes(scholarship);
-            return matchKeyword && matchDegree && matchMajor && matchScholarship;
-        });
-
-        const countEl = document.getElementById('resultCount');
-        if (results.length > 0) {
-            countEl.className = 'result-count show';
-            countEl.innerHTML = `找到 <strong>${results.length}</strong> 个匹配项目 — <a href="programs.html">查看全部结果 →</a>`;
-        } else {
-            countEl.className = 'result-count show';
-            countEl.innerHTML = '没有匹配的项目，请调整筛选条件。';
-        }
-    }
-
-    // 回车搜索
-    document.getElementById('searchInput').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') doSearch();
-    });
-
-    // 语言切换（预留）
-    document.getElementById('langSelect').addEventListener('change', function() {
-        localStorage.setItem('site_lang', this.value);
-        console.log('语言切换至：' + this.value);
-    });
-</script>
 </body>
 </html>
