@@ -1,36 +1,36 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
+<html lang="zh-CN">  
+<head>  
+    <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>申请指南 - Study in China</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
+        :root {  
             --bg: #ffffff; --text: #202124; --muted: #5f6368;
             --border: #dadce0; --accent: #1a73e8; --hover: #f8f9fa; --radius: 12px;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: var(--bg);
+        body {  
+            background: var(--bg);  
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
             color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden;
         }
-        .top-bar {
+        .top-bar {  
             display: flex; justify-content: space-between; align-items: center;
             padding: 12px 24px; border-bottom: 1px solid var(--border); height: 56px; flex-shrink: 0;
         }
-        .top-bar .logo {
+        .top-bar .logo {  
             font-size: 18px; font-weight: 700; color: var(--text); text-decoration: none;
             display: flex; align-items: center; gap: 6px;
         }
         .top-bar .logo i { color: var(--accent); }
         .top-bar .nav-links { display: flex; gap: 16px; }
-        .top-bar .nav-links a {
+        .top-bar .nav-links a {  
             text-decoration: none; color: var(--muted); font-size: 13px; transition: color 0.2s;
         }
         .top-bar .nav-links a.active, .top-bar .nav-links a:hover { color: var(--accent); font-weight: 500; }
-        .top-bar .lang-wrap select {
+        .top-bar .lang-wrap select {  
             border: 1px solid var(--border); border-radius: 12px; padding: 4px 8px;
             font-size: 12px; cursor: pointer; background: var(--bg); color: var(--muted);
         }
@@ -258,7 +258,7 @@
 <script>
     const steps = [
         {
-            id: 1,
+            id="chapter1"
             title: "资格自查",
             desc: "护照、学历、年龄、健康、无犯罪记录——逐项确认基本条件",
             detail: `
@@ -294,7 +294,7 @@
             `
         },
         {
-            id: 2,
+            id="chapter2"
             title: "选校选专业",
             desc: "利用搜索引擎，按学位、专业、学费、城市找到最适合的项目",
             detail: `<h3>一、来华留学选校的核心逻辑</h3>
@@ -338,7 +338,7 @@
 <div class="warning">⚠️ <strong>常见误区：</strong>只盯着排名最高的学校而忽视专业匹配度；被学费数字吓退而放弃申请奖学金的机会；忽略城市气候而导致留学生活不适应。选校是“匹配”而非“竞赛”——最适合你的才是最好的。</div>`
         },
         {
-            id: 3,
+            id="chapter3"
             title: "准备申请材料",
             desc: "护照、成绩单、推荐信、个人陈述、体检表等完整清单",
             detail: `<h3>一、申请材料全景总览</h3>
@@ -404,7 +404,7 @@
 <div class="warning">⚠️ <strong>材料准备最常见的五个错误：</strong>护照有效期不足、成绩单没有公证翻译、推荐信没有推荐人签名、体检表过期、个人陈述套用网络模板千篇一律。这五个问题占据了申请材料被退回的大部分情况，请逐项检查。</div>`
         },
         {
-            id: 4,
+          id="chapter4"
             title: "语言考试",
             desc: "HSK/HSKK、雅思/托福——不同项目不同分数要求",
             detail: `<h3>一、来华留学语言要求全景概览</h3>
@@ -476,7 +476,7 @@
 <div class="warning">⚠️ <strong>最容易被忽略的细节：</strong>HSK成绩有效期为2年，比雅思托福的2年略短。许多学生在申请时发现一两年前考的HSK已经过期了，只能重新考试。建议在申请时间规划中，把HSK考试安排在离申请截止日期12-18个月内的时段。</div>`
         },
         {
-            id: 5,
+            id="chapter5"
             title: "奖学金申请",
             desc: "CSC、地方政府、高校奖学金——申请时间与策略",
             detail: <h3>一、来华留学奖学金体系全景</h3>
@@ -525,7 +525,7 @@
 <div class="warning">⚠️ <strong>重要提醒：</strong>奖学金获得的兴奋感过后，一定要认真阅读奖学金的续签条件。多数奖学金要求学生保持一定的GPA和出勤率，一旦学业大幅下滑，奖学金可能被中止。把续签条件写进你的学期计划里，时刻提醒自己。</div>`
         },
         {
-            id: 6,
+            id="chapter6"
             title: "提交申请",
             desc: "网申系统填写、材料寄送、申请费缴纳与跟进",
             detail: <h3>一、网申系统操作全流程</h3>
@@ -574,7 +574,7 @@
 <div class="warning">⚠️ <strong>提交前的最终核对清单：</strong>姓名拼写是否与护照一致？护照有效期是否充足？所有上传文件是否清晰可读？申请费是否已支付？是否收到了确认邮件？这五个问题个个都是实际发生过不止一次的教训，请在点击提交按钮前逐项过一遍。</div>`
         },
         {
-            id: 7,
+            id="chapter7"
             title: "面试准备",
             desc: "视频面试常见问题、回答思路、设备调试与礼仪",
             detail: <h3>一、哪些项目会要求面试？</h3>
@@ -621,7 +621,7 @@
 <div class="warning">⚠️ <strong>面试中最容易忽略的失误：</strong>没有关闭通知音效——微信消息、邮件提醒、日历弹窗在面试中突然响起，是让面试官皱眉的最快方式。请在面试前关闭所有通知，只保留面试软件本身。</div>`
         },
         {
-            id: 8,
+            id="chapter8"
             title: "接收录取",
             desc: "解读Offer、对比选择、缴纳押金、确认入学",
             detail: <h3>一、收到录取通知后的第一反应</h3>
@@ -656,7 +656,7 @@
 <div class="warning">⚠️ <strong>录取确认中最常见的两个疏漏：</strong>一是没有看清附带条件——特别是那些需要在入学前补交材料才能转为正式录取的有条件录取，每年都有学生因为忘记补交最终成绩单而失去入学资格。二是确认后没有按期缴纳押金——以为点了“接受”就万事大吉，但学校要求的是押金到账才算确认，逾期系统自动取消录取。</div>`
         },
         {
-            id: 9,
+            id="chapter9",
             title: "办理签证",
             desc: "JW201/202表、X1/X2签证申请材料与全流程",
             detail: <h3>一、中国学生签证类型全解析</h3>
@@ -735,7 +735,7 @@
 <div class="warning">⚠️ <strong>签证最不可挽回的错误：</strong>JW表在邮寄途中丢失或被误拆。JW表与护照同等重要——它是你合法进入中国学习的基础文件。收到后马上彩色扫描备份，并在手机里存一份高清照片。跨国快递有不确定性，如果距离入学只剩不到一个月还未收到JW表，立即联系学校要求用加急快递重新寄送。</div>`
         },
         {
-            id: 10,
+            id="chapter10",
             title: "行前准备",
             desc: "机票、行李、换汇、手机卡、接机——最终核查清单",
             detail: <h3>一、机票购买策略与最佳时机</h3>
@@ -817,7 +817,7 @@
 <div class="warning">⚠️ <strong>被海关拦截的三大元凶：</strong>携带违禁药品（尤其含麻醉成分的精神类药物）、携带肉类或水果入境未申报、携带超过20000元人民币等值现金未申报。其中任何一项都可能导致你被海关扣留调查，最严重的情况是留下不良出入境记录。出发前未知的药物成分可以咨询海关或大使馆，不确定的食品宁愿不带。</div>`
         },
         {
-            id: 11,
+            id="chapter11",
             title: "入境与报到",
             desc: "入境卡、海关、到校注册、办理学习类居留许可",
             detail: `<h3>一、登机前的最后一刻</h3>
@@ -893,7 +893,7 @@
 <div class="warning">⚠️ <strong>居留许可的30天红线不可逾越：</strong>入境印章上的日期起算，第30天之前你必须已经提交了居留许可办理申请并拿到了回执。法定节假日顺延一天，但不要把希望寄托在顺延上。历年都有留学生因为忽略这个时限而面临罚款和限期离境，其中不少人只是因为拖延了几天。把这个日期写在日历上、宿舍白板上、手机锁屏上，任何你觉得不会错过的地方。</div>`
         },
         {
-            id: 12,
+            id="chapter12",
             title: "入学适应",
             desc: "选课、社团、语言提升、实习规划——开启留学生活",
             detail: `<h3>一、选课策略与学术适应</h3>
