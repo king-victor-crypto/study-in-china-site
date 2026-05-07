@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>留学生活指南 - Study in China</title>
+    <title>留学中国 - 留学生活指南</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #0a2540;
             --accent: #2563eb;
+            --accent-light: #eff6ff;
             --bg: #f7f8fa;
             --card: #fff;
             --text: #1e293b;
@@ -22,15 +23,15 @@
             background: var(--bg); 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft Yahei", sans-serif; 
             color: var(--text); 
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
-        /* 导航栏（和index保持一致） */
+        /* 导航栏 */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
+            padding: 12px 30px;
             background: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky;
@@ -38,7 +39,7 @@
             z-index: 999;
         }
         .logo {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
             color: var(--accent);
             display: flex;
@@ -47,12 +48,12 @@
         }
         .nav-main {
             display: flex;
-            gap: 25px;
+            gap: 22px;
         }
         .nav-main a {
             text-decoration: none;
             color: var(--text);
-            font-size: 15px;
+            font-size: 14px;
             transition: 0.3s;
         }
         .nav-main a.active,
@@ -65,92 +66,96 @@
             gap: 6px;
         }
 
-        /* Hero 区域 */
+        /* Hero 缩小紧凑 */
         .hero {
             text-align: center; 
-            padding: 3rem 1.5rem 2rem;
+            padding: 2rem 1.5rem;
             background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%);
             color: white;
         }
         .hero h1 { 
-            font-size: 2.2rem; 
+            font-size: 1.8rem; 
             font-weight: 700; 
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
         .hero p { 
             color: rgba(255,255,255,0.8); 
-            font-size: 1.1rem;
-            max-width: 700px;
+            font-size: 1rem;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        /* 主容器（电脑端一页布局） */
+        /* 主容器 紧凑一屏 */
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem 1.5rem;
+            padding: 1.5rem 1.5rem;
         }
 
-        /* 模块卡片 */
+        /* 卡片网格 缩小间距、缩小卡片 */
         .section-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
         }
         .section-card {
             background: var(--card);
-            border-radius: 12px;
-            padding: 1.8rem;
+            border-radius: 10px;
+            padding: 1.2rem;
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
             transition: all 0.3s ease;
+            text-align: center;
         }
         .section-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
             border-color: var(--accent);
         }
         .section-card i {
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: var(--accent);
-            margin-bottom: 1rem;
+            margin-bottom: 0.6rem;
         }
         .section-card h3 {
-            font-size: 1.3rem;
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.4rem;
             color: var(--primary);
         }
         .section-card p {
             color: var(--muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.8rem;
+            line-height: 1.4;
         }
 
-        /* 页脚 */
+        /* 页脚压缩 */
         footer { 
             text-align: center; 
-            padding: 2rem; 
+            padding: 1rem; 
             color: var(--muted); 
-            font-size: 0.85rem; 
+            font-size: 0.8rem; 
             border-top: 1px solid var(--border); 
-            margin-top: 2rem;
+            margin-top: 1rem;
+        }
+
+        /* 适配电脑一屏不滚动 */
+        @media (min-width:1024px) {
+            body { overflow-y: hidden; }
         }
     </style>
 </head>
 <body>
 
-<!-- 导航栏 -->
+<!-- 导航栏 已精简：删首页、删职业发展 -->
 <nav class="navbar">
     <div class="logo"><i class="fas fa-graduation-cap"></i> Study In China</div>
     <div class="nav-main">
-        <a href="index.html">首页</a>
         <a href="programs.html">发现项目</a>
         <a href="schools.html">探索院校</a>
         <a href="guide.html">申请指南</a>
         <a href="life.html" class="active">留学中国</a>
-        <a href="career.html">职业发展</a>
         <a href="resource.html">资源中心</a>
     </div>
     <div class="nav-lang">
@@ -158,94 +163,63 @@
         <select id="langSelect">
             <option value="zh">中文</option>
             <option value="en">English</option>
-            <option value="ar">العربية</option>
-            <option value="fr">Français</option>
-            <option value="es">Español</option>
             <option value="ru">Русский</option>
-            <option value="pt">Português</option>
-            <option value="id">Bahasa Indonesia</option>
             <option value="th">ไทย</option>
-            <option value="vi">Tiếng Việt</option>
-            <option value="ja">日本語</option>
-            <option value="ko">한국어</option>
-            <option value="de">Deutsch</option>
-            <option value="it">Italiano</option>
-            <option value="fa">فارسی</option>
-            <option value="tr">Türkçe</option>
-            <option value="hi">हिन्दी</option>
         </select>
     </div>
 </nav>
 
-<!-- Hero 头部 -->
 <section class="hero">
     <h1>留学生活指南</h1>
-    <p>从住宿、出行到社交、医疗，全方位攻略帮你快速适应中国留学生活</p>
+    <p>住宿｜出行｜饮食｜购物｜通讯支付｜社交文化｜医疗健康｜校园活动</p>
 </section>
 
-<!-- 主内容区（电脑端一页） -->
 <div class="container">
     <div class="section-grid">
-        <!-- 模块1：住宿 -->
         <div class="section-card">
             <i class="fas fa-home"></i>
-            <h3>🏠 住宿指南</h3>
-            <p>（后续在这里添加：校内宿舍申请流程、校外租房注意事项、合同签订、水电网办理等内容）</p>
+            <h3>住宿指南</h3>
+            <p>后续在此补充宿舍、校外租房攻略</p>
         </div>
-
-        <!-- 模块2：出行 -->
         <div class="section-card">
             <i class="fas fa-bus"></i>
-            <h3>🚌 出行交通</h3>
-            <p>（后续在这里添加：地铁公交使用、共享单车、打车软件、城际交通购票等内容）</p>
+            <h3>出行交通</h3>
+            <p>地铁公交、打车、城际出行指南</p>
         </div>
-
-        <!-- 模块3：饮食 -->
         <div class="section-card">
             <i class="fas fa-utensils"></i>
-            <h3>🍜 美食与饮食</h3>
-            <p>（后续在这里添加：食堂攻略、外卖软件使用、特色美食推荐、饮食文化差异等内容）</p>
+            <h3>饮食美食</h3>
+            <p>食堂、外卖、饮食文化介绍</p>
         </div>
-
-        <!-- 模块4：购物 -->
         <div class="section-card">
             <i class="fas fa-shopping-bag"></i>
-            <h3>🛍️ 购物指南</h3>
-            <p>（后续在这里添加：线上购物平台、线下商场超市、跨境购物、退换货规则等内容）</p>
+            <h3>购物指南</h3>
+            <p>线上线下购物、超市商场攻略</p>
         </div>
-
-        <!-- 模块5：通讯与支付 -->
         <div class="section-card">
             <i class="fas fa-mobile-alt"></i>
-            <h3>📱 通讯与支付</h3>
-            <p>（后续在这里添加：手机号办理、微信支付宝注册绑定、银行卡办理、移动支付使用等内容）</p>
+            <h3>通讯支付</h3>
+            <p>手机号、银行卡、微信支付宝</p>
         </div>
-
-        <!-- 模块6：社交与文化 -->
         <div class="section-card">
             <i class="fas fa-users"></i>
-            <h3>👥 社交与文化</h3>
-            <p>（后续在这里添加：校园社团、中国学生交友、文化差异、节日习俗、社交礼仪等内容）</p>
+            <h3>社交文化</h3>
+            <p>校园交友、文化差异与礼仪</p>
         </div>
-
-        <!-- 模块7：医疗健康 -->
         <div class="section-card">
             <i class="fas fa-hospital"></i>
-            <h3>🏥 医疗与健康</h3>
-            <p>（后续在这里添加：留学生医保办理、就医流程、药店使用、心理健康服务等内容）</p>
+            <h3>医疗健康</h3>
+            <p>医保办理、就医、日常健康</p>
         </div>
-
-        <!-- 模块8：校园活动 -->
         <div class="section-card">
             <i class="fas fa-graduation-cap"></i>
-            <h3>🎓 校园生活</h3>
-            <p>（后续在这里添加：校园设施使用、图书馆、实验室、文体活动、学业管理等内容）</p>
+            <h3>校园活动</h3>
+            <p>社团、图书馆、校园生活</p>
         </div>
     </div>
 </div>
 
-<!-- 页脚 -->
-<footer>&copy; 2026 Study in China 来华留学一站式服务平台 | 17种语言全球同步</footer>
+<footer>&copy; 2026 Study in China 来华留学一站式平台</footer>
 
 </body>
 </html>
