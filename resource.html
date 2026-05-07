@@ -3,642 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="resTitle">资源中心</title>
+    <title>资源中心 - 来华留学服务平台</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        /* 资源中心专用样式 */
+        .resources-section { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+        .resource-card { 
+            background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 1.5rem; padding: 1.5rem; display: flex; gap: 1rem;
         }
-        body {
-            background-color: #f5f5f7;
-            color: #333;
-        }
-        .site-header {
-            background: #ffffff;
-            border-bottom: 1px solid #eee;
-            padding: 16px 0;
-        }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-        }
-        .top-nav {
-            display: flex;
-            gap: 24px;
-        }
-        .top-nav a {
-            text-decoration: none;
-            color: #666;
-            font-size: 15px;
-            transition: 0.2s;
-        }
-        .top-nav a.active {
-            color: #2563eb;
-            font-weight: 500;
-        }
-        .top-nav a:hover {
-            color: #2563eb;
-        }
-        #langSelect {
-            padding: 4px 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background: #fff;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .page-banner {
-            text-align: center;
-            padding: 50px 20px;
-        }
-        .page-banner h1 {
-            font-size: 28px;
-            color: #111;
-            margin-bottom: 12px;
-        }
-        .page-banner p {
-            font-size: 16px;
-            color: #666;
-        }
-        .res-wrap {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
-        }
-        .res-card {
-            background: #fff;
-            border-radius: 10px;
-            padding: 24px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .res-card h3 {
-            font-size: 18px;
-            color: #2563eb;
-            margin-bottom: 12px;
-        }
-        .res-card ul {
-            padding-left: 20px;
-            margin-top: 8px;
-            list-style: none;
-        }
-        .res-card li {
-            font-size: 15px;
-            color: #555;
-            line-height: 1.8;
-        }
-        .res-card a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-        .res-card a:hover {
-            text-decoration: underline;
-        }
-        .emergency-box {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            background: #fff;
-            border-radius: 10px;
-            padding: 30px;
-            border-left: 6px solid #dc2626;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .emergency-box h2 {
-            font-size: 20px;
-            color: #dc2626;
-            margin-bottom: 15px;
-        }
-        .emergency-box p {
-            margin-bottom: 10px;
-            font-size: 15px;
-            color: #333;
-        }
-        .faq-box {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            background: #fff;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .faq-box h2 {
-            font-size: 20px;
-            color: #222;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        .faq-item {
-            margin-bottom: 18px;
-        }
-        .faq-q {
-            font-weight: 500;
-            color: #111;
-            margin-bottom: 4px;
-        }
-        .faq-a {
-            color: #555;
-            padding-left: 16px;
+        .card-icon { font-size: 2rem; color: #005bac; min-width: 50px; text-align: center; }
+        .card-content { flex: 1; }
+        .card-content h3 { margin: 0 0 0.8rem 0; color: #333; }
+        .resource-links { list-style: none; padding: 0; margin: 0; }
+        .resource-links li { margin-bottom: 0.5rem; }
+        .resource-links a { color: #005bac; text-decoration: none; }
+        .resource-links a:hover { text-decoration: underline; }
+        .tool-category { font-weight: 600; color: #555; }
+        .emergency-card { border-left: 4px solid #e74c3c; }
+        .emergency-links li { margin-bottom: 0.4rem; }
+        .emergency-links a { color: #e74c3c; font-weight: bold; }
+        .faq-card .faq-item { margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
+        .faq-card .faq-q { font-weight: 600; color: #333; cursor: pointer; }
+        .faq-card .faq-a { color: #666; margin-top: 0.3rem; }
+        .page-banner { background: #005bac; color: #fff; padding: 2rem; text-align: center; }
+        .site-header { background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem; }
+        .header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.2rem; font-weight: bold; color: #005bac; }
+        .site-nav a { margin: 0 0.5rem; text-decoration: none; color: #333; }
+        .site-nav a.nav-active { color: #005bac; font-weight: bold; }
+        .site-footer { text-align: center; padding: 1rem; color: #999; }
+        @media (max-width: 600px) {
+            .resource-card { flex-direction: column; }
+            .site-nav a { display: inline-block; margin: 0.2rem; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="container">
-            <div class="logo">Study in China</div>
-            <nav class="top-nav">
-                <a href="index.html" data-key="nav1">发现项目</a>
-                <a href="schools.html" data-key="nav2">探索院校</a>
-                <a href="guide.html" data-key="nav3">申请指南</a>
-                <a href="life.html" data-key="nav4">留学中国生活</a>
-                <a href="career.html" data-key="nav5">职业发展</a>
-                <a href="resource.html" class="active" data-key="nav6">资源中心</a>
-            </nav>
-            <select id="langSelect">
-                <option value="zh">中文</option>
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="fr">Français</option>
-                <option value="de">Deutsch</option>
-                <option value="ru">Русский</option>
-                <option value="ar">العربية</option>
-                <option value="ja">日本語</option>
-                <option value="ko">한국어</option>
-                <option value="pt">Português</option>
-                <option value="it">Italiano</option>
-                <option value="nl">Nederlands</option>
-                <option value="pl">Polski</option>
-                <option value="uk">Українська</option>
-                <option value="tr">Türkçe</option>
-                <option value="th">ไทย</option>
-                <option value="vi">Việt Nam</option>
-            </select>
-        </div>
-    </header>
 
-    <div class="page-banner">
-        <h1 data-key="resTitle">留学生资源中心</h1>
-        <p data-key="resDesc">集中提供官方链接、文档模板、实用工具、紧急联系和常见疑问解答</p>
+<!-- 导航栏 -->
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Study In China</span>
+        </div>
+        <nav class="site-nav">
+            <a href="index.html">首页</a>
+            <a href="schools.html">发现项目</a>
+            <a href="schools.html">探索院校</a>
+            <a href="guide.html">申请指南</a>
+            <a href="life.html">留学中国</a>
+            <a href="career.html">职业发展</a>
+            <a href="resource.html" class="nav-active">资源中心</a>
+        </nav>
     </div>
+</header>
 
-    <!-- 资源卡片区 -->
-    <div class="res-wrap">
-        <div class="res-card">
-            <h3 data-key="res1Title">官方网站直达</h3>
-            <ul>
-                <li><a href="https://www.studyinchina.edu.cn" target="_blank">留学中国网（教育部）</a></li>
-                <li><a href="https://www.campuschina.org" target="_blank">中国政府奖学金系统</a></li>
-                <li><a href="https://www.nia.gov.cn" target="_blank">国家移民管理局</a></li>
-                <li><a href="https://www.fmprc.gov.cn/web/" target="_blank">中国外交部</a></li>
-            </ul>
-        </div>
-        <div class="res-card">
-            <h3 data-key="res2Title">常用表格与模板</h3>
-            <ul>
-                <li><a href="#">JW201/JW202签证申请表</a></li>
-                <li><a href="#">外国人体格检查表</a></li>
-                <li><a href="#">住宿登记证明模板</a></li>
-                <li><a href="#">在学证明/在读证明</a></li>
-            </ul>
-        </div>
-        <div class="res-card">
-            <h3 data-key="res3Title">学习与生活工具</h3>
-            <ul>
-                <li>翻译：Google 翻译、DeepL</li>
-                <li>地图：高德地图、百度地图</li>
-                <li>支付：支付宝、微信支付</li>
-                <li>学习：Pleco 词典、HSK Online</li>
-            </ul>
-        </div>
-        <div class="res-card">
-            <h3 data-key="res4Title">政策与数据查询</h3>
-            <ul>
-                <li><a href="#">外国留学生来华须知</a></li>
-                <li><a href="#">各城市留学人才政策</a></li>
-                <li><a href="#">中国高等教育专业目录</a></li>
-                <li><a href="#">历年留学生数据报告</a></li>
+<!-- Banner -->
+<section class="page-banner">
+    <h1><i class="fas fa-toolbox"></i> 留学生资源中心</h1>
+    <p>集中提供官方链接、文档模板、实用工具、紧急联系和常见疑问解答</p>
+</section>
+
+<!-- 主体 -->
+<section class="resources-section">
+
+    <!-- 模块1：官方网站直达 -->
+    <div class="resource-card">
+        <div class="card-icon"><i class="fas fa-globe"></i></div>
+        <div class="card-content">
+            <h3>官方网站直达</h3>
+            <ul class="resource-links">
+                <li><a href="https://www.campuschina.org" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> 留学中国网（教育部留学服务中心）
+                </a></li>
+                <li><a href="https://www.csc.edu.cn" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> 中国政府奖学金系统（CSC）
+                </a></li>
+                <li><a href="https://www.nia.gov.cn" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> 国家移民管理局
+                </a></li>
+                <li><a href="https://www.fmprc.gov.cn" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> 中国外交部
+                </a></li>
+                <li><a href="https://www.moe.gov.cn" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> 中国教育部
+                </a></li>
             </ul>
         </div>
     </div>
 
-    <!-- 紧急联系方式 -->
-    <div class="emergency-box">
-        <h2 data-key="emgTitle">紧急联系方式（24小时可用）</h2>
-        <p><strong data-key="emg1">中国报警：</strong>110</p>
-        <p><strong data-key="emg2">急救中心：</strong>120</p>
-        <p><strong data-key="emg3">移民管理服务热线：</strong>12367（中英双语）</p>
-        <p><strong data-key="emg4">外交部全球领事保护：</strong>+86-10-12308</p>
-        <p><strong data-key="emg5">本校国际学生处紧急联络：</strong>+86-XXX-XXXXXXX</p>
-    </div>
-
-    <!-- FAQ常见问题 -->
-    <div class="faq-box">
-        <h2 data-key="faqTitle">常见问题 FAQ</h2>
-        <div class="faq-item">
-            <div class="faq-q" data-key="faq1q">Q：如何申请中国政府奖学金？</div>
-            <div class="faq-a" data-key="faq1a">A：通过留学中国网或本国中国使馆教育处查询受理时间，在线填写申请表并提交材料。</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q" data-key="faq2q">Q：JW201/JW202表格有什么不同？</div>
-            <div class="faq-a" data-key="faq2a">A：JW201适用于中国政府奖学金生，JW202适用于自费来华留学生，均由录取院校协助办理。</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q" data-key="faq3q">Q：居留许可办理需要哪些材料？</div>
-            <div class="faq-a" data-key="faq3a">A：护照、录取通知书、体检表、住宿登记证明、一张2寸照片及申请费，入境30天内办理。</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q" data-key="faq4q">Q：可以在哪里查到我的学习专业是否认证？</div>
-            <div class="faq-a" data-key="faq4a">A：登录中国教育部教育涉外监管信息网，查询认可院校及专业名单。</div>
+    <!-- 模块2：常用表格与模板 -->
+    <div class="resource-card">
+        <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+        <div class="card-content">
+            <h3>常用表格与模板</h3>
+            <ul class="resource-links">
+                <li><a href="#" onclick="alert('文件整理中，即将上线')">
+                    <i class="fas fa-download"></i> JW201/JW202签证申请表（含填写说明）
+                </a></li>
+                <li><a href="#" onclick="alert('文件整理中，即将上线')">
+                    <i class="fas fa-download"></i> 外国人体格检查表
+                </a></li>
+                <li><a href="#" onclick="alert('文件整理中，即将上线')">
+                    <i class="fas fa-download"></i> 住宿登记证明模板
+                </a></li>
+                <li><a href="#" onclick="alert('文件整理中，即将上线')">
+                    <i class="fas fa-download"></i> 在学证明 / 在读证明模板
+                </a></li>
+            </ul>
+            <p style="font-size:12px; color:#999; margin-top:8px;">
+                ⚠️ 表格文件整理中，稍后提供下载。如需紧急使用，请搜索对应表格名称从教育部官网获取。
+            </p>
         </div>
     </div>
 
-<script>
-const langPack = {
-    zh:{
-        nav1:"发现项目",nav2:"探索院校",nav3:"申请指南",nav4:"留学中国生活",nav5:"职业发展",nav6:"资源中心",
-        resTitle:"留学生资源中心",
-        resDesc:"集中提供官方链接、文档模板、实用工具、紧急联系和常见疑问解答",
-        res1Title:"官方网站直达",
-        res2Title:"常用表格与模板",
-        res3Title:"学习与生活工具",
-        res4Title:"政策与数据查询",
-        emgTitle:"紧急联系方式（24小时可用）",
-        emg1:"中国报警：",emg2:"急救中心：",emg3:"移民管理服务热线：",emg4:"外交部全球领事保护：",emg5:"本校国际学生处紧急联络：",
-        faqTitle:"常见问题 FAQ",
-        faq1q:"Q：如何申请中国政府奖学金？",
-        faq1a:"A：通过留学中国网或本国中国使馆教育处查询受理时间，在线填写申请表并提交材料。",
-        faq2q:"Q：JW201/JW202表格有什么不同？",
-        faq2a:"A：JW201适用于中国政府奖学金生，JW202适用于自费来华留学生，均由录取院校协助办理。",
-        faq3q:"Q：居留许可办理需要哪些材料？",
-        faq3a:"A：护照、录取通知书、体检表、住宿登记证明、一张2寸照片及申请费，入境30天内办理。",
-        faq4q:"Q：可以在哪里查到我的学习专业是否认证？",
-        faq4a:"A：登录中国教育部教育涉外监管信息网，查询认可院校及专业名单。"
-    },
-    en:{
-        nav1:"Programs",nav2:"Universities",nav3:"Application Guide",nav4:"Life in China",nav5:"Career",nav6:"Resources",
-        resTitle:"International Student Resource Center",
-        resDesc:"Access official links, document templates, tools, emergency contacts and frequently asked questions",
-        res1Title:"Official Websites",
-        res2Title:"Forms & Templates",
-        res3Title:"Study & Life Tools",
-        res4Title:"Policy & Data Inquiry",
-        emgTitle:"Emergency Contacts (24/7)",
-        emg1:"Police (China):",emg2:"Ambulance:",emg3:"Immigration Hotline:",emg4:"Global Consular Protection:",emg5:"University International Office:",
-        faqTitle:"Frequently Asked Questions",
-        faq1q:"Q: How to apply for Chinese Government Scholarship?",
-        faq1a:"A: Check application periods via Study in China website or Chinese embassy, submit online form and documents.",
-        faq2q:"Q: What is the difference between JW201 and JW202 forms?",
-        faq2a:"A: JW201 is for scholarship students, JW202 is for self-funded students. Both are handled by admitting universities.",
-        faq3q:"Q: What documents are needed for a residence permit?",
-        faq3a:"A: Passport, admission letter, health check form, accommodation proof, one passport photo and fee, apply within 30 days of entry.",
-        faq4q:"Q: Where can I check if my degree program is recognized?",
-        faq4a:"A: Visit the China Education Ministry’s official foreign student information portal for accredited institutions and majors."
-    },
-    es:{
-        nav1:"Programas",nav2:"Universidades",nav3:"Guía de solicitud",nav4:"Vivir en China",nav5:"Carrera",nav6:"Recursos",
-        resTitle:"Centro de Recursos para Estudiantes Internacionales",
-        resDesc:"Accede a enlaces oficiales, plantillas, herramientas, contactos de emergencia y preguntas frecuentes",
-        res1Title:"Sitios Oficiales",
-        res2Title:"Formularios y Plantillas",
-        res3Title:"Herramientas de Estudio y Vida",
-        res4Title:"Consulta de Políticas",
-        emgTitle:"Contactos de Emergencia (24h)",
-        emg1:"Policía (China):",emg2:"Ambulancia:",emg3:"Línea de Inmigración:",emg4:"Protección Consular Global:",emg5:"Oficina Internacional Universidad:",
-        faqTitle:"Preguntas Frecuentes",
-        faq1q:"Q: ¿Cómo solicitar la Beca del Gobierno Chino?",
-        faq1a:"A: Infórmate en Study in China o en la embajada china, presenta formulario y documentos en las fechas indicadas.",
-        faq2q:"Q: ¿Diferencia entre JW201 y JW202?",
-        faq2a:"A: JW201 para becarios, JW202 para estudiantes autofinanciados; gestionados por la universidad.",
-        faq3q:"Q: ¿Documentos para permiso de residencia?",
-        faq3a:"A: Pasaporte, carta de admisión, certificado médico, prueba de alojamiento, foto y tarifa dentro de 30 días.",
-        faq4q:"Q: ¿Dónde verifico si mi carrera está acreditada?",
-        faq4a:"A: Portal oficial del Ministerio de Educación para estudiantes extranjeros."
-    },
-    fr:{
-        nav1:"Programmes",nav2:"Universités",nav3:"Guide de candidature",nav4:"Vivre en Chine",nav5:"Carrière",nav6:"Ressources",
-        resTitle:"Centre de Ressources Étudiants Internationaux",
-        resDesc:"Liens officiels, modèles, outils, contacts d'urgence et questions fréquentes",
-        res1Title:"Sites Officiels",
-        res2Title:"Formulaires et Modèles",
-        res3Title:"Outils Étude et Vie",
-        res4Title:"Consultation Politiques",
-        emgTitle:"Contacts d'Urgence (24h/24)",
-        emg1:"Police :",emg2:"Ambulance :",emg3:"Ligne Immigration :",emg4:"Protection Consulaire :",emg5:"Bureau International :",
-        faqTitle:"FAQ",
-        faq1q:"Q : Comment candidater à une bourse du gouvernement chinois ?",
-        faq1a:"R : Via Study in China ou l'ambassade, soumettez le formulaire et les documents dans les délais.",
-        faq2q:"Q : Différence entre JW201 et JW202 ?",
-        faq2a:"R : JW201 pour boursiers, JW202 pour autofinancés, gérés par l'université.",
-        faq3q:"Q : Documents pour le titre de séjour ?",
-        faq3a:"R : Passeport, lettre d'admission, certificat médical, justificatif de logement, photo et frais sous 30 jours.",
-        faq4q:"Q : Où vérifier l'accréditation de ma formation ?",
-        faq4a:"R : Portail officiel du Ministère de l'Éducation pour étudiants étrangers."
-    },
-    de:{
-        nav1:"Programm",nav2:"Universitäten",nav3:"Bewerbungsleitfaden",nav4:"Leben in China",nav5:"Karriere",nav6:"Ressourcen",
-        resTitle:"Ressourcenzentrum Internationale Studierende",
-        resDesc:"Offizielle Links, Vorlagen, Tools, Notfallkontakte und FAQs",
-        res1Title:"Offizielle Websites",
-        res2Title:"Formulare & Vorlagen",
-        res3Title:"Lern- & Alltagstools",
-        res4Title:"Politikabfragen",
-        emgTitle:"Notfallkontakte (24/7)",
-        emg1:"Polizei:",emg2:"Krankenwagen:",emg3:"Einwanderungshotline:",emg4:"Konsularschutz:",emg5:"Internationales Büro:",
-        faqTitle:"FAQ",
-        faq1q:"F: Wie beantrage ich ein chinesisches Regierungsstipendium?",
-        faq1a:"A: Über Study in China oder Botschaft, fristgerecht Formular und Unterlagen einreichen.",
-        faq2q:"F: Unterschied JW201/JW202?",
-        faq2a:"A: JW201 für Stipendiaten, JW202 für Selbstzahler, beides von der Universität bearbeitet.",
-        faq3q:"F: Unterlagen für Arbeitserlaubnis?",
-        faq3a:"A: Reisepass, Zulassung, Gesundheitszeugnis, Wohnungsnachweis, Foto und Gebühr innerhalb 30 Tagen.",
-        faq4q:"F: Wo prüfe ich Anerkennung meines Studiengangs?",
-        faq4a:"A: Offizielles Portal des Bildungsministeriums für ausländische Studierende."
-    },
-    ru:{
-        nav1:"Программы",nav2:"Университеты",nav3:"Руководство",nav4:"Жизнь в Китае",nav5:"Карьера",nav6:"Ресурсы",
-        resTitle:"Ресурсный центр",
-        resDesc:"Официальные ссылки, шаблоны, инструменты, контакты и частые вопросы",
-        res1Title:"Официальные сайты",
-        res2Title:"Формы и шаблоны",
-        res3Title:"Инструменты",
-        res4Title:"Политика и справки",
-        emgTitle:"Экстренные контакты (24/7)",
-        emg1:"Полиция:",emg2:"Скорая:",emg3:"Иммиграционная:",emg4:"Консульская защита:",emg5:"Международный отдел:",
-        faqTitle:"Часто задаваемые вопросы",
-        faq1q:"В: Как подать на стипендию правительства Китая?",
-        faq1a:"О: Через Study in China или посольство, подайте анкету и документы в срок.",
-        faq2q:"В: Разница JW201 и JW202?",
-        faq2a:"О: JW201 для стипендиатов, JW202 для самостоятельных студентов.",
-        faq3q:"В: Документы на вид на жительство?",
-        faq3a:"О: Паспорт, приглашение, медсправка, подтверждение жилья, фото и сбор в течение 30 дней.",
-        faq4q:"В: Где проверить аккредитацию программы?",
-        faq4a:"О: На официальном портале Минобразования для иностранных студентов."
-    },
-    ar:{
-        nav1:"البرامج",nav2:"الجامعات",nav3:"دليل التقديم",nav4:"الحياة في الصين",nav5:"المهنة",nav6:"المصادر",
-        resTitle:"مركز المصادر",
-        resDesc:"روابط رسمية، نماذج، أدوات، اتصالات الطوارئ والأسئلة الشائعة",
-        res1Title:"مواقع رسمية",
-        res2Title:"نماذج ووثائق",
-        res3Title:"أدوات الدراسة والحياة",
-        res4Title:"استعلام السياسات",
-        emgTitle:"اتصالات الطوارئ (24 ساعة)",
-        emg1:"الشرطة:",emg2:"الإسعاف:",emg3:"خط الهجرة:",emg4:"الحماية القنصلية:",emg5:"المكتب الدولي:",
-        faqTitle:"أسئلة شائعة",
-        faq1q:"س: كيف أتقدم لمنحة الحكومة الصينية؟",
-        faq1a:"ج: عبر Study in China أو السفارة، قدم النموذج والوثائق في المواعيد.",
-        faq2q:"س: الفرق بين JW201 وJW202؟",
-        faq2a:"ج: JW201 للمنح، JW202 للطلاب الذاتيين، الجامعة تتابع الإجراء.",
-        faq3q:"س: مستندات الإقامة؟",
-        faq3a:"ج: جواز السفر، خطاب القبول، الفحص الطبي، إثبات السكن، صورة ورسوم خلال 30 يومًا.",
-        faq4q:"س: أين أتحقق من اعتماد تخصصي؟",
-        faq4a:"ج: بوابة وزارة التعليم الرسمية للطلاب الأجانب."
-    },
-    ja:{
-        nav1:"プログラム",nav2:"大学",nav3:"出願案内",nav4:"中国での生活",nav5:"キャリア",nav6:"資料",
-        resTitle:"留学生リソースセンター",
-        resDesc:"公式リンク、書類テンプレート、便利ツール、緊急連絡先とよくある質問",
-        res1Title:"公式サイト",
-        res2Title:"申請書類テンプレート",
-        res3Title:"学習・生活ツール",
-        res4Title:"政策・データ照会",
-        emgTitle:"緊急連絡先（24時間）",
-        emg1:"警察:",emg2:"救急車:",emg3:"入国管理局:",emg4:"領事保護:",emg5:"大学国際課:",
-        faqTitle:"よくある質問",
-        faq1q:"Q：中国政府奨学金の申請方法は？",
-        faq1a:"A：Study in Chinaまたは中国大使館を通じて申請期間、オンライン提出。",
-        faq2q:"Q：JW201とJW202の違いは？",
-        faq2a:"A：JW201は奨学金受給者用、JW202は私費用、大学が手続きをサポート。",
-        faq3q:"Q：居留許可に必要な書類は？",
-        faq3a:"A：パスポート、合格通知書、健康診断書、宿泊証明、写真と手数料を30日以内に提出。",
-        faq4q:"Q：専攻の認定状況はどこで確認？",
-        faq4a:"A：教育部認定外国学生向け公式ポータルで確認。"
-    },
-    ko:{
-        nav1:"프로그램",nav2:"대학",nav3:"지원 안내",nav4:"중국 생활",nav5:"커리어",nav6:"자료",
-        resTitle:"유학생 자료센터",
-        resDesc:"공식 링크, 서식, 도구, 긴급 연락처 및 FAQ",
-        res1Title:"공식 사이트",
-        res2Title:"서식 및 템플릿",
-        res3Title:"학습 및 생활 도구",
-        res4Title:"정책 자료 조회",
-        emgTitle:"긴급 연락망",
-        emg1:"경찰:",emg2:"구급차:",emg3:"출입국 관리사무소:",emg4:"영사 보호:",emg5:"국제처:",
-        faqTitle:"자주 묻는 질문",
-        faq1q:"Q: 중국 정부 장학금 신청 방법은?",
-        faq1a:"A: Study in China 또는 중국 대사관을 통해 신청 기간 확인, 온라인 서류 제출.",
-        faq2q:"Q: JW201과 JW202 차이?",
-        faq2a:"A: JW201은 장학생용, JW202은 일반 유학생용입니다.",
-        faq3q:"Q: 거류허가 필요 서류는?",
-        faq3a:"A: 여권, 합격통지서, 건강진단서, 숙소증명, 사진과 수수료를 30일 이내 제출.",
-        faq4q:"Q: 전공 인증 여부는 어디에서 확인?",
-        faq4a:"A: 중국 교육부 공식 유학생 정보 사이트에서 확인 가능."
-    },
-    pt:{
-        nav1:"Programas",nav2:"Universidades",nav3:"Guia de Inscrição",nav4:"Viver na China",nav5:"Carreira",nav6:"Recursos",
-        resTitle:"Central de Recursos",
-        resDesc:"Links oficiais, formulários, ferramentas, contatos de emergência e perguntas frequentes",
-        res1Title:"Sites Oficiais",
-        res2Title:"Formulários e Modelos",
-        res3Title:"Ferramentas de Estudo e Vida",
-        res4Title:"Consulta de Políticas",
-        emgTitle:"Contatos de Emergência (24h)",
-        emg1:"Polícia:",emg2:"Ambulância:",emg3:"Linha de Imigração:",emg4:"Proteção Consular:",emg5:"Escritório Internacional:",
-        faqTitle:"Perguntas Frequentes",
-        faq1q:"Q: Como se candidatar à Bolsa do Governo Chinês?",
-        faq1a:"A: Através do Study in China ou embaixada, dentro do prazo com formulário e documentos.",
-        faq2q:"Q: Diferença entre JW201 e JW202?",
-        faq2a:"A: JW201 para bolsistas, JW202 para autofinanciados, cuidados pela universidade.",
-        faq3q:"Q: Documentos para autorização de residência?",
-        faq3a:"A: Passaporte, carta de admissão, atestado médico, comprovante de moradia, foto e taxa em 30 dias.",
-        faq4q:"Q: Onde verifico se meu curso é reconhecido?",
-        faq4a:"A: No portal oficial do Ministério da Educação para estudantes estrangeiros."
-    },
-    it:{
-        nav1:"Programmi",nav2:"Università",nav3:"Guida alla Domanda",nav4:"Vivere in Cina",nav5:"Carriera",nav6:"Risorse",
-        resTitle:"Centro Risorse",
-        resDesc:"Link ufficiali, modelli, strumenti, contatti di emergenza e domande frequenti",
-        res1Title:"Siti Ufficiali",
-        res2Title:"Modelli e Formulari",
-        res3Title:"Strumenti Studio e Vita",
-        res4Title:"Consultazione Normative",
-        emgTitle:"Contatti di Emergenza",
-        emg1:"Polizia:",emg2:"Ambulanza:",emg3:"Linea Immigrazione:",emg4:"Protezione Consolare:",emg5:"Ufficio Internazionale:",
-        faqTitle:"FAQ",
-        faq1q:"D: Come richiedere una borsa di studio del governo cinese?",
-        faq1a:"R: Tramite Study in China o ambasciata, presenta modulo e documenti nelle scadenze indicate.",
-        faq2q:"D: Differenza tra JW201 e JW202?",
-        faq2a:"R: JW201 per borsisti, JW202 per studenti autofinanziati, gestiti dall'università.",
-        faq3q:"D: Documenti per permesso di soggiorno?",
-        faq3a:"R: Passaporto, lettera di ammissione, certificato medico, prova alloggio, foto e tassa entro 30 giorni.",
-        faq4q:"D: Dove verifico se il mio corso è accreditato?",
-        faq4a:"R: Portale ufficiale del Ministero dell'Istruzione per studenti stranieri."
-    },
-    nl:{
-        nav1:"Programma's",nav2:"Universiteiten",nav3:"Aanmeldgids",nav4:"Leven in China",nav5:"Carrière",nav6:"Bronnen",
-        resTitle:"Bronnencentrum",
-        resDesc:"Officiële links, sjablonen, tools, noodcontacten en veelgestelde vragen",
-        res1Title:"Officiële Websites",
-        res2Title:"Formulieren en Sjablonen",
-        res3Title:"Studie- en Levenstools",
-        res4Title:"Beleidsinformatie",
-        emgTitle:"Noodcontacten (24/7)",
-        emg1:"Politie:",emg2:"Ambulance:",emg3:"Immigratielijn:",emg4:"Consulaire Bescherming:",emg5:"Internationaal Kantoor:",
-        faqTitle:"FAQ",
-        faq1q:"V: Hoe vraag ik een Chinese overheidsbeurs aan?",
-        faq1a:"A: Via Study in China of ambassade, dien formulier en documenten op tijd in.",
-        faq2q:"V: Verschil JW201 en JW202?",
-        faq2a:"A: JW201 voor beurshouders, JW202 voor zelfbetalers, universiteit regelt het.",
-        faq3q:"V: Documenten verblijfsvergunning?",
-        faq3a:"A: Paspoort, toelatingsbrief, medische verklaring, adresbewijs, foto en betaling binnen 30 dagen.",
-        faq4q:"V: Waar controleer ik accreditatie van mijn opleiding?",
-        faq4a:"A: Officiële overheidsportal voor buitenlandse studenten."
-    },
-    pl:{
-        nav1:"Programy",nav2:"Uniwersytety",nav3:"Przewodnik",nav4:"Życie w Chinach",nav5:"Kariera",nav6:"Zasoby",
-        resTitle:"Centrum Zasobów",
-        resDesc:"Oficjalne linki, szablony, narzędzia, kontakty awaryjne i najczęstsze pytania",
-        res1Title:"Oficjalne Strony",
-        res2Title:"Formularze i Szablony",
-        res3Title:"Narzędzia do Nauki i Życia",
-        res4Title:"Polityka i Dane",
-        emgTitle:"Kontakty Awaryjne (24/7)",
-        emg1:"Policja:",emg2:"Ambulans:",emg3:"Infolinia Imigracyjna:",emg4:"Ochrona Konsularna:",emg5:"Biuro Międzynarodowe:",
-        faqTitle:"FAQ",
-        faq1q:"P: Jak ubiegać się o stypendium rządu chińskiego?",
-        faq1a:"O: Przez Study in China lub ambasadę, złóż wniosek i dokumenty w terminie.",
-        faq2q:"P: Różnica JW201 a JW202?",
-        faq2a:"O: JW201 dla stypendystów, JW202 dla płacących, załatwiane przez uczelnię.",
-        faq3q:"P: Dokumenty na pobyt?",
-        faq3a:"O: Paszport, list przyjęciowy, zaświadczenie lekarskie, dowód zakwaterowania, zdjęcie i opłata w ciągu 30 dni.",
-        faq4q:"P: Gdzie sprawdzić akredytację kierunku?",
-        faq4a:"O: Na oficjalnym portalu ministerstwa edukacji dla studentów zagranicznych."
-    },
-    uk:{
-        nav1:"Програми",nav2:"Університети",nav3:"Посібник",nav4:"Життя в Китаї",nav5:"Кар'єра",nav6:"Ресурси",
-        resTitle:"Ресурсний центр",
-        resDesc:"Офіційні посилання, шаблони, інструменти, екстрені контакти та часті питання",
-        res1Title:"Офіційні сайти",
-        res2Title:"Форми та шаблони",
-        res3Title:"Інструменти",
-        res4Title:"Політика та дані",
-        emgTitle:"Надзвичайні контакти",
-        emg1:"Поліція:",emg2:"Швидка:",emg3:"Міграційна служба:",emg4:"Консульський захист:",emg5:"Міжнародний відділ:",
-        faqTitle:"Часті запитання",
-        faq1q:"Як отримати стипендію уряду Китаю?",
-        faq1a:"Через Study in China або посольство, подайте форму та документи у зазначені строки.",
-        faq2q:"Різниця JW201 та JW202?",
-        faq2a:"JW201 для стипендіатів, JW202 для самофінансування, університет оформлює.",
-        faq3q:"Документи на посвідку на проживання?",
-        faq3a:"Паспорт, запрошення, меддовідка, підтвердження житла, фото та збір протягом 30 днів.",
-        faq4q:"Де перевірити акредитацію програми?",
-        faq4a:"Офіційний портал Міністерства освіти для іноземних студентів."
-    },
-    tr:{
-        nav1:"Programlar",nav2:"Üniversiteler",nav3:"Başvuru Kılavuzu",nav4:"Çin'de Yaşam",nav5:"Kariyer",nav6:"Kaynaklar",
-        resTitle:"Kaynak Merkezi",
-        resDesc:"Resmi bağlantılar, şablonlar, araçlar, acil durum iletişimi ve sıkça sorulan sorular",
-        res1Title:"Resmi Siteler",
-        res2Title:"Form ve Şablonlar",
-        res3Title:"Çalışma ve Yaşam Araçları",
-        res4Title:"Politika Sorgulama",
-        emgTitle:"Acil Durum İletişim",
-        emg1:"Polis:",emg2:"Ambulans:",emg3:"Göçmenlik Hattı:",emg4:"Konsolosluk Koruması:",emg5:"Uluslararası Ofis:",
-        faqTitle:"SSS",
-        faq1q:"S: Çin Hükümet Bursu'na nasıl başvurulur?",
-        faq1a:"C: Study in China veya büyükelçilik üzerinden süresi içinde form ve belgeleri iletin.",
-        faq2q:"S: JW201 ile JW202 arasındaki fark?",
-        faq2a:"C: JW201 burslular için, JW202 kendi imkanıyla okuyanlar için, üniversite yürütür.",
-        faq3q:"S: Oturma izni için hangi belgeler gerekli?",
-        faq3a:"C: Pasaport, kabul mektubu, sağlık raporu, konaklama belgesi, bir fotoğraf ve 30 gün içinde başvuru.",
-        faq4q:"S: Programımın tanınırlığını nereden kontrol edebilirim?",
-        faq4a:"C: Milli Eğitim Bakanlığı yabancı öğrenci portalı."
-    },
-    th:{
-        nav1:"โปรแกรม",nav2:"มหาวิทยาลัย",nav3:"คู่มือสมัคร",nav4:"ชีวิตในจีน",nav5:"อาชีพ",nav6:"ทรัพยากร",
-        resTitle:"ศูนย์ทรัพยากร",
-        resDesc:"ลิงก์ทางการ แม่แบบ เครื่องมือ ติดต่อฉุกเฉิน และคำถามที่พบบ่อย",
-        res1Title:"เว็บไซต์ทางการ",
-        res2Title:"แบบฟอร์มและแม่แบบ",
-        res3Title:"เครื่องมือการเรียนและชีวิต",
-        res4Title:"ข้อมูลนโยบาย",
-        emgTitle:"ติดต่อฉุกเฉิน (24 ชม.)",
-        emg1:"ตำรวจ:",emg2:"รถพยาบาล:",emg3:"สายด่วนตรวจคนเข้าเมือง:",emg4:"การคุ้มครองกงสุล:",emg5:"สำนักงานนานาชาติมหาวิทยาลัย:",
-        faqTitle:"คำถามพบบ่อย",
-        faq1q:"ถาม: จะขอทุนรัฐบาลจีนได้อย่างไร?",
-        faq1a:"ตอบ: ผ่าน Study in China หรือสถานทูตจีน ยื่นแบบฟอร์มและเอกสารภายในกำหนดเวลา",
-        faq2q:"ถาม: JW201 กับ JW202 ต่างกันอย่างไร?",
-        faq2a:"ตอบ: JW201 สำหรับนักเรียนทุน, JW202 สำหรับนักเรียนค่าใช้จ่ายตัวเอง",
-        faq3q:"ถาม: เอกสารขอใบอนุญาตพำนัก?",
-        faq3a:"ตอบ: หนังสือเดินทาง, จดหมายตอบรับ, ใบรับรองแพทย์, หลักฐานที่พัก, รูปถ่าย และค่าธรรมเนียมภายใน 30 วัน",
-        faq4q:"ถาม: ตรวจสอบการรับรองหลักสูตรได้ที่ไหน?",
-        faq4a:"ตอบ: เว็บไซต์ทางการของกระทรวงศึกษาธิการสำหรับนักเรียนต่างชาติ"
-    },
-    vi:{
-        nav1:"Chương trình",nav2:"Đại học",nav3:"Hướng dẫn",nav4:"Sống tại Trung Quốc",nav5:"Nghề nghiệp",nav6:"Tài nguyên",
-        resTitle:"Trung tâm Tài nguyên",
-        resDesc:"Liên kết chính thức, biểu mẫu, công cụ, liên hệ khẩn cấp và câu hỏi thường gặp",
-        res1Title:"Website chính thức",
-        res2Title:"Biểu mẫu và Mẫu đơn",
-        res3Title:"Công cụ học tập & đời sống",
-        res4Title:"Tra cứu chính sách",
-        emgTitle:"Liên hệ khẩn cấp (24/7)",
-        emg1:"Cảnh sát:",emg2:"Cứu thương:",emg3:"Đường dây xuất nhập cảnh:",emg4:"Bảo hộ lãnh sự:",emg5:"Phòng Quốc tế:",
-        faqTitle:"Câu hỏi thường gặp",
-        faq1q:"Q: Làm sao xin học bổng Chính phủ Trung Quốc?",
-        faq1a:"A: Qua Study in China hoặc Đại sứ quán, nộp đơn và hồ sơ đúng hạn.",
-        faq2q:"Q: Khác biệt giữa JW201 và JW202?",
-        faq2a:"A: JW201 cho sinh viên học bổng, JW202 cho tự túc, trường sẽ hỗ trợ.",
-        faq3q:"Q: Giấy tờ cần cho giấy phép cư trú?",
-        faq3a:"A: Hộ chiếu, thư trúng tuyển, giấy khám sức khỏe, xác nhận nơi ở, ảnh và phí trong vòng 30 ngày.",
-        faq4q:"Q: Kiểm tra chương trình học được công nhận ở đâu?",
-        faq4a:"A: Cổng thông tin chính thức của Bộ Giáo dục dành cho du học sinh."
-    }
-};
+    <!-- 模块3：学习与生活工具 -->
+    <div class="resource-card">
+        <div class="card-icon"><i class="fas fa-tools"></i></div>
+        <div class="card-content">
+            <h3>学习与生活工具</h3>
+            <ul class="resource-links">
+                <li>
+                    <span class="tool-category">翻译：</span>
+                    <a href="https://translate.google.com" target="_blank" rel="noopener">Google 翻译</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://www.deepl.com/translator" target="_blank" rel="noopener">DeepL</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://fanyi.baidu.com" target="_blank" rel="noopener">百度翻译</a>
+                </li>
+                <li>
+                    <span class="tool-category">地图导航：</span>
+                    <a href="https://www.amap.com" target="_blank" rel="noopener">高德地图</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://map.baidu.com" target="_blank" rel="noopener">百度地图</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://www.didi.com" target="_blank" rel="noopener">滴滴出行</a>
+                </li>
+                <li>
+                    <span class="tool-category">支付：</span>
+                    <a href="https://www.alipay.com" target="_blank" rel="noopener">支付宝</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://www.weixin.qq.com" target="_blank" rel="noopener">微信支付</a>
+                </li>
+                <li>
+                    <span class="tool-category">中文学习：</span>
+                    <a href="https://www.pleco.com" target="_blank" rel="noopener">Pleco 词典</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://www.hskonline.com" target="_blank" rel="noopener">HSK Online</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://www.duolingo.com" target="_blank" rel="noopener">Duolingo</a>
+                </li>
+                <li>
+                    <span class="tool-category">外卖/生活：</span>
+                    <a href="https://www.meituan.com" target="_blank" rel="noopener">美团</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://www.ele.me" target="_blank" rel="noopener">饿了么</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://www.taobao.com" target="_blank" rel="noopener">淘宝</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://www.jd.com" target="_blank" rel="noopener">京东</a>
+                </li>
+                <li>
+                    <span class="tool-category">出行购票：</span>
+                    <a href="https://www.12306.cn" target="_blank" rel="noopener">12306（火车票）</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://www.ctrip.com" target="_blank" rel="noopener">携程</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-const langSelect = document.getElementById('langSelect');
-const defaultLang = localStorage.getItem('siteLang') || 'zh';
-langSelect.value = defaultLang;
+    <!-- 模块4：政策与数据查询 -->
+    <div class="resource-card">
+        <div class="card-icon"><i class="fas fa-search"></i></div>
+        <div class="card-content">
+            <h3>政策与数据查询</h3>
+            <ul class="resource-links">
+                <li><a href="https://www.campuschina.org" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> 留学中国网 — 外国留学生来华须知
+                </a></li>
+                <li><a href="http://www.moe.gov.cn/jyb_xxgk/" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> 教育部 — 留学政策文件
+                </a></li>
+                <li><a href="http://www.moe.gov.cn/s78/A08/" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> 中国高等教育专业目录
+                </a></li>
+                <li><a href="http://www.moe.gov.cn/jyb_sjzl/" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> 历年留学生数据报告
+                </a></li>
+                <li><a href="https://www.nia.gov.cn" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> 国家移民管理局 — 签证与居留政策
+                </a></li>
+            </ul>
+        </div>
+    </div>
 
-function applyLanguage(lang) {
-    const data = langPack[lang] || langPack['zh'];
-    // 替换所有带 data-key 的元素文本
-    document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.getAttribute('data-key');
-        if (data[key] !== undefined) {
-            el.textContent = data[key];
-        }
-    });
-    // 更新页面标题
-    if (data['resTitle']) {
-        document.title = data['resTitle'];
-    }
-    // 更新 HTML lang 属性
-    document.documentElement.lang = lang;
-    // 记住选择
-    localStorage.setItem('siteLang', lang);
-}
+    <!-- 模块5：紧急联系方式（永久不变） -->
+    <div class="resource-card emergency-card">
+        <div class="card-icon"><i class="fas fa-phone-alt"></i></div>
+        <div class="card-content">
+            <h3>紧急联系方式（24小时可用）</h3>
+            <ul class="resource-links emergency-links">
+                <li><strong>报警：</strong><a href="tel:110">110</a></li>
+                <li><strong>急救：</strong><a href="tel:120">120</a></li>
+                <li><strong>火警：</strong><a href="tel:119">119</a></li>
+                <li><strong>交通事故：</strong><a href="tel:122">122</a></li>
+                <li><strong>国家移民管理局服务热线：</strong><a href="tel:12367">12367</a>（中英双语）</li>
+                <li><strong>外交部全球领事保护：</strong><a href="tel:+861012308">+86-10-12308</a></li>
+            </ul>
+            <p style="margin-top:12px; font-size:13px; color:#888;">
+                以上号码在中国境内免费拨打，24小时可用。拨打时无需加区号。
+            </p>
+        </div>
+    </div>
 
-langSelect.addEventListener('change', function(e) {
-    applyLanguage(e.target.value);
-});
+    <!-- 模块6：常见问题 FAQ（保留你线上已有的内容） -->
+    <div class="resource-card faq-card">
+        <div class="card-icon"><i class="fas fa-question-circle"></i></div>
+        <div class="card-content">
+            <h3>常见问题 FAQ</h3>
+            <div class="faq-item">
+                <p class="faq-q">Q：如何申请中国政府奖学金？</p>
+                <p class="faq-a">A：通过留学中国网或本国中国使馆教育处查询受理时间，在线填写申请表并提交材料。</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Q：JW201/JW202表格有什么不同？</p>
+                <p class="faq-a">A：JW201适用于中国政府奖学金生，JW202适用于自费来华留学生，均由录取院校协助办理。</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Q：居留许可办理需要哪些材料？</p>
+                <p class="faq-a">A：护照、录取通知书、体检表、住宿登记证明、一张2寸照片及申请费，入境30天内办理。</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-q">Q：可以在哪里查到我的学习专业是否认证？</p>
+                <p class="faq-a">A：登录中国教育部教育涉外监管信息网，查询认可院校及专业名单。</p>
+            </div>
+        </div>
+    </div>
 
-applyLanguage(defaultLang);
-</script>
+</section>
+
+<!-- 页脚 -->
+<footer class="site-footer">
+    <p>&copy; 2025 Study in China Platform — 资源中心</p>
+</footer>
+
 </body>
 </html>
