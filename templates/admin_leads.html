@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>线索管理 - 后台</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="navbar"><div class="logo">📋 线索管理</div><a href="/">← 返回首页</a></div>
+<div class="container">
+    <table>
+        <thead><tr><th>日期</th><th>姓名</th><th>国籍</th><th>学历</th><th>意向专业</th><th>预算</th><th>状态</th></tr></thead>
+        <tbody>
+        {% for lead in leads %}
+        <tr>
+            <td>{{ lead.created_at.strftime('%m-%d %H:%M') }}</td>
+            <td><strong>{{ lead.name }}</strong><br><small>{{ lead.email }}</small></td>
+            <td>{{ lead.nationality }}</td>
+            <td>{{ lead.current_education }}</td>
+            <td>{{ lead.interested_major or '-' }}</td>
+            <td>{{ lead.budget_range or '-' }}</td>
+            <td>
+                <select onchange="updateStatus({{ lead.id }}, this.value)">
+                    <option value="new" {% if lead.status=='new' %}selected{% endif %}>新线索</option>
+                    <option value="contacted" {% if lead.status=='contacted' %}selected{% endif %}>已联系</option>
+                    <option value="converted" {% if lead.status=='converted' %}selected{% endif %}>已转化</option>
+                    <option value="closed" {% if lead.status=='closed' %}selected{% endif %}>已关闭</option>
+                </select>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+async function updateStatus(id, status) {
+    await fetch('/api/leads/' + id, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({status: status})
+    });
+}
+</script>
+</body>
+</html>
