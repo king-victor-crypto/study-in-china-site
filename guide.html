@@ -1,211 +1,301 @@
-<!DOCTYPE html<html lang="zh<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-申请指南 - Study In China
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-:root {
---primary: #0a2540;
---accent: #2563eb;
---accent-light: #eff6ff;
---bg: #f7f8fa;
---card: #fff;
---text: #1e293b;
---muted: #64748b;
---border: #e2e8f0;
---shadow: 0 1px 3px rgba(0,0,0,0.06);
---shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-background: var(--bg);
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft Yahei", sans-serif;
-color: var(--text);
-line-height: 1.5;
-}
-/* 导航栏 - 统一精简菜单 */
-.navbar {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 12px 30px;
-background: #fff;
-box-shadow: 0 2px 10px rgba (0,0,0,0.05);
-position: sticky;
-top: 0;
-z-index: 999;
-}
-.logo {
-font-size: 20px;
-font-weight: bold;
-color: var (--accent);
-display: flex;
-align-items: center;
-gap: 8px;
-}
-.nav-main {
-display: flex;
-gap: 22px;
-}
-.nav-main a {
-text-decoration: none;
-color: var (--text);
-font-size: 14px;
-transition: 0.3s;
-}
-.nav-main a.active,
-.nav-main a:hover {
-color: var (--accent);
-}
-.nav-lang {
-display: flex;
-align-items: center;
-gap: 6px;
-}
-/* 头部区域 /
-.header-wrap {
-text-align: center;
-padding: 2rem 1.5rem;
-background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%);
-color: white;
-}
-.header-wrap h1 {
-font-size: 1.8rem;
-font-weight: 700;
-margin-bottom: 0.8rem;
-}
-/ 免费咨询按钮 - 仅本页显示 分支入口 */
-.consult-btn {
-display: inline-block;
-padding: 8px 20px;
-background: #fff;
-color: var (--accent);
-border-radius: 24px;
-text-decoration: none;
-font-weight: 600;
-font-size: 14px;
-transition: 0.3s;
-border: 1px solid #fff;
-}
-.consult-btn:hover {
-background: transparent;
-color: #fff;
-}
-/* 搜索框区域 */
-.search-wrap {
-max-width: 700px;
-margin: 1.5rem auto;
-padding: 0 1.5rem;
-display: flex;
-gap: 10px;
-align-items: center;
-}
-.search-input {
-flex: 1;
-padding: 12px 16px;
-border: 1px solid var (--border);
-border-radius: 8px;
-font-size: 14px;
-outline: none;
-transition: 0.3s;
-}
-.search-input:focus {
-border-color: var (--accent);
-box-shadow: 0 0 0 3px rgba (37,99,235,0.1);
-}
-.search-btn {
-padding: 12px 20px;
-background: var (--accent);
-color: #fff;
-border: none;
-border-radius: 8px;
-cursor: pointer;
-transition: 0.3s;
-}
-.search-btn:hover {
-background: #1d4ed8;
-}
-/* 主容器 一页不滚动 /
-.container {
-max-width: 1100px;
-margin: 0 auto;
-padding: 1rem 1.5rem 2rem;
-}
-/ 12 模块网格 /
-.guide-grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 1rem;
-}
-/ 模块卡片 - 可点击跳转分支 */
-.guide-card {
-display: block;
-text-decoration: none;
-background: var (--card);
-border-radius: 10px;
-padding: 1.2rem;
-box-shadow: var (--shadow);
-border: 1px solid var (--border);
-transition: all 0.3s ease;
-text-align: center;
-}
-.guide-card:hover {
-transform: translateY (-3px);
-box-shadow: var (--shadow-hover);
-border-color: var (--accent);
-}
-.guide-card h3 {
-font-size: 1rem;
-font-weight: 600;
-color: var (--primary);
-margin-bottom: 0.4rem;
-}
-.guide-card p {
-font-size: 0.8rem;
-color: var (--muted);
-}
-/* 页脚 */
-footer {
-text-align: center;
-padding: 1rem;
-color: var (--muted);
-font-size: 0.8rem;
-border-top: 1px solid var (--border);
-}
-/* 电脑端一屏适配 */
-@media (min-width:1024px) {
-body { overflow-y: hidden; }
-}</style>
-<body><!-- 导航栏 --><nav class="navbar<div class<i class="fas fa-graduation-cap</i> Study In China</div>
-<div class="nav-main"><a href="programs.html">发现项目</a>
-<a href="schools.html"></a>
-<a href="guide.html" class="active"></a>
-<a href="life.html">留学中国<a href="resource.html">资源中心</a>
-<div class="nav-lang">
-<span>🌐<select id="langSelect">
-<option value="zh</option>
-<option value="en</option>
-<option value="ru</option><option value="</option></select>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>申请指南 - Study In China</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a2540;
+            --accent: #2563eb;
+            --accent-light: #eff6ff;
+            --bg: #f7f8fa;
+            --card: #fff;
+            --text: #1e293b;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--bg); 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft Yahei", sans-serif; 
+            color: var(--text); 
+            line-height: 1.5;
+        }
+
+        /* 导航栏 - 全站统一 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 30px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-main {
+            display: flex;
+            gap: 22px;
+        }
+        .nav-main a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .nav-main a.active,
+        .nav-main a:hover {
+            color: var(--accent);
+        }
+        .nav-lang {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 头部横幅 + 免费咨询 */
+        .header-wrap {
+            text-align: center; 
+            padding: 2rem 1.5rem;
+            background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%);
+            color: white;
+        }
+        .header-wrap h1 { 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            margin-bottom: 1rem;
+        }
+        .consult-btn {
+            display: inline-block;
+            padding: 10px 28px;
+            background: #fff;
+            color: var(--accent);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid #fff;
+        }
+        .consult-btn:hover {
+            background: transparent;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* 搜索框 */
+        .search-wrap {
+            max-width: 650px;
+            margin: 1.2rem auto;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 8px;
+        }
+        .search-input {
+            flex: 1;
+            padding: 11px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+        .search-btn {
+            padding: 11px 20px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .search-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* 主容器 - 严格3行4列，一屏装完 */
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0.8rem 1.5rem 1.5rem;
+        }
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        .guide-card {
+            display: block;
+            text-decoration: none;
+            background: var(--card);
+            border-radius: 10px;
+            padding: 1.3rem 1rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            text-align: center;
+            height: 85px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .guide-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+        }
+        .guide-card h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+        .guide-card p {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        /* 页脚 */
+        footer { 
+            text-align: center; 
+            padding: 0.8rem; 
+            color: var(--muted); 
+            font-size: 0.78rem; 
+            border-top: 1px solid var(--border); 
+        }
+
+        /* 强制电脑端一屏不滚动 */
+        @media (min-width:1024px) {
+            body { overflow-y: hidden; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav class="navbar">
+    <div class="logo"><i class="fas fa-graduation-cap"></i> Study In China</div>
+    <div class="nav-main">
+        <a href="programs.html">发现项目</a>
+        <a href="schools.html">探索院校</a>
+        <a href="guide.html" class="active">申请指南</a>
+        <a href="life.html">留学中国</a>
+        <a href="resource.html">资源中心</a>
+    </div>
+    <div class="nav-lang">
+        <span>🌐</span>
+        <select id="langSelect">
+            <option value="zh">中文</option>
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="th">ไทย</option>
+        </select>
+    </div>
+</nav>
+
+<!-- 标题 + 免费咨询分支入口 -->
+<div class="header-wrap">
+    <h1>来华留学申请指南</h1>
+    <a href="consult.html" class="consult-btn" target="_blank">免费咨询</a>
 </div>
-<!-- 页面标题+免费咨询 -->
-<div class="header-wrap"><h1></h<!-- 免费咨询 分支入口 架子已搭好 -->
-<a href="consult.html" class="consult-btn" target="_blank">免费咨询</a>
-<!-- 搜索<div class="search-wrap">
-<input type="text" class="search-input" placeholder="搜索申请相关内容，如：材料、签证、奖学金<button class="search-btn"><i class="fas fa-search"></button</div>
-<!-- 12大申请模块 分支跳转架子 --><div class="container"><div class="guide-grid">
-<h3>一、</h3>
-<p>点击查看详情<a href="chapter2.html" class="guide-card" target="_blank<h3>二、申请时间线</h3>
-<p>点击查看详情</p>
-<h3>三、在线</h3><p>点击</p>
-<h3>四</h3> <p>点击查看详情</a><a href="chapter5.html" class="guide-card" target="_blank<h3>五、材料翻译公证</h3> <p>点击查看详情</p> </a> <a href="chapter6.html" class="guide-card" target="_blank"> <h3>六、文书</h3><p>点击</p> </a> <a href="chapter7.html" class="guide-card" target="_blank"> <h3>七</h3<p></p></a> <a href="chapter8.html" class="guide-card" target="_blank"><h3>八、入学面试准备</h3> <p>点击查看详情</p> <a href="chapter9.html" class="guide-card" target="_<h3>九、录取后续</h3> <p>点击查看</p> </a> <a href="chapter10.html" class="guide-card" target="_blank"> <h3>十</h3> <p>点击查看详情</a><a href="chapter11.html" class="guide-card" target="_<h3>十一、行前</h3><p>点击</p> </a> <a href="chapter12.html" class="guide-card" target="_blank"><h3>十二、常见问题FAQ</h3> <p>点击查看详情</p> </div><!-- 页脚 --> <footer>&copy; 2026 Study in China 来华留学一站式平台<!-- 极简<script> const searchInput = document.querySelector('.search-input'); const searchBtn = document.querySelector('.search-btn'); const cards = document.querySelectorAll('.guide-card');
-function doSearch() {
-const keyword = searchInput.value.trim().toLowerCase();
-cards.forEach(card => {
-const text = card.innerText.toLowerCase();
-card.style.display = text.includes(keyword) ? 'block' : 'none';
-});
-}
-searchBtn.addEventListener('click', doSearch);
-searchInput.addEventListener('keyup', function(e) {
-if(e.key === 'Enter') doSearch();
-});
-</body></html>
+
+<!-- 搜索功能 -->
+<div class="search-wrap">
+    <input type="text" class="search-input" placeholder="搜索申请相关内容，如：材料、签证、奖学金...">
+    <button class="search-btn"><i class="fas fa-search"></i></button>
+</div>
+
+<!-- 12个模块 分支入口 主程序永久不动 -->
+<div class="container">
+    <div class="guide-grid">
+        <a href="chapter1.html" class="guide-card" target="_blank">
+            <h3>一、选校选专业</h3>
+            <p>点击查看详情</p>
+        </a>
+        <a href="chapter2.html" class="guide-card" target="_blank">
+            <h3>二、申请时间线</h3>
+            <p>点击查看详情</p>
+        </a>
+        <a href="chapter3.html" class="guide-card" target="_blank">
+            <h3>三、在线申请操作</h3>
+            <p>点击查看详情</p>
+        </a>
+        <a href="chapter4.html" class="guide-card" target="_blank">
+            <h3>四、申请材料准备</h3>
+            <p>点击查看详情</p>
+        </a>
+        <a href="chapter5.html" class="guide-card" target="_blank">
+            <h3>五、材料翻译公证</h3>
+            <p>点击查看详情</p>
+        </a>
+        <a href="chapter6.html" class="guide-card" target="_blank">
+            <h3>六、文书写作指南</h3>
+            <p>点击查看详情</p>
+        </a>
+        <a href="chapter7.html" class="guide-card" target="_blank">
+            <h3>七、奖学金申请</h3>
+            <p>点击查看详情</p>
+        </a>
+        <a href="chapter8.html" class="guide-card" target="_blank">
+            <h3>八、入学面试准备</h3>
+            <p>点击查看详情</p>
+        </a>
+        <a href="chapter9.html" class="guide-card" target="_blank">
+            <h3>九、录取后续手续</h3>
+            <p>点击查看详情</p>
+        </a>
+        <a href="chapter10.html" class="guide-card" target="_blank">
+            <h3>十、签证办理流程</h3>
+            <p>点击查看详情</p>
+        </a>
+        <a href="chapter11.html" class="guide-card" target="_blank">
+            <h3>十一、行前入境指南</h3>
+            <p>点击查看详情</p>
+        </a>
+        <a href="chapter12.html" class="guide-card" target="_blank">
+            <h3>十二、常见问题FAQ</h3>
+            <p>点击查看详情</p>
+        </a>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<footer>&copy; 2026 Study in China 来华留学一站式平台</footer>
+
+<!-- 搜索功能JS -->
+<script>
+    const searchInput = document.querySelector('.search-input');
+    const searchBtn = document.querySelector('.search-btn');
+    const cards = document.querySelectorAll('.guide-card');
+
+    function doSearch() {
+        const keyword = searchInput.value.trim().toLowerCase();
+        cards.forEach(card => {
+            const text = card.innerText.toLowerCase();
+            card.style.display = text.includes(keyword) ? 'flex' : 'none';
+        });
+    }
+
+    searchBtn.addEventListener('click', doSearch);
+    searchInput.addEventListener('keyup', e => e.key === 'Enter' && doSearch());
+</script>
+
+</body>
+</html>
