@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study in China</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #202124;
+            --muted: #5f6368;
+            --border: #dadce0;
+            --accent: #1a73e8;
+            --hover: #f8f9fa;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
+            color: var(--text);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* 语言切换器 */
+        .lang-bar {
+            position: absolute;
+            top: 16px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .lang-bar select {
+            border: none;
+            background: transparent;
+            font-size: 13px;
+            color: var(--muted);
+            cursor: pointer;
+            outline: none;
+            padding: 4px 8px;
+        }
+
+        /* 主容器 */
+        .main {
+            text-align: center;
+            width: 100%;
+            max-width: 680px;
+            padding: 0 24px;
+            margin-top: -60px;
+        }
+
+        /* Logo */
+        .logo {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.5px;
+        }
+        .logo i { color: var(--accent); margin-right: 6px; }
+
+        /* 搜索框 */
+        .search-box {
+            width: 100%;
+            height: 52px;
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 0 20px 0 48px;
+            font-size: 16px;
+            outline: none;
+            background: var(--bg);
+            box-shadow: 0 1px 6px rgba(32,33,36,0.08);
+            transition: box-shadow 0.2s, border-color 0.2s;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%239aa0a6' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 16px center;
+        }
+        .search-box:focus {
+            box-shadow: 0 1px 8px rgba(32,33,36,0.18);
+            border-color: #c6c8cc;
+        }
+
+        /* 筛选器行 */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+        .filters select {
+            padding: 8px 14px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text);
+            background: var(--bg);
+            cursor: pointer;
+            outline: none;
+            transition: background 0.2s;
+            min-width: 100px;
+        }
+        .filters select:hover { background: var(--hover); }
+
+        .btn-search {
+            padding: 8px 22px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-weight: 500;
+        }
+        .btn-search:hover { background: #1557b0; }
+
+        /* 结果数量 */
+        .result-count {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 16px;
+            display: none;
+            text-align: left;
+        }
+        .result-count.show { display: block; }
+
+        /* 底部链接 */
+        .bottom-links {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            gap: 24px;
+            font-size: 13px;
+        }
+        .bottom-links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .bottom-links a:hover { color: var(--accent); }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .logo { font-size: 1.8rem; }
+            .search-box { height: 46px; font-size: 14px; }
+            .filters { flex-direction: column; align-items: center; }
+            .filters select { width: 70%; min-width: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 语言切换 -->
+<div class="lang-bar">
+    <span style="font-size:13px; color:var(--muted);">🌐</span>
+    <select id="langSelect">
+        <option value="zh">中文</option>
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+        <option value="ru">Русский</option>
+        <option value="pt">Português</option>
+        <option value="id">Bahasa Indonesia</option>
+        <option value="th">ไทย</option>
+        <option value="vi">Tiếng Việt</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="fa">فارسی</option>
+        <option value="tr">Türkçe</option>
+        <option value="hi">हिन्दी</option>
+    </select>
+</div>
+
+<!-- 主体 -->
+<div class="main">
+    <div class="logo"><i class="fas fa-graduation-cap"></i>Study In China</div>
+
+    <input type="text" class="search-box" id="searchInput" placeholder="搜索专业、院校、关键词...">
+
+    <div class="filters">
+        <select id="filterDegree">
+            <option value="">学历层次</option>
+            <option value="语言生">语言生</option>
+            <option value="预科">预科</option>
+            <option value="本科">本科</option>
+            <option value="硕士">硕士</option>
+            <option value="博士">博士</option>
+        </select>
+        <select id="filterMajor">
+            <option value="">专业方向</option>
+            <option value="工学">工学</option>
+            <option value="医学">医学</option>
+            <option value="管理学">管理学</option>
+            <option value="文学">文学</option>
+            <option value="经济学">经济学</option>
+        </select>
+        <select id="filterScholarship">
+            <option value="">项目类型</option>
+            <option value="CSC">中国政府奖学金</option>
+            <option value="省级">地方政府奖学金</option>
+            <option value="校级">高校奖学金</option>
+            <option value="自费">自费项目</option>
+        </select>
+        <button class="btn-search" onclick="doSearch()"><i class="fas fa-search"></i> 搜索</button>
+    </div>
+
+    <div class="result-count" id="resultCount"></div>
+</div>
+
+<!-- 底部链接 -->
+<div class="bottom-links">
+    <a href="guide.html">申请指南</a>
+    <a href="life.html">留学生活</a>
+    <a href="resource.html">资源中心</a>
+    <a href="consult.html">免费咨询</a>
+</div>
+
+<script>
+    // 模拟数据（后续替换为 data.json）
+    const sampleData = [
+        { program:"计算机科学与技术硕士", uni:"郑州大学", city:"郑州", degree:"硕士", major:"工学", scholarship:"CSC", language:"英文", tuition:35000 },
+        { program:"临床医学本科(MBBS)", uni:"郑州大学", city:"郑州", degree:"本科", major:"医学", scholarship:"省级", language:"英文", tuition:35000 },
+        { program:"软件工程本科", uni:"郑州大学", city:"郑州", degree:"本科", major:"工学", scholarship:"省级", language:"英文", tuition:25000 },
+        { program:"国际经济与贸易", uni:"浙江外国语学院", city:"杭州", degree:"本科", major:"经济学", scholarship:"省级", language:"英文", tuition:18000 },
+        { program:"汉语言文学", uni:"浙江外国语学院", city:"杭州", degree:"本科", major:"文学", scholarship:"校级", language:"中文", tuition:4800 },
+    ];
+
+    function doSearch() {
+        const keyword = document.getElementById('searchInput').value.toLowerCase();
+        const degree = document.getElementById('filterDegree').value;
+        const major = document.getElementById('filterMajor').value;
+        const scholarship = document.getElementById('filterScholarship').value;
+
+        const results = sampleData.filter(item => {
+            const matchKeyword = !keyword || item.program.includes(keyword) || item.uni.includes(keyword);
+            const matchDegree = !degree || item.degree === degree;
+            const matchMajor = !major || item.major === major;
+            const matchScholarship = !scholarship || item.scholarship.includes(scholarship);
+            return matchKeyword && matchDegree && matchMajor && matchScholarship;
+        });
+
+        const countEl = document.getElementById('resultCount');
+        if (results.length > 0) {
+            countEl.className = 'result-count show';
+            countEl.innerHTML = `找到 <strong>${results.length}</strong> 个匹配项目 — <a href="programs.html">查看全部结果 →</a>`;
+        } else {
+            countEl.className = 'result-count show';
+            countEl.innerHTML = '没有匹配的项目，请调整筛选条件。';
+        }
+    }
+
+    // 回车搜索
+    document.getElementById('searchInput').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') doSearch();
+    });
+
+    // 语言切换（预留）
+    document.getElementById('langSelect').addEventListener('change', function() {
+        localStorage.setItem('site_lang', this.value);
+        console.log('语言切换至：' + this.value);
+    });
+</script>
+</body>
+</html>
