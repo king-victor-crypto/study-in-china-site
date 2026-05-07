@@ -67,7 +67,7 @@
 
         .hero {
             text-align: center; 
-            padding: 2rem 1.5rem;
+            padding: 2rem 1.5rem 1rem;
             background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%);
             color: white;
         }
@@ -81,10 +81,43 @@
             font-size: 1rem;
         }
 
+        .search-wrap {
+            max-width: 650px;
+            margin: 1rem auto;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 8px;
+        }
+        .search-input {
+            flex: 1;
+            padding: 11px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+        .search-btn {
+            padding: 11px 20px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .search-btn:hover {
+            background: #1d4ed8;
+        }
+
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 1.5rem 1.5rem;
+            padding: 0.5rem 1.5rem 1.5rem;
         }
 
         .grid-box {
@@ -143,11 +176,11 @@
 <nav class="navbar">
     <div class="logo"><i class="fas fa-graduation-cap"></i> Study In China</div>
     <div class="nav-main">
-        <a href="./programs.html">发现项目</a>
-        <a href="./schools.html" class="active">探索院校</a>
-        <a href="./guide.html">申请指南</a>
-        <a href="./life.html">留学中国</a>
-        <a href="./resource.html">资源中心</a>
+        <a href="programs.html">发现项目</a>
+        <a href="schools.html" class="active">探索院校</a>
+        <a href="guide.html">申请指南</a>
+        <a href="life.html">留学中国</a>
+        <a href="resource.html">资源中心</a>
     </div>
     <div class="nav-lang">
         <span>🌐</span>
@@ -177,6 +210,11 @@
     <h1>探索国内院校</h1>
     <p>双一流｜公办本科｜特色院校｜财经理工｜医药艺术｜师范</p>
 </section>
+
+<div class="search-wrap">
+    <input type="text" class="search-input" placeholder="搜索大学、院校类型、地区...">
+    <button class="search-btn"><i class="fas fa-search"></i></button>
+</div>
 
 <div class="container">
     <div class="grid-box">
@@ -224,6 +262,22 @@
 </div>
 
 <footer>&copy; 2026 Study in China 来华留学一站式平台</footer>
+
+<script>
+    const searchInput = document.querySelector('.search-input');
+    const searchBtn = document.querySelector('.search-btn');
+    const cards = document.querySelectorAll('.item-card');
+
+    function doSearch() {
+        let key = searchInput.value.trim().toLowerCase();
+        cards.forEach(card => {
+            let text = card.innerText.toLowerCase();
+            card.style.display = text.includes(key) ? 'block' : 'none';
+        });
+    }
+    searchBtn.addEventListener('click', doSearch);
+    searchInput.addEventListener('keyup', e=>e.key==='Enter'&&doSearch());
+</script>
 
 </body>
 </html>
