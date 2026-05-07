@@ -1,37 +1,6 @@
-// 终极离线全收录版：适配你当前所有页面文字
-const langMap17 = {
-    zh:"zh-CN",en:"en",ru:"ru",ko:"ko",ja:"ja",fr:"fr",es:"es",de:"de",
-    it:"it",pt:"pt",ar:"ar",tr:"tr",th:"th",vi:"vi",id:"id",ms:"ms",fa:"fa"
-};
-const supportLang = Object.keys(langMap17);
-let currLang = localStorage.getItem("siteLang") || "zh";
-
-// 全收录离线词库（已包含你当前所有文字）
-const offlineDict = {
-    zh: {
-        "发现项目":"发现项目",
-        "探索院校":"探索院校",
-        "申请指南":"申请指南",
-        "留学中国":"留学中国",
-        "资源中心":"资源中心",
-        "发现留学项目":"发现留学项目",
-        "本科":"本科",
-        "硕士":"硕士",
-        "博士":"博士",
-        "交换生":"交换生",
-        "语言进修":"语言进修",
-        "短期研学":"短期研学",
-        "搜索项目、专业、奖学金...":"搜索项目、专业、奖学金...",
-        "本科项目":"本科项目",
-        "硕士项目":"硕士项目",
-        "博士项目":"博士项目",
-        "交换生项目":"交换生项目",
-        "短期研学":"短期研学",
-        "奖学金项目":"奖学金项目",
-        "热门专业":"热门专业",
-        "Click to view details":"Click to view details",
-        "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China 来华留学一站式平台"
-    },
+// 零延迟无刷新 秒切换17语言 离线全收录版
+const langMap = {
+    zh: {},
     en: {
         "发现项目":"Discover Programs",
         "探索院校":"Explore Universities",
@@ -46,14 +15,13 @@ const offlineDict = {
         "语言进修":"Language Training",
         "短期研学":"Short-term Study Tour",
         "搜索项目、专业、奖学金...":"Search programs, majors, scholarships...",
-        "本科项目":"Bachelor Programs",
         "硕士项目":"Master Programs",
         "博士项目":"PhD Programs",
         "交换生项目":"Exchange Programs",
         "短期研学":"Short-term Programs",
         "奖学金项目":"Scholarship Programs",
         "热门专业":"Popular Majors",
-        "Click to view details":"Click to view details",
+        "点击进入查看详情":"Click to view details",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China One-stop Platform"
     },
     ru: {
@@ -70,14 +38,13 @@ const offlineDict = {
         "语言进修":"Языковые курсы",
         "短期研学":"Краткосрочные программы",
         "搜索项目、专业、奖学金...":"Поиск программ, специальностей, стипендий...",
-        "本科项目":"Бакалаврские программы",
         "硕士项目":"Магистерские программы",
         "博士项目":"Докторские программы",
         "交换生项目":"Программы обмена",
         "短期研学":"Краткосрочные программы",
         "奖学金项目":"Стипендии",
         "热门专业":"Популярные специальности",
-        "Click to view details":"Подробнее",
+        "点击进入查看详情":"Подробнее",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China Одноразовая платформа"
     },
     ko: {
@@ -94,14 +61,13 @@ const offlineDict = {
         "语言进修":"어학연수",
         "短期研学":"단기연수",
         "搜索项目、专业、奖学金...":"프로그램, 전공, 장학금 검색...",
-        "本科项目":"학사 프로그램",
         "硕士项目":"석사 프로그램",
         "博士项目":"박사 프로그램",
         "交换生项目":"교환 프로그램",
         "短期研学":"단기 프로그램",
         "奖学金项目":"장학금 프로그램",
         "热门专业":"인기 전공",
-        "Click to view details":"자세히 보기",
+        "点击进入查看详情":"자세히 보기",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China 원스톱 플랫폼"
     },
     ja: {
@@ -118,14 +84,13 @@ const offlineDict = {
         "语言进修":"語学研修",
         "短期研学":"短期研修",
         "搜索项目、专业、奖学金...":"プログラム、専攻、奨学金を検索...",
-        "本科项目":"学士プログラム",
         "硕士项目":"修士プログラム",
         "博士项目":"博士プログラム",
         "交换生项目":"交換プログラム",
         "短期研学":"短期プログラム",
         "奖学金项目":"奨学金プログラム",
         "热门专业":"人気専攻",
-        "Click to view details":"詳細を見る",
+        "点击进入查看详情":"詳細を見る",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China ワンストッププラットフォーム"
     },
     fr: {
@@ -142,14 +107,13 @@ const offlineDict = {
         "语言进修":"Cours de langue",
         "短期研学":"Programmes courts",
         "搜索项目、专业、奖学金...":"Rechercher programmes, spécialités, bourses...",
-        "本科项目":"Programmes de licence",
         "硕士项目":"Programmes de master",
         "博士项目":"Programmes de doctorat",
         "交换生项目":"Programmes d'échange",
         "短期研学":"Programmes courts",
         "奖学金项目":"Bourses d'études",
         "热门专业":"Spécialités populaires",
-        "Click to view details":"Voir détails",
+        "点击进入查看详情":"Voir détails",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China Plateforme tout-en-un"
     },
     es: {
@@ -166,14 +130,13 @@ const offlineDict = {
         "语言进修":"Cursos de idiomas",
         "短期研学":"Programas cortos",
         "搜索项目、专业、奖学金...":"Buscar programas, especialidades, becas...",
-        "本科项目":"Programas de grado",
         "硕士项目":"Programas de máster",
         "博士项目":"Programas de doctorado",
         "交换生项目":"Programas de intercambio",
         "短期研学":"Programas cortos",
         "奖学金项目":"Becas",
         "热门专业":"Especialidades populares",
-        "Click to view details":"Ver detalles",
+        "点击进入查看详情":"Ver detalles",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China Plataforma integral"
     },
     de: {
@@ -190,14 +153,13 @@ const offlineDict = {
         "语言进修":"Sprachkurse",
         "短期研学":"Kurzprogramme",
         "搜索项目、专业、奖学金...":"Suche Programme, Fachrichtungen, Stipendien...",
-        "本科项目":"Bachelor-Programme",
         "硕士项目":"Master-Programme",
         "博士项目":"Promotionsprogramme",
         "交换生项目":"Austauschprogramme",
         "短期研学":"Kurzprogramme",
         "奖学金项目":"Stipendienprogramme",
         "热门专业":"Beliebte Fachrichtungen",
-        "Click to view details":"Details anzeigen",
+        "点击进入查看详情":"Details anzeigen",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China All-in-One-Plattform"
     },
     it: {
@@ -214,14 +176,13 @@ const offlineDict = {
         "语言进修":"Corsi di lingua",
         "短期研学":"Programmi brevi",
         "搜索项目、专业、奖学金...":"Cerca programmi, specializzazioni, borse...",
-        "本科项目":"Programmi di laurea",
         "硕士项目":"Programmi di laurea magistrale",
         "博士项目":"Programmi di dottorato",
         "交换生项目":"Programmi di scambio",
         "短期研学":"Programmi brevi",
         "奖学金项目":"Borse di studio",
         "热门专业":"Specializzazioni popolari",
-        "Click to view details":"Vedi dettagli",
+        "点击进入查看详情":"Vedi dettagli",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China Piattaforma completa"
     },
     pt: {
@@ -238,14 +199,13 @@ const offlineDict = {
         "语言进修":"Cursos de línguas",
         "短期研学":"Programas curtos",
         "搜索项目、专业、奖学金...":"Pesquisar programas, especialidades, bolsas...",
-        "本科项目":"Programas de licenciatura",
         "硕士项目":"Programas de mestrado",
         "博士项目":"Programas de doutoramento",
         "交换生项目":"Programas de intercâmbio",
         "短期研学":"Programas curtos",
         "奖学金项目":"Bolsas de estudo",
         "热门专业":"Especialidades populares",
-        "Click to view details":"Ver detalhes",
+        "点击进入查看详情":"Ver detalhes",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China Plataforma completa"
     },
     ar: {
@@ -262,14 +222,13 @@ const offlineDict = {
         "语言进修":"دورات لغة",
         "短期研学":"برامج قصيرة",
         "搜索项目、专业、奖学金...":"ابحث عن البرامج والتخصصات والمنح...",
-        "本科项目":"برامج البكالوريوس",
         "硕士项目":"برامج الماجستير",
         "博士项目":"برامج الدكتوراه",
         "交换生项目":"برامج التبادل",
         "短期研学":"برامج قصيرة",
         "奖学金项目":"برامج المنح",
         "热门专业":"التخصصات الشائعة",
-        "Click to view details":"عرض التفاصيل",
+        "点击进入查看详情":"عرض التفاصيل",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China منصة شاملة"
     },
     tr: {
@@ -286,14 +245,13 @@ const offlineDict = {
         "语言进修":"Dil kursları",
         "短期研学":"Kısa programlar",
         "搜索项目、专业、奖学金...":"Programları, bölümleri, bursları ara...",
-        "本科项目":"Lisans Programları",
         "硕士项目":"Yüksek Lisans Programları",
         "博士项目":"Doktora Programları",
         "交换生项目":"Değişim Programları",
         "短期研学":"Kısa Programlar",
         "奖学金项目":"Burs Programları",
         "热门专业":"Popüler Bölümler",
-        "Click to view details":"Detayları gör",
+        "点击进入查看详情":"Detayları gör",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China Tek durak platformu"
     },
     th: {
@@ -310,14 +268,13 @@ const offlineDict = {
         "语言进修":"คอร์สภาษา",
         "短期研学":"โปรแกรมระยะสั้น",
         "搜索项目、专业、奖学金...":"ค้นหาโปรแกรม สาขา ทุนการศึกษา...",
-        "本科项目":"โปรแกรมปริญญาตรี",
         "硕士项目":"โปรแกรมปริญญาโท",
         "博士项目":"โปรแกรมปริญญาเอก",
         "交换生项目":"โปรแกรมแลกเปลี่ยน",
         "短期研学":"โปรแกรมระยะสั้น",
         "奖学金项目":"โปรแกรมทุนการศึกษา",
         "热门专业":"สาขายอดนิยม",
-        "Click to view details":"ดูรายละเอียด",
+        "点击进入查看详情":"ดูรายละเอียด",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China แพลตฟอร์มครบวงจร"
     },
     vi: {
@@ -334,14 +291,13 @@ const offlineDict = {
         "语言进修":"Khóa học ngôn ngữ",
         "短期研学":"Chương trình ngắn hạn",
         "搜索项目、专业、奖学金...":"Tìm kiếm chương trình, chuyên ngành, học bổng...",
-        "本科项目":"Chương trình cử nhân",
         "硕士项目":"Chương trình thạc sĩ",
         "博士项目":"Chương trình tiến sĩ",
         "交换生项目":"Chương trình trao đổi",
         "短期研学":"Chương trình ngắn hạn",
         "奖学金项目":"Chương trình học bổng",
         "热门专业":"Chuyên ngành phổ biến",
-        "Click to view details":"Xem chi tiết",
+        "点击进入查看详情":"Xem chi tiết",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China Nền tảng toàn diện"
     },
     id: {
@@ -358,14 +314,13 @@ const offlineDict = {
         "语言进修":"Kursus bahasa",
         "短期研学":"Program singkat",
         "搜索项目、专业、奖学金...":"Cari program, jurusan, beasiswa...",
-        "本科项目":"Program Sarjana",
         "硕士项目":"Program Magister",
         "博士项目":"Program Doktor",
         "交换生项目":"Program Pertukaran",
         "短期研学":"Program Singkat",
         "奖学金项目":"Program Beasiswa",
         "热门专业":"Jurusan populer",
-        "Click to view details":"Lihat detail",
+        "点击进入查看详情":"Lihat detail",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China Platform terintegrasi"
     },
     ms: {
@@ -382,14 +337,13 @@ const offlineDict = {
         "语言进修":"Kursus bahasa",
         "短期研学":"Program pendek",
         "搜索项目、专业、奖学金...":"Cari program, jurusan, biasiswa...",
-        "本科项目":"Program Sarjana Muda",
         "硕士项目":"Program Sarjana",
         "博士项目":"Program Doktor",
         "交换生项目":"Program Pertukaran",
         "短期研学":"Program Pendek",
         "奖学金项目":"Program Biasiswa",
         "热门专业":"Jurusan popular",
-        "Click to view details":"Lihat butiran",
+        "点击进入查看详情":"Lihat butiran",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China Platform bersepadu"
     },
     fa: {
@@ -406,104 +360,71 @@ const offlineDict = {
         "语言进修":"دوره‌های زبان",
         "短期研学":"برنامه‌های کوتاه",
         "搜索项目、专业、奖学金...":"جستجوی برنامه‌ها، رشته‌ها، بورس‌ها...",
-        "本科项目":"برنامه‌های کارشناسی",
         "硕士项目":"برنامه‌های کارشناسی ارشد",
         "博士项目":"برنامه‌های دکتری",
         "交换生项目":"برنامه‌های تبادل",
         "短期研学":"برنامه‌های کوتاه",
         "奖学金项目":"برنامه‌های بورسیه",
         "热门专业":"رشته‌های پرطرفدار",
-        "Click to view details":"مشاهده جزئیات",
+        "点击进入查看详情":"مشاهده جزئیات",
         "© 2026 Study in China 来华留学一站式平台":"© 2026 Study in China پلتفرم یکپارچه"
     }
 };
 
-// 切换语言
-function setLang(lang){
-    if(!supportLang.includes(lang)) return;
-    currLang = lang;
-    localStorage.setItem("siteLang",currLang);
-    location.reload();
-}
+// 读取保存的语言
+let currentLang = localStorage.getItem('lang') || 'zh';
 
-// 隐藏翻译横幅、修复布局
-function fixTranslateStyle(){
-    const style = document.createElement("style");
-    style.innerHTML = `.goog-te-banner-frame,.yd-trans-banner,.bd-trans-banner{display:none!important;}body{top:0!important;}`;
-    document.head.appendChild(style);
-}
-
-// 离线增强替换（现在能翻译你页面上所有文字）
-function runOfflineTrans(){
-    if(currLang === "zh") return;
-    const d = offlineDict[currLang];
-    if(!d) return;
-    let html = document.body.innerHTML;
-    for(let k in d) html = html.replaceAll(k,d[k]);
-    document.body.innerHTML = html;
-}
-
-// 四引擎自动降级：谷歌→百度→有道→离线
-function initFourEngine(){
-    if(currLang === "zh") return;
-    fixTranslateStyle();
-    let failCount = 0;
-    const target = langMap17[currLang];
-
-    // 1.尝试谷歌
-    function tryGoogle(){
-        return new Promise((resolve)=>{
-            let timer = setTimeout(()=>{failCount++;resolve();},1200);
-            window.googleTranslateElementInit = ()=>{
-                clearTimeout(timer);
-                new google.translate.TranslateElement({
-                    pageLanguage:"zh-CN",includedLanguages:Object.values(langMap17).join(","),autoDisplay:false
-                },"google_translate_element");
-                resolve();
-            };
-            let s = document.createElement("script");
-            s.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-            s.onerror = ()=>{clearTimeout(timer);failCount++;resolve();};
-            document.body.appendChild(s);
-        });
+// 核心：无刷新、秒切换翻译函数
+function translatePage(lang) {
+    if (lang === 'zh') {
+        // 切回中文时，直接刷新页面恢复原文（最简单的处理）
+        location.reload();
+        return;
     }
+    const dict = langMap[lang];
+    if (!dict) return;
 
-    // 2.尝试百度
-    function tryBaidu(){
-        return new Promise((resolve)=>{
-            let s = document.createElement("script");
-            s.src = "//api.fanyi.baidu.com/api/trans/vip/translate";
-            s.onerror = ()=>{failCount++;resolve();};
-            setTimeout(()=>{failCount++;resolve();},1000);
-        });
-    }
-
-    // 3.尝试有道
-    function tryYoudao(){
-        return new Promise((resolve)=>{
-            let s = document.createElement("script");
-            s.src = "//shared.ydstatic.com/fanyi/static/translate.js";
-            s.onerror = ()=>{failCount++;resolve();};
-            setTimeout(()=>{failCount++;resolve();},1000);
-        });
-    }
-
-    // 依次降级
-    tryGoogle().then(()=>{
-        if(failCount>=1) return tryBaidu();
-    }).then(()=>{
-        if(failCount>=2) return tryYoudao();
-    }).then(()=>{
-        if(failCount>=3) runOfflineTrans();
-    });
+    // 遍历所有文本节点，批量替换
+    const walk = (node) => {
+        if (node.nodeType === 3) { // 文本节点
+            let text = node.textContent;
+            for (let cn in dict) {
+                if (text.includes(cn)) {
+                    text = text.replaceAll(cn, dict[cn]);
+                }
+            }
+            node.textContent = text;
+        } else if (node.nodeType === 1 && node.tagName !== 'SCRIPT' && node.tagName !== 'STYLE') {
+            // 遍历子节点
+            for (let child of node.childNodes) {
+                walk(child);
+            }
+            // 处理输入框placeholder
+            if (node.placeholder) {
+                for (let cn in dict) {
+                    if (node.placeholder.includes(cn)) {
+                        node.placeholder = node.placeholder.replaceAll(cn, dict[cn]);
+                    }
+                }
+            }
+        }
+    };
+    walk(document.body);
 }
 
 // 页面加载初始化
-document.addEventListener("DOMContentLoaded",()=>{
-    const sel = document.getElementById("langSelect");
-    if(sel){
-        sel.value = currLang;
-        sel.onchange = (e)=>setLang(e.target.value);
+document.addEventListener('DOMContentLoaded', () => {
+    const select = document.getElementById('langSelect');
+    if (select) {
+        // 设置下拉框当前值
+        select.value = currentLang;
+        // 切换语言时立刻翻译，不刷新
+        select.onchange = function() {
+            currentLang = this.value;
+            localStorage.setItem('lang', currentLang);
+            translatePage(currentLang);
+        };
     }
-    initFourEngine();
+    // 页面加载时自动翻译保存的语言
+    translatePage(currentLang);
 });
