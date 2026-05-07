@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>资源中心管理</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="navbar"><div class="logo">🔧 资源中心管理</div><a href="/">← 返回首页</a></div>
+<div class="container">
+    <h2>官方网站链接</h2>
+    <form method="post" action="/admin/resources/save">
+        <div id="linkList">
+            {% for item in data.official_links %}
+            <div class="form-row" style="margin-bottom:0.5rem;">
+                <input type="text" name="name_{{ loop.index0 }}" value="{{ item.name }}" placeholder="名称">
+                <input type="url" name="url_{{ loop.index0 }}" value="{{ item.url }}" placeholder="URL">
+            </div>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn-primary">保存修改</button>
+    </form>
+</div>
+</body>
+</html>
