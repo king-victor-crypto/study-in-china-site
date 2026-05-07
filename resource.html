@@ -3,128 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>资源中心 - 来华留学服务平台</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <title>资源中心 - Study in China 来华留学一站式平台</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a2540;
+            --accent: #2563eb;
+            --accent-light: #eff6ff;
+            --danger: #dc2626;
+            --danger-light: #fef2f2;
+            --bg: #f7f8fa;
+            --card: #fff;
+            --text: #1e293b;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--bg); 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft Yahei", sans-serif; 
+            color: var(--text); 
+            line-height: 1.6;
+        }
+
+        /* 导航栏 同index风格 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-main {
+            display: flex;
+            gap: 25px;
+        }
+        .nav-main a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 15px;
+            transition: 0.3s;
+        }
+        .nav-main a.active,
+        .nav-main a:hover {
+            color: var(--accent);
+        }
+        .nav-lang {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Hero 头部 */
+        .hero {
+            text-align: center; 
+            padding: 3rem 1.5rem 2rem;
+            background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%);
+            color: white;
+        }
+        .hero h1 { 
+            font-size: 2.2rem; 
+            font-weight: 700; 
+            margin-bottom: 0.5rem;
+        }
+        .hero p { 
+            color: rgba(255,255,255,0.8); 
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* 主容器 电脑一页 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* 卡片网格布局 */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* 普通蓝色模块卡片 */
+        .res-card {
+            display: block;
+            text-decoration: none;
+            background: var(--card);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .res-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+        }
+        .res-card .icon {
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin: 0 auto 1rem;
+        }
+        .res-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+        }
+        .res-card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        /* 紧急联系 红色醒目专属卡片 */
+        .res-card.emergency {
+            border: 1px solid var(--danger);
+            background: var(--danger-light);
+        }
+        .res-card.emergency .icon {
+            background: var(--danger);
+            color: #fff;
+        }
+        .res-card.emergency h3 {
+            color: var(--danger);
+        }
+
+        /* 页脚 */
+        footer { 
+            text-align: center; 
+            padding: 2rem; 
+            color: var(--muted); 
+            font-size: 0.85rem; 
+            border-top: 1px solid var(--border); 
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
 
-<header class="site-header">
-    <div class="header-container">
-        <div class="logo">
-            <i class="fas fa-graduation-cap"></i>
-            <span>Study In China</span>
-        </div>
-        <nav class="site-nav">
-            <a href="/">首页</a>
-            <a href="/programs">发现项目</a>
-            <a href="/universities">探索院校</a>
-            <a href="/admission">申请指南</a>
-            <a href="/life">留学中国</a>
-            <a href="/career">职业发展</a>
-            <a href="/resources" class="nav-active">资源中心</a>
-        </nav>
+<!-- 导航栏 -->
+<nav class="navbar">
+    <div class="logo"><i class="fas fa-graduation-cap"></i> Study In China</div>
+    <div class="nav-main">
+        <a href="index.html">首页</a>
+        <a href="programs.html">发现项目</a>
+        <a href="schools.html">探索院校</a>
+        <a href="guide.html">申请指南</a>
+        <a href="life.html">留学中国</a>
+        <a href="career.html">职业发展</a>
+        <a href="resource.html" class="active">资源中心</a>
     </div>
-</header>
+    <div class="nav-lang">
+        <span>🌐</span>
+        <select id="langSelect">
+            <option value="zh">中文</option>
+            <option value="en">English</option>
+            <option value="ar">العربية</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+            <option value="ru">Русский</option>
+            <option value="pt">Português</option>
+            <option value="id">Bahasa Indonesia</option>
+            <option value="th">ไทย</option>
+            <option value="vi">Tiếng Việt</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="de">Deutsch</option>
+            <option value="it">Italiano</option>
+            <option value="fa">فارسی</option>
+            <option value="tr">Türkçe</option>
+            <option value="hi">हिन्दी</option>
+        </select>
+    </div>
+</nav>
 
-<section class="page-banner">
-    <div class="banner-content">
-        <h1><i class="fas fa-toolbox"></i> 留学生资源中心</h1>
-        <p>集中提供官方链接、文档模板、实用工具、紧急联系和常见疑问解答</p>
-    </div>
+<!-- 头部Banner -->
+<section class="hero">
+    <h1>资源中心</h1>
+    <p>官方直达、表格模板、学习工具、政策查询、紧急联络一站式汇总</p>
 </section>
 
-<section class="resources-section">
-    <div class="container">
+<div class="container">
+    <div class="resource-grid">
+        <!-- 1.官方网站直达 蓝色 -->
+        <a href="#official" class="res-card">
+            <div class="icon"><i class="fas fa-globe"></i></div>
+            <h3>官方网站直达</h3>
+            <p>留学主管部门、高校官网、签证移民官方入口快速导航</p>
+        </a>
 
-        <!-- 模块1：官方网站直达 -->
-        <div class="resource-card">
-            <div class="card-icon"><i class="fas fa-globe"></i></div>
-            <div class="card-content">
-                <h3>官方网站直达</h3>
-                <ul class="resource-links">
-                    {% for item in official_links %}
-                    <li><a href="{{ item.url }}" target="_blank" rel="noopener">
-                        <i class="fas fa-external-link-alt"></i> {{ item.name }}
-                    </a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
+        <!-- 2.常用表格与模板 蓝色 -->
+        <a href="#template" class="res-card">
+            <div class="icon"><i class="fas fa-file-alt"></i></div>
+            <h3>常用表格与模板</h3>
+            <p>申请表格、住宿申请表、文书模板、登记资料一键下载</p>
+        </a>
 
-        <!-- 模块2：常用表格与模板 -->
-        <div class="resource-card">
-            <div class="card-icon"><i class="fas fa-file-alt"></i></div>
-            <div class="card-content">
-                <h3>常用表格与模板</h3>
-                <ul class="resource-links">
-                    {% for item in templates %}
-                    <li><a href="{{ item.url }}" target="_blank">
-                        <i class="fas fa-download"></i> {{ item.name }}
-                    </a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
+        <!-- 3.学习与生活工具 蓝色 -->
+        <a href="#tools" class="res-card">
+            <div class="icon"><i class="fas fa-tools"></i></div>
+            <h3>学习与生活工具</h3>
+            <p>翻译工具、词典、换算工具、网课平台、生活实用工具合集</p>
+        </a>
 
-        <!-- 模块3：学习与生活工具 -->
-        <div class="resource-card">
-            <div class="card-icon"><i class="fas fa-tools"></i></div>
-            <div class="card-content">
-                <h3>学习与生活工具</h3>
-                <ul class="resource-links">
-                    {% for cat in tools %}
-                    <li>
-                        <span class="tool-category">{{ cat.category }}：</span>
-                        {% for t in cat.items %}
-                        <a href="{{ t.url }}" target="_blank" rel="noopener">{{ t.name }}</a>
-                        {% if not loop.last %}&nbsp;|&nbsp;{% endif %}
-                        {% endfor %}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
+        <!-- 4.政策与数据查询 蓝色 -->
+        <a href="#policy" class="res-card">
+            <div class="icon"><i class="fas fa-database"></i></div>
+            <h3>政策与数据查询</h3>
+            <p>留学政策、学费标准、院校数据、奖学金政策公开查询</p>
+        </a>
 
-        <!-- 模块4：政策与数据查询 -->
-        <div class="resource-card">
-            <div class="card-icon"><i class="fas fa-search"></i></div>
-            <div class="card-content">
-                <h3>政策与数据查询</h3>
-                <ul class="resource-links">
-                    {% for item in policies %}
-                    <li><a href="{{ item.url }}" target="_blank" rel="noopener">
-                        <i class="fas fa-external-link-alt"></i> {{ item.name }}
-                    </a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-
-        <!-- 模块5：紧急联系方式（永久不变） -->
-        <div class="resource-card emergency-card">
-            <div class="card-icon"><i class="fas fa-phone-alt"></i></div>
-            <div class="card-content">
-                <h3>紧急联系方式（24小时可用）</h3>
-                <ul class="resource-links emergency-links">
-                    <li><strong>报警：</strong><a href="tel:110">110</a></li>
-                    <li><strong>急救：</strong><a href="tel:120">120</a></li>
-                    <li><strong>火警：</strong><a href="tel:119">119</a></li>
-                    <li><strong>交通事故：</strong><a href="tel:122">122</a></li>
-                    <li><strong>国家移民管理局服务热线：</strong><a href="tel:12367">12367</a></li>
-                </ul>
-                <p style="margin-top:12px; font-size:13px; color:#888;">
-                    以上号码在中国境内免费拨打，24小时可用。拨打时无需加区号。
-                </p>
-            </div>
-        </div>
-
+        <!-- 5.紧急联系方式 红色醒目 -->
+        <a href="#emergency" class="res-card emergency">
+            <div class="icon"><i class="fas fa-phone-alt"></i></div>
+            <h3>紧急联系方式</h3>
+            <p>报警、急救、领馆电话、校内应急、24小时求助通道</p>
+        </a>
     </div>
-</section>
+</div>
 
-<footer class="site-footer">
-    <p>&copy; 2025 Study in China Platform — 资源中心</p>
-</footer>
+<footer>&copy; 2026 Study in China 来华留学一站式服务平台 | 17种语言全球同步</footer>
 
 </body>
 </html>
