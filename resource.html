@@ -6,9 +6,8 @@
     <title>资源中心 - 来华留学服务平台</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #2c2c2c; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #2c2c2c; background: #f5f5f5; }
 
-        /* 导航 */
         .site-header {
             background: #fff;
             border-bottom: 1px solid #e8e8e8;
@@ -29,45 +28,79 @@
         .site-nav a { text-decoration: none; color: #666; font-size: 0.85rem; }
         .site-nav a.nav-active { color: #1a1a1a; font-weight: 600; }
 
-        /* 顶部 */
         .page-top {
             text-align: center;
-            padding: 3rem 1.5rem 2.5rem;
+            padding: 2.5rem 1.5rem 1.5rem;
         }
-        .page-top h1 { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.4rem; }
+        .page-top h1 { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.3rem; }
         .page-top p { color: #777; font-size: 0.9rem; }
 
-        /* ===== 模块分区 ===== */
-        .section-block {
-            padding: 2.5rem 1.5rem;
+        /* ===== 3x2 网格 ===== */
+        .grid-container {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
         }
-        .section-block:nth-child(even) {
-            background: #f8f8f8;
-        }
-        .section-block:nth-child(odd) {
+
+        /* 卡片入口 */
+        .module-card {
             background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: box-shadow 0.15s, transform 0.15s;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            user-select: none;
         }
+        .module-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+        .module-card .card-icon { font-size: 1.8rem; }
+        .module-card .card-title { font-weight: 600; font-size: 0.95rem; color: #1a1a1a; }
+        .module-card .card-desc { font-size: 0.75rem; color: #999; }
 
-        .section-inner {
-            max-width: 800px;
-            margin: 0 auto;
+        /* 展开的面板（默认隐藏） */
+        .detail-panel {
+            display: none;
+            background: #fff;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+            border: 1px solid #eee;
         }
-
-        .section-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #999;
-            margin-bottom: 0.5rem;
+        .detail-panel.active {
+            display: block;
         }
-        .section-title {
-            font-size: 1.2rem;
-            font-weight: 600;
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 1rem;
-            color: #1a1a1a;
         }
+        .detail-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .detail-close {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #999;
+            padding: 0.2rem 0.5rem;
+        }
+        .detail-close:hover { color: #333; }
 
-        /* 链接列表 */
+        /* 内部链接列表（与之前的干净风格一致） */
         .link-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
         .link-list a {
             color: #1a1a1a;
@@ -79,7 +112,6 @@
         }
         .link-list a:hover { border-bottom-color: #ccc; }
 
-        /* 工具行 */
         .tool-row {
             display: flex;
             align-items: baseline;
@@ -88,24 +120,11 @@
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
         }
-        .tool-label {
-            font-weight: 600;
-            color: #444;
-            min-width: 80px;
-            flex-shrink: 0;
-        }
-        .tool-row a {
-            color: #1a1a1a;
-            text-decoration: none;
-            white-space: nowrap;
-        }
+        .tool-label { font-weight: 600; color: #444; min-width: 80px; flex-shrink: 0; }
+        .tool-row a { color: #1a1a1a; text-decoration: none; white-space: nowrap; }
         .tool-row a:hover { text-decoration: underline; }
         .tool-divider { color: #ccc; }
 
-        /* 紧急模块 */
-        .emergency-block {
-            background: #fff5f5;
-        }
         .emergency-row {
             display: flex;
             align-items: center;
@@ -113,23 +132,13 @@
             margin-bottom: 0.4rem;
             font-size: 0.9rem;
         }
-        .emergency-label {
-            font-weight: 600;
-            min-width: 150px;
-            color: #444;
-        }
-        .emergency-row a {
-            color: #c0392b;
-            font-weight: 600;
-            text-decoration: none;
-        }
+        .emergency-label { font-weight: 600; min-width: 150px; color: #444; }
+        .emergency-row a { color: #c0392b; font-weight: 600; text-decoration: none; }
 
-        /* FAQ */
         .faq-item { margin-bottom: 1.2rem; }
         .faq-q { font-weight: 600; margin-bottom: 0.2rem; }
         .faq-a { color: #555; }
 
-        /* 提示条 */
         .note-tag {
             display: inline-block;
             background: #fffbe6;
@@ -140,16 +149,19 @@
             margin-bottom: 1rem;
         }
 
-        /* 页脚 */
         .site-footer {
             text-align: center;
             font-size: 0.75rem;
             color: #aaa;
             padding: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #eee;
         }
 
+        /* 移动端调整为两列 */
         @media (max-width: 600px) {
-            .site-nav { gap: 0.8rem; }
+            .grid-container { grid-template-columns: repeat(2, 1fr); }
+            .site-nav { gap: 0.6rem; }
             .site-nav a { font-size: 0.75rem; }
             .emergency-label { min-width: 100px; }
         }
@@ -157,7 +169,6 @@
 </head>
 <body>
 
-<!-- 导航 -->
 <header class="site-header">
     <div class="header-container">
         <div class="logo">Study in China</div>
@@ -173,142 +184,212 @@
     </div>
 </header>
 
-<!-- 顶部 -->
 <div class="page-top">
     <h1>留学生资源中心</h1>
-    <p>官方链接 · 文档模板 · 生活工具 · 紧急联系 · 常见疑问</p>
+    <p>点击下方卡片查看对应资源</p>
 </div>
 
-<!-- 模块1：官方网站（白底） -->
-<div class="section-block">
-    <div class="section-inner">
-        <div class="section-label">Official</div>
-        <div class="section-title">官方网站直达</div>
-        <ul class="link-list">
-            <li><a href="https://www.campuschina.org" target="_blank" rel="noopener">留学中国网（教育部留学服务中心）</a></li>
-            <li><a href="https://www.csc.edu.cn" target="_blank" rel="noopener">中国政府奖学金系统（CSC）</a></li>
-            <li><a href="https://www.nia.gov.cn" target="_blank" rel="noopener">国家移民管理局</a></li>
-            <li><a href="https://www.fmprc.gov.cn" target="_blank" rel="noopener">中国外交部</a></li>
-            <li><a href="https://www.moe.gov.cn" target="_blank" rel="noopener">中国教育部</a></li>
-        </ul>
+<!-- 3x2 网格入口 -->
+<div class="grid-container" id="gridContainer">
+    <div class="module-card" data-panel="panel-official">
+        <div class="card-icon">🔗</div>
+        <div class="card-title">官方网站</div>
+        <div class="card-desc">直达政府与教育部门</div>
+    </div>
+    <div class="module-card" data-panel="panel-documents">
+        <div class="card-icon">📄</div>
+        <div class="card-title">表格模板</div>
+        <div class="card-desc">签证、体检、住宿等</div>
+    </div>
+    <div class="module-card" data-panel="panel-tools">
+        <div class="card-icon">🧰</div>
+        <div class="card-title">生活工具</div>
+        <div class="card-desc">翻译、地图、支付等</div>
+    </div>
+    <div class="module-card" data-panel="panel-policy">
+        <div class="card-icon">📋</div>
+        <div class="card-title">政策查询</div>
+        <div class="card-desc">留学政策与数据报告</div>
+    </div>
+    <div class="module-card" data-panel="panel-emergency">
+        <div class="card-icon">📞</div>
+        <div class="card-title">紧急联系</div>
+        <div class="card-desc">24小时求助电话</div>
+    </div>
+    <div class="module-card" data-panel="panel-faq">
+        <div class="card-icon">❓</div>
+        <div class="card-title">常见问题</div>
+        <div class="card-desc">申请、签证、认证等</div>
     </div>
 </div>
 
-<!-- 模块2：表格模板（灰底） -->
-<div class="section-block">
-    <div class="section-inner">
-        <div class="section-label">Documents</div>
-        <div class="section-title">常用表格与模板</div>
-        <p class="note-tag">表格文件整理中，稍后提供下载。如需紧急使用，请搜索对应表格名称从教育部官网获取。</p>
-        <ul class="link-list">
-            <li>JW201/JW202签证申请表（含填写说明）</li>
-            <li>外国人体格检查表</li>
-            <li>住宿登记证明模板</li>
-            <li>在学证明 / 在读证明模板</li>
-        </ul>
+<!-- 展开面板（默认隐藏，会插入到网格下方） -->
+<div class="detail-panel" id="panel-official">
+    <div class="detail-header">
+        <span class="detail-title">🔗 官方网站直达</span>
+        <button class="detail-close">&times;</button>
+    </div>
+    <ul class="link-list">
+        <li><a href="https://www.campuschina.org" target="_blank" rel="noopener">留学中国网（教育部留学服务中心）</a></li>
+        <li><a href="https://www.csc.edu.cn" target="_blank" rel="noopener">中国政府奖学金系统（CSC）</a></li>
+        <li><a href="https://www.nia.gov.cn" target="_blank" rel="noopener">国家移民管理局</a></li>
+        <li><a href="https://www.fmprc.gov.cn" target="_blank" rel="noopener">中国外交部</a></li>
+        <li><a href="https://www.moe.gov.cn" target="_blank" rel="noopener">中国教育部</a></li>
+    </ul>
+</div>
+
+<div class="detail-panel" id="panel-documents">
+    <div class="detail-header">
+        <span class="detail-title">📄 常用表格与模板</span>
+        <button class="detail-close">&times;</button>
+    </div>
+    <p class="note-tag">表格文件整理中，稍后提供下载。如需紧急使用，请搜索对应表格名称从教育部官网获取。</p>
+    <ul class="link-list">
+        <li>JW201/JW202签证申请表（含填写说明）</li>
+        <li>外国人体格检查表</li>
+        <li>住宿登记证明模板</li>
+        <li>在学证明 / 在读证明模板</li>
+    </ul>
+</div>
+
+<div class="detail-panel" id="panel-tools">
+    <div class="detail-header">
+        <span class="detail-title">🧰 学习与生活工具</span>
+        <button class="detail-close">&times;</button>
+    </div>
+    <div class="tool-row">
+        <span class="tool-label">翻译</span>
+        <a href="https://translate.google.com" target="_blank" rel="noopener">Google 翻译</a><span class="tool-divider">|</span>
+        <a href="https://www.deepl.com/translator" target="_blank" rel="noopener">DeepL</a><span class="tool-divider">|</span>
+        <a href="https://fanyi.baidu.com" target="_blank" rel="noopener">百度翻译</a>
+    </div>
+    <div class="tool-row">
+        <span class="tool-label">地图导航</span>
+        <a href="https://www.amap.com" target="_blank" rel="noopener">高德地图</a><span class="tool-divider">|</span>
+        <a href="https://map.baidu.com" target="_blank" rel="noopener">百度地图</a><span class="tool-divider">|</span>
+        <a href="https://www.didi.com" target="_blank" rel="noopener">滴滴出行</a>
+    </div>
+    <div class="tool-row">
+        <span class="tool-label">支付</span>
+        <a href="https://www.alipay.com" target="_blank" rel="noopener">支付宝</a><span class="tool-divider">|</span>
+        <a href="https://www.weixin.qq.com" target="_blank" rel="noopener">微信支付</a>
+    </div>
+    <div class="tool-row">
+        <span class="tool-label">中文学习</span>
+        <a href="https://www.pleco.com" target="_blank" rel="noopener">Pleco 词典</a><span class="tool-divider">|</span>
+        <a href="https://www.hskonline.com" target="_blank" rel="noopener">HSK Online</a><span class="tool-divider">|</span>
+        <a href="https://www.duolingo.com" target="_blank" rel="noopener">Duolingo</a>
+    </div>
+    <div class="tool-row">
+        <span class="tool-label">外卖/生活</span>
+        <a href="https://www.meituan.com" target="_blank" rel="noopener">美团</a><span class="tool-divider">|</span>
+        <a href="https://www.ele.me" target="_blank" rel="noopener">饿了么</a><span class="tool-divider">|</span>
+        <a href="https://www.taobao.com" target="_blank" rel="noopener">淘宝</a><span class="tool-divider">|</span>
+        <a href="https://www.jd.com" target="_blank" rel="noopener">京东</a>
+    </div>
+    <div class="tool-row">
+        <span class="tool-label">出行购票</span>
+        <a href="https://www.12306.cn" target="_blank" rel="noopener">12306（火车票）</a><span class="tool-divider">|</span>
+        <a href="https://www.ctrip.com" target="_blank" rel="noopener">携程</a>
     </div>
 </div>
 
-<!-- 模块3：学习与生活工具（白底） -->
-<div class="section-block">
-    <div class="section-inner">
-        <div class="section-label">Tools</div>
-        <div class="section-title">学习与生活工具</div>
-        <div class="tool-row">
-            <span class="tool-label">翻译</span>
-            <a href="https://translate.google.com" target="_blank" rel="noopener">Google 翻译</a><span class="tool-divider">|</span>
-            <a href="https://www.deepl.com/translator" target="_blank" rel="noopener">DeepL</a><span class="tool-divider">|</span>
-            <a href="https://fanyi.baidu.com" target="_blank" rel="noopener">百度翻译</a>
-        </div>
-        <div class="tool-row">
-            <span class="tool-label">地图导航</span>
-            <a href="https://www.amap.com" target="_blank" rel="noopener">高德地图</a><span class="tool-divider">|</span>
-            <a href="https://map.baidu.com" target="_blank" rel="noopener">百度地图</a><span class="tool-divider">|</span>
-            <a href="https://www.didi.com" target="_blank" rel="noopener">滴滴出行</a>
-        </div>
-        <div class="tool-row">
-            <span class="tool-label">支付</span>
-            <a href="https://www.alipay.com" target="_blank" rel="noopener">支付宝</a><span class="tool-divider">|</span>
-            <a href="https://www.weixin.qq.com" target="_blank" rel="noopener">微信支付</a>
-        </div>
-        <div class="tool-row">
-            <span class="tool-label">中文学习</span>
-            <a href="https://www.pleco.com" target="_blank" rel="noopener">Pleco 词典</a><span class="tool-divider">|</span>
-            <a href="https://www.hskonline.com" target="_blank" rel="noopener">HSK Online</a><span class="tool-divider">|</span>
-            <a href="https://www.duolingo.com" target="_blank" rel="noopener">Duolingo</a>
-        </div>
-        <div class="tool-row">
-            <span class="tool-label">外卖/生活</span>
-            <a href="https://www.meituan.com" target="_blank" rel="noopener">美团</a><span class="tool-divider">|</span>
-            <a href="https://www.ele.me" target="_blank" rel="noopener">饿了么</a><span class="tool-divider">|</span>
-            <a href="https://www.taobao.com" target="_blank" rel="noopener">淘宝</a><span class="tool-divider">|</span>
-            <a href="https://www.jd.com" target="_blank" rel="noopener">京东</a>
-        </div>
-        <div class="tool-row">
-            <span class="tool-label">出行购票</span>
-            <a href="https://www.12306.cn" target="_blank" rel="noopener">12306（火车票）</a><span class="tool-divider">|</span>
-            <a href="https://www.ctrip.com" target="_blank" rel="noopener">携程</a>
-        </div>
+<div class="detail-panel" id="panel-policy">
+    <div class="detail-header">
+        <span class="detail-title">📋 政策与数据查询</span>
+        <button class="detail-close">&times;</button>
     </div>
+    <ul class="link-list">
+        <li><a href="https://www.campuschina.org" target="_blank" rel="noopener">留学中国网 — 外国留学生来华须知</a></li>
+        <li><a href="http://www.moe.gov.cn/jyb_xxgk/" target="_blank" rel="noopener">教育部 — 留学政策文件</a></li>
+        <li><a href="http://www.moe.gov.cn/s78/A08/" target="_blank" rel="noopener">中国高等教育专业目录</a></li>
+        <li><a href="http://www.moe.gov.cn/jyb_sjzl/" target="_blank" rel="noopener">历年留学生数据报告</a></li>
+        <li><a href="https://www.nia.gov.cn" target="_blank" rel="noopener">国家移民管理局 — 签证与居留政策</a></li>
+    </ul>
 </div>
 
-<!-- 模块4：政策查询（灰底） -->
-<div class="section-block">
-    <div class="section-inner">
-        <div class="section-label">Policy</div>
-        <div class="section-title">政策与数据查询</div>
-        <ul class="link-list">
-            <li><a href="https://www.campuschina.org" target="_blank" rel="noopener">留学中国网 — 外国留学生来华须知</a></li>
-            <li><a href="http://www.moe.gov.cn/jyb_xxgk/" target="_blank" rel="noopener">教育部 — 留学政策文件</a></li>
-            <li><a href="http://www.moe.gov.cn/s78/A08/" target="_blank" rel="noopener">中国高等教育专业目录</a></li>
-            <li><a href="http://www.moe.gov.cn/jyb_sjzl/" target="_blank" rel="noopener">历年留学生数据报告</a></li>
-            <li><a href="https://www.nia.gov.cn" target="_blank" rel="noopener">国家移民管理局 — 签证与居留政策</a></li>
-        </ul>
+<div class="detail-panel" id="panel-emergency">
+    <div class="detail-header">
+        <span class="detail-title">📞 紧急联系方式（24小时可用）</span>
+        <button class="detail-close">&times;</button>
     </div>
+    <div class="emergency-row"><span class="emergency-label">报警</span><a href="tel:110">110</a></div>
+    <div class="emergency-row"><span class="emergency-label">急救</span><a href="tel:120">120</a></div>
+    <div class="emergency-row"><span class="emergency-label">火警</span><a href="tel:119">119</a></div>
+    <div class="emergency-row"><span class="emergency-label">交通事故</span><a href="tel:122">122</a></div>
+    <div class="emergency-row"><span class="emergency-label">国家移民管理局</span><a href="tel:12367">12367</a>（中英双语）</div>
+    <div class="emergency-row"><span class="emergency-label">外交部领事保护</span><a href="tel:+861012308">+86-10-12308</a></div>
+    <p style="font-size:0.8rem;color:#888;margin-top:0.8rem;">以上号码在中国境内免费拨打，24小时可用，无需加区号。</p>
 </div>
 
-<!-- 模块5：紧急联系（浅红底独立分区） -->
-<div class="section-block emergency-block">
-    <div class="section-inner">
-        <div class="section-label">Emergency</div>
-        <div class="section-title">紧急联系方式（24小时可用）</div>
-        <div class="emergency-row"><span class="emergency-label">报警</span><a href="tel:110">110</a></div>
-        <div class="emergency-row"><span class="emergency-label">急救</span><a href="tel:120">120</a></div>
-        <div class="emergency-row"><span class="emergency-label">火警</span><a href="tel:119">119</a></div>
-        <div class="emergency-row"><span class="emergency-label">交通事故</span><a href="tel:122">122</a></div>
-        <div class="emergency-row"><span class="emergency-label">国家移民管理局</span><a href="tel:12367">12367</a>（中英双语）</div>
-        <div class="emergency-row"><span class="emergency-label">外交部领事保护</span><a href="tel:+861012308">+86-10-12308</a></div>
-        <p style="font-size:0.8rem;color:#888;margin-top:0.8rem;">以上号码在中国境内免费拨打，24小时可用，无需加区号。</p>
+<div class="detail-panel" id="panel-faq">
+    <div class="detail-header">
+        <span class="detail-title">❓ 常见问题</span>
+        <button class="detail-close">&times;</button>
     </div>
-</div>
-
-<!-- 模块6：FAQ（白底） -->
-<div class="section-block">
-    <div class="section-inner">
-        <div class="section-label">FAQ</div>
-        <div class="section-title">常见问题</div>
-        <div class="faq-item">
-            <p class="faq-q">如何申请中国政府奖学金？</p>
-            <p class="faq-a">通过留学中国网或本国中国使馆教育处查询受理时间，在线填写申请表并提交材料。</p>
-        </div>
-        <div class="faq-item">
-            <p class="faq-q">JW201/JW202表格有什么不同？</p>
-            <p class="faq-a">JW201适用于中国政府奖学金生，JW202适用于自费来华留学生，均由录取院校协助办理。</p>
-        </div>
-        <div class="faq-item">
-            <p class="faq-q">居留许可办理需要哪些材料？</p>
-            <p class="faq-a">护照、录取通知书、体检表、住宿登记证明、一张2寸照片及申请费，入境30天内办理。</p>
-        </div>
-        <div class="faq-item">
-            <p class="faq-q">如何确认所学专业是否认证？</p>
-            <p class="faq-a">登录中国教育部教育涉外监管信息网，查询认可院校及专业名单。</p>
-        </div>
+    <div class="faq-item">
+        <p class="faq-q">如何申请中国政府奖学金？</p>
+        <p class="faq-a">通过留学中国网或本国中国使馆教育处查询受理时间，在线填写申请表并提交材料。</p>
+    </div>
+    <div class="faq-item">
+        <p class="faq-q">JW201/JW202表格有什么不同？</p>
+        <p class="faq-a">JW201适用于中国政府奖学金生，JW202适用于自费来华留学生，均由录取院校协助办理。</p>
+    </div>
+    <div class="faq-item">
+        <p class="faq-q">居留许可办理需要哪些材料？</p>
+        <p class="faq-a">护照、录取通知书、体检表、住宿登记证明、一张2寸照片及申请费，入境30天内办理。</p>
+    </div>
+    <div class="faq-item">
+        <p class="faq-q">如何确认所学专业是否认证？</p>
+        <p class="faq-a">登录中国教育部教育涉外监管信息网，查询认可院校及专业名单。</p>
     </div>
 </div>
 
 <footer class="site-footer">
     © 2025 Study in China Platform
 </footer>
+
+<script>
+    // 点击卡片：隐藏所有面板，显示对应的面板，并插入到网格容器下方
+    const gridContainer = document.getElementById('gridContainer');
+    const panels = document.querySelectorAll('.detail-panel');
+
+    function hideAllPanels() {
+        panels.forEach(p => p.classList.remove('active'));
+        // 将面板移回 body 末尾（避免重复）实际上我们只是隐藏，不移除
+    }
+
+    document.querySelectorAll('.module-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const panelId = this.getAttribute('data-panel');
+            const targetPanel = document.getElementById(panelId);
+            if (!targetPanel) return;
+
+            // 如果点击的是已经打开的卡片，就关闭
+            if (targetPanel.classList.contains('active')) {
+                targetPanel.classList.remove('active');
+                return;
+            }
+
+            // 隐藏所有面板
+            panels.forEach(p => p.classList.remove('active'));
+
+            // 显示目标面板
+            targetPanel.classList.add('active');
+
+            // 将面板移动到网格容器后面（第一个面板元素后面）
+            gridContainer.after(targetPanel);
+        });
+    });
+
+    // 关闭按钮
+    document.querySelectorAll('.detail-close').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.closest('.detail-panel').classList.remove('active');
+        });
+    });
+</script>
 
 </body>
 </html>
