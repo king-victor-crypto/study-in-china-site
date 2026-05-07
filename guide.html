@@ -26,7 +26,6 @@
             line-height: 1.5;
         }
 
-        /* 导航栏 - 全站统一 */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -66,7 +65,6 @@
             gap: 6px;
         }
 
-        /* 头部横幅 + 免费咨询 */
         .header-wrap {
             text-align: center; 
             padding: 2rem 1.5rem;
@@ -96,7 +94,6 @@
             transform: translateY(-2px);
         }
 
-        /* 搜索框 */
         .search-wrap {
             max-width: 650px;
             margin: 1.2rem auto;
@@ -130,7 +127,6 @@
             background: #1d4ed8;
         }
 
-        /* 主容器 - 严格3行4列，一屏装完 */
         .container {
             max-width: 1150px;
             margin: 0 auto;
@@ -172,7 +168,6 @@
             color: var(--muted);
         }
 
-        /* 页脚 */
         footer { 
             text-align: center; 
             padding: 0.8rem; 
@@ -181,7 +176,6 @@
             border-top: 1px solid var(--border); 
         }
 
-        /* 强制电脑端一屏不滚动 */
         @media (min-width:1024px) {
             body { overflow-y: hidden; }
         }
@@ -189,15 +183,14 @@
 </head>
 <body>
 
-<!-- 导航栏 -->
 <nav class="navbar">
     <div class="logo"><i class="fas fa-graduation-cap"></i> Study In China</div>
     <div class="nav-main">
-        <a href="programs.html">发现项目</a>
-        <a href="schools.html">探索院校</a>
-        <a href="guide.html" class="active">申请指南</a>
-        <a href="life.html">留学中国</a>
-        <a href="resource.html">资源中心</a>
+        <a href="./programs.html">发现项目</a>
+        <a href="./schools.html">探索院校</a>
+        <a href="./guide.html" class="active">申请指南</a>
+        <a href="./life.html">留学中国</a>
+        <a href="./resource.html">资源中心</a>
     </div>
     <div class="nav-lang">
         <span>🌐</span>
@@ -205,24 +198,34 @@
             <option value="zh">中文</option>
             <option value="en">English</option>
             <option value="ru">Русский</option>
+            <option value="ko">한국어</option>
+            <option value="ja">日本語</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="it">Italiano</option>
+            <option value="pt">Português</option>
+            <option value="ar">العربية</option>
+            <option value="tr">Türkçe</option>
             <option value="th">ไทย</option>
+            <option value="vi">Tiếng Việt</option>
+            <option value="id">Bahasa Indonesia</option>
+            <option value="ms">Bahasa Melayu</option>
+            <option value="fa">فارسی</option>
         </select>
     </div>
 </nav>
 
-<!-- 标题 + 免费咨询分支入口 -->
 <div class="header-wrap">
     <h1>来华留学申请指南</h1>
     <a href="consult.html" class="consult-btn" target="_blank">免费咨询</a>
 </div>
 
-<!-- 搜索功能 -->
 <div class="search-wrap">
     <input type="text" class="search-input" placeholder="搜索申请相关内容，如：材料、签证、奖学金...">
     <button class="search-btn"><i class="fas fa-search"></i></button>
 </div>
 
-<!-- 12个模块 分支入口 主程序永久不动 -->
 <div class="container">
     <div class="guide-grid">
         <a href="chapter1.html" class="guide-card" target="_blank">
@@ -276,10 +279,8 @@
     </div>
 </div>
 
-<!-- 页脚 -->
 <footer>&copy; 2026 Study in China 来华留学一站式平台</footer>
 
-<!-- 搜索功能JS -->
 <script>
     const searchInput = document.querySelector('.search-input');
     const searchBtn = document.querySelector('.search-btn');
