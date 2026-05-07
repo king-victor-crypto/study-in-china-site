@@ -16,7 +16,7 @@
             --muted: #64748b;
             --border: #e2e8f0;
             --shadow: 0 1px 3px rgba(0,0,0,0.06);
-            --shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -26,7 +26,6 @@
             line-height: 1.5;
         }
 
-        /* 导航栏 */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -66,7 +65,6 @@
             gap: 6px;
         }
 
-        /* Hero 缩小紧凑 */
         .hero {
             text-align: center; 
             padding: 2rem 1.5rem;
@@ -85,14 +83,12 @@
             margin: 0 auto;
         }
 
-        /* 主容器 紧凑一屏 */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 1.5rem 1.5rem;
         }
 
-        /* 卡片网格 缩小间距、缩小卡片 */
         .section-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -100,6 +96,8 @@
             margin-top: 1rem;
         }
         .section-card {
+            display: block;
+            text-decoration: none;
             background: var(--card);
             border-radius: 10px;
             padding: 1.2rem;
@@ -130,7 +128,6 @@
             line-height: 1.4;
         }
 
-        /* 页脚压缩 */
         footer { 
             text-align: center; 
             padding: 1rem; 
@@ -140,7 +137,6 @@
             margin-top: 1rem;
         }
 
-        /* 适配电脑一屏不滚动 */
         @media (min-width:1024px) {
             body { overflow-y: hidden; }
         }
@@ -148,15 +144,14 @@
 </head>
 <body>
 
-<!-- 导航栏 已精简：删首页、删职业发展 -->
 <nav class="navbar">
     <div class="logo"><i class="fas fa-graduation-cap"></i> Study In China</div>
     <div class="nav-main">
-        <a href="programs.html">发现项目</a>
-        <a href="schools.html">探索院校</a>
-        <a href="guide.html">申请指南</a>
-        <a href="life.html" class="active">留学中国</a>
-        <a href="resource.html">资源中心</a>
+        <a href="./programs.html">发现项目</a>
+        <a href="./schools.html">探索院校</a>
+        <a href="./guide.html">申请指南</a>
+        <a href="./life.html" class="active">留学中国</a>
+        <a href="./resource.html">资源中心</a>
     </div>
     <div class="nav-lang">
         <span>🌐</span>
@@ -176,46 +171,46 @@
 
 <div class="container">
     <div class="section-grid">
-        <div class="section-card">
+        <a href="life-1.html" class="section-card">
             <i class="fas fa-home"></i>
             <h3>住宿指南</h3>
             <p>后续在此补充宿舍、校外租房攻略</p>
-        </div>
-        <div class="section-card">
+        </a>
+        <a href="life-2.html" class="section-card">
             <i class="fas fa-bus"></i>
             <h3>出行交通</h3>
             <p>地铁公交、打车、城际出行指南</p>
-        </div>
-        <div class="section-card">
+        </a>
+        <a href="life-3.html" class="section-card">
             <i class="fas fa-utensils"></i>
             <h3>饮食美食</h3>
             <p>食堂、外卖、饮食文化介绍</p>
-        </div>
-        <div class="section-card">
+        </a>
+        <a href="life-4.html" class="section-card">
             <i class="fas fa-shopping-bag"></i>
             <h3>购物指南</h3>
             <p>线上线下购物、超市商场攻略</p>
-        </div>
-        <div class="section-card">
+        </a>
+        <a href="life-5.html" class="section-card">
             <i class="fas fa-mobile-alt"></i>
             <h3>通讯支付</h3>
             <p>手机号、银行卡、微信支付宝</p>
-        </div>
-        <div class="section-card">
+        </a>
+        <a href="life-6.html" class="section-card">
             <i class="fas fa-users"></i>
             <h3>社交文化</h3>
             <p>校园交友、文化差异与礼仪</p>
-        </div>
-        <div class="section-card">
+        </a>
+        <a href="life-7.html" class="section-card">
             <i class="fas fa-hospital"></i>
             <h3>医疗健康</h3>
             <p>医保办理、就医、日常健康</p>
-        </div>
-        <div class="section-card">
+        </a>
+        <a href="life-8.html" class="section-card">
             <i class="fas fa-graduation-cap"></i>
             <h3>校园活动</h3>
             <p>社团、图书馆、校园生活</p>
-        </div>
+        </a>
     </div>
 </div>
 
