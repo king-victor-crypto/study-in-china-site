@@ -3,634 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>申请指南 - 来华留学全球项目搜索引擎</title>
-    <link rel="stylesheet" href="common.css">
+    <title>来华留学申请指南 - 一站式留学规划平台</title>
     <style>
-        /* 全局样式重置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.8;
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            font-family: "Microsoft Yahei",sans-serif;
+            background-color: #f5f7fa;
             color: #333;
-            background-color: #f8fafc;
+            line-height: 1.6;
         }
 
-        /* 页面容器 */
-        .page-container {
-            max-width: 1400px;
+        /* 顶部导航栏 全局统一 */
+        .top-header{
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            position: relative;
+        }
+        .header-container{
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        /* 英雄横幅 */
-        .hero-banner {
-            background: linear-gradient(135deg, #1890ff 0%, #40a9ff 100%);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .hero-banner h1 {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-
-        .hero-banner p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* 悬浮目录 */
-        .toc-container {
-            position: fixed;
-            left: 20px;
-            top: 120px;
-            width: 260px;
-            max-height: calc(100vh - 160px);
-            overflow-y: auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            padding: 20px;
-            z-index: 999;
-            transition: all 0.3s ease;
-        }
-
-        .toc-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #f0f0f0;
+        .logo{
+            font-size: 22px;
+            font-weight: bold;
             color: #1890ff;
         }
-
-        .toc-item {
-            display: block;
-            color: #666;
+        .nav-menu a{
             text-decoration: none;
-            padding: 8px 12px;
-            margin-bottom: 4px;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-            font-size: 14px;
+            color: #555;
+            margin: 0 12px;
+            font-size: 15px;
+            transition: 0.3s;
         }
-
-        .toc-item:hover,
-        .toc-item.active {
-            background: #e6f7ff;
+        .nav-menu a.active{
             color: #1890ff;
             font-weight: 500;
         }
-
-        .toc-item.level2 {
-            padding-left: 24px;
-            font-size: 13px;
-        }
-
-        /* 正文内容区域 */
-        .guide-content {
-            margin-left: 300px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            padding: 50px 60px;
-            margin-bottom: 60px;
-        }
-
-        .guide-content h2 {
-            font-size: 1.8rem;
-            color: #1f2937;
-            margin-bottom: 24px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #1890ff;
-            font-weight: 600;
-        }
-
-        .guide-content h3 {
-            font-size: 1.4rem;
-            color: #1f2937;
-            margin: 32px 0 16px;
-            font-weight: 600;
-        }
-
-        .guide-content h4 {
-            font-size: 1.15rem;
-            color: #374151;
-            margin: 24px 0 12px;
-            font-weight: 600;
-        }
-
-        .guide-content p {
-            margin-bottom: 16px;
-            color: #4b5563;
-            font-size: 16px;
-        }
-
-        .guide-content ul,
-        .guide-content ol {
-            margin-bottom: 16px;
-            padding-left: 24px;
-            color: #4b5563;
-        }
-
-        .guide-content li {
-            margin-bottom: 8px;
-            font-size: 16px;
-        }
-
-        /* 表格样式 */
-        .guide-content table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 24px 0;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .guide-content th {
-            background: #f1f5f9;
-            color: #1f2937;
-            font-weight: 600;
-            padding: 14px 16px;
-            text-align: left;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .guide-content td {
-            padding: 12px 16px;
-            border-bottom: 1px solid #f1f5f9;
-            color: #4b5563;
-        }
-
-        .guide-content tr:nth-child(even) {
-            background: #f8fafc;
-        }
-
-        .guide-content tr:hover {
-            background: #f1f5f9;
-        }
-
-        /* 强调文本 */
-        .highlight {
+        .nav-menu a:hover{
             color: #1890ff;
-            font-weight: 600;
         }
 
-        .warning {
-            color: #ef4444;
-            font-weight: 600;
+        /* 右上角语言选择 */
+        .lang-box{
+            position: absolute;
+            right: 30px;
+            top: 18px;
+        }
+        #langSelect{
+            padding: 6px 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #333;
+            background: #fff;
         }
 
-        /* 分割线 */
-        .divider {
-            height: 1px;
-            background: #e5e7eb;
-            margin: 48px 0;
+        /* 中部Slogan横幅 */
+        .slogan-banner{
+            background: linear-gradient(135deg,#1890ff,#40a9ff);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+        }
+        .slogan-banner h1{
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        .slogan-banner p{
+            font-size: 17px;
+            opacity: 0.92;
+            letter-spacing: 1px;
+        }
+
+        /* 主容器 */
+        .container{
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        /* 12模块卡片网格 */
+        .module-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 22px;
+        }
+        .module-card{
+            background: #fff;
+            padding: 28px 22px;
+            border-radius: 14px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            border-left: 5px solid #1890ff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .module-card:hover{
+            transform: translateY(-6px);
+            box-shadow: 0 8px 25px rgba(24,144,255,0.15);
+        }
+        .module-card h3{
+            font-size: 18px;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+        .module-card p{
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        /* 折叠内容容器 */
+        .content-wrap{
+            background: #fff;
+            border-radius: 14px;
+            padding: 35px;
+            margin-top: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            display: none;
+        }
+        .content-wrap.show{
+            display: block;
+        }
+        .back-btn{
+            display: inline-block;
+            padding: 8px 20px;
+            background: #1890ff;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .content-wrap h2{
+            font-size: 22px;
+            color: #1f2937;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .content-wrap h4{
+            font-size: 16px;
+            margin: 18px 0 8px;
+            color: #333;
+        }
+        .content-wrap p{
+            color: #555;
+            font-size: 15px;
+            line-height: 1.8;
         }
 
         /* 页脚 */
-        .site-footer {
-            background: #1f2937;
-            color: #9ca3af;
+        footer{
+            background: #232734;
+            color: #aaa;
             text-align: center;
-            padding: 24px 0;
-            margin-top: 40px;
+            padding: 25px 0;
+            font-size: 14px;
         }
 
-        /* 响应式设计 */
-        @media (max-width: 1200px) {
-            .toc-container {
-                display: none;
-            }
-
-            .guide-content {
-                margin-left: 0;
-                padding: 30px 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-banner h1 {
-                font-size: 1.8rem;
-            }
-
-            .guide-content h2 {
-                font-size: 1.5rem;
-            }
-
-            .guide-content h3 {
-                font-size: 1.2rem;
-            }
+        /* 响应式适配 */
+        @media (max-width:768px){
+            .nav-menu{display: none;}
+            .slogan-banner h1{font-size:24px;}
+            .slogan-banner p{font-size:15px;}
+            .lang-box{right:15px;}
         }
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="container">
-            <div class="logo">Study in China</div>
-            <nav class="top-nav">
-                <a href="index.html" data-key="nav1">发现项目</a>
-                <a href="schools.html" data-key="nav2">探索院校</a>
-                <a href="guide.html" class="active" data-key="nav3">申请指南</a>
-                <a href="life.html" data-key="nav4">留学中国生活</a>
-                <a href="career.html" data-key="nav5">职业发展</a>
-                <a href="resource.html" data-key="nav6">资源中心</a>
-            </nav>
-            <select id="langSelect">
-                <option value="zh" selected>中文</option>
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="fr">Français</option>
-                <option value="de">Deutsch</option>
-                <option value="ru">Русский</option>
-                <option value="ar">العربية</option>
-                <option value="ja">日本語</option>
-                <option value="ko">한국어</option>
-                <option value="pt">Português</option>
-                <option value="it">Italiano</option>
-                <option value="nl">Nederlands</option>
-                <option value="pl">Polski</option>
-                <option value="uk">Українська</option>
-                <option value="tr">Türkçe</option>
-                <option value="th">ไทย</option>
-                <option value="vi">Việt Nam</option>
-            </select>
+
+<!-- 顶部导航 -->
+<header class="top-header">
+    <div class="header-container">
+        <div class="logo">StudyInChina</div>
+        <nav class="nav-menu">
+            <a href="index.html" data-key="nav1">首页</a>
+            <a href="university.html" data-key="nav2">院校库</a>
+            <a href="major.html" data-key="nav3">专业项目</a>
+            <a href="guide.html" class="active" data-key="nav4">申请指南</a>
+            <a href="service.html" data-key="nav5">配套服务</a>
+            <a href="contact.html" data-key="nav6">联系我们</a>
+        </nav>
+    </div>
+    <!-- 右上角语言选择 -->
+    <div class="lang-box">
+        <select id="langSelect">
+            <option value="zh">中文</option>
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="th">ไทย</option>
+            <option value="vi">Việt Nam</option>
+            <option value="ko">한국어</option>
+            <option value="ja">日本語</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="ar">العربية</option>
+            <option value="pt">Português</option>
+            <option value="it">Italiano</option>
+            <option value="nl">Nederlands</option>
+            <option value="pl">Polski</option>
+            <option value="uk">Українська</option>
+            <option value="tr">Türkçe</option>
+        </select>
+    </div>
+</header>
+
+<!-- 中部Slogan区域 -->
+<section class="slogan-banner">
+    <h1>来华留学申请指南</h1>
+    <p>从萌生留学想法，到登上飞往中国的飞机 · 全流程一站式规划</p>
+</section>
+
+<!-- 主内容区 -->
+<div class="container">
+    <!-- 12个模块卡片 -->
+    <div class="module-grid">
+        <div class="module-card" data-id="mod1">
+            <h3>1. 留学前期决策规划</h3>
+            <p>资格自查、城市择校、预算与方向定位</p>
         </div>
-    </header>
-
-    <section class="hero-banner">
-        <div class="page-container">
-            <h1>来华留学申请指南（纯来华前·保姆级完整版）</h1>
-            <p>从萌生留学想法到登上飞往中国的飞机，一步一步照着做就不会错</p>
+        <div class="module-card" data-id="mod2">
+            <h3>2. 院校与专业筛选</h3>
+            <p>正规院校辨别、梯度择校、专业匹配技巧</p>
         </div>
-    </section>
-
-    <div class="page-container">
-        <!-- 左侧悬浮目录 -->
-        <div class="toc-container">
-            <div class="toc-title">📚 申请指南目录</div>
-            <a href="#sec1" class="toc-item">1. 留学决策迷茫期</a>
-            <a href="#sec1-1" class="toc-item level2">1.1 个人资格终极核验</a>
-            <a href="#sec1-2" class="toc-item level2">1.2 正规院校防伪攻略</a>
-            <a href="#sec1-3" class="toc-item level2">1.3 中国城市精准筛选</a>
-            <a href="#sec1-4" class="toc-item level2">1.4 留学项目匹配</a>
-            <a href="#sec1-5" class="toc-item level2">1.5 授课语言选择</a>
-            <a href="#sec1-6" class="toc-item level2">1.6 完整预算测算</a>
-            <a href="#sec1-7" class="toc-item level2">1.7 奖学金申请指南</a>
-            <a href="#sec1-8" class="toc-item level2">1.8 心理与家庭沟通</a>
-            
-            <a href="#sec2" class="toc-item">2. 择校&选专业阶段</a>
-            <a href="#sec2-1" class="toc-item level2">2.1 官方查校全流程</a>
-            <a href="#sec2-2" class="toc-item level2">2.2 三档择校法</a>
-            <a href="#sec2-3" class="toc-item level2">2.3 专业选择逻辑</a>
-            <a href="#sec2-4" class="toc-item level2">2.4 跨专业申请红线</a>
-            <a href="#sec2-5" class="toc-item level2">2.5 特殊专业要求</a>
-            <a href="#sec2-6" class="toc-item level2">2.6 院校福利对比</a>
-            
-            <a href="#sec3" class="toc-item">3. 申请材料准备</a>
-            <a href="#sec3-1" class="toc-item level2">3.1 护照相关材料</a>
-            <a href="#sec3-2" class="toc-item level2">3.2 证件照片标准</a>
-            <a href="#sec3-3" class="toc-item level2">3.3 学历与成绩单</a>
-            <a href="#sec3-4" class="toc-item level2">3.4 语言能力证明</a>
-            <a href="#sec3-5" class="toc-item level2">3.5 文书写作模板</a>
-            <a href="#sec3-6" class="toc-item level2">3.6 无犯罪记录证明</a>
-            <a href="#sec3-7" class="toc-item level2">3.7 材料扫描与备份</a>
-            
-            <a href="#sec4" class="toc-item">4. 公证&认证全攻略</a>
-            <a href="#sec4-1" class="toc-item level2">4.1 核心概念区分</a>
-            <a href="#sec4-2" class="toc-item level2">4.2 公证办理细节</a>
-            <a href="#sec4-3" class="toc-item level2">4.3 海牙认证流程</a>
-            <a href="#sec4-4" class="toc-item level2">4.4 领事双认证流程</a>
-            <a href="#sec4-5" class="toc-item level2">4.5 跨国邮寄指南</a>
-            
-            <a href="#sec5" class="toc-item">5. 网申系统操作</a>
-            <a href="#sec5-1" class="toc-item level2">5.1 网申前准备</a>
-            <a href="#sec5-2" class="toc-item level2">5.2 一步一步填网申</a>
-            <a href="#sec5-3" class="toc-item level2">5.3 申请费缴纳</a>
-            <a href="#sec5-4" class="toc-item level2">5.4 提交后跟进</a>
-            
-            <a href="#sec6" class="toc-item">6. 拿到录取后手续</a>
-            <a href="#sec6-1" class="toc-item level2">6.1 录取文件核对</a>
-            <a href="#sec6-2" class="toc-item level2">6.2 确认录取与缴费</a>
-            <a href="#sec6-3" class="toc-item level2">6.3 宿舍预约攻略</a>
-            <a href="#sec6-4" class="toc-item level2">6.4 接机服务预约</a>
-            <a href="#sec6-5" class="toc-item level2">6.5 延期入学申请</a>
-            
-            <a href="#sec7" class="toc-item">7. 出境体检&健康证明</a>
-            <a href="#sec7-1" class="toc-item level2">7.1 指定医院查询</a>
-            <a href="#sec7-2" class="toc-item level2">7.2 体检前准备</a>
-            <a href="#sec7-3" class="toc-item level2">7.3 体检全流程</a>
-            <a href="#sec7-4" class="toc-item level2">7.4 疫苗接种要求</a>
-            
-            <a href="#sec8" class="toc-item">8. 学生签证办理</a>
-            <a href="#sec8-1" class="toc-item level2">8.1 X1/X2签证区别</a>
-            <a href="#sec8-2" class="toc-item level2">8.2 COVA系统填写</a>
-            <a href="#sec8-3" class="toc-item level2">8.3 签证材料清单</a>
-            <a href="#sec8-4" class="toc-item level2">8.4 递交与面签</a>
-            <a href="#sec8-5" class="toc-item level2">8.5 拒签补救方案</a>
-            
-            <a href="#sec9" class="toc-item">9. 资金&外汇准备</a>
-            <a href="#sec9-1" class="toc-item level2">9.1 外汇管制规则</a>
-            <a href="#sec9-2" class="toc-item level2">9.2 学费电汇详解</a>
-            <a href="#sec9-3" class="toc-item level2">9.3 落地资金准备</a>
-            <a href="#sec9-4" class="toc-item level2">9.4 奖学金发放</a>
-            
-            <a href="#sec10" class="toc-item">10. 行前物品准备</a>
-            <a href="#sec10-1" class="toc-item level2">10.1 行李打包原则</a>
-            <a href="#sec10-2" class="toc-item level2">10.2 必带物品清单</a>
-            <a href="#sec10-3" class="toc-item level2">10.3 禁止携带物品</a>
-            <a href="#sec10-4" class="toc-item level2">10.4 分城市衣物指南</a>
-            
-            <a href="#sec11" class="toc-item">11. 机票&行程规划</a>
-            <a href="#sec11-1" class="toc-item level2">11.1 机票购买攻略</a>
-            <a href="#sec11-2" class="toc-item level2">11.2 直飞vs中转</a>
-            <a href="#sec11-3" class="toc-item level2">11.3 主要中转机场指南</a>
-            <a href="#sec11-4" class="toc-item level2">11.4 航班延误处理</a>
-            
-            <a href="#sec12" class="toc-item">12. 最后冲刺&应急预案</a>
-            <a href="#sec12-1" class="toc-item level2">12.1 行前一周每日清单</a>
-            <a href="#sec12-2" class="toc-item level2">12.2 本国出境流程</a>
-            <a href="#sec12-3" class="toc-item level2">12.3 突发情况处理</a>
+        <div class="module-card" data-id="mod3">
+            <h3>3. 申请材料清单准备</h3>
+            <p>基础材料、学历文件、个人文书整理规范</p>
         </div>
-
-        <!-- 正文内容区域 -->
-        <div class="guide-content">
-            <p style="color: #6b7280; margin-bottom: 32px; font-size: 15px;">
-                本文所有内容仅限学生身处自己国家、尚未踏入中国国境之前的全部流程。入境后的报到、住宿、居留许可、校园生活等内容，统一归入「留学中国生活」板块。内容长期稳定，2026-2031年核心逻辑无需改动，仅需微调个别时效信息。
-            </p>
-
-            <div class="divider"></div>
-
-            <h2 id="sec1">第一板块 留学决策迷茫期（从零启动·零基础入门）</h2>
-            <p>这是你来华留学的第一步，也是最容易迷茫、最容易被骗的阶段。我们不讲任何大道理，只告诉你：你能不能来、怎么选不会错、第一步该做什么。</p>
-
-            <h3 id="sec1-1">1.1 个人来华留学资格终极核验（5分钟精准自查·一条都不能少）</h3>
-            <p>在你花任何时间、任何钱之前，先花5分钟做完这个自查。只要有一条不满足，先解决问题，再往下走，否则所有准备都是白费。</p>
-
-            <h4>1.1.1 护照资质核验（最基础硬性门槛）</h4>
-            <p><span class="highlight">必须同时满足以下3个条件：</span></p>
-            <ul>
-                <li><strong>有效期≥18个月</strong>：不是6个月！不是6个月！不是6个月！重要的事情说三遍。
-                    <br>✅ 原因：申请学校需要1-3个月，办签证需要1-2个月，入学后还要办1年以上的居留许可。如果护照有效期只有6个月，使馆直接拒签；如果中途护照过期，你需要回国重新办护照，再重新办签证，耽误至少半年。
-                    <br><span class="warning">❌ 错误案例：</span>泰国学生小明，护照有效期还有7个月，自信满满提交申请，结果签证被拒，只能重新办护照，错过了当年的开学季。
-                    <br>✅ 补救：立即去本国出入境管理局申请换新护照，办理周期一般7-15个工作日，加急3-5个工作日。</li>
-                <li><strong>连续空白页≥4页</strong>：必须是连续的、没有任何涂鸦、盖章、贴纸、破损的空白页。
-                    <br>✅ 原因：中国签证需要贴1整页，入境章需要1页，后续居留许可需要1页，预留1页备用。零散的空白页不算，必须是连续的。
-                    <br><span class="warning">❌ 错误案例：</span>印度学生拉吉，护照只剩3页零散的空白页，使馆要求他换新护照，否则不予受理签证。</li>
-                <li><strong>护照完好无损</strong>：无破损、无泡水、无字迹涂改、无芯片损坏、无边角卷边。
-                    <br>✅ 原因：芯片损坏无法读取信息，涂改过的护照视为无效护照。
-                    <br>✅ 补救：任何一点破损，都直接换新护照，不要抱有侥幸心理。</li>
-            </ul>
-
-            <h4>1.1.2 学历资质核验（严格对应申请层次）</h4>
-            <p>中国高校对学历要求非常严格，没有任何通融的余地。结业证、肄业证、临时证明、培训证书，一律不认。</p>
-            <table>
-                <tr>
-                    <th>申请层次</th>
-                    <th>必须提供的材料</th>
-                    <th>最低要求</th>
-                </tr>
-                <tr>
-                    <td>本科</td>
-                    <td>高中毕业证 + 完整3年高中成绩单</td>
-                    <td>本国教育部认可的正规高中</td>
-                </tr>
-                <tr>
-                    <td>硕士</td>
-                    <td>本科毕业证 + 学士学位证 + 完整4年本科成绩单</td>
-                    <td>本科双证齐全，专科不能直接申硕士</td>
-                </tr>
-                <tr>
-                    <td>博士</td>
-                    <td>硕士毕业证 + 硕士学位证 + 完整硕士成绩单</td>
-                    <td>硕士双证齐全</td>
-                </tr>
-                <tr>
-                    <td>语言生/预科</td>
-                    <td>初中及以上学历证明</td>
-                    <td>无严格要求</td>
-                </tr>
-            </table>
-
-            <p><strong>常见问题解答：</strong></p>
-            <ul>
-                <li>Q：我是专升本学历，可以申硕士吗？
-                    <br>A：部分普通公办院校接受专升本学历申请硕士，双一流院校一般不接受。</li>
-                <li>Q：我高中没毕业，可以申本科吗？
-                    <br>A：不可以，必须拿到高中毕业证。</li>
-                <li>Q：我的毕业证丢了怎么办？
-                    <br>A：联系母校开具《毕业证明书》，必须加盖学校公章和校长签字，效力等同于原件。</li>
-                <li>Q：我的学校已经关闭了，开不了证明怎么办？
-                    <br>A：联系本国教育部，开具学历认证证明。</li>
-            </ul>
-
-            <h4>1.1.3 身份与记录核验</h4>
-            <ul>
-                <li>无本国及国际范围内的重大违法犯罪记录（无刑事处罚记录）</li>
-                <li>无中国出入境不良记录（如非法滞留、违规入境、被遣返）</li>
-                <li>非中国边境管控限制出境人员</li>
-                <li>持有合法的本国公民身份，无国籍纠纷</li>
-            </ul>
-
-            <h4>1.1.4 经济能力基础核验</h4>
-            <p>不需要你家里很有钱，普通家庭完全可以承担来华留学。但必须有稳定的资金支持，能覆盖以下基本开支：
-            <br>✅ 最低预算：每年5万元人民币（二线城市+公办专科+校内宿舍）
-            <br>✅ 中等预算：每年10万元人民币（新一线城市+普通公办本科+校内宿舍）
-            <br>✅ 高预算：每年15万元人民币以上（一线城市+双一流+英文授课）</p>
-
-            <h4>1.1.5 留学意愿核验</h4>
-            <ul>
-                <li>能接受独自跨境生活，独立处理问题</li>
-                <li>愿意遵守中国的法律法规和院校的规章制度</li>
-                <li>有基本的学习能力，能完成学业要求</li>
-            </ul>
-
-            <p><span class="highlight">最终结论：</span>以上5条全部满足，你完全具备来华留学资格，可以正式开始规划。有任何一条不满足，先解决问题，再往下走。</p>
-
-            <h3 id="sec1-2">1.2 正规院校防伪终极攻略（从根源避开所有骗局·100%不被骗）</h3>
-            <p>留学生被骗90%都是因为分不清正规院校和野鸡院校。记住一句话：<span class="highlight">不在中国教育部名单里的学校，一律不考虑</span>。没有任何例外。</p>
-
-            <h4>1.2.1 唯一官方正规院校查询渠道（记死，只认这个）</h4>
-            <p><strong>中国教育部涉外监管信息网</strong>（国际学生可直接访问外文版）
-            <br>✅ 操作步骤：
-            1. 打开官网→找到「留学中国」栏目→点击「国际学生招生院校名单」
-            2. 选择「全日制学历招生院校」，即可看到全中国所有具备正规国际生招生资格的院校
-            3. 按省份、城市、院校类型筛选，找到你感兴趣的学校</p>
-
-            <p><span class="warning">绝对不要相信的渠道：</span></p>
-            <ul>
-                <li>朋友圈、Facebook、Instagram上的私人中介</li>
-                <li>抖音、TikTok上的留学博主</li>
-                <li>号称"和中国大学有合作"的培训机构</li>
-                <li>任何主动加你微信、WhatsApp的招生人员</li>
-            </ul>
-
-            <h4>1.2.2 三类正规院校清晰区分（按优先级排序）</h4>
-            <table>
-                <tr>
-                    <th>院校类型</th>
-                    <th>含金量</th>
-                    <th>学费范围（年）</th>
-                    <th>适合人群</th>
-                </tr>
-                <tr>
-                    <td>双一流公办院校</td>
-                    <td>全球认可，最高</td>
-                    <td>3-6万人民币</td>
-                    <td>成绩优秀，想拿高学历背书</td>
-                </tr>
-                <tr>
-                    <td>普通公办本科院校</td>
-                    <td>全球认可，高</td>
-                    <td>2-4万人民币</td>
-                    <td>绝大多数普通留学生</td>
-                </tr>
-                <tr>
-                    <td>公办专科院校</td>
-                    <td>全球认可，中等</td>
-                    <td>1-2万人民币</td>
-                    <td>预算有限，想学实用技术</td>
-                </tr>
-            </table>
-
-            <h4>1.2.3 中介虚假话术黑名单（看到直接拉黑，不用犹豫）</h4>
-            <ul>
-                <li><span class="warning">❌</span> "低分保录清北复交，内部名额"</li>
-                <li><span class="warning">❌</span> "不用语言成绩，直接入学"</li>
-                <li><span class="warning">❌</span> "一年快速拿证，不用到校上课"</li>
-                <li><span class="warning">❌</span> "先入学后补材料，绿色通道"</li>
-                <li><span class="warning">❌</span> "交5万服务费，保证拿到奖学金"</li>
-                <li><span class="warning">❌</span> "我是学校官方招生代表，直接录取"</li>
-            </ul>
-
-            <p><span class="warning">真实案例：</span>尼日利亚学生奥卢，被中介骗了2万美元，中介说能保录清华大学，结果给他发了一个野鸡大学的录取通知书，奥卢到了中国才发现被骗，钱也追不回来，只能回国。</p>
-
-            <h4>1.2.4 验证学校真伪的终极方法</h4>
-            <p>找到学校的官方国际学生招生邮箱，发一封邮件问："我叫XXX，来自XX国家，想申请贵校2026年秋季的XX专业，请问是否还有招生名额？申请要求是什么？"
-            <br>✅ 如果收到官方回复，就是正规学校
-            <br>❌ 如果没有回复，或者回复的邮箱不是学校官方域名（学校官网域名一般是.edu.cn），就是假的</p>
-
-            <div class="divider"></div>
-
-            <!-- 以下为剩余内容，按相同格式完整扩充至5.2万字 -->
-            <!-- 1.3 中国留学城市精准筛选 -->
-            <!-- 1.4 6类留学项目一对一精准匹配 -->
-            <!-- 1.5 中文授课VS英文授课终极选择 -->
-            <!-- 1.6 完整留学预算精准测算 -->
-            <!-- 1.7 奖学金申请基础指南 -->
-            <!-- 1.8 心理与家庭沟通方案 -->
-            <!-- 第二板块 择校&选专业阶段 -->
-            <!-- 第三板块 申请材料准备 -->
-            <!-- 第四板块 公证&认证全攻略 -->
-            <!-- 第五板块 网申系统操作 -->
-            <!-- 第六板块 拿到录取后手续 -->
-            <!-- 第七板块 出境体检&健康证明 -->
-            <!-- 第八板块 学生签证办理 -->
-            <!-- 第九板块 资金&外汇准备 -->
-            <!-- 第十板块 行前物品准备 -->
-            <!-- 第十一板块 机票&行程规划 -->
-            <!-- 第十二板块 最后冲刺&应急预案 -->
-
-            <p style="margin-top: 80px; text-align: center; color: #6b7280; font-size: 15px;">
-                预祝你来华留学一切顺利！<br>
-                如有任何问题，可通过学校国际学生办公室联系我们。
-            </p>
+        <div class="module-card" data-id="mod4">
+            <h3>4. 公证与认证办理</h3>
+            <p>学历公证、海牙认证、双认证办理流程</p>
+        </div>
+        <div class="module-card" data-id="mod5">
+            <h3>5. 线上系统申请操作</h3>
+            <p>账号注册、信息填报、材料上传、缴费跟进</p>
+        </div>
+        <div class="module-card" data-id="mod6">
+            <h3>6. 录取后手续对接</h3>
+            <p>录取确认、宿舍预约、接机安排、延期申请</p>
+        </div>
+        <div class="module-card" data-id="mod7">
+            <h3>7. 体检与健康证明</h3>
+            <p>指定体检机构、体检项目、健康证明申领</p>
+        </div>
+        <div class="module-card" data-id="mod8">
+            <h3>8. 学生签证申办</h3>
+            <p>签证类型区分、材料递交、面签注意事项</p>
+        </div>
+        <div class="module-card" data-id="mod9">
+            <h3>9. 资金与外汇筹备</h3>
+            <p>学费汇款、外汇规则、备用资金规划</p>
+        </div>
+        <div class="module-card" data-id="mod10">
+            <h3>10. 行前物品整理</h3>
+            <p>必带物品、违禁物品、季节穿搭建议</p>
+        </div>
+        <div class="module-card" data-id="mod11">
+            <h3>11. 机票与行程规划</h3>
+            <p>机票选购、中转方案、行程时间安排</p>
+        </div>
+        <div class="module-card" data-id="mod12">
+            <h3>12. 行前冲刺与应急方案</h3>
+            <p>最终核对清单、出境流程、突发问题处理</p>
         </div>
     </div>
 
-    <footer class="site-footer">
-        <p>© 2026 Study in China | 来华留学官方信息平台</p>
-    </footer>
+    <!-- 12个模块简略内容容器 -->
+    <div class="content-wrap" id="mod1">
+        <a href="javascript:;" class="back-btn">← 返回全部模块</a>
+        <h2>一、留学前期决策规划</h2>
+        <h4>核心内容概要</h4>
+        <p>包含个人基础资格核验、留学城市优缺点对比、学费生活费预算测算、本科/硕士/博士/预科方向定位，帮你初步锁定适合自己的来华留学路径。</p>
+    </div>
 
-    <script>
-        // 目录平滑滚动+滚动高亮
-        const tocItems = document.querySelectorAll('.toc-item');
-        const sections = document.querySelectorAll('h2[id], h3[id]');
+    <div class="content-wrap" id="mod2">
+        <a href="javascript:;" class="back-btn">← 返回全部模块</a>
+        <h2>二、院校与专业筛选</h2>
+        <h4>核心内容概要</h4>
+        <p>教你辨别正规备案留学院校、划分冲刺/稳妥/保底梯度、热门专业推荐、避坑指南，精准匹配自身背景与留学目标。</p>
+    </div>
 
-        // 平滑滚动
-        tocItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+    <div class="content-wrap" id="mod3">
+        <a href="javascript:;" class="back-btn">← 返回全部模块</a>
+        <h2>三、申请材料清单准备</h2>
+        <h4>核心内容概要</h4>
+        <p>汇总全套通用申请材料：护照、学历证明、成绩单、语言证书、推荐信、个人陈述、照片标准等整理规范。</p>
+    </div>
+
+    <div class="content-wrap" id="mod4">
+        <a href="javascript:;" class="back-btn">← 返回全部模块</a>
+        <h2>四、公证与认证办理</h2>
+        <h4>核心内容概要</h4>
+        <p>讲解公证、海牙认证、领事双认证区别，办理顺序、时效、注意事项，避免材料审核被退回。</p>
+    </div>
+
+    <div class="content-wrap" id="mod5">
+        <a href="javascript:;" class="back-btn">← 返回全部模块</a>
+        <h2>五、线上系统申请操作</h2>
+        <h4>核心内容概要</h4>
+        <p>全网申流程演示：注册登录、个人信息填写、志愿填报、材料上传、报名费缴纳、进度查询与跟进技巧。</p>
+    </div>
+
+    <div class="content-wrap" id="mod6">
+        <a href="javascript:;" class="back-btn">← 返回全部模块</a>
+        <h2>六、录取后手续对接</h2>
+        <h4>核心内容概要</h4>
+        <p>收到录取通知书后确认步骤、校内宿舍申请、校园接机服务登记、入学延期申请规则与沟通话术。</p>
+    </div>
+
+    <div class="content-wrap" id="mod7">
+        <a href="javascript:;" class="back-btn">← 返回全部模块</a>
+        <h2>七、体检与健康证明</h2>
+        <h4>核心内容概要</h4>
+        <p>入境中国要求的体检项目、官方指定医疗机构、健康证明领取、疫苗相关要求与常见问题解答。</p>
+    </div>
+
+    <div class="content-wrap" id="mod8">
+        <a href="javascript:;" class="back-btn">← 返回全部模块</a>
+        <h2>八、学生签证申办</h2>
+        <h4>核心内容概要</h4>
+        <p>X1/X2签证区别、领馆递交材料清单、预约面签、常见拒签原因分析与补救方案。</p>
+    </div>
+
+    <div class="content-wrap" id="mod9">
+        <a href="javascript:;" class="back-btn">← 返回全部模块</a>
+        <h2>九、资金与外汇筹备</h2>
+        <h4>核心内容概要</h4>
+        <p>跨境学费汇款渠道、国内外汇兑换规定、随身现金额度、银行卡与备用资金合理规划。</p>
+    </div>
+
+    <div class="content-wrap" id="mod10">
+        <a href="javascript:;" class="back-btn">← 返回全部模块</a>
+        <h2>十、行前物品整理</h2>
+        <h4>核心内容概要</h4>
+        <p>必带证件类、生活用品、电子产品、药品清单，海关禁止携带物品提醒，南北城市气候穿搭参考。</p>
+    </div>
+
+    <div class="content-wrap" id="mod11">
+        <a href="javascript:;" class="back-btn">← 返回全部模块</a>
+        <h2>十一、机票与行程规划</h2>
+        <h4>核心内容概要</h4>
+        <p>最佳购票时间、直飞/中转优缺点对比、行李额度、入境口岸选择、行程时间统筹安排。</p>
+    </div>
+
+    <div class="content-wrap" id="mod12">
+        <a href="javascript:;" class="back-btn">← 返回全部模块</a>
+        <h2>十二、行前冲刺与应急方案</h2>
+        <h4>核心内容概要</h4>
+        <p>出境前最终核对清单、机场出境流程、入境中国注意事项、突发证件丢失/航班延误应急处理办法。</p>
+    </div>
+
+</div>
+
+<!-- 页脚 -->
+<footer>
+    © 2026 StudyInChina 来华留学一站式服务平台 | 17种语言全球同步
+</footer>
+
+<script>
+    // 卡片展开收起逻辑
+    const cards = document.querySelectorAll('.module-card');
+    const contents = document.querySelectorAll('.content-wrap');
+    const backBtns = document.querySelectorAll('.back-btn');
+
+    cards.forEach(card => {
+        card.addEventListener('click', function(){
+            let targetId = this.dataset.id;
+            // 先隐藏所有内容
+            contents.forEach(item => item.classList.remove('show'));
+            // 展示对应内容
+            document.getElementById(targetId).classList.add('show');
+            window.scrollTo({top: 280, behavior: 'smooth'});
         });
+    });
 
-        // 滚动高亮当前目录
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 120;
-                if(window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            tocItems.forEach(item => {
-                item.classList.remove('active');
-                if(item.getAttribute('href') === '#' + current) {
-                    item.classList.add('active');
-                }
-            });
+    // 返回按钮
+    backBtns.forEach(btn => {
+        btn.addEventListener('click', function(){
+            contents.forEach(item => item.classList.remove('show'));
+            window.scrollTo({top: 180, behavior: 'smooth'});
         });
+    });
 
-        // 多语言切换（和原有网站完全兼容）
-        const langPack = {
-            zh:{nav1:"发现项目",nav2:"探索院校",nav3:"申请指南",nav4:"留学中国生活",nav5:"职业发展",nav6:"资源中心"},
-            en:{nav1:"Programs",nav2:"Universities",nav3:"Application Guide",nav4:"Life in China",nav5:"Career",nav6:"Resources"},
-            es:{nav1:"Programas",nav2:"Universidades",nav3:"Guía de solicitud",nav4:"Vivir en China",nav5:"Carrera",nav6:"Recursos"},
-            fr:{nav1:"Programmes",nav2:"Universités",nav3:"Guide de candidature",nav4:"Vivre en Chine",nav5:"Carrière",nav6:"Ressources"},
-            de:{nav1:"Programm",nav2:"Universitäten",nav3:"Bewerbungsleitfaden",nav4:"Leben in China",nav5:"Karriere",nav6:"Ressourcen"},
-            ru:{nav1:"Программы",nav2:"Университеты",nav3:"Руководство по поступлению",nav4:"Жизнь в Китае",nav5:"Карьера",nav6:"Ресурсы"},
-            ar:{nav1:"البرامج",nav2:"الجامعات",nav3:"دليل التقديم",nav4:"الحياة في الصين",nav5:"المسار المهني",nav6:"المصادر"},
-            ja:{nav1:"プログラム",nav2:"大学",nav3:"出願案内",nav4:"中国での生活",nav5:"キャリア",nav6:"資料"},
-            ko:{nav1:"프로그램",nav2:"대학",nav3:"입학안내",nav4:"중국생활",nav5:"커리어",nav6:"자료"},
-            pt:{nav1:"Programas",nav2:"Universidades",nav3:"Guia de inscrição",nav4:"Viver na China",nav5:"Carreira",nav6:"Recursos"},
-            it:{nav1:"Programmi",nav2:"Università",nav3:"Guida alle iscrizioni",nav4:"Vivere in Cina",nav5:"Carriera",nav6:"Risorse"},
-            nl:{nav1:"Programma's",nav2:"Universiteiten",nav3:"Aanmeldgids",nav4:"Leven in China",nav5:"Carrière",nav6:"Bronnen"},
-            pl:{nav1:"Programy",nav2:"Uniwersytety",nav3:"Przewodnik rekrutacyjny",nav4:"Życie w Chinach",nav5:"Kariera",nav6:"Zasoby"},
-            uk:{nav1:"Програми",nav2:"Університети",nav3:"Посібник вступника",nav4:"Життя у Китаї",nav5:"Кар'єра",nav6:"Ресурси"},
-            tr:{nav1:"Programlar",nav2:"Üniversiteler",nav3:"Başvuru Kılavuzu",nav4:"Çin'de Yaşam",nav5:"Kariyer",nav6:"Kaynaklar"},
-            th:{nav1:"โปรแกรม",nav2:"มหาวิทยาลัย",nav3:"คู่มือสมัครเรียน",nav4:"ชีวิตในจีน",nav5:"อาชีพ",nav6:"ทรัพยากร"},
-            vi:{nav1:"Chương trình",nav2:"Trường đại học",nav3:"Hướng dẫn đăng ký",nav4:"Sống tại Trung Quốc",nav5:"Phát triển nghề nghiệp",nav6:"Nguồn tài nguyên"}
-        };
+    // 17国语言切换 + 本地存储记忆
+    const langData = {
+        zh:{nav1:"首页",nav2:"院校库",nav3:"专业项目",nav4:"申请指南",nav5:"配套服务",nav6:"联系我们"},
+        en:{nav1:"Home",nav2:"Universities",nav3:"Majors",nav4:"Guide",nav5:"Services",nav6:"Contact"},
+        ru:{nav1:"Главная",nav2:"Университеты",nav3:"Специальности",nav4:"Гид",nav5:"Услуги",nav6:"Контакты"},
+        th:{nav1:"หน้าแรก",nav2:"มหาวิทยาลัย",nav3:"สาขา",nav4:"คู่มือ",nav5:"บริการ",nav6:"ติดต่อ"},
+        vi:{nav1:"Trang chủ",nav2:"Trường đại học",nav3:"Chuyên ngành",nav4:"Hướng dẫn",nav5:"Dịch vụ",nav6:"Liên hệ"},
+        ko:{nav1:"메인",nav2:"대학",nav3:"전공",nav4:"가이드",nav5:"서비스",nav6:"연락"},
+        ja:{nav1:"ホーム",nav2:"大学",nav3:"専攻",nav4:"ガイド",nav5:"サービス",nav6:"連絡"},
+        es:{nav1:"Inicio",nav2:"Universidades",nav3:"Carreras",nav4:"Guía",nav5:"Servicios",nav6:"Contacto"},
+        fr:{nav1:"Accueil",nav2:"Universités",nav3:"Spécialités",nav4:"Guide",nav5:"Services",nav6:"Contact"},
+        de:{nav1:"Startseite",nav2:"Universitäten",nav3:"Fächer",nav4:"Leitfaden",nav5:"Dienstleistungen",nav6:"Kontakt"},
+        ar:{nav1:"الرئيسية",nav2:"الجامعات",nav3:"التخصصات",nav4:"دليل",nav5:"الخدمات",nav6:"تواصل"},
+        pt:{nav1:"Início",nav2:"Universidades",nav3:"Cursos",nav4:"Guia",nav5:"Serviços",nav6:"Contato"},
+        it:{nav1:"Home",nav2:"Università",nav3:"Corsi",nav4:"Guida",nav5:"Servizi",nav6:"Contatto"},
+        nl:{nav1:"Home",nav2:"Universiteiten",nav3:"Opleidingen",nav4:"Gids",nav5:"Diensten",nav6:"Contact"},
+        pl:{nav1:"Strona główna",nav2:"Uniwersytety",nav3:"Kierunki",nav4:"Przewodnik",nav5:"Usługi",nav6:"Kontakt"},
+        uk:{nav1:"Головна",nav2:"Університети",nav3:"Спеціальності",nav4:"Посібник",nav5:"Послуги",nav6:"Контакт"},
+        tr:{nav1:"Ana Sayfa",nav2:"Üniversiteler",nav3:"Bölümler",nav4:"Kılavuz",nav5:"Hizmetler",nav6:"İletişim"}
+    };
 
-        const langSel = document.getElementById('langSelect');
-        const defaultLang = localStorage.getItem('siteLang') || 'zh';
-        langSel.value = defaultLang;
+    const langSelect = document.getElementById('langSelect');
+    const saveLang = localStorage.getItem('siteLang') || 'zh';
+    langSelect.value = saveLang;
 
-        function renderLang(lang) {
-            const data = langPack[lang];
-            if(!data) return;
-            document.querySelectorAll('[data-key]').forEach(el=>{
-                let key = el.getAttribute('data-key');
-                if(data[key]) el.innerText = data[key];
-            });
-            localStorage.setItem('siteLang', lang);
-        }
-
-        langSel.addEventListener('change', ()=>{
-            renderLang(langSel.value);
+    function changeLang(lang){
+        const obj = langData[lang];
+        if(!obj) return;
+        document.querySelectorAll('[data-key]').forEach(el=>{
+            const key = el.dataset.key;
+            if(obj[key]) el.innerText = obj[key];
         });
+        localStorage.setItem('siteLang', lang);
+    }
 
-        renderLang(defaultLang);
-    </script>
+    langSelect.addEventListener('change', ()=>{
+        changeLang(langSelect.value);
+    });
+
+    changeLang(saveLang);
+</script>
+
 </body>
 </html>
