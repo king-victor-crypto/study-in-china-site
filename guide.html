@@ -16,7 +16,6 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
             color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden;
         }
-
         .top-nav {
             background: #fff; border-bottom: 2px solid var(--border);
             padding: 14px 32px; display: flex; align-items: center;
@@ -36,7 +35,6 @@
         }
         .nav-links a:hover { background: var(--hover); color: var(--accent); }
         .nav-links a.active { background: var(--accent); color: #fff; font-weight: 600; }
-
         .lang-wrap { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
         .lang-wrap select {
             border: 1px solid var(--border); border-radius: 16px;
@@ -46,82 +44,53 @@
         .main-content {
             flex: 1; display: flex; flex-direction: column; align-items: center;
             max-width: 1100px; width: 100%; margin: 0 auto;
-            padding: 1.5rem 32px 1rem; overflow: hidden;
+            padding: 2rem 32px 1rem; overflow-y: auto;
         }
+        .page-title { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .page-sub { font-size: 14px; color: var(--muted); margin-bottom: 1.5rem; }
 
-        .page-title { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.2rem; text-align: center; }
-        .page-sub { font-size: 14px; color: var(--muted); margin-bottom: 1.2rem; text-align: center; }
-
-        .search-wrap { width: 100%; position: relative; margin-bottom: 1.2rem; }
+        .search-wrap { width: 100%; position: relative; margin-bottom: 1.8rem; }
         .search-box {
-            width: 100%; height: 44px; border: 1px solid var(--border); border-radius: 22px;
-            padding: 0 16px 0 42px; font-size: 14px; outline: none;
-            background: var(--bg); box-shadow: 0 1px 4px rgba(32,33,36,0.06);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239aa0a6' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat; background-position: 14px center;
+            width: 100%; height: 48px; border: 1px solid var(--border); border-radius: 24px;
+            padding: 0 20px 0 46px; font-size: 15px; outline: none;
+            background: var(--bg); box-shadow: 0 1px 4px rgba(32,33,36,0.08); transition: box-shadow 0.2s;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='%239aa0a6' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: 16px center;
         }
-        .search-box:focus { box-shadow: 0 1px 6px rgba(32,33,36,0.12); }
+        .search-box:focus { box-shadow: 0 1px 8px rgba(32,33,36,0.18); }
 
-        /* 8步骤卡片网格：4列2行 */
         .steps-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
-            flex: 1; align-content: start;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
         }
         @media (max-width: 900px) { .steps-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 700px) { .steps-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 500px) { .steps-grid { grid-template-columns: 1fr; } }
 
         .step-card {
-            background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
-            padding: 24px 18px; transition: all 0.2s; cursor: pointer;
-            display: flex; flex-direction: column; gap: 10px;
+            background: var(--bg); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 28px 20px;
+            text-decoration: none; color: var(--text);
+            transition: all 0.2s; display: flex; flex-direction: column;
+            align-items: center; text-align: center; gap: 10px;
         }
         .step-card:hover {
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1); border-color: var(--accent); transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+            border-color: var(--accent); transform: translateY(-2px);
         }
-        .step-card .step-num {
-            font-size: 12px; font-weight: 700; color: var(--accent);
-            text-transform: uppercase; letter-spacing: 0.5px;
+        .step-card .card-icon {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: #e8f0fe; display: flex; align-items: center;
+            justify-content: center; font-size: 22px; color: var(--accent);
         }
-        .step-card h3 { font-size: 1rem; font-weight: 600; line-height: 1.3; }
+        .step-card h3 { font-size: 1rem; font-weight: 600; }
         .step-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
-        .step-card .arrow { margin-top: auto; align-self: flex-end; color: var(--muted); font-size: 14px; }
-
-        /* 详情展开区 */
-        .detail-panel {
-            width: 100%; border: 1px solid var(--border); border-radius: var(--radius);
-            padding: 24px; margin-top: 16px; background: var(--bg);
-            max-height: 400px; overflow-y: auto; display: none;
-        }
-        .detail-panel.show { display: block; }
-        .detail-panel h2 { font-size: 1.3rem; margin-bottom: 1rem; }
-        .detail-panel .back-link {
-            display: inline-flex; align-items: center; gap: 6px; font-size: 13px;
-            color: var(--accent); cursor: pointer; margin-bottom: 1rem; border: none; background: none;
-        }
-        .detail-panel .back-link:hover { text-decoration: underline; }
-
-        /* 子卡片网格 */
-        .sub-cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 1rem; }
-        .sub-card {
-            background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
-            padding: 16px; cursor: pointer; transition: all 0.15s;
-        }
-        .sub-card:hover { border-color: var(--accent); background: #fafbff; }
-        .sub-card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
-        .sub-card p { font-size: 12px; color: var(--muted); }
-
-        .detail-content h3 { font-size: 1rem; color: var(--accent); margin: 1.2rem 0 0.4rem; }
-        .detail-content p { font-size: 14px; line-height: 1.8; color: var(--text); margin-bottom: 0.6rem; }
-        .detail-content ul { padding-left: 1.5rem; margin: 0.5rem 0 1rem; }
-        .detail-content li { font-size: 14px; line-height: 1.8; margin-bottom: 0.4rem; }
-        .consult-hint { font-size: 13px; color: var(--muted); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-        .consult-hint a { color: var(--accent); text-decoration: none; }
-        .consult-hint a:hover { text-decoration: underline; }
 
         .site-footer {
             text-align: center; padding: 10px 0; border-top: 1px solid var(--border);
-            font-size: 11px; color: var(--muted); flex-shrink: 0;
+            font-size: 12px; color: var(--muted); flex-shrink: 0;
         }
     </style>
 </head>
@@ -148,165 +117,60 @@
 
 <div class="main-content">
     <h1 class="page-title">申请指南</h1>
-    <p class="page-sub">从想法到入学，8个步骤全程陪伴。点击卡片查看详情。</p>
+    <p class="page-sub">从决定来中国到顺利入学，全程陪伴您的每一步</p>
 
     <div class="search-wrap">
-        <input type="text" class="search-box" id="searchInput" placeholder="搜索问题，如"签证"、"奖学金"、"材料"...">
+        <input type="text" class="search-box" id="searchInput" placeholder="搜索您的问题，如“签证”、“奖学金”...">
     </div>
 
-    <div class="steps-grid" id="stepsGrid">
-        <!-- 动态生成 -->
-    </div>
-
-    <div class="detail-panel" id="detailPanel"></div>
+    <!-- ========== 8 张步骤卡片 ========== -->
+    <div class="steps-grid" id="stepsGrid"></div>
 </div>
 
 <footer class="site-footer">© 2026 Study in China 来华留学一站式平台</footer>
 
 <script>
-    // ==================== 8个步骤 ====================
+    // ==================== 步骤数据 ====================
+    // 🔧 修改方法：直接修改下面数组里的 title 和 desc 即可
     const steps = [
-        {
-            id: 1, title: "我够格吗", desc: "学历、护照、年龄、健康——逐项自查",
-            subs: [
-                { title: "学历要求", desc: "本科/硕士/博士分别需要什么学历背景", detail: `<h3>学历要求</h3><p>本科申请需要高中毕业证书和成绩单。硕士申请需要本科学位证书和成绩单。博士申请需要硕士学位证书和成绩单。部分学校接受预毕业证明，但需在规定时间内补交最终学历证书。</p><p>所有非中文或英文的文件必须经过公证翻译。部分顶尖大学对GPA有最低要求，通常本科申请要求高中平均分75%以上，硕士申请要求本科GPA 2.5-3.0以上。</p><div class="consult-hint">如果看完还是不确定自己的学历是否符合要求，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "护照与国籍", desc: "护照有效期、国籍要求", detail: `<h3>护照与国籍</h3><p>护照有效期必须覆盖整个留学周期。如果护照即将到期，请在申请前换发新护照。曾持有中国国籍后加入外国国籍的申请人，需提供退出中国国籍的证明，并在外国居住满4年以上。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "年龄与健康", desc: "年龄限制、体检要求", detail: `<h3>年龄与健康</h3><p>本科通常要求18-30岁，硕士不超过35岁，博士不超过40岁。医学类专业可能更严格。所有留学生必须通过体检，提交《外国人体格检查表》。体检表有效期为6个月，需在正规医院完成。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "无犯罪记录", desc: "证明开具与公证", detail: `<h3>无犯罪记录证明</h3><p>大多数学校和奖学金要求提供无犯罪记录证明。需到当地警察局开具，并公证翻译。有效期通常6个月。在多个国家连续居住超过6个月的申请人，可能需要提供所有居住国的无犯罪记录证明。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` }
-            ]
-        },
-        {
-            id: 2, title: "我去哪", desc: "选城市、选学校、选专业",
-            subs: [
-                { title: "怎么选城市", desc: "一线城市vs新一线城市", detail: `<h3>怎么选城市</h3><p>一线城市（北京、上海）资源丰富但生活成本高。新一线城市（杭州、成都、武汉）性价比更优。选择时要考虑气候适应、专业匹配产业、预算承受力。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "怎么判断学校好坏", desc: "排名、专业实力、就业率", detail: `<h3>怎么判断学校好坏</h3><p>不要只看综合排名。关注学科排名、师资力量、科研成果、国际生比例、毕业生就业率。本校官网的学科介绍和就业报告是最真实的数据来源。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "怎么选专业", desc: "兴趣vs就业vs录取难度", detail: `<h3>怎么选专业</h3><p>兼顾个人兴趣和就业前景。工程、医学、商科是中国留学生的热门选择。跨专业申请需要在个人陈述中充分说明动机和相关背景。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "怎么对比录取通知", desc: "多维度的选择框架", detail: `<h3>怎么对比多份录取</h3><p>收到多份Offer后，综合评估专业契合度、奖学金金额、城市生活成本、未来就业机会、学校国际化程度。制作评分表能帮助理性决策。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` }
-            ]
-        },
-        {
-            id: 3, title: "多少钱", desc: "学费、生活费、住宿费全测算",
-            subs: [
-                { title: "学费范围", desc: "不同学位、专业的学费区间", detail: `<h3>学费范围</h3><p>公立大学本科约20,000-45,000元/年，硕士约25,000-55,000元/年。医学和艺术类专业通常更高。英文授课项目比中文授课略贵。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "生活费估算", desc: "饮食、交通、日用品", detail: `<h3>生活费估算</h3><p>一线城市月均3000-5000元，二线城市2000-3500元。包含饮食、交通、日用品、通讯等。自己做饭比外卖省钱一半以上。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "住宿费", desc: "校内宿舍vs校外租房", detail: `<h3>住宿费</h3><p>校内宿舍约6,000-20,000元/年。校外租房一线城市月租3000-6000元，二线城市1500-3000元。宿舍通常比校外租房便宜且安全。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "总预算速算", desc: "一个简单的计算公式", detail: `<h3>总预算速算</h3><p>年度总花费 = 学费 + 住宿费 + 生活费 + 保险费（约800元/年）+ 签证费（约400元/年）+ 应急备用金（总预算的15%）。一线城市本科年预算约8-10万，二线城市约5-7万。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` }
-            ]
-        },
-        {
-            id: 4, title: "怎么准备", desc: "材料清单、推荐信、个人陈述",
-            subs: [
-                { title: "材料清单", desc: "从头到尾的完整清单", detail: `<h3>申请材料清单</h3><ul><li>有效护照首页扫描件</li><li>最高学历证书和成绩单（公证翻译）</li><li>推荐信2-3封</li><li>个人陈述/学习计划</li><li>语言成绩单</li><li>外国人体格检查表</li><li>无犯罪记录证明</li><li>护照尺寸白底照片</li><li>申请费缴纳凭证</li></ul><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "推荐信怎么写", desc: "找谁写、写什么", detail: `<h3>推荐信怎么写</h3><p>找教过你的老师或实习主管，不要找职位高但不了解你的人。推荐信应包含：与申请人的关系、学术能力评价、个人品质、与其他学生相比的优势。提前4-6周联系推荐人。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "个人陈述怎么写", desc: "结构与内容要点", detail: `<h3>个人陈述怎么写</h3><p>结构：开篇引入兴趣来源 → 学术背景 → 实践经历 → 为什么选这所大学 → 未来规划。要具体、真诚，避免套话。写完后请母语者校对。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "体检表怎么弄", desc: "去哪体检、注意什么", detail: `<h3>体检表怎么弄</h3><p>下载最新版《外国人体格检查表》，到正规医院逐项检查。项目包括内科、外科、胸部X光、心电图、血液检查等。有效期6个月，安排体检时间时注意申请截止日期。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` }
-            ]
-        },
-        {
-            id: 5, title: "奖学金", desc: "CSC、省级、校级奖学金攻略",
-            subs: [
-                { title: "中国政府奖学金", desc: "全额资助的申请途径", detail: `<h3>中国政府奖学金（CSC）</h3><p>覆盖全额学费、住宿费、生活费和保险。A类通过中国驻外使领馆申请，B类直接向大学申请。每年1-4月申请。需要准备护照、成绩单、推荐信、学习计划、体检表等材料。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "地方政府奖学金", desc: "各省市的资助项目", detail: `<h3>地方政府奖学金</h3><p>上海、北京、浙江、江苏等省市设有留学生奖学金，金额从几千到几万元不等。申请随大学入学申请一同提交。部分奖学金对特定国家或专业有倾斜。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "高校奖学金", desc: "各大学自行设立的奖学金", detail: `<h3>高校奖学金</h3><p>多数大学设有新生奖学金，金额从学费的25%到全额不等。部分随录取自动发放，部分需额外申请。在校生还可申请优秀学生奖学金。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "申请技巧", desc: "提高成功率的要点", detail: `<h3>奖学金申请技巧</h3><p>不要只申CSC，应同时申请多个奖学金叠加。学习计划要具体可行。提前联系导师争取预录取。有论文发表或获奖经历务必附上扫描件。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` }
-            ]
-        },
-        {
-            id: 6, title: "怎么办签证", desc: "JW201/202、X1/X2签证",
-            subs: [
-                { title: "JW201/202表", desc: "签证前置文件的来龙去脉", detail: `<h3>JW201/202表</h3><p>JW201用于奖学金生，JW202用于自费生。由录取学校向教育部申请后寄给学生。收到后核对姓名、护照号码、签证类型。此表是办理签证的必需文件。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "X1/X2签证区别", desc: "长期vs短期学生签证", detail: `<h3>X1/X2签证区别</h3><p>X1签证用于学习超过180天，入境后30天内需办理居留许可。X2签证用于学习不超过180天，无需办居留许可。学位课程通常需要X1签证。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "签证材料清单", desc: "逐项准备", detail: `<h3>签证材料清单</h3><ul><li>护照原件</li><li>JW201或JW202表原件</li><li>录取通知书原件</li><li>签证申请表</li><li>体检表</li><li>白底证件照</li><li>签证费</li></ul><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "面签注意事项", desc: "诚实、简洁、自信", detail: `<h3>面签注意事项</h3><p>面试时如实回答签证官的问题。常见问题包括：去哪所大学、学什么专业、谁资助你。携带录取通知书和JW表原件。着装整洁、态度礼貌。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` }
-            ]
-        },
-        {
-            id: 7, title: "出发前", desc: "机票、行李、换汇、接机",
-            subs: [
-                { title: "机票怎么买", desc: "最佳购票时机和渠道", detail: `<h3>机票怎么买</h3><p>提前2-3个月购票是最优窗口。留学生票通常提供更高行李额度。出发日期建议安排在开学前1-2周。通过携程、去哪儿、Skyscanner等平台比价。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "行李带什么", desc: "必备物品清单", detail: `<h3>行李带什么</h3><p>衣物按目的城市气候准备。床上用品带一套自己习惯的。常用药品带3-6个月用量并附处方。电子产品带好电源转换插头。充电宝必须随身携带。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "换汇与支付", desc: "怎么带钱最安全", detail: `<h3>换汇与支付</h3><p>携带少量人民币现金（3000-5000元）。到校后办理中国银行卡并绑定支付宝/微信。大额学费通过银行电汇。国际信用卡备用于应急。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "接机怎么约", desc: "学校接机和备用方案", detail: `<h3>接机怎么约</h3><p>多数大学提供免费接机服务。通过学校国际学生办公室提前预约。如果错过接机，可使用滴滴出行或乘坐机场地铁。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` }
-            ]
-        },
-        {
-            id: 8, title: "到了中国", desc: "入境、报到、居留许可",
-            subs: [
-                { title: "入境流程", desc: "从下飞机到出海关", detail: `<h3>入境流程</h3><p>填写入境卡 → 卫生检疫 → 边检 → 提取行李 → 海关。随身携带护照、录取通知书、JW表。边检可能简单询问来华目的和学习计划。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "到校报到", desc: "注册、缴费、领卡", detail: `<h3>到校报到</h3><p>到国际教育学院报到。携带护照、录取通知书、JW表、体检表、照片。缴纳学费住宿费，领取校园卡和宿舍钥匙。参加新生入学教育周。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "居留许可", desc: "入境30天内必须办理", detail: `<h3>居留许可办理</h3><p>持X1签证入境后30天内，到当地出入境管理局办理学习类居留许可。所需材料：护照、录取通知书、JW表、体检表、住宿登记证明、照片。费用约400元。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` },
-                { title: "第一天做什么", desc: "到校后的优先级清单", detail: `<h3>第一天做什么</h3><p>报到注册 → 办理宿舍入住 → 办手机卡 → 去银行开户 → 连接校园WiFi → 向家人报平安。保持一份清单，完成一项划掉一项。</p><div class="consult-hint">如果看完还是不确定，可以告诉我你的情况，我帮你确认。→ <a href="consult.html">和我聊聊</a></div>` }
-            ]
-        }
+        { id:1, icon:"fa-check-circle", title:"申请资格评估", desc:"了解学历、国籍等基本要求，确认申请资格", file:"guide-step1.html" },
+        { id:2, icon:"fa-compass", title:"院校与专业选择", desc:"探索城市、大学与专业，找到最适合您的方向", file:"guide-step2.html" },
+        { id:3, icon:"fa-calculator", title:"留学费用估算", desc:"全面了解学费、生活费，提前做好预算规划", file:"guide-step3.html" },
+        { id:4, icon:"fa-file-alt", title:"申请材料准备", desc:"逐项确认所需文件，确保材料完整合规", file:"guide-step4.html" },
+        { id:5, icon:"fa-trophy", title:"奖学金申请策略", desc:"了解各类奖学金项目，制定高效申请计划", file:"guide-step5.html" },
+        { id:6, icon:"fa-passport", title:"签证办理流程", desc:"清晰指引签证类型、材料清单与办理步骤", file:"guide-step6.html" },
+        { id:7, icon:"fa-suitcase", title:"临行前准备", desc:"机票、住宿、换汇等出发前的必要准备", file:"guide-step7.html" },
+        { id:8, icon:"fa-door-open", title:"抵达与入学指导", desc:"从入境到校园安顿，顺利开启留学生活", file:"guide-step8.html" },
     ];
 
-    function renderSteps(filtered) {
-        const grid = document.getElementById('stepsGrid');
-        grid.innerHTML = '';
-        filtered.forEach(s => {
-            const card = document.createElement('div');
-            card.className = 'step-card';
-            card.innerHTML = `
-                <div class="step-num">步骤 ${s.id}</div>
-                <h3>${s.title}</h3>
-                <p>${s.desc}</p>
-                <i class="fas fa-chevron-right arrow"></i>
-            `;
-            card.addEventListener('click', () => showStepDetail(s));
-            grid.appendChild(card);
-        });
-    }
-
-    function showStepDetail(step) {
-        const panel = document.getElementById('detailPanel');
-        const subsHtml = step.subs.map(sub => {
-            return `<div class="sub-card" data-title="${sub.title}">
-                <h4>${sub.title}</h4>
-                <p>${sub.desc}</p>
-            </div>`;
-        }).join('');
-
-        panel.innerHTML = `
-            <button class="back-link" onclick="hideDetail()">← 返回全部步骤</button>
-            <h2>步骤 ${step.id}：${step.title}</h2>
-            <div class="sub-cards-grid">${subsHtml}</div>
-            <div class="detail-content" id="subDetailContent"></div>
+    // 渲染卡片
+    const grid = document.getElementById('stepsGrid');
+    steps.forEach(s => {
+        const a = document.createElement('a');
+        a.className = 'step-card';
+        a.href = s.file;
+        a.innerHTML = `
+            <div class="card-icon"><i class="fas ${s.icon}"></i></div>
+            <h3>${s.title}</h3>
+            <p>${s.desc}</p>
         `;
-        panel.classList.add('show');
-        document.getElementById('stepsGrid').style.display = 'none';
-
-        // 绑定子卡片点击事件
-        panel.querySelectorAll('.sub-card').forEach((card, index) => {
-            card.addEventListener('click', () => {
-                const sub = step.subs[index];
-                document.getElementById('subDetailContent').innerHTML = sub.detail;
-                document.getElementById('subDetailContent').scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    }
-
-    function hideDetail() {
-        document.getElementById('detailPanel').classList.remove('show');
-        document.getElementById('stepsGrid').style.display = '';
-    }
+        grid.appendChild(a);
+    });
 
     // 搜索过滤
     document.getElementById('searchInput').addEventListener('input', function() {
         const kw = this.value.toLowerCase().trim();
-        const filtered = kw ? steps.filter(s => {
-            return s.title.includes(kw) || s.desc.includes(kw) ||
-                   s.subs.some(sub => sub.title.includes(kw) || sub.desc.includes(kw));
-        }) : steps;
-        renderSteps(filtered);
-        hideDetail();
+        const cards = document.querySelectorAll('.step-card');
+        steps.forEach((s, i) => {
+            const match = !kw || s.title.toLowerCase().includes(kw) || s.desc.toLowerCase().includes(kw);
+            cards[i].style.display = match ? '' : 'none';
+        });
     });
 
+    // 语言切换
     document.getElementById('langSelect').addEventListener('change', function() {
         localStorage.setItem('site_lang', this.value);
     });
-
-    // 初始渲染
-    renderSteps(steps);
 </script>
 </body>
 </html>
