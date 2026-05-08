@@ -3,281 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>发现项目 - Study In China</title>
+    <title>发现留学项目 - Study in China</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #0a2540;
-            --accent: #2563eb;
-            --accent-light: #eff6ff;
-            --bg: #f7f8fa;
-            --card: #fff;
-            --text: #1e293b;
-            --muted: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 1px 3px rgba(0,0,0,0.06);
-            --shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
+            --bg: #ffffff; --text: #202124; --muted: #5f6368;
+            --border: #dadce0; --accent: #1a73e8; --hover: #f8f9fa;
+            --radius-main: 28px; --radius-card: 14px;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: var(--bg); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft Yahei", sans-serif; 
-            color: var(--text); 
-            line-height: 1.5;
+        body {
+            background: var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
+            color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden;
         }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 30px;
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 999;
+        /* 顶部导航条 (极简) */
+        .top-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 24px; border-bottom: 1px solid var(--border); height: 56px; flex-shrink: 0;
         }
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .nav-main {
-            display: flex;
-            gap: 22px;
-        }
-        .nav-main a {
-            text-decoration: none;
-            color: var(--text);
-            font-size: 14px;
-            transition: 0.3s;
-        }
-        .nav-main a.active,
-        .nav-main a:hover {
-            color: var(--accent);
-        }
-        .nav-lang {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .logo { font-size: 18px; font-weight: 700; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+        .logo i { color: var(--accent); }
+        .nav-links { display: flex; gap: 16px; }
+        .nav-links a { text-decoration: none; color: var(--muted); font-size: 13px; transition: color 0.2s; }
+        .nav-links a.active, .nav-links a:hover { color: var(--accent); font-weight: 500; }
+
+        /* 主体：垂直居中 (项目发现的中心舞台) */
+        .main-area {
+            flex: 1; display: flex; flex-direction: column; align-items: center;
+            max-width: 960px; width: 100%; margin: 0 auto; padding: 3rem 24px 2rem;
         }
 
-        .hero {
-            text-align: center; 
-            padding: 2rem 1.5rem 1rem;
-            background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%);
-            color: white;
-        }
-        .hero h1 { 
-            font-size: 1.8rem; 
-            font-weight: 700; 
-            margin-bottom: 0.4rem;
-        }
-        .hero p { 
-            color: rgba(255,255,255,0.8); 
-            font-size: 1rem;
-        }
+        .page-title { font-size: 1.8rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .page-sub { font-size: 14px; color: var(--muted); margin-bottom: 2rem; }
 
-        .search-wrap {
-            max-width: 650px;
-            margin: 1rem auto;
-            padding: 0 1.5rem;
-            display: flex;
-            gap: 8px;
+        /* 搜索框 (核心交互) */
+        .search-box-wrap { width: 100%; position: relative; margin-bottom: 2rem; }
+        .search-box {
+            width: 100%; height: 56px; border: 1px solid var(--border); border-radius: var(--radius-main);
+            padding: 0 24px 0 52px; font-size: 16px; outline: none; background: var(--bg);
+            box-shadow: 0 2px 8px rgba(32,33,36,0.08); transition: box-shadow 0.2s;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%239aa0a6' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: 18px center;
         }
-        .search-input {
-            flex: 1;
-            padding: 11px 16px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            transition: 0.3s;
-        }
-        .search-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
-        }
-        .search-btn {
-            padding: 11px 20px;
-            background: var(--accent);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .search-btn:hover {
-            background: #1d4ed8;
-        }
+        .search-box:focus { box-shadow: 0 2px 14px rgba(32,33,36,0.18); }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0.5rem 1.5rem 1.5rem;
+        .quick-links { display: flex; gap: 12px; margin-bottom: 2.5rem; flex-wrap: wrap; justify-content: center; }
+        .quick-link {
+            padding: 8px 18px; border: 1px solid var(--border); border-radius: 20px; font-size: 13px; cursor: pointer;
+            text-decoration: none; color: var(--text); transition: background 0.2s, border-color 0.2s;
         }
+        .quick-link:hover, .quick-link.featured { background: var(--hover); border-color: var(--accent); color: var(--accent); }
 
-        .grid-box {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+        /* 模块卡片网格 (发现新路径) */
+        .module-grid { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .module-card {
+            background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-card);
+            padding: 24px 20px; text-decoration: none; color: var(--text); transition: all 0.2s;
+            display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
         }
-        .item-card {
-            display: block;
-            text-decoration: none;
-            background: var(--card);
-            border-radius: 10px;
-            padding: 1.2rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        .item-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--accent);
-        }
-        .item-card i {
-            font-size: 1.6rem;
-            color: var(--accent);
-            margin-bottom: 0.6rem;
-        }
-        .item-card h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.4rem;
-        }
-        .item-card p {
-            font-size: 0.8rem;
-            color: var(--muted);
-        }
+        .module-card:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.08); transform: translateY(-2px); border-color: var(--accent); }
+        .module-card i { font-size: 1.8rem; color: var(--accent); }
+        .module-card h3 { font-size: 16px; font-weight: 600; }
+        .module-card p { font-size: 13px; color: var(--muted); line-height: 1.4; }
 
-        footer { 
-            text-align: center; 
-            padding: 1rem; 
-            color: var(--muted); 
-            font-size: 0.8rem; 
-            border-top: 1px solid var(--border); 
-            margin-top: 1rem;
-        }
+        footer { text-align: center; padding: 12px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); flex-shrink: 0; }
 
-        @media (min-width:1024px) {
-            body { overflow-y: hidden; }
-        }
+        @media (max-width: 768px) { .module-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .module-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="logo"><i class="fas fa-graduation-cap"></i> Study In China</div>
-    <div class="nav-main">
-        <a href="index.html" class="active" data-i18n="nav_projects">发现项目</a>
-        <a href="schools.html" data-i18n="nav_schools">探索院校</a>
-        <a href="guide.html" data-i18n="nav_guide">申请指南</a>
-        <a href="life.html" data-i18n="nav_life">留学中国</a>
-        <a href="resource.html" data-i18n="nav_resource">资源中心</a>
+<header class="top-bar">
+    <a href="index.html" class="logo"><i class="fas fa-graduation-cap"></i> Study In China</a>
+    <div class="nav-links">
+        <a href="index.html" class="active">发现项目</a>
+        <a href="schools.html">探索院校</a>
+        <a href="guide.html">申请指南</a>
+        <a href="life.html">留学中国</a>
+        <a href="resource.html">资源中心</a>
     </div>
-    <div class="nav-lang">
-        <span>🌐</span>
-        <select id="langSelect">
-            <option value="zh">中文</option>
-            <option value="en">English</option>
-            <option value="ru">Русский</option>
-            <option value="ko">한국어</option>
-            <option value="ja">日本語</option>
-            <option value="fr">Français</option>
-            <option value="es">Español</option>
-            <option value="de">Deutsch</option>
-            <option value="it">Italiano</option>
-            <option value="pt">Português</option>
-            <option value="ar">العربية</option>
-            <option value="tr">Türkçe</option>
-            <option value="th">ไทย</option>
-            <option value="vi">Tiếng Việt</option>
-            <option value="id">Bahasa Indonesia</option>
-            <option value="ms">Bahasa Melayu</option>
-            <option value="fa">فارسی</option>
-        </select>
+</header>
+
+<div class="main-area">
+    <h1 class="page-title">发现留学项目</h1>
+    <p class="page-sub">本科 | 硕士 | 博士 | 交换生 | 语言进修 | 短期研学</p>
+
+    <!-- 核心功能：搜索框 -->
+    <div class="search-box-wrap">
+        <input type="text" class="search-box" placeholder="搜索项目、专业、奖学金...">
     </div>
-</nav>
 
-<section class="hero">
-    <h1>发现留学项目</h1>
-    <p>本科｜硕士｜博士｜交换生｜语言进修｜短期研学</p>
-</section>
+    <!-- 快捷筛选：热门标签 -->
+    <div class="quick-links">
+        <a href="#" class="quick-link featured">全英文授课</a>
+        <a href="#" class="quick-link">中国政府奖学金</a>
+        <a href="#" class="quick-link">学费 < 2万</a>
+        <a href="#" class="quick-link">提供校内宿舍</a>
+    </div>
 
-<div class="search-wrap">
-    <input type="text" class="search-input" placeholder="搜索项目、专业、奖学金...">
-    <button class="search-btn"><i class="fas fa-search"></i></button>
-</div>
-
-<div class="container">
-    <div class="grid-box">
-        <a href="pro-bachelor.html" class="item-card">
-            <i class="fas fa-school"></i>
-            <h3>本科项目</h3>
-            <p>点击进入查看详情</p>
-        </a>
-        <a href="pro-master.html" class="item-card">
+    <!-- 模块入口：通往独立子页面 -->
+    <div class="module-grid">
+        <!-- 1. 本科项目 -->
+        <a href="bachelor.html" class="module-card">
             <i class="fas fa-user-graduate"></i>
+            <h3>本科项目</h3>
+            <p>完整的学士学位课程，开启专业之旅。</p>
+        </a>
+
+        <!-- 2. 硕士项目 -->
+        <a href="master.html" class="module-card">
+            <i class="fas fa-book-open"></i>
             <h3>硕士项目</h3>
-            <p>点击进入查看详情</p>
+            <p>深入研究，提升学术与职业竞争力。</p>
         </a>
-        <a href="pro-doctor.html" class="item-card">
-            <i class="fas fa-award"></i>
+
+        <!-- 3. 博士项目 -->
+        <a href="phd.html" class="module-card">
+            <i class="fas fa-microscope"></i>
             <h3>博士项目</h3>
-            <p>点击进入查看详情</p>
+            <p>在前沿领域进行创新研究。</p>
         </a>
-        <a href="pro-exchange.html" class="item-card">
+
+        <!-- 4. 交换生项目 -->
+        <a href="exchange.html" class="module-card">
             <i class="fas fa-exchange-alt"></i>
             <h3>交换生项目</h3>
-            <p>点击进入查看详情</p>
+            <p>短期交流，体验多元文化。</p>
         </a>
-        <a href="pro-language.html" class="item-card">
-            <i class="fas fa-comments"></i>
+
+        <!-- 5. 语言进修 -->
+        <a href="language.html" class="module-card">
+            <i class="fas fa-language"></i>
             <h3>语言进修</h3>
-            <p>点击进入查看详情</p>
+            <p>沉浸式学习，快速提升汉语水平。</p>
         </a>
-        <a href="pro-short.html" class="item-card">
-            <i class="fas fa-calendar-alt"></i>
+
+        <!-- 6. 短期研学 -->
+        <a href="short-term.html" class="module-card">
+            <i class="fas fa-plane-departure"></i>
             <h3>短期研学</h3>
-            <p>点击进入查看详情</p>
+            <p>主题式课程，结合旅行与学习。</p>
         </a>
-        <a href="pro-scholarship.html" class="item-card">
-            <i class="fas fa-money-check-alt"></i>
+
+        <!-- 7. 奖学金项目 -->
+        <a href="scholarship.html" class="module-card">
+            <i class="fas fa-award"></i>
             <h3>奖学金项目</h3>
-            <p>点击进入查看详情</p>
+            <p>发现各类资助机会，实现留学梦想。</p>
         </a>
-        <a href="pro-major.html" class="item-card">
-            <i class="fas fa-book"></i>
+
+        <!-- 8. 热门专业 -->
+        <a href="popular-majors.html" class="module-card">
+            <i class="fas fa-fire"></i>
             <h3>热门专业</h3>
-            <p>点击进入查看详情</p>
+            <p>探索就业前景广阔的领域。</p>
         </a>
     </div>
 </div>
 
-<footer>&copy; 2026 Study in China 来华留学一站式平台</footer>
-
-<script>
-    const searchInput = document.querySelector('.search-input');
-    const searchBtn = document.querySelector('.search-btn');
-    const cards = document.querySelectorAll('.item-card');
-
-    function doSearch() {
-        let key = searchInput.value.trim().toLowerCase();
-        cards.forEach(card => {
-            let text = card.innerText.toLowerCase();
-            card.style.display = text.includes(key) ? 'block' : 'none';
-        });
-    }
-    searchBtn.addEventListener('click', doSearch);
-    searchInput.addEventListener('keyup', e=>e.key==='Enter'&&doSearch());
-</script>
-<script src="lang.js"></script>
+<footer>© 2026 Study in China 来华留学一站式平台</footer>
 </body>
 </html>
