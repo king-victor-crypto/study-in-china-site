@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>师范类院校 - Study in China</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #ffffff; --text: #202124; --muted: #5f6368;
+            --border: #dadce0; --accent: #1a73e8; --hover: #f8f9fa; --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif; color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+        .top-nav { background: #fff; border-bottom: 2px solid var(--border); padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); z-index: 100; }
+        .nav-left { display: flex; align-items: center; gap: 32px; }
+        .nav-logo { font-size: 20px; font-weight: 700; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .nav-logo i { font-size: 22px; }
+        .nav-links { display: flex; gap: 8px; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 14px; font-weight: 500; padding: 8px 16px; border-radius: 20px; transition: all 0.2s; white-space: nowrap; }
+        .nav-links a:hover { background: var(--hover); color: var(--accent); }
+        .nav-links a.active { background: var(--accent); color: #fff; font-weight: 600; }
+        .lang-wrap { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+        .lang-wrap select { border: 1px solid var(--border); border-radius: 16px; padding: 6px 12px; font-size: 13px; background: var(--bg); color: var(--text); cursor: pointer; outline: none; }
+
+        .main-content { flex: 1; display: flex; flex-direction: column; max-width: 1200px; width: 100%; margin: 0 auto; padding: 1.2rem 32px 0.5rem; overflow: hidden; }
+        .page-header { display: flex; align-items: center; gap: 14px; margin-bottom: 1rem; flex-shrink: 0; }
+        .icon-circle { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .icon-orange { background: #fff3e0; color: #e65100; }
+        .page-header h1 { font-size: 1.4rem; font-weight: 600; }
+        .page-header .count { font-size: 14px; color: var(--muted); }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--accent); text-decoration: none; margin-bottom: 0.8rem; flex-shrink: 0; }
+
+        .search-row { display: flex; gap: 12px; margin-bottom: 0.8rem; flex-shrink: 0; }
+        .search-box { flex: 1; height: 42px; border: 1px solid var(--border); border-radius: 21px; padding: 0 16px 0 38px; font-size: 14px; outline: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239aa0a6' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: 12px center; }
+        .search-box:focus { box-shadow: 0 1px 6px rgba(32,33,36,0.12); }
+        .search-row select { padding: 6px 14px; border: 1px solid var(--border); border-radius: 16px; font-size: 13px; cursor: pointer; min-width: 100px; }
+        .btn-filter { padding: 6px 20px; background: var(--accent); color: #fff; border: none; border-radius: 16px; font-size: 13px; cursor: pointer; }
+
+        .result-info { font-size: 13px; color: var(--muted); margin-bottom: 0.5rem; flex-shrink: 0; }
+        .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; flex: 1; overflow-y: auto; padding-right: 4px; align-content: start; }
+        .uni-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; transition: all 0.2s; cursor: pointer; text-decoration: none; display: block; color: var(--text); }
+        .uni-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); border-color: var(--accent); }
+        .uni-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+        .uni-card .location { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+        .uni-card .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+        .uni-card .tag { font-size: 11px; padding: 3px 8px; border-radius: 8px; background: #e8f0fe; color: var(--accent); }
+        .uni-card .tag.green { background: #e6f4ea; color: #1e8e3e; }
+        .uni-card .tag.orange { background: #fff3e0; color: #e65100; }
+        .uni-card .arrow { float: right; color: var(--muted); }
+
+        .pagination { display: flex; justify-content: center; gap: 6px; padding: 10px 0 4px; flex-shrink: 0; }
+        .pagination button { min-width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 17px; background: var(--bg); cursor: pointer; font-size: 13px; }
+        .pagination button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .pagination button:disabled { opacity: 0.3; cursor: default; }
+        .empty-msg { text-align: center; color: var(--muted); margin-top: 2rem; display: none; }
+        .site-footer { text-align: center; padding: 8px 0; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); flex-shrink: 0; }
+    </style>
+</head>
+<body>
+<nav class="top-nav">
+    <div class="nav-left">
+        <a href="index.html" class="nav-logo"><i class="fas fa-graduation-cap"></i> Study In China</a>
+        <div class="nav-links">
+            <a href="index.html">发现项目</a>
+            <a href="schools.html" class="active">探索院校</a>
+            <a href="guide.html">申请指南</a>
+            <a href="life.html">留学中国</a>
+            <a href="resource.html">资源中心</a>
+        </div>
+    </div>
+    <div class="lang-wrap">
+        <span style="font-size:13px;">🌐</span>
+        <select id="langSelect"><option value="zh">中文</option><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="ru">Русский</option><option value="pt">Português</option><option value="id">Bahasa Indonesia</option><option value="th">ไทย</option><option value="vi">Tiếng Việt</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="fa">فارسی</option><option value="tr">Türkçe</option><option value="hi">हिन्दी</option></select>
+    </div>
+</nav>
+<div class="main-content">
+    <a href="schools.html" class="back-link"><i class="fas fa-arrow-left"></i> 返回探索院校</a>
+    <div class="page-header">
+        <div class="icon-circle icon-orange"><i class="fas fa-chalkboard-user"></i></div>
+        <div><h1>师范类院校</h1><span class="count" id="headerCount"></span></div>
+    </div>
+    <div class="search-row">
+        <input type="text" class="search-box" id="searchInput" placeholder="搜索大学名称、城市...">
+        <select id="filterProvince"><option value="">全部省市</option><option>北京</option><option>上海</option><option>江苏</option><option>浙江</option><option>湖北</option><option>广东</option><option>吉林</option></select>
+        <select id="filterTier"><option value="">全部层次</option><option value="双一流">双一流</option><option value="985">985</option><option value="211">211</option></select>
+        <button class="btn-filter" onclick="filterAndPaginate()"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="result-info" id="resultInfo"></div>
+    <div class="results-grid" id="resultsGrid"></div>
+    <div class="empty-msg" id="emptyMsg">没有匹配的院校。</div>
+    <div class="pagination" id="pagination"></div>
+</div>
+<footer class="site-footer">© 2026 Study in China Platform</footer>
+<script>
+    const data = [
+        { id:301, name:"北京师范大学", short:"北师大", city:"北京", province:"北京", tier:"双一流,985,211", qsRank:262, hasHalal:true, hasDorm:true, programs:75, type:"师范" },
+        { id:302, name:"华东师范大学", short:"华东师大", city:"上海", province:"上海", tier:"双一流,985,211", qsRank:541, hasHalal:true, hasDorm:true, programs:68, type:"师范" },
+        { id:303, name:"华中师范大学", short:"华中师大", city:"武汉", province:"湖北", tier:"双一流,211", qsRank:null, hasHalal:true, hasDorm:true, programs:55, type:"师范" },
+        { id:304, name:"南京师范大学", short:"南师大", city:"南京", province:"江苏", tier:"双一流,211", qsRank:null, hasHalal:true, hasDorm:true, programs:60, type:"师范" },
+        { id:305, name:"东北师范大学", short:"东北师大", city:"长春", province:"吉林", tier:"双一流,211", qsRank:null, hasHalal:true, hasDorm:true, programs:50, type:"师范" },
+        { id:306, name:"华南师范大学", short:"华南师大", city:"广州", province:"广东", tier:"双一流,211", qsRank:null, hasHalal:true, hasDorm:true, programs:52, type:"师范" },
+        { id:307, name:"首都师范大学", short:"首师大", city:"北京", province:"北京", tier:"双一流", qsRank:null, hasHalal:true, hasDorm:true, programs:45, type:"师范" },
+        { id:308, name:"浙江师范大学", short:"浙师大", city:"金华", province:"浙江", tier:"省属重点", qsRank:null, hasHalal:true, hasDorm:true, programs:42, type:"师范" },
+        { id:309, name:"湖南师范大学", short:"湖南师大", city:"长沙", province:"湖南", tier:"双一流,211", qsRank:null, hasHalal:true, hasDorm:true, programs:55, type:"师范" },
+        { id:310, name:"上海师范大学", short:"上海师大", city:"上海", province:"上海", tier:"省属重点", qsRank:null, hasHalal:true, hasDorm:true, programs:38, type:"师范" },
+        { id:311, name:"山东师范大学", short:"山东师大", city:"济南", province:"山东", tier:"省属重点", qsRank:null, hasHalal:true, hasDorm:true, programs:40, type:"师范" },
+        { id:312, name:"陕西师范大学", short:"陕师大", city:"西安", province:"陕西", tier:"双一流,211", qsRank:null, hasHalal:true, hasDorm:true, programs:48, type:"师范" },
+    ];
+    const PER_PAGE = 12;
+    let filtered = [...data], page = 1;
+    function filterAndPaginate() {
+        const kw = document.getElementById('searchInput').value.toLowerCase().trim();
+        const prov = document.getElementById('filterProvince').value;
+        const tier = document.getElementById('filterTier').value;
+        filtered = data.filter(u => {
+            if (kw && !u.name.includes(kw) && !u.short.includes(kw) && !u.city.includes(kw)) return false;
+            if (prov && u.province !== prov) return false;
+            if (tier && !u.tier.includes(tier)) return false;
+            return true;
+        });
+        document.getElementById('headerCount').textContent = filtered.length + ' 所院校';
+        document.getElementById('resultInfo').textContent = '共找到 ' + filtered.length + ' 所师范类院校';
+        page = 1;
+        renderPage();
+    }
+    function renderPage() {
+        const total = Math.ceil(filtered.length / PER_PAGE);
+        if (page > total) page = Math.max(1, total);
+        const items = filtered.slice((page-1)*PER_PAGE, page*PER_PAGE);
+        const grid = document.getElementById('resultsGrid');
+        grid.innerHTML = '';
+        if (items.length === 0) { document.getElementById('emptyMsg').style.display='block'; } else { document.getElementById('emptyMsg').style.display='none'; }
+        items.forEach(u => {
+            const tags = u.tier.split(',').map(t => `<span class="tag">${t}</span>`).join('');
+            const a = document.createElement('a');
+            a.className = 'uni-card'; a.href = `school-detail.html?id=${u.id}`;
+            a.innerHTML = `<h3>${u.name} <span style="font-weight:400;font-size:0.85rem;color:var(--muted);">${u.short}</span><i class="fas fa-chevron-right arrow"></i></h3><div class="location"><i class="fas fa-map-marker-alt"></i> ${u.province} · ${u.city}</div><div class="tags">${tags}<span class="tag">师范类</span>${u.hasHalal?`<span class="tag green">清真食堂</span>`:''}${u.hasDorm?`<span class="tag green">校内宿舍</span>`:''}</div><div style="font-size:11px;color:var(--muted);margin-top:6px;">开设 <strong>${u.programs}</strong> 个国际项目</div>`;
+            grid.appendChild(a);
+        });
+        renderPagination(total);
+    }
+    function renderPagination(total) {
+        const p = document.getElementById('pagination');
+        p.innerHTML = '';
+        if (total <= 1) return;
+        for (let i = 1; i <= total; i++) {
+            const b = document.createElement('button'); b.textContent = i;
+            if (i === page) b.classList.add('active');
+            b.addEventListener('click', () => { page = i; renderPage(); });
+            p.appendChild(b);
+        }
+    }
+    document.getElementById('searchInput').addEventListener('keydown', function(e) { if (e.key==='Enter') filterAndPaginate(); });
+    document.getElementById('langSelect').addEventListener('change', function() { localStorage.setItem('site_lang', this.value); });
+    filterAndPaginate();
+</script>
+</body>
+</html>
