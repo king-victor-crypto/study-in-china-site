@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>院校详情 - Study in China</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #ffffff; --text: #202124; --muted: #5f6368;
+            --border: #dadce0; --accent: #1a73e8; --hover: #f8f9fa; --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
+            color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+        }
+        .top-nav {
+            background: #fff; border-bottom: 2px solid var(--border); padding: 14px 32px;
+            display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04); z-index: 100;
+        }
+        .nav-left { display: flex; align-items: center; gap: 32px; }
+        .nav-logo { font-size: 20px; font-weight: 700; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .nav-logo i { font-size: 22px; }
+        .nav-links { display: flex; gap: 8px; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 14px; font-weight: 500; padding: 8px 16px; border-radius: 20px; transition: all 0.2s; white-space: nowrap; }
+        .nav-links a:hover { background: var(--hover); color: var(--accent); }
+        .nav-links a.active { background: var(--accent); color: #fff; font-weight: 600; }
+        .lang-wrap { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+        .lang-wrap select { border: 1px solid var(--border); border-radius: 16px; padding: 6px 12px; font-size: 13px; background: var(--bg); color: var(--text); cursor: pointer; outline: none; }
+
+        .main-content {
+            flex: 1; display: flex; max-width: 1200px; width: 100%;
+            margin: 0 auto; padding: 1.2rem 32px 0.5rem; overflow: hidden; gap: 24px;
+        }
+        .detail-left { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .detail-right { width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; }
+
+        .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--accent); text-decoration: none; margin-bottom: 0.6rem; flex-shrink: 0; }
+        .back-link:hover { text-decoration: underline; }
+
+        /* 院校头部卡片 */
+        .uni-hero {
+            background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 24px 28px; flex-shrink: 0; margin-bottom: 14px;
+        }
+        .uni-hero h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+        .uni-hero .uni-sub { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+        .uni-hero .tags-row { display: flex; flex-wrap: wrap; gap: 8px; }
+        .uni-hero .tag {
+            font-size: 12px; padding: 4px 12px; border-radius: 8px;
+            background: #e8f0fe; color: var(--accent); font-weight: 500;
+        }
+        .uni-hero .tag.orange { background: #fff3e0; color: #e65100; }
+        .uni-hero .tag.green { background: #e6f4ea; color: #1e8e3e; }
+        .uni-hero .tag.red { background: #fce8e6; color: #c5221f; }
+
+        /* 项目列表区域 */
+        .programs-section { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-shrink: 0; }
+        .section-header h3 { font-size: 1rem; font-weight: 600; }
+        .section-header .count { font-size: 12px; color: var(--muted); }
+        .programs-scroll { flex: 1; overflow-y: auto; padding-right: 4px; }
+        .program-list { display: flex; flex-direction: column; gap: 8px; }
+        .program-card {
+            background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+            padding: 14px 18px; display: flex; align-items: center; justify-content: space-between;
+            transition: all 0.15s; cursor: pointer; text-decoration: none; color: var(--text);
+        }
+        .program-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-color: var(--accent); }
+        .program-card .prog-info { flex: 1; }
+        .program-card .prog-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
+        .program-card .prog-meta { font-size: 12px; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; }
+        .program-card .prog-tags { display: flex; gap: 6px; flex-shrink: 0; }
+        .program-card .ptag {
+            font-size: 11px; padding: 3px 8px; border-radius: 6px;
+            background: #e8f0fe; color: var(--accent); white-space: nowrap;
+        }
+        .program-card .ptag.orange { background: #fff3e0; color: #e65100; }
+        .program-card .ptag.green { background: #e6f4ea; color: #1e8e3e; }
+        .program-card .arrow { color: var(--muted); margin-left: 12px; flex-shrink: 0; }
+
+        /* 右侧信息卡 */
+        .info-card {
+            background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px;
+        }
+        .info-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; color: var(--accent); }
+        .info-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #f5f5f5; font-size: 12px; }
+        .info-row:last-child { border-bottom: none; }
+        .info-row .label { color: var(--muted); }
+        .info-row .value { font-weight: 500; text-align: right; }
+        .facility-icons { display: flex; gap: 12px; flex-wrap: wrap; }
+        .facility-item { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--muted); }
+        .facility-item i { color: var(--accent); }
+        .facility-item.has i { color: #1e8e3e; }
+        .facility-item.no i { color: #ccc; }
+        .btn-consult {
+            display: block; width: 100%; padding: 10px; background: var(--accent);
+            color: #fff; border: none; border-radius: 8px; font-size: 14px;
+            font-weight: 600; cursor: pointer; text-align: center; text-decoration: none;
+        }
+        .btn-consult:hover { background: #1557b0; }
+
+        .site-footer { text-align: center; padding: 8px 0; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); flex-shrink: 0; }
+
+        @media (max-width: 768px) {
+            .main-content { flex-direction: column; padding: 1rem 16px; }
+            .detail-right { width: 100%; }
+            .top-nav { padding: 12px 16px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+<nav class="top-nav">
+    <div class="nav-left">
+        <a href="index.html" class="nav-logo"><i class="fas fa-graduation-cap"></i> Study In China</a>
+        <div class="nav-links">
+            <a href="index.html">发现项目</a>
+            <a href="schools.html" class="active">探索院校</a>
+            <a href="guide.html">申请指南</a>
+            <a href="life.html">留学中国</a>
+            <a href="resource.html">资源中心</a>
+        </div>
+    </div>
+    <div class="lang-wrap">
+        <span style="font-size:13px;">🌐</span>
+        <select id="langSelect">
+            <option value="zh">中文</option><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="ru">Русский</option><option value="pt">Português</option><option value="id">Bahasa Indonesia</option><option value="th">ไทย</option><option value="vi">Tiếng Việt</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="fa">فارسی</option><option value="tr">Türkçe</option><option value="hi">हिन्दी</option>
+        </select>
+    </div>
+</nav>
+
+<div class="main-content">
+    <div class="detail-left">
+        <a href="schools-comprehensive.html" class="back-link"><i class="fas fa-arrow-left"></i> 返回综合类院校列表</a>
+
+        <!-- 院校头部 -->
+        <div class="uni-hero" id="uniHero"></div>
+
+        <!-- 项目列表 -->
+        <div class="programs-section">
+            <div class="section-header">
+                <h3>📚 该校所有国际招生项目</h3>
+                <span class="count" id="programCount"></span>
+            </div>
+            <div class="programs-scroll">
+                <div class="program-list" id="programList"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="detail-right">
+        <div class="info-card" id="infoCard"></div>
+        <a href="consult.html" class="btn-consult"><i class="fas fa-headset"></i> 咨询这所学校</a>
+    </div>
+</div>
+<footer class="site-footer">© 2026 Study in China Platform</footer>
+
+<script>
+    // ==================== 院校数据（模拟，后续替换为数据库查询） ====================
+    const universities = {
+        1: {
+            name:"北京大学", short:"北大", city:"北京", province:"北京", tier:"双一流,985,211,C9",
+            qsRank:17, type:"综合", hasHalal:true, hasDorm:true, hasPrayer:true, hasPickup:true,
+            intlStudents:4500, englishPrograms:80, website:"https://www.pku.edu.cn",
+            admissionUrl:"https://www.isd.pku.edu.cn", founded:1898,
+            description:"北京大学是中国第一所国立综合性大学，创办于1898年，是中国最著名的高等学府之一。"
+        },
+        2: {
+            name:"复旦大学", short:"复旦", city:"上海", province:"上海", tier:"双一流,985,211",
+            qsRank:34, type:"综合", hasHalal:true, hasDorm:true, hasPrayer:true, hasPickup:true,
+            intlStudents:3200, englishPrograms:55, website:"https://www.fudan.edu.cn",
+            admissionUrl:"https://iso.fudan.edu.cn", founded:1905,
+            description:"复旦大学始建于1905年，是中国最著名的综合性研究型大学之一，在人文社科、自然科学和医学领域享有盛誉。"
+        }
+    };
+
+    // ==================== 项目数据（后续从数据库按 uni_id 查询） ====================
+    const allPrograms = [
+        { id:1, uniId:1, name:"计算机科学与技术", degree:"本科", lang:"中文", langReq:"HSK5-180", tuition:30000, gpaReq:3.5, duration:"4年", hasHalal:true, department:"计算机科学技术系", campus:"海淀校区" },
+        { id:2, uniId:1, name:"软件工程", degree:"本科", lang:"英文", langReq:"IELTS-6.0", tuition:28000, gpaReq:3.0, duration:"4年", hasHalal:true, department:"软件学院", campus:"海淀校区" },
+        { id:3, uniId:1, name:"金融学", degree:"本科", lang:"中文", langReq:"HSK5-210", tuition:32000, gpaReq:3.5, duration:"4年", hasHalal:true, department:"光华管理学院", campus:"海淀校区" },
+        { id:4, uniId:1, name:"法学", degree:"本科", lang:"中文", langReq:"HSK5-180", tuition:28000, gpaReq:3.0, duration:"4年", hasHalal:true, department:"法学院", campus:"海淀校区" },
+        { id:5, uniId:1, name:"计算机科学", degree:"硕士", lang:"英文", langReq:"IELTS-6.5", tuition:35000, gpaReq:3.0, duration:"3年", hasHalal:true, department:"计算机科学技术系", campus:"海淀校区" },
+        { id:6, uniId:1, name:"工商管理硕士", degree:"硕士", lang:"英文", langReq:"TOEFL-90", tuition:50000, gpaReq:3.0, duration:"2年", hasHalal:true, department:"光华管理学院", campus:"海淀校区" },
+        { id:7, uniId:2, name:"临床医学(MBBS)", degree:"本科", lang:"英文", langReq:"IELTS-6.5", tuition:45000, gpaReq:3.0, duration:"6年", hasHalal:true, department:"医学院", campus:"邯郸校区" },
+        { id:8, uniId:2, name:"国际商务", degree:"本科", lang:"英文", langReq:"TOEFL-80", tuition:25000, gpaReq:3.0, duration:"4年", hasHalal:true, department:"管理学院", campus:"邯郸校区" },
+    ];
+
+    // 从URL获取院校ID
+    const params = new URLSearchParams(window.location.search);
+    const uniId = parseInt(params.get('id')) || 1;
+    const uni = universities[uniId] || universities[1];
+    const uniPrograms = allPrograms.filter(p => p.uniId === uniId);
+
+    const langReqTextMap = {
+        'HSK4-180':'HSK 4级 ≥180','HSK4-210':'HSK 4级 ≥210','HSK5-180':'HSK 5级 ≥180',
+        'HSK5-210':'HSK 5级 ≥210','HSK6-180':'HSK 6级 ≥180',
+        'IELTS-5.5':'雅思 ≥5.5','IELTS-6.0':'雅思 ≥6.0','IELTS-6.5':'雅思 ≥6.5',
+        'TOEFL-70':'托福 ≥70','TOEFL-80':'托福 ≥80','TOEFL-90':'托福 ≥90',
+        'Duolingo-100':'多邻国 ≥100','exempt':'免语言成绩'
+    };
+    const degreeSort = { '本科':1, '硕士':2, '博士':3, '语言生':4, '预科':5 };
+    uniPrograms.sort((a,b) => (degreeSort[a.degree]||9) - (degreeSort[b.degree]||9));
+
+    // 渲染院校头部
+    const tierTags = uni.tier.split(',').map(t => `<span class="tag">${t}</span>`).join('');
+    document.getElementById('uniHero').innerHTML = `
+        <h1>${uni.name} <span style="font-weight:400;font-size:0.9rem;color:var(--muted);">${uni.short}</span></h1>
+        <div class="uni-sub"><i class="fas fa-map-marker-alt"></i> ${uni.province} · ${uni.city} · 建校${uni.founded}年 · QS排名 #${uni.qsRank} · 国际学生约${uni.intlStudents}人</div>
+        <div class="tags-row">
+            ${tierTags}
+            <span class="tag">${uni.type}类</span>
+            ${uni.qsRank ? `<span class="tag orange">QS ${uni.qsRank}</span>` : ''}
+            ${uni.hasHalal ? `<span class="tag green">清真食堂</span>` : ''}
+            ${uni.hasDorm ? `<span class="tag green">校内宿舍</span>` : ''}
+            ${uni.hasPrayer ? `<span class="tag">祷告室</span>` : ''}
+        </div>
+        <p style="margin-top:10px;font-size:13px;line-height:1.7;color:var(--muted);">${uni.description}</p>
+    `;
+
+    // 渲染项目列表
+    document.getElementById('programCount').textContent = `共 ${uniPrograms.length} 个项目`;
+    const programList = document.getElementById('programList');
+    uniPrograms.forEach(p => {
+        const langReqText = langReqTextMap[p.langReq] || p.langReq;
+        const a = document.createElement('a');
+        a.className = 'program-card';
+        a.href = `bachelor-detail.html?id=${p.id}`;
+        a.innerHTML = `
+            <div class="prog-info">
+                <div class="prog-name">${p.name} <span style="font-weight:400;font-size:0.8rem;color:var(--muted);">${p.degree}</span></div>
+                <div class="prog-meta"><span>${p.department}</span><span>${p.campus}</span><span>${p.duration}</span></div>
+            </div>
+            <div class="prog-tags">
+                <span class="ptag">${p.lang}</span>
+                <span class="ptag green">${langReqText}</span>
+                <span class="ptag orange">¥${p.tuition.toLocaleString()}/年</span>
+            </div>
+            <i class="fas fa-chevron-right arrow"></i>
+        `;
+        programList.appendChild(a);
+    });
+
+    // 渲染右侧信息卡
+    document.getElementById('infoCard').innerHTML = `
+        <h3>📋 学校信息</h3>
+        <div class="info-row"><span class="label">院校类型</span><span class="value">${uni.type}类</span></div>
+        <div class="info-row"><span class="label">层次</span><span class="value">${uni.tier.split(',')[0]}</span></div>
+        <div class="info-row"><span class="label">国际学生</span><span class="value">约${uni.intlStudents}人</span></div>
+        <div class="info-row"><span class="label">英文项目</span><span class="value">${uni.englishPrograms}个</span></div>
+        <hr style="border:none;border-top:1px solid #f0f0f0;margin:10px 0;">
+        <h3>🏠 生活设施</h3>
+        <div class="facility-icons">
+            <span class="facility-item ${uni.hasDorm?'has':'no'}"><i class="fas fa-${uni.hasDorm?'check-circle':'times-circle'}"></i> 校内宿舍</span>
+            <span class="facility-item ${uni.hasHalal?'has':'no'}"><i class="fas fa-${uni.hasHalal?'check-circle':'times-circle'}"></i> 清真食堂</span>
+            <span class="facility-item ${uni.hasPrayer?'has':'no'}"><i class="fas fa-${uni.hasPrayer?'check-circle':'times-circle'}"></i> 祷告室</span>
+            <span class="facility-item ${uni.hasPickup?'has':'no'}"><i class="fas fa-${uni.hasPickup?'check-circle':'times-circle'}"></i> 接机服务</span>
+        </div>
+        <hr style="border:none;border-top:1px solid #f0f0f0;margin:10px 0;">
+        <a href="${uni.website}" target="_blank" style="font-size:12px;color:var(--accent);text-decoration:none;display:block;margin-bottom:4px;"><i class="fas fa-external-link-alt"></i> 学校官网</a>
+        <a href="${uni.admissionUrl}" target="_blank" style="font-size:12px;color:var(--accent);text-decoration:none;display:block;"><i class="fas fa-external-link-alt"></i> 国际招生网</a>
+    `;
+
+    document.getElementById('langSelect').addEventListener('change', function() { localStorage.setItem('site_lang', this.value); });
+</script>
+</body>
+</html>
