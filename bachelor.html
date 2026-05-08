@@ -121,6 +121,7 @@
             background: #e8f0fe; color: var(--accent); font-weight: 500;
         }
         .program-card .tag.orange { background: #fff3e0; color: #e65100; }
+        .program-card .tag.green { background: #e6f4ea; color: #1e8e3e; }
 
         .empty-msg { text-align: center; color: var(--muted); margin-top: 2rem; display: none; }
 
@@ -136,13 +137,13 @@
 <!-- ==================== 顶部导航栏 ==================== -->
 <nav class="top-nav">
     <div class="nav-left">
-        <a href="../index.html" class="nav-logo"><i class="fas fa-graduation-cap"></i> Study In China</a>
+        <a href="index.html" class="nav-logo"><i class="fas fa-graduation-cap"></i> Study In China</a>
         <div class="nav-links">
             <a href="index.html" class="active">发现项目</a>
-            <a href="../schools/index.html">探索院校</a>
-            <a href="../guide/index.html">申请指南</a>
-            <a href="../life/index.html">留学中国</a>
-            <a href="../resources/index.html">资源中心</a>
+            <a href="schools.html">探索院校</a>
+            <a href="guide.html">申请指南</a>
+            <a href="life.html">留学中国</a>
+            <a href="resource.html">资源中心</a>
         </div>
     </div>
     <div class="lang-wrap">
@@ -213,6 +214,10 @@
             <option value="英文">英文</option>
             <option value="其他">其他语种</option>
         </select>
+        <!-- ✅ 新增：语言要求筛选器（根据授课语言动态切换选项） -->
+        <select id="filterLanguageReq">
+            <option value="">语言要求</option>
+        </select>
         <button class="btn-filter" onclick="filterResults()"><i class="fas fa-search"></i> 筛选</button>
     </div>
 
@@ -224,80 +229,70 @@
 <footer class="site-footer">© 2026 Study in China 来华留学一站式平台</footer>
 
 <script>
-    // ==================== 模拟数据 ====================
+    // ==================== 模拟数据（增加了 langReq 字段） ====================
     const sampleData = [
-        { program:"计算机科学与技术", uni:"清华大学", province:"北京", tuition:30000, lang:"中文" },
-        { program:"软件工程", uni:"浙江大学", province:"浙江", tuition:28000, lang:"英文" },
-        { program:"临床医学(MBBS)", uni:"复旦大学", province:"上海", tuition:45000, lang:"英文" },
-        { program:"国际商务", uni:"上海交通大学", province:"上海", tuition:25000, lang:"英文" },
-        { program:"机械工程", uni:"华中科技大学", province:"湖北", tuition:22000, lang:"中文" },
-        { program:"土木工程", uni:"同济大学", province:"上海", tuition:26000, lang:"中文" },
-        { program:"英语", uni:"北京外国语大学", province:"北京", tuition:20000, lang:"英文" },
-        { program:"汉语言文学", uni:"南京大学", province:"江苏", tuition:18000, lang:"中文" },
-        { program:"法语", uni:"北京语言大学", province:"北京", tuition:19000, lang:"法语" },
-        { program:"日语", uni:"大连外国语大学", province:"辽宁", tuition:17000, lang:"日语" },
+        { program:"计算机科学与技术", uni:"清华大学", province:"北京", tuition:30000, lang:"中文", langReq:"HSK5-180" },
+        { program:"软件工程", uni:"浙江大学", province:"浙江", tuition:28000, lang:"英文", langReq:"IELTS-6.0" },
+        { program:"临床医学(MBBS)", uni:"复旦大学", province:"上海", tuition:45000, lang:"英文", langReq:"IELTS-6.5" },
+        { program:"国际商务", uni:"上海交通大学", province:"上海", tuition:25000, lang:"英文", langReq:"TOEFL-80" },
+        { program:"机械工程", uni:"华中科技大学", province:"湖北", tuition:22000, lang:"中文", langReq:"HSK4-180" },
+        { program:"土木工程", uni:"同济大学", province:"上海", tuition:26000, lang:"中文", langReq:"HSK4-180" },
+        { program:"英语", uni:"北京外国语大学", province:"北京", tuition:20000, lang:"英文", langReq:"exempt" },
+        { program:"汉语言文学", uni:"南京大学", province:"江苏", tuition:18000, lang:"中文", langReq:"HSK5-180" },
+        { program:"法语", uni:"北京语言大学", province:"北京", tuition:19000, lang:"法语", langReq:"exempt" },
+        { program:"日语", uni:"大连外国语大学", province:"辽宁", tuition:17000, lang:"日语", langReq:"exempt" },
     ];
 
-    // ==================== 筛选函数 ====================
-    function filterResults() {
-        const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
-        const province = document.getElementById('filterProvince').value;
-        const tuitionRange = document.getElementById('filterTuition').value;
-        const language = document.getElementById('filterLanguage').value;
+    // ==================== 语言要求选项映射 ====================
+    const langReqOptions = {
+        // 中文授课项目的语言要求
+        '中文': [
+            { value: '', text: '语言要求' },
+            { value: 'HSK4-180', text: 'HSK 4级 (≥180分)' },
+            { value: 'HSK4-210', text: 'HSK 4级 (≥210分)' },
+            { value: 'HSK5-180', text: 'HSK 5级 (≥180分)' },
+            { value: 'HSK6-180', text: 'HSK 6级 (≥180分)' },
+            { value: 'exempt', text: '可免语言成绩' },
+        ],
+        // 英文授课项目的语言要求
+        '英文': [
+            { value: '', text: '语言要求' },
+            { value: 'IELTS-6.0', text: '雅思 ≥6.0' },
+            { value: 'IELTS-6.5', text: '雅思 ≥6.5' },
+            { value: 'TOEFL-80', text: '托福 ≥80' },
+            { value: 'TOEFL-90', text: '托福 ≥90' },
+            { value: 'Duolingo-100', text: '多邻国 ≥100' },
+            { value: 'exempt', text: '可免语言成绩' },
+        ],
+        // 其他语种授课（通常免语言要求或学校自定）
+        '其他': [
+            { value: '', text: '语言要求' },
+            { value: 'exempt', text: '可免语言成绩/面试' },
+        ],
+        // 默认（未选择授课语言时）
+        'default': [
+            { value: '', text: '请先选择授课语言' },
+        ]
+    };
 
-        let filtered = sampleData;
-
-        if (keyword) {
-            filtered = filtered.filter(item => 
-                item.program.toLowerCase().includes(keyword) || 
-                item.uni.toLowerCase().includes(keyword)
-            );
-        }
-        if (province) {
-            filtered = filtered.filter(item => item.province === province);
-        }
-        if (language) {
-            if (language === '其他') {
-                const selectedLang = document.getElementById('filterLanguage').getAttribute('data-selected');
-                if (selectedLang) {
-                    filtered = filtered.filter(item => item.lang === selectedLang);
-                }
-            } else {
-                filtered = filtered.filter(item => item.lang === language);
-            }
-        }
-        if (tuitionRange) {
-            const [min, max] = tuitionRange.split('-').map(Number);
-            filtered = filtered.filter(item => item.tuition >= min && item.tuition <= max);
-        }
-
-        document.getElementById('resultCount').textContent = filtered.length;
-        const grid = document.getElementById('resultsGrid');
-        grid.innerHTML = '';
-
-        if (filtered.length === 0) {
-            document.getElementById('emptyMsg').style.display = 'block';
-        } else {
-            document.getElementById('emptyMsg').style.display = 'none';
-            filtered.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'program-card';
-                card.innerHTML = `
-                    <h3>${item.program}</h3>
-                    <div class="uni-name"><i class="fas fa-university"></i> ${item.uni} · ${item.province}</div>
-                    <div class="meta">
-                        <span class="tag">${item.lang}</span>
-                        <span class="tag orange">¥${item.tuition.toLocaleString()}/年</span>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
+    // ==================== 动态更新语言要求筛选器 ====================
+    function updateLangReqOptions(langType) {
+        const select = document.getElementById('filterLanguageReq');
+        select.innerHTML = '';
+        const options = langReqOptions[langType] || langReqOptions['default'];
+        options.forEach(opt => {
+            const optionEl = document.createElement('option');
+            optionEl.value = opt.value;
+            optionEl.textContent = opt.text;
+            select.appendChild(optionEl);
+        });
     }
 
-    // ==================== 授课语言二级选择 ====================
+    // 授课语言切换时，更新语言要求选项
     document.getElementById('filterLanguage').addEventListener('change', function() {
-        if (this.value === '其他') {
+        const langType = this.value;
+        if (langType === '其他') {
+            // 弹窗选择具体语种
             const lang = prompt(
                 '请选择具体语种：\n\n' +
                 '1. 双语（中英）\n' +
@@ -322,17 +317,94 @@
                 };
                 const selectedLang = langMap[lang] || lang;
                 this.setAttribute('data-selected', selectedLang);
-                filterResults();
+                updateLangReqOptions('其他');
             } else {
                 this.value = '';
                 this.removeAttribute('data-selected');
-                filterResults();
+                updateLangReqOptions('default');
             }
         } else {
             this.removeAttribute('data-selected');
-            filterResults();
+            updateLangReqOptions(langType || 'default');
         }
+        filterResults();
     });
+
+    // ==================== 筛选函数 ====================
+    function filterResults() {
+        const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
+        const province = document.getElementById('filterProvince').value;
+        const tuitionRange = document.getElementById('filterTuition').value;
+        const language = document.getElementById('filterLanguage').value;
+        const languageReq = document.getElementById('filterLanguageReq').value;
+
+        let filtered = sampleData;
+
+        if (keyword) {
+            filtered = filtered.filter(item => 
+                item.program.toLowerCase().includes(keyword) || 
+                item.uni.toLowerCase().includes(keyword)
+            );
+        }
+        if (province) {
+            filtered = filtered.filter(item => item.province === province);
+        }
+        if (language) {
+            if (language === '其他') {
+                const selectedLang = document.getElementById('filterLanguage').getAttribute('data-selected');
+                if (selectedLang) {
+                    filtered = filtered.filter(item => item.lang === selectedLang);
+                }
+            } else {
+                filtered = filtered.filter(item => item.lang === language);
+            }
+        }
+        if (languageReq) {
+            filtered = filtered.filter(item => item.langReq === languageReq);
+        }
+        if (tuitionRange) {
+            const [min, max] = tuitionRange.split('-').map(Number);
+            filtered = filtered.filter(item => item.tuition >= min && item.tuition <= max);
+        }
+
+        document.getElementById('resultCount').textContent = filtered.length;
+        const grid = document.getElementById('resultsGrid');
+        grid.innerHTML = '';
+
+        if (filtered.length === 0) {
+            document.getElementById('emptyMsg').style.display = 'block';
+        } else {
+            document.getElementById('emptyMsg').style.display = 'none';
+            filtered.forEach(item => {
+                // 把 langReq 代码转换成可读文字
+                const langReqText = {
+                    'HSK4-180': 'HSK 4级 ≥180',
+                    'HSK4-210': 'HSK 4级 ≥210',
+                    'HSK5-180': 'HSK 5级 ≥180',
+                    'HSK6-180': 'HSK 6级 ≥180',
+                    'IELTS-6.0': '雅思 ≥6.0',
+                    'IELTS-6.5': '雅思 ≥6.5',
+                    'TOEFL-80': '托福 ≥80',
+                    'TOEFL-90': '托福 ≥90',
+                    'Duolingo-100': '多邻国 ≥100',
+                    'exempt': '免语言成绩'
+                }[item.langReq] || item.langReq;
+
+                const card = document.createElement('div');
+                card.className = 'program-card';
+                card.innerHTML = `
+                    <h3>${item.program}</h3>
+                    <div class="uni-name"><i class="fas fa-university"></i> ${item.uni} · ${item.province}</div>
+                    <div class="meta">
+                        <span class="tag">${item.lang}</span>
+                        <span class="tag green">${langReqText}</span>
+                        <span class="tag orange">¥${item.tuition.toLocaleString()}/年</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+    }
 
     // ==================== 回车搜索 ====================
     document.getElementById('searchInput').addEventListener('keydown', function(e) {
@@ -345,6 +417,7 @@
     });
 
     // ==================== 初始加载 ====================
+    updateLangReqOptions('default');
     filterResults();
 </script>
 </body>
