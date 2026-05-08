@@ -7,24 +7,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg: #ffffff;
-            --text: #202124;
-            --muted: #5f6368;
-            --border: #dadce0;
-            --accent: #1a73e8;
-            --hover: #f8f9fa;
-            --radius: 12px;
+            --bg: #ffffff; --text: #202124; --muted: #5f6368;
+            --border: #dadce0; --accent: #1a73e8; --hover: #f8f9fa; --radius: 12px;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             background: var(--bg);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
-            color: var(--text);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
+            color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden;
         }
 
         /* ====== 顶部导航栏 ====== */
@@ -62,11 +52,11 @@
         /* ====== 主内容区 ====== */
         .main-content {
             flex: 1; display: flex; flex-direction: column; align-items: center;
-            max-width: 1100px; width: 100%; margin: 0 auto; padding: 1.5rem 24px 1rem; overflow-y: auto;
+            max-width: 1100px; width: 100%; margin: 0 auto; padding: 1.2rem 24px 0.5rem; overflow: hidden;
         }
 
         /* ====== 分类标签栏 ====== */
-        .category-tabs { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 1rem; }
+        .category-tabs { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 1rem; flex-shrink: 0; }
         .category-tab {
             padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 500;
             cursor: pointer; transition: all 0.2s; background: var(--hover); color: var(--text);
@@ -76,60 +66,54 @@
         .category-tab.current { background: var(--accent); color: #fff; font-weight: 600; }
 
         /* ====== 搜索框 ====== */
-        .search-wrap { width: 100%; position: relative; margin-bottom: 1rem; }
+        .search-wrap { width: 100%; position: relative; margin-bottom: 0.8rem; flex-shrink: 0; }
         .search-box {
-            width: 100%; height: 48px; border: 1px solid var(--border); border-radius: 24px;
-            padding: 0 20px 0 46px; font-size: 15px; outline: none;
-            background: var(--bg); box-shadow: 0 1px 4px rgba(32,33,36,0.08); transition: box-shadow 0.2s;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='%239aa0a6' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat; background-position: 16px center;
+            width: 100%; height: 44px; border: 1px solid var(--border); border-radius: 22px;
+            padding: 0 16px 0 42px; font-size: 14px; outline: none;
+            background: var(--bg); box-shadow: 0 1px 4px rgba(32,33,36,0.06);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239aa0a6' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: 14px center;
         }
-        .search-box:focus { box-shadow: 0 1px 8px rgba(32,33,36,0.18); }
+        .search-box:focus { box-shadow: 0 1px 6px rgba(32,33,36,0.12); }
 
         /* ====== 筛选器区域 ====== */
         .filters-bar {
-            width: 100%; display: flex; gap: 10px; flex-wrap: wrap;
-            margin-bottom: 1.2rem; align-items: center; justify-content: center;
+            width: 100%; display: flex; gap: 8px; flex-wrap: wrap;
+            margin-bottom: 0.8rem; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .filters-bar select {
-            padding: 8px 14px; border: 1px solid var(--border); border-radius: 20px;
-            font-size: 13px; color: var(--text); background: var(--bg);
-            cursor: pointer; outline: none; transition: background 0.2s; min-width: 110px;
+            padding: 6px 12px; border: 1px solid var(--border); border-radius: 16px;
+            font-size: 12px; color: var(--text); background: var(--bg);
+            cursor: pointer; outline: none; transition: background 0.2s; min-width: 100px;
         }
         .filters-bar select:hover { background: var(--hover); }
-        .filters-bar .btn-filter {
-            padding: 8px 22px; background: var(--accent); color: #fff; border: none;
-            border-radius: 20px; font-size: 14px; cursor: pointer; font-weight: 500; transition: background 0.2s;
+        .btn-filter {
+            padding: 6px 16px; background: var(--accent); color: #fff; border: none;
+            border-radius: 16px; font-size: 13px; cursor: pointer; font-weight: 500;
         }
-        .filters-bar .btn-filter:hover { background: #1557b0; }
+        .btn-filter:hover { background: #1557b0; }
 
-        /* ====== 结果提示 ====== */
-        .result-info { width: 100%; font-size: 13px; color: var(--muted); margin-bottom: 0.8rem; text-align: left; }
-
-        /* ====== 结果卡片 ====== */
-        .results-grid { width: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+        /* ====== 结果区域 ====== */
+        .result-info { width: 100%; font-size: 12px; color: var(--muted); margin-bottom: 0.5rem; flex-shrink: 0; }
+        .results-scroll { flex: 1; overflow-y: auto; padding-right: 4px; }
+        .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
         .program-card {
             background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
-            padding: 18px 20px; transition: all 0.2s; cursor: default;
+            padding: 16px; transition: all 0.2s;
         }
-        .program-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); border-color: var(--accent); }
-        .program-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
-        .program-card .uni-name { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
-        .program-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+        .program-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); border-color: var(--accent); }
+        .program-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+        .program-card .uni-name { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+        .program-card .meta { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0; }
         .program-card .tag {
-            font-size: 11px; padding: 3px 8px; border-radius: 10px;
+            font-size: 10px; padding: 2px 6px; border-radius: 8px;
             background: #e8f0fe; color: var(--accent); font-weight: 500;
         }
         .program-card .tag.orange { background: #fff3e0; color: #e65100; }
         .program-card .tag.green { background: #e6f4ea; color: #1e8e3e; }
 
         .empty-msg { text-align: center; color: var(--muted); margin-top: 2rem; display: none; }
-
-        /* ====== 页脚 ====== */
-        .site-footer {
-            text-align: center; padding: 10px 0; border-top: 1px solid var(--border);
-            font-size: 12px; color: var(--muted); flex-shrink: 0;
-        }
+        .site-footer { text-align: center; padding: 8px 0; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); flex-shrink: 0; }
     </style>
 </head>
 <body>
@@ -147,25 +131,9 @@
         </div>
     </div>
     <div class="lang-wrap">
-        <span style="font-size:13px;">🌐</span>
+        <span style="font-size:12px;">🌐</span>
         <select id="langSelect">
-            <option value="zh">中文</option>
-            <option value="en">English</option>
-            <option value="ar">العربية</option>
-            <option value="fr">Français</option>
-            <option value="es">Español</option>
-            <option value="ru">Русский</option>
-            <option value="pt">Português</option>
-            <option value="id">Bahasa Indonesia</option>
-            <option value="th">ไทย</option>
-            <option value="vi">Tiếng Việt</option>
-            <option value="ja">日本語</option>
-            <option value="ko">한국어</option>
-            <option value="de">Deutsch</option>
-            <option value="it">Italiano</option>
-            <option value="fa">فارسی</option>
-            <option value="tr">Türkçe</option>
-            <option value="hi">हिन्दी</option>
+            <option value="zh">中文</option><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option><option value="ru">Русский</option><option value="pt">Português</option><option value="id">Bahasa Indonesia</option><option value="th">ไทย</option><option value="vi">Tiếng Việt</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="fa">فارسی</option><option value="tr">Türkçe</option><option value="hi">हिन्दी</option>
         </select>
     </div>
 </nav>
@@ -201,81 +169,80 @@
             <option>西藏</option><option>宁夏</option><option>新疆</option>
         </select>
         <select id="filterTuition">
-            <option value="">学费范围（元/年）</option>
-            <option value="0-10000">1万以下</option>
-            <option value="10000-20000">1万-2万</option>
-            <option value="20000-30000">2万-3万</option>
-            <option value="30000-50000">3万-5万</option>
-            <option value="50000-999999">5万以上</option>
+            <option value="">学费（元/年）</option>
+            <option value="0-10000">1万以下</option><option value="10000-20000">1万-2万</option>
+            <option value="20000-30000">2万-3万</option><option value="30000-50000">3万-5万</option><option value="50000-999999">5万以上</option>
         </select>
         <select id="filterLanguage">
             <option value="">授课语言</option>
-            <option value="中文">中文</option>
-            <option value="英文">英文</option>
-            <option value="其他">其他语种</option>
+            <option value="中文">中文</option><option value="英文">英文</option><option value="其他">其他语种</option>
         </select>
-        <!-- ✅ 核心改动：我的语言水平 -->
         <select id="filterMyLevel">
             <option value="">我的语言水平</option>
-            <optgroup label="🇨🇳 中文水平 (HSK)">
-                <option value="HSK4-180">HSK 4级 ≥180分</option>
-                <option value="HSK4-210">HSK 4级 ≥210分</option>
-                <option value="HSK5-180">HSK 5级 ≥180分</option>
-                <option value="HSK5-210">HSK 5级 ≥210分</option>
+            <optgroup label="中文水平 (HSK)">
+                <option value="HSK4-180">HSK 4级 ≥180分</option><option value="HSK4-210">HSK 4级 ≥210分</option>
+                <option value="HSK5-180">HSK 5级 ≥180分</option><option value="HSK5-210">HSK 5级 ≥210分</option>
                 <option value="HSK6-180">HSK 6级 ≥180分</option>
             </optgroup>
-            <optgroup label="🇬🇧 英语水平">
-                <option value="IELTS-5.5">雅思 5.5+</option>
-                <option value="IELTS-6.0">雅思 6.0+</option>
-                <option value="IELTS-6.5">雅思 6.5+</option>
-                <option value="TOEFL-70">托福 70+</option>
-                <option value="TOEFL-80">托福 80+</option>
-                <option value="TOEFL-90">托福 90+</option>
+            <optgroup label="英语水平">
+                <option value="IELTS-5.5">雅思 5.5+</option><option value="IELTS-6.0">雅思 6.0+</option>
+                <option value="IELTS-6.5">雅思 6.5+</option><option value="TOEFL-70">托福 70+</option>
+                <option value="TOEFL-80">托福 80+</option><option value="TOEFL-90">托福 90+</option>
                 <option value="Duolingo-100">多邻国 100+</option>
             </optgroup>
+        </select>
+        <select id="filterGPA">
+            <option value="">我的GPA</option>
+            <option value="2.0">2.0/4.0 及以上</option><option value="2.5">2.5/4.0 及以上</option>
+            <option value="3.0">3.0/4.0 及以上</option><option value="3.5">3.5/4.0 及以上</option>
         </select>
         <button class="btn-filter" onclick="filterResults()"><i class="fas fa-search"></i> 筛选</button>
     </div>
 
     <div class="result-info" id="resultInfo">共找到 <strong id="resultCount">0</strong> 个本科项目</div>
-    <div class="results-grid" id="resultsGrid"></div>
-    <div class="empty-msg" id="emptyMsg">没有匹配的项目，请调整筛选条件。</div>
+    <div class="results-scroll" id="resultsScroll">
+        <div class="results-grid" id="resultsGrid"></div>
+        <div class="empty-msg" id="emptyMsg">没有匹配的项目，请调整筛选条件。</div>
+    </div>
 </div>
 
 <footer class="site-footer">© 2026 Study in China 来华留学一站式平台</footer>
 
 <script>
-    // ==================== 模拟数据（langReq 字段存储该项目要求的语言水平） ====================
+    // ==================== 模拟数据（结构和爬虫输出的programs表字段对齐） ====================
     const sampleData = [
-        { program:"计算机科学与技术", uni:"清华大学", province:"北京", tuition:30000, lang:"中文", langReq:"HSK5-180" },
-        { program:"软件工程", uni:"浙江大学", province:"浙江", tuition:28000, lang:"英文", langReq:"IELTS-6.0" },
-        { program:"临床医学(MBBS)", uni:"复旦大学", province:"上海", tuition:45000, lang:"英文", langReq:"IELTS-6.5" },
-        { program:"国际商务", uni:"上海交通大学", province:"上海", tuition:25000, lang:"英文", langReq:"TOEFL-80" },
-        { program:"机械工程", uni:"华中科技大学", province:"湖北", tuition:22000, lang:"中文", langReq:"HSK4-180" },
-        { program:"土木工程", uni:"同济大学", province:"上海", tuition:26000, lang:"中文", langReq:"HSK4-180" },
-        { program:"英语", uni:"北京外国语大学", province:"北京", tuition:20000, lang:"英文", langReq:"IELTS-5.5" },
-        { program:"汉语言文学", uni:"南京大学", province:"江苏", tuition:18000, lang:"中文", langReq:"HSK5-180" },
-        { program:"法语", uni:"北京语言大学", province:"北京", tuition:19000, lang:"法语", langReq:"exempt" },
-        { program:"日语", uni:"大连外国语大学", province:"辽宁", tuition:17000, lang:"日语", langReq:"exempt" },
+        { program:"计算机科学与技术", uni:"清华大学", short:"清华", province:"北京", tuition:30000, lang:"中文", langReq:"HSK5-180", gpaReq:3.5, hasHalal:true, hasDorm:true, qsRank:14, tier:"双一流,985,211" },
+        { program:"软件工程", uni:"浙江大学", short:"浙大", province:"浙江", tuition:28000, lang:"英文", langReq:"IELTS-6.0", gpaReq:3.0, hasHalal:true, hasDorm:true, qsRank:42, tier:"双一流,985,211" },
+        { program:"临床医学(MBBS)", uni:"复旦大学", short:"复旦", province:"上海", tuition:45000, lang:"英文", langReq:"IELTS-6.5", gpaReq:3.0, hasHalal:true, hasDorm:true, qsRank:34, tier:"双一流,985,211" },
+        { program:"国际商务", uni:"上海交通大学", short:"上交", province:"上海", tuition:25000, lang:"英文", langReq:"TOEFL-80", gpaReq:3.0, hasHalal:true, hasDorm:true, qsRank:51, tier:"双一流,985,211" },
+        { program:"机械工程", uni:"华中科技大学", short:"华科", province:"湖北", tuition:22000, lang:"中文", langReq:"HSK4-180", gpaReq:2.5, hasHalal:true, hasDorm:true, qsRank:275, tier:"双一流,985,211" },
+        { program:"土木工程", uni:"同济大学", short:"同济", province:"上海", tuition:26000, lang:"中文", langReq:"HSK4-180", gpaReq:2.5, hasHalal:true, hasDorm:true, qsRank:256, tier:"双一流,985,211" },
+        { program:"英语", uni:"北京外国语大学", short:"北外", province:"北京", tuition:20000, lang:"英文", langReq:"IELTS-5.5", gpaReq:2.5, hasHalal:true, hasDorm:true, qsRank:null, tier:"双一流,211" },
+        { program:"汉语言文学", uni:"南京大学", short:"南大", province:"江苏", tuition:18000, lang:"中文", langReq:"HSK5-180", gpaReq:3.0, hasHalal:true, hasDorm:true, qsRank:133, tier:"双一流,985,211" },
+        { program:"金融学", uni:"中央财经大学", short:"央财", province:"北京", tuition:28000, lang:"中文", langReq:"HSK5-210", gpaReq:3.0, hasHalal:true, hasDorm:true, qsRank:null, tier:"双一流,211" },
+        { program:"法语", uni:"北京语言大学", short:"北语", province:"北京", tuition:19000, lang:"法语", langReq:"exempt", gpaReq:2.0, hasHalal:false, hasDorm:true, qsRank:null, tier:"双一流" },
+        { program:"日语", uni:"大连外国语大学", short:"大外", province:"辽宁", tuition:17000, lang:"日语", langReq:"exempt", gpaReq:2.0, hasHalal:false, hasDorm:true, qsRank:null, tier:"省属重点" },
+        { program:"电子信息工程", uni:"电子科技大学", short:"成电", province:"四川", tuition:24000, lang:"英文", langReq:"IELTS-6.0", gpaReq:3.0, hasHalal:true, hasDorm:true, qsRank:412, tier:"双一流,985,211" },
     ];
 
-    // ==================== 语言水平匹配逻辑 ====================
-    // 定义语言水平的“达标”层级：如果你有某个分数，那么所有要求≤该分数的项目都应该被筛选出来
+    // ==================== 语言水平匹配链 ====================
     const levelHierarchy = {
-        // HSK 等级链：数字越大等级越高
-        'HSK4-180': ['HSK4-180'],
-        'HSK4-210': ['HSK4-180', 'HSK4-210'],
-        'HSK5-180': ['HSK4-180', 'HSK4-210', 'HSK5-180'],
-        'HSK5-210': ['HSK4-180', 'HSK4-210', 'HSK5-180', 'HSK5-210'],
-        'HSK6-180': ['HSK4-180', 'HSK4-210', 'HSK5-180', 'HSK5-210', 'HSK6-180'],
-        // 英语等级链
-        'IELTS-5.5': ['IELTS-5.5'],
-        'IELTS-6.0': ['IELTS-5.5', 'IELTS-6.0'],
-        'IELTS-6.5': ['IELTS-5.5', 'IELTS-6.0', 'IELTS-6.5'],
-        'TOEFL-70': ['TOEFL-70'],
-        'TOEFL-80': ['TOEFL-70', 'TOEFL-80'],
-        'TOEFL-90': ['TOEFL-70', 'TOEFL-80', 'TOEFL-90'],
-        'Duolingo-100': ['Duolingo-100'],
+        'HSK4-180': ['HSK4-180'], 'HSK4-210': ['HSK4-180','HSK4-210'],
+        'HSK5-180': ['HSK4-180','HSK4-210','HSK5-180'], 'HSK5-210': ['HSK4-180','HSK4-210','HSK5-180','HSK5-210'],
+        'HSK6-180': ['HSK4-180','HSK4-210','HSK5-180','HSK5-210','HSK6-180'],
+        'IELTS-5.5': ['IELTS-5.5'], 'IELTS-6.0': ['IELTS-5.5','IELTS-6.0'],
+        'IELTS-6.5': ['IELTS-5.5','IELTS-6.0','IELTS-6.5'],
+        'TOEFL-70': ['TOEFL-70'], 'TOEFL-80': ['TOEFL-70','TOEFL-80'],
+        'TOEFL-90': ['TOEFL-70','TOEFL-80','TOEFL-90'], 'Duolingo-100': ['Duolingo-100'],
+    };
+
+    // ==================== 语言要求可读文本映射 ====================
+    const langReqTextMap = {
+        'HSK4-180':'HSK 4级 ≥180','HSK4-210':'HSK 4级 ≥210','HSK5-180':'HSK 5级 ≥180',
+        'HSK5-210':'HSK 5级 ≥210','HSK6-180':'HSK 6级 ≥180',
+        'IELTS-5.5':'雅思 ≥5.5','IELTS-6.0':'雅思 ≥6.0','IELTS-6.5':'雅思 ≥6.5',
+        'TOEFL-70':'托福 ≥70','TOEFL-80':'托福 ≥80','TOEFL-90':'托福 ≥90',
+        'Duolingo-100':'多邻国 ≥100','exempt':'免语言成绩'
     };
 
     // ==================== 筛选函数 ====================
@@ -285,52 +252,30 @@
         const tuitionRange = document.getElementById('filterTuition').value;
         const language = document.getElementById('filterLanguage').value;
         const myLevel = document.getElementById('filterMyLevel').value;
+        const gpa = document.getElementById('filterGPA').value;
 
         let filtered = sampleData;
 
-        // 关键词搜索
-        if (keyword) {
-            filtered = filtered.filter(item => 
-                item.program.toLowerCase().includes(keyword) || 
-                item.uni.toLowerCase().includes(keyword)
-            );
-        }
-
-        // 省市筛选
-        if (province) {
-            filtered = filtered.filter(item => item.province === province);
-        }
-
-        // 授课语言筛选
+        if (keyword) filtered = filtered.filter(item => item.program.toLowerCase().includes(keyword) || item.uni.toLowerCase().includes(keyword));
+        if (province) filtered = filtered.filter(item => item.province === province);
         if (language) {
             if (language === '其他') {
-                const selectedLang = document.getElementById('filterLanguage').getAttribute('data-selected');
-                if (selectedLang) {
-                    filtered = filtered.filter(item => item.lang === selectedLang);
-                }
+                const sel = document.getElementById('filterLanguage').getAttribute('data-selected');
+                if (sel) filtered = filtered.filter(item => item.lang === sel);
             } else {
                 filtered = filtered.filter(item => item.lang === language);
             }
         }
-
-        // ✅ 核心逻辑：根据“我的语言水平”筛选
         if (myLevel) {
-            const acceptableLevels = levelHierarchy[myLevel] || [myLevel];
-            filtered = filtered.filter(item => {
-                // 如果项目可免语言成绩，任何人都能申请
-                if (item.langReq === 'exempt') return true;
-                // 检查项目的语言要求是否在“我可满足”的范围里
-                return acceptableLevels.includes(item.langReq);
-            });
+            const okLevels = levelHierarchy[myLevel] || [myLevel];
+            filtered = filtered.filter(item => item.langReq === 'exempt' || okLevels.includes(item.langReq));
         }
-
-        // 学费筛选
+        if (gpa) filtered = filtered.filter(item => item.gpaReq <= parseFloat(gpa));
         if (tuitionRange) {
             const [min, max] = tuitionRange.split('-').map(Number);
             filtered = filtered.filter(item => item.tuition >= min && item.tuition <= max);
         }
 
-        // 显示结果
         document.getElementById('resultCount').textContent = filtered.length;
         const grid = document.getElementById('resultsGrid');
         grid.innerHTML = '';
@@ -340,22 +285,8 @@
         } else {
             document.getElementById('emptyMsg').style.display = 'none';
             filtered.forEach(item => {
-                const langReqText = {
-                    'HSK4-180': 'HSK 4级 ≥180',
-                    'HSK4-210': 'HSK 4级 ≥210',
-                    'HSK5-180': 'HSK 5级 ≥180',
-                    'HSK5-210': 'HSK 5级 ≥210',
-                    'HSK6-180': 'HSK 6级 ≥180',
-                    'IELTS-5.5': '雅思 ≥5.5',
-                    'IELTS-6.0': '雅思 ≥6.0',
-                    'IELTS-6.5': '雅思 ≥6.5',
-                    'TOEFL-70': '托福 ≥70',
-                    'TOEFL-80': '托福 ≥80',
-                    'TOEFL-90': '托福 ≥90',
-                    'Duolingo-100': '多邻国 ≥100',
-                    'exempt': '免语言成绩'
-                }[item.langReq] || item.langReq;
-
+                const langReqText = langReqTextMap[item.langReq] || item.langReq;
+                const tierTags = item.tier ? item.tier.split(',').slice(0,2).map(t => `<span class="tag">${t}</span>`).join('') : '';
                 const card = document.createElement('div');
                 card.className = 'program-card';
                 card.innerHTML = `
@@ -363,8 +294,10 @@
                     <div class="uni-name"><i class="fas fa-university"></i> ${item.uni} · ${item.province}</div>
                     <div class="meta">
                         <span class="tag">${item.lang}</span>
-                        <span class="tag green">要求：${langReqText}</span>
+                        <span class="tag green">${langReqText}</span>
                         <span class="tag orange">¥${item.tuition.toLocaleString()}/年</span>
+                        ${item.gpaReq ? `<span class="tag">GPA ≥${item.gpaReq}</span>` : ''}
+                        ${item.hasHalal ? `<span class="tag green">清真食堂</span>` : ''}
                     </div>
                 `;
                 grid.appendChild(card);
@@ -375,52 +308,21 @@
     // ==================== 授课语言二级选择 ====================
     document.getElementById('filterLanguage').addEventListener('change', function() {
         if (this.value === '其他') {
-            const lang = prompt(
-                '请选择具体语种：\n\n' +
-                '1. 双语（中英）\n' +
-                '2. 法语\n' +
-                '3. 日语\n' +
-                '4. 韩语\n' +
-                '5. 德语\n' +
-                '6. 西班牙语\n' +
-                '7. 俄语\n' +
-                '8. 阿拉伯语\n' +
-                '9. 葡萄牙语\n' +
-                '10. 意大利语\n' +
-                '\n请输入数字编号或语种名称：'
-            );
+            const lang = prompt('请选择具体语种：\n\n1. 双语（中英）\n2. 法语\n3. 日语\n4. 韩语\n5. 德语\n6. 西班牙语\n7. 俄语\n8. 阿拉伯语\n9. 葡萄牙语\n10. 意大利语\n\n请输入数字编号或语种名称：');
             if (lang) {
-                const langMap = {
-                    '1': '双语', '2': '法语', '3': '日语', '4': '韩语', '5': '德语',
-                    '6': '西班牙语', '7': '俄语', '8': '阿拉伯语', '9': '葡萄牙语', '10': '意大利语',
-                    '双语': '双语', '法语': '法语', '日语': '日语', '韩语': '韩语',
-                    '德语': '德语', '西班牙语': '西班牙语', '俄语': '俄语',
-                    '阿拉伯语': '阿拉伯语', '葡萄牙语': '葡萄牙语', '意大利语': '意大利语'
-                };
-                this.setAttribute('data-selected', langMap[lang] || lang);
-                filterResults();
+                const m = {'1':'双语','2':'法语','3':'日语','4':'韩语','5':'德语','6':'西班牙语','7':'俄语','8':'阿拉伯语','9':'葡萄牙语','10':'意大利语'};
+                this.setAttribute('data-selected', m[lang] || lang);
             } else {
-                this.value = '';
-                this.removeAttribute('data-selected');
-                filterResults();
+                this.value = ''; this.removeAttribute('data-selected');
             }
         } else {
             this.removeAttribute('data-selected');
-            filterResults();
         }
+        filterResults();
     });
 
-    // ==================== 回车搜索 ====================
-    document.getElementById('searchInput').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') filterResults();
-    });
-
-    // ==================== 语言切换 ====================
-    document.getElementById('langSelect').addEventListener('change', function() {
-        localStorage.setItem('site_lang', this.value);
-    });
-
-    // ==================== 初始加载 ====================
+    document.getElementById('searchInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') filterResults(); });
+    document.getElementById('langSelect').addEventListener('change', function() { localStorage.setItem('site_lang', this.value); });
     filterResults();
 </script>
 </body>
