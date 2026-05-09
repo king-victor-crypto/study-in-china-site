@@ -7,227 +7,235 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #0a2540;
-            --accent: #2563eb;
-            --accent-light: #eff6ff;
-            --bg: #f7f8fa;
-            --card: #fff;
-            --text: #1e293b;
-            --muted: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 1px 3px rgba(0,0,0,0.06);
-            --shadow-hover: 0 8px 24px rgba(0,0,0,1);
+            --bg: #ffffff; --text: #202124; --muted: #5f6368;
+            --border: #dadce0; --accent: #1a73e8; --hover: #f8f9fa; --radius: 12px;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: var(--bg); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft Yahei", sans-serif; 
-            color: var(--text); 
-            line-height: 1.5;
+        body {
+            background: var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
+            color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden;
         }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 30px;
+        /* ====== 顶部导航栏 ====== */
+        .top-nav {
             background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--accent);
+            border-bottom: 2px solid var(--border);
+            padding: 14px 32px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: space-between;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            z-index: 100;
         }
-        .nav-main {
-            display: flex;
-            gap: 22px;
+        .nav-left { display: flex; align-items: center; gap: 32px; }
+        .nav-logo {
+            font-size: 20px; font-weight: 700; color: var(--accent);
+            text-decoration: none; display: flex; align-items: center; gap: 8px; white-space: nowrap;
         }
-        .nav-main a {
-            text-decoration: none;
-            color: var(--text);
-            font-size: 14px;
-            transition: 0.3s;
+        .nav-logo i { font-size: 22px; }
+        .nav-links { display: flex; gap: 8px; }
+        .nav-links a {
+            text-decoration: none; color: var(--text); font-size: 14px; font-weight: 500;
+            padding: 8px 16px; border-radius: 20px; transition: all 0.2s; white-space: nowrap;
         }
-        .nav-main a.active,
-        .nav-main a:hover {
-            color: var(--accent);
-        }
-        .nav-lang {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .nav-links a:hover { background: var(--hover); color: var(--accent); }
+        .nav-links a.active { background: var(--accent); color: #fff; font-weight: 600; }
+
+        .lang-wrap { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+        .lang-wrap select {
+            border: 1px solid var(--border); border-radius: 16px;
+            padding: 6px 12px; font-size: 13px; background: var(--bg); color: var(--text); cursor: pointer; outline: none;
         }
 
-        .hero {
-            text-align: center; 
-            padding: 2rem 1.5rem;
-            background: linear-gradient(135deg, #0a2540 0%, #1e3a8a 100%);
-            color: white;
-        }
-        .hero h1 { 
-            font-size: 1.8rem; 
-            font-weight: 700; 
-            margin-bottom: 0.4rem;
-        }
-        .hero p { 
-            color: rgba(255,255,255,0.8); 
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
+        /* ====== 主内容区 ====== */
+        .main-content {
+            flex: 1; display: flex; flex-direction: column; align-items: center;
+            max-width: 1100px; width: 100%; margin: 0 auto; padding: 2rem 24px 1rem; overflow-y: auto;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 1.5rem 1.5rem;
+        /* ====== 分类标签栏 ====== */
+        .category-tabs { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 1.5rem; }
+        .category-tab {
+            padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 500;
+            cursor: pointer; transition: all 0.2s; background: var(--hover); color: var(--text);
+            border: 1px solid transparent; text-decoration: none;
         }
+        .category-tab:hover { background: #e8f0fe; color: var(--accent); }
+        .category-tab.current { background: var(--accent); color: #fff; font-weight: 600; }
 
-        .section-grid {
+        /* ====== 搜索框 ====== */
+        .search-wrap { width: 100%; position: relative; margin-bottom: 1.5rem; }
+        .search-box {
+            width: 100%; height: 52px; border: 1px solid var(--border); border-radius: 28px;
+            padding: 0 20px 0 48px; font-size: 16px; outline: none;
+            background: var(--bg); box-shadow: 0 1px 6px rgba(32,33,36,0.08); transition: box-shadow 0.2s;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%239aa0a6' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: 16px center;
+        }
+        .search-box:focus { box-shadow: 0 1px 8px rgba(32,33,36,0.18); }
+
+        /* ====== 项目卡片网格（4列2行） ====== */
+        .card-grid {
+            width: 100%;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 16px;
         }
-        .section-card {
-            display: block;
-            text-decoration: none;
-            background: var(--card);
-            border-radius: 10px;
-            padding: 1.2rem;
-            box-shadow: var(--shadow);
+        @media (max-width: 900px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 700px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .card-grid { grid-template-columns: 1fr; } }
+
+        .module-card {
+            background: var(--bg);
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
+            border-radius: var(--radius);
+            padding: 28px 18px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
+            gap: 12px;
+            cursor: pointer;
         }
-        .section-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
+        .module-card:hover {
+            box-shadow: 0 6px 24px rgba(0,0,0,0.1);
             border-color: var(--accent);
+            transform: translateY(-2px);
         }
-        .section-card i {
-            font-size: 1.6rem;
-            color: var(--accent);
-            margin-bottom: 0.6rem;
+        .module-card .card-icon {
+            width: 52px; height: 52px; border-radius: 50%;
+            background: #e8f0fe; display: flex; align-items: center; justify-content: center;
+            font-size: 22px; color: var(--accent);
         }
-        .section-card h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-            color: var(--primary);
-        }
-        .section-card p {
-            color: var(--muted);
-            font-size: 0.8rem;
-            line-height: 1.4;
-        }
+        .module-card h3 { font-size: 15px; font-weight: 600; }
+        .module-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
-        footer { 
-            text-align: center; 
-            padding: 1rem; 
-            color: var(--muted); 
-            font-size: 0.8rem; 
-            border-top: 1px solid var(--border); 
-            margin-top: 1rem;
-        }
-
-        @media (min-width:1024px) {
-            body { overflow-y: hidden; }
+        /* ====== 页脚 ====== */
+        .site-footer {
+            text-align: center; padding: 10px 0; border-top: 1px solid var(--border);
+            font-size: 12px; color: var(--muted); flex-shrink: 0;
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="logo"><i class="fas fa-graduation-cap"></i> Study In China</div>
-    <div class="nav-main">
-        <a href="index.html" data-i18n="nav_projects">发现项目</a>
-        <a href="schools.html" data-i18n="nav_schools">探索院校</a>
-        <a href="guide.html" data-i18n="nav_guide">申请指南</a>
-        <a href="life.html" class="active" data-i18n="nav_life">留学中国</a>
-        <a href="resource.html" data-i18n="nav_resource">资源中心</a>
+<!-- ==================== 顶部导航栏 ==================== -->
+<nav class="top-nav">
+    <div class="nav-left">
+        <a href="index.html" class="nav-logo"><i class="fas fa-graduation-cap"></i> Study In China</a>
+        <div class="nav-links">
+            <a href="index.html">发现项目</a>
+            <a href="schools.html">探索院校</a>
+            <a href="guide.html">申请指南</a>
+            <a href="life.html" class="active">留学中国</a>
+            <a href="resource.html">资源中心</a>
+        </div>
     </div>
-    <div class="nav-lang">
-        <span>🌐</span>
+    <div class="lang-wrap">
+        <span style="font-size:13px;">🌐</span>
         <select id="langSelect">
             <option value="zh">中文</option>
             <option value="en">English</option>
-            <option value="ru">Русский</option>
-            <option value="ko">한국어</option>
-            <option value="ja">日本語</option>
+            <option value="ar">العربية</option>
             <option value="fr">Français</option>
             <option value="es">Español</option>
-            <option value="de">Deutsch</option>
-            <option value="it">Italiano</option>
+            <option value="ru">Русский</option>
             <option value="pt">Português</option>
-            <option value="ar">العربية</option>
-            <option value="tr">Türkçe</option>
+            <option value="id">Bahasa Indonesia</option>
             <option value="th">ไทย</option>
             <option value="vi">Tiếng Việt</option>
-            <option value="id">Bahasa Indonesia</option>
-            <option value="ms">Bahasa Melayu</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="de">Deutsch</option>
+            <option value="it">Italiano</option>
             <option value="fa">فارسی</option>
+            <option value="tr">Türkçe</option>
+            <option value="hi">हिन्दी</option>
         </select>
     </div>
 </nav>
 
-<section class="hero">
-    <h1>留学生活指南</h1>
-    <p>住宿｜出行｜饮食｜购物｜通讯支付｜社交文化｜医疗健康｜校园活动</p>
-</section>
+<!-- ==================== 主内容区 ==================== -->
+<div class="main-content">
 
-<div class="container">
-    <div class="section-grid">
-        <a href="life-live.html" class="section-card">
-            <i class="fas fa-home"></i>
+    <!-- 分类标签栏 -->
+    <div class="category-tabs">
+        <span class="category-tab current">全部指南</span>
+        <a href="life-live.html" class="category-tab">住宿</a>
+        <a href="life-traffic.html" class="category-tab">出行</a>
+        <a href="life-food.html" class="category-tab">饮食</a>
+        <a href="life-shop.html" class="category-tab">购物</a>
+        <a href="life-pay.html" class="category-tab">通讯</a>
+        <a href="life-culture.html" class="category-tab">文化</a>
+        <a href="life-health.html" class="category-tab">医疗</a>
+        <a href="life-activity.html" class="category-tab">活动</a>
+    </div>
+
+    <!-- 搜索框 -->
+    <div class="search-wrap">
+        <input type="text" class="search-box" id="searchInput" placeholder="搜索住宿、出行、美食攻略...">
+    </div>
+
+    <!-- 8个模块卡片 -->
+    <div class="card-grid">
+        <a href="life-live.html" class="module-card">
+            <div class="card-icon"><i class="fas fa-home"></i></div>
             <h3>住宿指南</h3>
-            <p>点击进入查看详情</p>
+            <p>校内宿舍 vs 校外租房，安全舒适的在华居所</p>
         </a>
-        <a href="life-traffic.html" class="section-card">
-            <i class="fas fa-bus"></i>
+        <a href="life-traffic.html" class="module-card">
+            <div class="card-icon"><i class="fas fa-bus"></i></div>
             <h3>出行交通</h3>
-            <p>点击进入查看详情</p>
+            <p>地铁、公交、高铁，轻松畅游中国大地</p>
         </a>
-        <a href="life-food.html" class="section-card">
-            <i class="fas fa-utensils"></i>
+        <a href="life-food.html" class="module-card">
+            <div class="card-icon"><i class="fas fa-utensils"></i></div>
             <h3>饮食美食</h3>
-            <p>点击进入查看详情</p>
+            <p>八大菜系，舌尖上的中国等你来探索</p>
         </a>
-        <a href="life-shop.html" class="section-card">
-            <i class="fas fa-shopping-bag"></i>
+        <a href="life-shop.html" class="module-card">
+            <div class="card-icon"><i class="fas fa-shopping-bag"></i></div>
             <h3>购物指南</h3>
-            <p>点击进入查看详情</p>
+            <p>线下商圈与线上电商，体验便捷购物生活</p>
         </a>
-        <a href="life-pay.html" class="section-card">
-            <i class="fas fa-mobile-alt"></i>
+        <a href="life-pay.html" class="module-card">
+            <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
             <h3>通讯支付</h3>
-            <p>点击进入查看详情</p>
+            <p>手机卡办理与移动支付，融入数字生活</p>
         </a>
-        <a href="life-culture.html" class="section-card">
-            <i class="fas fa-users"></i>
+        <a href="life-culture.html" class="module-card">
+            <div class="card-icon"><i class="fas fa-users"></i></div>
             <h3>社交文化</h3>
-            <p>点击进入查看详情</p>
+            <p>了解文化差异，结交中外好友</p>
         </a>
-        <a href="life-health.html" class="section-card">
-            <i class="fas fa-hospital"></i>
+        <a href="life-health.html" class="module-card">
+            <div class="card-icon"><i class="fas fa-hospital"></i></div>
             <h3>医疗健康</h3>
-            <p>点击进入查看详情</p>
+            <p>就医指南与保险，保障在华健康</p>
         </a>
-        <a href="life-activity.html" class="section-card">
-            <i class="fas fa-graduation-cap"></i>
+        <a href="life-activity.html" class="module-card">
+            <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
             <h3>校园活动</h3>
-            <p>点击进入查看详情</p>
+            <p>社团与文体活动，丰富校园生活</p>
         </a>
     </div>
+
 </div>
 
-<footer>&copy; 2026 Study in China 来华留学一站式平台</footer>
-<script src="lang.js"></script>
+<!-- ==================== 页脚 ==================== -->
+<footer class="site-footer">
+    © 2026 Study in China 来华留学一站式平台
+</footer>
+
+<script>
+    document.getElementById('langSelect').addEventListener('change', function() {
+        localStorage.setItem('site_lang', this.value);
+    });
+</script>
 </body>
 </html>
